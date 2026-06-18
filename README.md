@@ -20,3 +20,4 @@ Basic project setup, requirements, and planning.
 ## Notes
 
 This project is still in progress and will be updated as we build.
+Requirements and team tasks are tracked in Microsoft Planner.
