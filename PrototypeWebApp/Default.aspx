@@ -67,8 +67,7 @@
             </div>
 
             <div id="scenarioChooser">
-                <p class="small">Choose a scenario to load:</p>
-
+                <br />
                 <button type="button" onclick="loadScenario('prototypes/active-scenario-01.xml')">
                     Load sample scenario
                 </button>
