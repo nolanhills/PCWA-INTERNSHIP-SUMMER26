@@ -19,6 +19,17 @@
             border: 1px solid #ddd;
         }
 
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-row h1 {
+            margin: 0;
+        }
+
         .media-box {
             padding: 20px;
             margin: 16px 0;
@@ -33,6 +44,11 @@
             cursor: pointer;
         }
 
+        .main-menu-button {
+            display: none;
+            margin: 0;
+        }
+
         .small {
             color: #666;
             font-size: 14px;
@@ -42,10 +58,27 @@
 <body>
     <form id="form1" runat="server">
         <div class="prototype">
-            <h1>Scam Awareness Prototype</h1>
-            <p class="small">Loaded from: prototypes/active-scenario-01.xml</p>
+            <div class="header-row">
+                <h1>Scam Awareness Prototype</h1>
 
-            <div id="app">Loading XML scenario...</div>
+                <button id="mainMenuButton" class="main-menu-button" type="button" onclick="showScenarioChooser()">
+                    Main Menu
+                </button>
+            </div>
+
+            <div id="scenarioChooser">
+                <p class="small">Choose a scenario to load:</p>
+
+                <button type="button" onclick="loadScenario('prototypes/active-scenario-01.xml')">
+                    Load sample scenario
+                </button>
+
+                <button type="button" onclick="loadScenario('prototypes/bank-alert-scenario.xml')">
+                    Load bank alert scam scenario
+                </button>
+            </div>
+
+            <div id="app">Choose a scenario above to begin.</div>
         </div>
     </form>
 
@@ -54,27 +87,37 @@
         let commands = {};
         let currentVideoId = null;
 
-        fetch("prototypes/active-scenario-01.xml")
-            .then(response => response.text())
-            .then(xmlText => {
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(xmlText, "text/xml");
+        function loadScenario(filePath) {
+            videos = {};
+            commands = {};
+            currentVideoId = null;
 
-                xml.querySelectorAll("video").forEach(video => {
-                    videos[video.getAttribute("id")] = video.textContent;
+            document.getElementById("scenarioChooser").style.display = "none";
+            document.getElementById("mainMenuButton").style.display = "block";
+            document.getElementById("app").innerHTML = "<p>Loading scenario...</p>";
+
+            fetch(filePath)
+                .then(response => response.text())
+                .then(xmlText => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlText, "text/xml");
+
+                    xml.querySelectorAll("video").forEach(video => {
+                        videos[video.getAttribute("id")] = video.textContent;
+                    });
+
+                    xml.querySelectorAll("command").forEach(command => {
+                        commands[command.getAttribute("videoId")] = command;
+                    });
+
+                    currentVideoId = Object.keys(commands)[0];
+                    showScene(currentVideoId);
+                })
+                .catch(error => {
+                    document.getElementById("app").innerHTML = "<p>Could not load XML file.</p>";
+                    console.error(error);
                 });
-
-                xml.querySelectorAll("command").forEach(command => {
-                    commands[command.getAttribute("videoId")] = command;
-                });
-
-                currentVideoId = Object.keys(commands)[0];
-                showScene(currentVideoId);
-            })
-            .catch(error => {
-                document.getElementById("app").innerHTML = "<p>Could not load XML file.</p>";
-                console.error(error);
-            });
+        }
 
         function showScene(videoId) {
             currentVideoId = videoId;
@@ -94,7 +137,8 @@
             if (!command) {
                 html += `
                     <p>No command found for this scene.</p>
-                    <button onclick="restart()">Restart Prototype</button>
+                    <button type="button" onclick="restart()">Restart This Scenario</button>
+                    <button type="button" onclick="showScenarioChooser()">Choose Another Scenario</button>
                 `;
                 app.innerHTML = html;
                 return;
@@ -110,7 +154,7 @@
                     const targetId = option.getAttribute("id");
                     const text = option.getAttribute("text");
 
-                    html += `<button onclick="showScene('${targetId}')">${text}</button>`;
+                    html += `<button type="button" onclick="showScene('${targetId}')">${text}</button>`;
                 });
             }
             else if (type === "download") {
@@ -121,22 +165,23 @@
                 });
 
                 const nextVideoId = command.getAttribute("nextVideoId");
-                html += `<button onclick="showScene('${nextVideoId}')">Continue</button>`;
+                html += `<button type="button" onclick="showScene('${nextVideoId}')">Continue</button>`;
             }
             else if (type === "jump") {
                 const targetId = command.getAttribute("targetId");
-                html += `<button onclick="showScene('${targetId}')">Continue</button>`;
+                html += `<button type="button" onclick="showScene('${targetId}')">Continue</button>`;
             }
             else if (type === "restart-or-quit") {
                 html += `
-                    <button onclick="restart()">Restart</button>
-                    <button onclick="quit()">Quit</button>
+                    <button type="button" onclick="restart()">Restart This Scenario</button>
+                    <button type="button" onclick="showScenarioChooser()">Choose Another Scenario</button>
                 `;
             }
             else if (type === "stop") {
                 html += `
                     <p>The scenario has ended.</p>
-                    <button onclick="restart()">Restart Prototype</button>
+                    <button type="button" onclick="restart()">Restart This Scenario</button>
+                    <button type="button" onclick="showScenarioChooser()">Choose Another Scenario</button>
                 `;
             }
 
@@ -147,8 +192,18 @@
             showScene(Object.keys(commands)[0]);
         }
 
+        function showScenarioChooser() {
+            videos = {};
+            commands = {};
+            currentVideoId = null;
+
+            document.getElementById("scenarioChooser").style.display = "block";
+            document.getElementById("mainMenuButton").style.display = "none";
+            document.getElementById("app").innerHTML = "Choose a scenario above to begin.";
+        }
+
         function quit() {
-            document.getElementById("app").innerHTML = "<h2>Prototype ended.</h2>";
+            showScenarioChooser();
         }
     </script>
 </body>

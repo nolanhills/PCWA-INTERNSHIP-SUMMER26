@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<playlist autostart="true">
+	<videos>
+		<video id="1">placeholder/tutorial-bank-alert-text.mp4</video>
+		<video id="2">placeholder/phone-call-fraud-department.mp4</video>
+		<video id="3">placeholder/fake-bank-login-page.mp4</video>
+		<video id="4">placeholder/official-bank-check.mp4</video>
+		<video id="5">placeholder/wire-transfer-trap.mp4</video>
+		<video id="6">placeholder/two-factor-code-warning.mp4</video>
+		<video id="7">placeholder/win-scam-defeated.mp4</video>
+		<video id="8">placeholder/loss-account-compromised.mp4</video>
+	</videos>
+
+	<commands>
+		<command type="prompt" videoId="1" displayText="BANK ALERT: Suspicious charge of $1,248.50 at Target. Reply YES if this was you, or NO to speak with Fraud Prevention. Or click the link to dispute this yourself.">
+			<options>
+				<option id="2" text="Reply NO by text"></option>
+				<option id="3" text="Click the link in the text"></option>
+				<option id="4" text="Ignore the text and log into the official banking app"></option>
+			</options>
+		</command>
+		<command type="stop" videoId="3" displayText="The link opens a fake banking portal asking for your username, password, and Social Security number. This is a phishing trap." />
+		<command type="stop" videoId="4" displayText="You open the official banking app yourself. Your real balance is fine and no pending charge exists. Scam defeated." />
+		<command type="prompt" videoId="2" displayText="The caller says: Thank you for responding. We see a hacker actively attempting to drain your account. To secure your funds, we need to move them to a temporary FDIC-secured government safe vault immediately.">
+			<options>
+				<option id="5" text="Agree to transfer the money"></option>
+				<option id="7" text="Hang up and call the number on the back of your debit card"></option>
+				<option id="2" text="Ask the caller to verify their employee identity"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="5" displayText="The caller says: I have initiated the secure transfer to protect your money. I am texting you a verification code right now. Read it out loud so I can finalize the security vault.">
+			<options>
+				<option id="8" text="Read the code out loud to the caller"></option>
+				<option id="6" text="Read the text message carefully before speaking"></option>
+			</options>
+		</command>
+
+		<command type="prompt" videoId="6" displayText="The text says: Security Code: 994-123. Bank employees will NEVER ask for this code over the phone. Do not share it.">
+			<options>
+				<option id="7" text="Realize it is a scam, hang up, and call the bank fraud line"></option>
+				<option id="8" text="Trust the caller anyway and give them the code"></option>
+			</options>
+		</command>
+
+		<command type="stop" videoId="7" displayText="Win condition: You stopped the scam and contacted the bank through an official channel." />
+
+		<command type="stop" videoId="8" displayText="Critical loss: The scammer used the code to bypass two-factor authentication and compromise the account." />
+	</commands>
+</playlist>
