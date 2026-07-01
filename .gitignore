@@ -143,3 +143,18 @@ vite.config.ts.timestamp-*
 .vite/
 
 .vs/
+
+# Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.rsuser
+*.userosscache
+*.sln.docstates
+
+# NuGet/package artifacts
+packages/
+*.nupkg
+*.signature.p7s
