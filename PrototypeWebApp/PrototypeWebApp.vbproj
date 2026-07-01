@@ -94,6 +94,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="prototypes\active-scenario-01.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

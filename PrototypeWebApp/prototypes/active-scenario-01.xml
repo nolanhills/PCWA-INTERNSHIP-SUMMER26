@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<playlist autostart="true">
+	<videos>
+		<video id="1">./video.mp4</video>
+		<video id="2">./lair01.mp4</video>
+		<video id="3">./lair02.mp4</video>
+		<video id="4">./lair03.mp4</video>
+		<video id="5">./lair04.mp4</video>
+		<video id="6">./lair05.mp4</video>
+		<video id="7">./lair06.mp4</video>
+		<video id="8">./lair07.mp4</video>
+		<video id="9">./lair08.mp4</video>
+		<video id="10">./lair09.mp4</video>
+		<video id="11">./lair10.mp4</video>
+		<video id="12">./lair11.mp4</video>
+		<video id="13">./video.mp4</video>
+		<video id="14">./video1.mp4</video>
+		<video id="15">./Dragons-Lair-Death-Scenes.mp4</video>
+	</videos>
+	<commands>
+		<command type="prompt" videoId="2" displayText="Would you like to play a game?">
+			<options>
+				<option id="3" text="Enter"></option>
+				<option id="13" text="Leave"></option>
+				<option id="1" text="Restart"></option>
+			</options>
+			<default>2</default>
+			<timeout>10</timeout>
+		</command>
+		<command type="prompt" videoId="3" displayText="How did you play?">
+			<options>
+				<option id="4" text="Ran to next area!"></option>
+				<option id="15" text="Died!"></option>
+				<option id="12" text="Won the game!"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="4" displayText="How did you play?">
+			<options>
+				<option id="5" text="Ran to next area!"></option>
+				<option id="15" text="Died!"></option>
+				<option id="12" text="Won the game!"></option>
+			</options>
+		</command>
+		<command type="download" videoId="5" displayText="Please Review These Files:" nextVideoId="6">
+			<files>
+				<file path="./blank.txt" name="Text File 1"></file>
+				<file path="./blank.xlsx" name="Excel File 2"></file>
+			</files>
+		</command>
+		<command type="jump" videoId="12" targetId="14" />
+		<command type="jump" videoId="14" targetId="13" />
+		<command type="restart-or-quit" videoId="13" displayText="Do you want to restart the playlist or quit?" />
+		<command type="stop" videoId="15" />
+	</commands>
+</playlist>

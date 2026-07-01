@@ -13,7 +13,7 @@
     <p>This is the starting web app for testing the XML prototype.</p>
 
     <h2>Current XML File</h2>
-    <p>Prototype file: prototypes/scam-scenario-01.xml</p>
+    <p>Active XML file: <a href="prototypes/active-scenario-01.xml">prototypes/active-scenario-01.xml</a></p>
 
     <p>If this page opens in the browser, the Visual Basic web application is running.</p>
 </div>
