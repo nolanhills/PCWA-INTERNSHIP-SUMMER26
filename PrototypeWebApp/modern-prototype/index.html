@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bank Alert Scam Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#mainContent">Skip to simulator</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div>
+                <p class="eyebrow">Scam Awareness Program for Seniors</p>
+                <h1>Bank Alert Scam Simulator</h1>
+            </div>
+            <p class="intro">
+                A safe practice run through a suspicious bank text, pressure call,
+                fake website, and final review.
+            </p>
+        </div>
+    </header>
+
+    <main id="mainContent" class="app-shell">
+        <section class="status-bar" aria-label="Scenario progress">
+            <div>
+                <span class="status-label">Scenario</span>
+                <strong id="scenarioTitle">Bank fraud alert</strong>
+            </div>
+            <div>
+                <span class="status-label">Step</span>
+                <strong id="stepCount">1 of 1</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+                <span id="progressFill"></span>
+            </div>
+        </section>
+
+        <section class="simulator-layout">
+            <section class="story-panel" aria-label="Scene simulation">
+                <div id="mediaFrame" class="media-frame"></div>
+                <div id="interfaceFrame" class="interface-frame"></div>
+            </section>
+
+            <section class="decision-panel" aria-labelledby="sceneHeading">
+                <p id="sceneType" class="scene-type"></p>
+                <h2 id="sceneHeading"></h2>
+                <p id="sceneDescription" class="scene-description"></p>
+
+                <div id="choices" class="choices" aria-label="Available choices"></div>
+
+                <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+
+                <div class="utility-actions">
+                    <button id="tryAgainButton" class="secondary-button" type="button" hidden>
+                        Try Again
+                    </button>
+                    <button id="reviewButton" class="secondary-button" type="button">
+                        Review Warning Signs
+                    </button>
+                    <button id="restartButton" class="secondary-button" type="button">
+                        Restart Scenario
+                    </button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
