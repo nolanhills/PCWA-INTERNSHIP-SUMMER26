@@ -11,6 +11,315 @@
 		<video id="8">placeholder/loss-account-compromised.mp4</video>
 	</videos>
 
+	<presentation approximateStages="5">
+		<title>Bank fraud alert</title>
+		<summary>Practice responding to an unexpected bank text, a pressure call, a fake website, and a security-code request.</summary>
+		<practiceGoal>Recognize urgency, switch to a trusted contact method, and protect account credentials and security codes.</practiceGoal>
+		<stages>
+			<stage>Text arrives</stage>
+			<stage>Pressure call</stage>
+			<stage>Verification trap</stage>
+			<stage>Review</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>An unexpected alert creates fear about losing money.</sign>
+				<sign>A message includes a link and asks you to act immediately.</sign>
+				<sign>A caller asks you to move money to protect it.</sign>
+				<sign>Someone asks for a one-time security code.</sign>
+			</warningSigns>
+			<safestAction>End the conversation and contact the bank using the number on your card, statement, or official app.</safestAction>
+			<realWorldActions>
+				<action>Do not reply to the message or use its link.</action>
+				<action>Call the bank through a number you already trust.</action>
+				<action>Never share a one-time security code with a caller.</action>
+				<action>If you shared information, contact the bank immediately and change affected passwords.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="1" stageName="Text arrives" stageIndex="1">
+				<artifact type="text-message">
+					<sender>Bank Fraud Alert</sender>
+					<senderStatus>Unknown sender</senderStatus>
+					<heading>Suspicious charge alert</heading>
+					<message>BANK ALERT: Suspicious charge of $1,248.50 at Target. Reply YES if this was you, NO to speak with Fraud Prevention. Or use bank-secure-review.example to dispute this yourself.</message>
+					<transcript>A text claims there is a suspicious charge of $1,248.50. It asks for a reply or offers a link to dispute the charge.</transcript>
+					<media video="placeholder/tutorial-bank-alert-text.mp4" poster="placeholder/tutorial-bank-alert-text.jpg" captions="placeholder/tutorial-bank-alert-text.vtt" available="false" />
+				</artifact>
+				<question>How would you check whether this alert is real?</question>
+				<description>Choose the first action you would take.</description>
+				<warningSigns>
+					<sign>The message was unexpected.</sign>
+					<sign>It creates urgency around a large amount of money.</sign>
+					<sign>It asks you to reply or use a link supplied in the message.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="2" classification="risky">
+						<title>Reply NO by text</title>
+						<subtitle>Continue the conversation using the number that contacted you.</subtitle>
+						<feedback heading="The scammer still controls the conversation">
+							<consequence>Replying may confirm that your number is active and can lead to a convincing pressure call.</consequence>
+							<explanation>A safer verification starts through a contact method you choose yourself, not one supplied by the alert.</explanation>
+							<warningSigns>
+								<sign>The sender controls the reply channel.</sign>
+								<sign>A reply can lead to more urgent contact.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="3" classification="dangerous">
+						<title>Use the link in the text</title>
+						<subtitle>Open the page supplied by the alert to dispute the charge.</subtitle>
+						<feedback heading="Unexpected links can lead to imitation websites">
+							<consequence>The link can open a fake bank page designed to collect passwords and personal information.</consequence>
+							<explanation>Scammers copy familiar branding and use look-alike web addresses. Open the saved bank app or type a trusted address instead.</explanation>
+							<warningSigns>
+								<sign>The link arrived without being requested.</sign>
+								<sign>The address does not match a known bank website.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="4" classification="safe">
+						<title>Contact the bank independently</title>
+						<subtitle>Open the official app or call the number printed on your card.</subtitle>
+						<feedback heading="You changed to a trusted channel">
+							<consequence>You can check the account without relying on information supplied by the sender.</consequence>
+							<explanation>Choosing the contact method yourself breaks the scammer's control and gives you time to verify the claim.</explanation>
+							<warningSigns>
+								<sign>The alert supplied its own contact route.</sign>
+								<sign>The message tried to rush the verification.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="2" stageName="Pressure call" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>Fraud Prevention Department</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Simulated incoming call</callStatus>
+					<heading>Your account is being drained</heading>
+					<message>We see a hacker trying to empty your account. To protect your money, transfer it to a temporary government safe vault immediately.</message>
+					<transcript>The caller says hackers are draining the account and insists that the money must be transferred to a temporary government safe vault right now.</transcript>
+					<media video="placeholder/phone-call-fraud-department.mp4" poster="placeholder/phone-call-fraud-department.jpg" captions="placeholder/phone-call-fraud-department.vtt" available="false" />
+				</artifact>
+				<question>What would you do while the caller is pressuring you?</question>
+				<description>The caller sounds calm and professional, but insists there is no time to wait.</description>
+				<warningSigns>
+					<sign>The caller creates an emergency.</sign>
+					<sign>The caller asks for an immediate money transfer.</sign>
+					<sign>The caller discourages time to verify the claim.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="5" classification="dangerous">
+						<title>Agree to transfer the money</title>
+						<subtitle>Follow the caller's instructions to move the funds.</subtitle>
+						<feedback heading="Banks do not use secret safe-vault transfers">
+							<consequence>Money sent under the caller's direction may go directly to an account controlled by the scammer.</consequence>
+							<explanation>Urgency and unusual transfer instructions are strong signs to end the call and verify independently.</explanation>
+							<warningSigns>
+								<sign>A request to move money to keep it safe.</sign>
+								<sign>Pressure to complete the transfer immediately.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="7" classification="safe">
+						<title>Hang up and call the bank yourself</title>
+						<subtitle>Use the number printed on the back of your debit card.</subtitle>
+						<feedback heading="You ended the pressure and chose a trusted number">
+							<consequence>The real bank can check the account without the suspicious caller remaining involved.</consequence>
+							<explanation>Hanging up creates time to think and prevents the caller from guiding each next action.</explanation>
+							<warningSigns>
+								<sign>The caller wanted to keep you on the line.</sign>
+								<sign>The caller supplied an unusual solution.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="2" classification="risky">
+						<title>Ask the caller to prove their identity</title>
+						<subtitle>Keep the call active while asking for employee details.</subtitle>
+						<feedback heading="A scammer can prepare convincing details">
+							<consequence>The caller can provide a fake name, employee number, or information gathered about you.</consequence>
+							<explanation>Information supplied by the caller cannot independently verify the caller. End the call and contact the bank yourself.</explanation>
+							<warningSigns>
+								<sign>The same caller supplies both the claim and the proof.</sign>
+								<sign>The pressure continues while you try to verify.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="3" stageName="Fake website" stageIndex="3">
+				<artifact type="fake-website">
+					<domain>bank-secure-review.example</domain>
+					<heading>Bank Account Verification</heading>
+					<message>To stop the suspicious charge, verify your full identity immediately.</message>
+					<requestedInformation>
+						<item>Online banking username</item>
+						<item>Online banking password</item>
+						<item>Full Social Security number</item>
+					</requestedInformation>
+					<transcript>The page asks for a username, password, and full Social Security number. The web address came from an unexpected text and does not match a known bank address.</transcript>
+					<media video="placeholder/fake-bank-login-page.mp4" poster="placeholder/fake-bank-login-page.jpg" captions="placeholder/fake-bank-login-page.vtt" available="false" />
+				</artifact>
+				<outcome classification="dangerous">
+					<label>Account information at risk</label>
+					<heading>The link led to a phishing page</heading>
+					<explanation>The imitation page requests account credentials and personal information.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The page was opened from an unexpected text.</sign>
+					<sign>The domain is unfamiliar.</sign>
+					<sign>The page asks for several sensitive details at once.</sign>
+				</warningSigns>
+			</scene>
+
+			<scene videoId="4" stageName="Takeaways" stageIndex="5">
+				<artifact type="narration">
+					<heading>Official account check</heading>
+					<message>You open the official banking app yourself. The balance is correct and no suspicious charge appears.</message>
+					<transcript>The official banking app shows that the account is fine. The alert did not come from the bank.</transcript>
+					<media video="placeholder/official-bank-check.mp4" poster="placeholder/official-bank-check.jpg" captions="placeholder/official-bank-check.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Account protected</label>
+					<heading>You verified the alert safely</heading>
+					<explanation>You used an official channel and confirmed that the unexpected alert was false.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The original message did not match the information in the official app.</sign>
+					<sign>The sender tried to direct the verification process.</sign>
+				</warningSigns>
+			</scene>
+
+			<scene videoId="5" stageName="Verification trap" stageIndex="3">
+				<artifact type="phone-call">
+					<caller>Fraud Prevention Department</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Simulated call in progress</callStatus>
+					<heading>A security code is requested</heading>
+					<message>I started the secure transfer. I am texting you a verification code. Read it out loud so I can finalize the security vault.</message>
+					<transcript>The caller says a transfer is underway and asks the learner to read a new verification code aloud.</transcript>
+					<media video="placeholder/wire-transfer-trap.mp4" poster="placeholder/wire-transfer-trap.jpg" captions="placeholder/wire-transfer-trap.vtt" available="false" />
+				</artifact>
+				<question>What would you do when the caller asks for the code?</question>
+				<description>A text arrives while the caller remains on the line.</description>
+				<warningSigns>
+					<sign>The caller asks for a one-time code.</sign>
+					<sign>The caller claims the code is needed to protect money.</sign>
+					<sign>The caller keeps the conversation moving quickly.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="8" classification="dangerous">
+						<title>Read the code aloud</title>
+						<subtitle>Give the caller the number so the transfer can continue.</subtitle>
+						<feedback heading="A security code can unlock the account">
+							<consequence>The scammer may use the code to sign in, approve a transfer, or bypass account protection.</consequence>
+							<explanation>One-time codes are intended only for the account owner. A legitimate employee should not ask you to read one aloud.</explanation>
+							<warningSigns>
+								<sign>A caller requests a one-time code.</sign>
+								<sign>The code is tied to a transfer you did not initiate.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="6" classification="safe">
+						<title>Read the full text before speaking</title>
+						<subtitle>Pause and check what the security-code message actually says.</subtitle>
+						<feedback heading="You paused long enough to see the warning">
+							<consequence>Reading the full message can reveal that the code must never be shared.</consequence>
+							<explanation>Slowing the conversation interrupts the scammer's pressure and gives written warnings a chance to help.</explanation>
+							<warningSigns>
+								<sign>The caller tries to make you act before reading.</sign>
+								<sign>The request involves a private security code.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="6" stageName="Review" stageIndex="4">
+				<artifact type="text-message">
+					<sender>Bank Security</sender>
+					<senderStatus>Automated security message</senderStatus>
+					<heading>Security code: 994-123</heading>
+					<message>Bank employees will NEVER ask for this code over the phone. Do not share it.</message>
+					<transcript>The security message says bank employees will never ask for this code over the phone and instructs the recipient not to share it.</transcript>
+					<media video="placeholder/two-factor-code-warning.mp4" poster="placeholder/two-factor-code-warning.jpg" captions="placeholder/two-factor-code-warning.vtt" available="false" />
+				</artifact>
+				<question>What would you do after reading the warning?</question>
+				<description>The caller is still waiting for an answer.</description>
+				<warningSigns>
+					<sign>The text directly contradicts the caller.</sign>
+					<sign>The caller is asking for a code marked private.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="7" classification="safe">
+						<title>Hang up and call the real bank</title>
+						<subtitle>Use the official fraud number from your card or statement.</subtitle>
+						<feedback heading="You protected the code and changed channels">
+							<consequence>The scammer cannot use the code, and the real bank can help check the account.</consequence>
+							<explanation>Security codes should stay private. Ending the call prevents further pressure or requests.</explanation>
+							<warningSigns>
+								<sign>The caller ignored a clear security warning.</sign>
+								<sign>The caller requested private authentication information.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="8" classification="dangerous">
+						<title>Trust the caller and share the code</title>
+						<subtitle>Assume the caller is an exception to the written warning.</subtitle>
+						<feedback heading="The written warning applies to every caller">
+							<consequence>The code may allow the scammer to complete an account sign-in or money transfer.</consequence>
+							<explanation>A caller's confidence or urgency does not override the security instruction in the message.</explanation>
+							<warningSigns>
+								<sign>The caller asks you to ignore a security warning.</sign>
+								<sign>The request gives someone else access to authentication.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="7" stageName="Takeaways" stageIndex="5">
+				<artifact type="narration">
+					<heading>Trusted contact restored</heading>
+					<message>You ended the suspicious conversation and contacted the bank through an official channel.</message>
+					<transcript>The suspicious conversation ends. The learner contacts the bank using a trusted number.</transcript>
+					<media video="placeholder/win-scam-defeated.mp4" poster="placeholder/win-scam-defeated.jpg" captions="placeholder/win-scam-defeated.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Scam stopped</label>
+					<heading>You protected the account</heading>
+					<explanation>You ended the suspicious conversation and contacted the bank through an official channel.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller created urgency.</sign>
+					<sign>The caller requested unusual transfers or private codes.</sign>
+				</warningSigns>
+			</scene>
+
+			<scene videoId="8" stageName="Takeaways" stageIndex="5">
+				<artifact type="narration">
+					<heading>Security code shared</heading>
+					<message>The scammer uses the code to bypass account protection and gain access.</message>
+					<transcript>After receiving the one-time code, the scammer can bypass two-factor authentication and compromise the account.</transcript>
+					<media video="placeholder/loss-account-compromised.mp4" poster="placeholder/loss-account-compromised.jpg" captions="placeholder/loss-account-compromised.vtt" available="false" />
+				</artifact>
+				<outcome classification="dangerous">
+					<label>Account compromised</label>
+					<heading>The scammer gained access</heading>
+					<explanation>The scammer used the code to bypass two-factor authentication and compromise the account.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller requested a one-time security code.</sign>
+					<sign>The caller claimed normal security rules did not apply.</sign>
+				</warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+
 	<commands>
 		<command type="prompt" videoId="1" displayText="BANK ALERT: Suspicious charge of $1,248.50 at Target. Reply YES if this was you, or NO to speak with Fraud Prevention. Or click the link to dispute this yourself.">
 			<options>

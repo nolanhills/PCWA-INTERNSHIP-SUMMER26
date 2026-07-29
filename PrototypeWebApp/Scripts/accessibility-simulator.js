@@ -3,6 +3,7 @@
 
     const textSizeKey = "scam-awareness-text-size";
     const textSizes = ["small", "medium", "large"];
+    const scenarioCatalogPath = "prototypes/scenarios.xml";
     const engine = window.ScamScenarioEngine.create();
     const presentation = window.ScamScenarioPresentation;
 
@@ -142,16 +143,52 @@
         }, 10);
     }
 
+    function mergeMetadata(primary, fallback) {
+        if (Array.isArray(primary)) {
+            return primary.length
+                ? primary.slice()
+                : Array.isArray(fallback) ? fallback.slice() : [];
+        }
+
+        if (primary && typeof primary === "object") {
+            const fallbackObject = fallback && typeof fallback === "object"
+                ? fallback
+                : {};
+            const keys = new Set(
+                Object.keys(fallbackObject).concat(Object.keys(primary))
+            );
+            const merged = {};
+
+            keys.forEach((key) => {
+                merged[key] = mergeMetadata(primary[key], fallbackObject[key]);
+            });
+
+            return merged;
+        }
+
+        if (primary !== undefined && primary !== null && primary !== "") {
+            return primary;
+        }
+
+        if (Array.isArray(fallback)) {
+            return fallback.slice();
+        }
+
+        if (fallback && typeof fallback === "object") {
+            return mergeMetadata({}, fallback);
+        }
+
+        return fallback;
+    }
+
     function getScenarioDetails(path) {
-        const metadata = presentation.getScenario(path);
         const definition = window.ScamScenarioEngine
             .getAvailableScenarios()
             .find((scenario) => scenario.path === path);
         const fallbackName = definition
             ? definition.id.replace(/-/g, " ")
             : "Practice scenario";
-
-        return metadata || {
+        const genericDetails = {
             title: fallbackName,
             summary: "Practice responding to an interactive scenario.",
             practiceGoal: "Pause, review the information, and choose a response.",
@@ -167,6 +204,32 @@
                 ]
             }
         };
+        const catalogDetails = definition
+            ? {
+                title: definition.title,
+                summary: definition.description,
+                approximateStages: definition.approximateStages
+            }
+            : {};
+        const fallbackDetails = presentation.getScenario(path) || {};
+        const engineState = engine.getState();
+        const xmlDetails = engineState.isLoaded && engineState.scenarioPath === path
+            ? engine.getPresentation() || {}
+            : {};
+
+        return mergeMetadata(
+            xmlDetails,
+            mergeMetadata(
+                fallbackDetails,
+                mergeMetadata(catalogDetails, genericDetails)
+            )
+        );
+    }
+
+    function getSceneDetails(details, scene) {
+        return details.scenes && details.scenes[String(scene.id)]
+            ? details.scenes[String(scene.id)]
+            : getGenericScenePresentation(scene);
     }
 
     function hidePrimaryViews() {
@@ -209,17 +272,21 @@
             .getAvailableScenarios()
             .map((scenarioDefinition) => {
                 const details = getScenarioDetails(scenarioDefinition.path);
+                const scenarioTitle = scenarioDefinition.title || details.title;
+                const scenarioSummary = scenarioDefinition.description || details.summary;
                 const card = createElement("article", "scenario-card");
                 const copy = createElement("div", "scenario-card-copy");
-                const title = createElement("h3", "", details.title);
-                const summary = createElement("p", "", details.summary);
+                const title = createElement("h3", "", scenarioTitle);
+                const summary = createElement("p", "", scenarioSummary);
                 const stageText = createElement(
                     "p",
                     "scenario-stage-count",
-                    `About ${details.approximateStages} stages`
+                    `About ${details.approximateStages} ${
+                        details.approximateStages === 1 ? "stage" : "stages"
+                    }`
                 );
                 const startButton = createButton(
-                    `Start ${details.title}`,
+                    `Start ${scenarioTitle}`,
                     "primary-button scenario-start-button",
                     () => loadScenarioForIntroduction(scenarioDefinition.path, startButton)
                 );
@@ -350,9 +417,7 @@
         rememberVisitedScene(scene.id);
 
         const details = getScenarioDetails(selectedScenarioPath);
-        const sceneMetadata =
-            presentation.getScene(selectedScenarioPath, scene.id) ||
-            getGenericScenePresentation(scene);
+        const sceneMetadata = getSceneDetails(details, scene);
         const isComplete = Boolean(scene.command && scene.command.type === "stop");
 
         elements.headerScenarioTitle.textContent = details.title;
@@ -623,6 +688,21 @@
             media.preload = "metadata";
             media.src = artifact.mediaSrc;
             media.setAttribute("aria-label", artifact.heading || "Scenario media");
+
+            if (type === "video" && artifact.posterSrc) {
+                media.poster = artifact.posterSrc;
+            }
+
+            if (type === "video" && artifact.captionSrc) {
+                const captions = document.createElement("track");
+                captions.kind = "captions";
+                captions.src = artifact.captionSrc;
+                captions.srclang = "en";
+                captions.label = "English captions";
+                captions.default = true;
+                media.append(captions);
+            }
+
             media.addEventListener("error", () => {
                 wrapper.replaceChildren(
                     heading,
@@ -750,11 +830,7 @@
         }
 
         const choiceButtons = command.options.map((option, index) => {
-            const choiceMetadata = presentation.getChoice(
-                selectedScenarioPath,
-                scene.id,
-                option.destinationVideoId
-            );
+            const choiceMetadata = getChoiceMetadata(sceneMetadata, option);
             const titleText = choiceMetadata && choiceMetadata.title
                 ? choiceMetadata.title
                 : option.text || `Choice ${index + 1}`;
@@ -772,6 +848,11 @@
 
             button.type = "button";
             button.dataset.destination = option.destinationVideoId;
+
+            if (option.choiceId) {
+                button.dataset.choiceId = option.choiceId;
+            }
+
             button.append(choiceNumber, title, subtitle);
             button.addEventListener("click", () => {
                 selectChoice(scene, index, button, choiceMetadata);
@@ -782,6 +863,21 @@
         elements.choiceList.replaceChildren.apply(elements.choiceList, choiceButtons);
         announce(`${elements.sceneHeading.textContent}. ${command.options.length} choices available.`);
         focusElement(elements.sceneHeading);
+    }
+
+    function getChoiceMetadata(sceneMetadata, option) {
+        if (
+            option.choiceId &&
+            sceneMetadata.choicesById &&
+            sceneMetadata.choicesById[option.choiceId]
+        ) {
+            return sceneMetadata.choicesById[option.choiceId];
+        }
+
+        return sceneMetadata.choices &&
+            sceneMetadata.choices[String(option.destinationVideoId)]
+            ? sceneMetadata.choices[String(option.destinationVideoId)]
+            : null;
     }
 
     function selectChoice(scene, optionIndex, selectedButton, choiceMetadata) {
@@ -806,6 +902,7 @@
 
             history.push({
                 sceneId: scene.id,
+                choiceId: selectedChoice.choiceId,
                 destinationVideoId: selectedChoice.destinationVideoId,
                 choiceText: selectedChoice.text,
                 title: choiceMetadata && choiceMetadata.title
@@ -834,9 +931,8 @@
             dangerous: "!",
             neutral: "i"
         };
-        const sceneMetadata =
-            presentation.getScene(selectedScenarioPath, scene.id) ||
-            getGenericScenePresentation(scene);
+        const details = getScenarioDetails(selectedScenarioPath);
+        const sceneMetadata = getSceneDetails(details, scene);
         const warnings = choiceMetadata && choiceMetadata.warningSigns
             ? choiceMetadata.warningSigns
             : sceneMetadata.warningSigns || [];
@@ -982,7 +1078,8 @@
         elements.completionHeading.textContent =
             outcome.heading || "You reached the end of this path";
         elements.completionMessage.textContent =
-            scene.command.displayText || "The scenario has ended.";
+            outcome.explanation || scene.command.displayText ||
+            "The scenario has ended.";
         renderHistory();
         replaceList(elements.completionWarnings, warnings);
         elements.safestAction.textContent =
@@ -1187,6 +1284,22 @@
         }
     }
 
+    async function initializeScenarioCatalog() {
+        elements.scenarioList.replaceChildren(
+            createElement("p", "scenario-loading", "Loading scenarios...")
+        );
+
+        try {
+            await window.ScamScenarioEngine.loadCatalog(scenarioCatalogPath);
+            showChooser();
+        } catch (error) {
+            showError(error, {
+                heading: "The scenario list could not be loaded",
+                retry: initializeScenarioCatalog
+            });
+        }
+    }
+
     elements.introBackButton.addEventListener("click", showChooser);
     elements.beginScenarioButton.addEventListener("click", beginScenario);
     elements.continueButton.addEventListener("click", continueAfterFeedback);
@@ -1201,5 +1314,5 @@
     elements.soundButton.addEventListener("click", toggleSound);
 
     setTextSize(getStoredTextSize(), false);
-    renderScenarioChooser();
+    initializeScenarioCatalog();
 }());
