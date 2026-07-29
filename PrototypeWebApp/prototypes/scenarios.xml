@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenarios>
+  <scenario id="sample-scenario" approximateStages="8" enabled="true">
+    <title>Sample branching scenario</title>
+    <description>Explore a general branching example that demonstrates every command supported by the XML player.</description>
+    <file>prototypes/active-scenario-01.xml</file>
+  </scenario>
+  <scenario id="bank-alert" approximateStages="5" enabled="true">
+    <title>Bank fraud alert</title>
+    <description>Practice responding to an unexpected bank text, a pressure call, a fake website, and a security-code request.</description>
+    <file>prototypes/bank-alert-scenario.xml</file>
+  </scenario>
+  <scenario id="grandchild-emergency" approximateStages="4" enabled="true">
+    <title>Grandchild Emergency Call</title>
+    <description>A caller claims to be a grandchild in an emergency and uses panic, secrecy, and family loyalty to request money.</description>
+    <file>prototypes/grandchild-emergency-scenario.xml</file>
+  </scenario>
+</scenarios>

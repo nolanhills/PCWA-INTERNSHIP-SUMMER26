@@ -93,12 +93,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACCESSIBLE-PROTOTYPE.md" />
+    <Content Include="SCENARIO-XML-GUIDE.md" />
     <Content Include="AccessiblePrototype.aspx" />
     <Content Include="Content\accessibility-prototype.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="prototypes\active-scenario-01.xml" />
     <Content Include="prototypes\bank-alert-scenario.xml" />
+    <Content Include="prototypes\grandchild-emergency-scenario.xml" />
+    <Content Include="prototypes\scenarios.xml" />
     <Content Include="Scripts\accessibility-simulator.js" />
     <Content Include="Scripts\scenario-engine.js" />
     <Content Include="Scripts\scenario-presentation.js" />

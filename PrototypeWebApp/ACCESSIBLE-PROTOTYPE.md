@@ -28,6 +28,13 @@ The project file includes the new page, code-behind, designer, stylesheet,
 scripts, and this document so they are available to Web Application Project
 build and publish tooling.
 
+## XML Scenario System Phase
+
+The reusable scenario phase adds `prototypes/scenarios.xml` as the scenario
+catalog and `SCENARIO-XML-GUIDE.md` as the authoring reference. The bank-alert
+scenario is the first XML presentation pilot. Its existing videos, commands,
+destinations, and branching behavior are unchanged.
+
 ## Protected Baselines
 
 The following were not modified:
@@ -36,7 +43,6 @@ The following were not modified:
 - `Default.aspx.vb`
 - `Default.aspx.designer.vb`
 - `prototypes/active-scenario-01.xml`
-- `prototypes/bank-alert-scenario.xml`
 - Everything under `modern-prototype/`
 - The deployment-artifact stash
 
@@ -55,6 +61,7 @@ elements and do not cause postbacks.
 
 `Scripts/scenario-engine.js` is the only layer that interprets XML. It preserves:
 
+- Catalog discovery through `prototypes/scenarios.xml`
 - Both existing scenario URLs
 - The first command as the starting scene
 - XML command order and string video IDs
@@ -69,15 +76,20 @@ unsupported-command errors without showing technical stack traces.
 
 ## Presentation Metadata
 
-`Scripts/scenario-presentation.js` is a presentation-only sidecar keyed by
-scenario path and video ID. It supplies named stages, artifact types,
-transcripts, choice subtitles, educational feedback, warning signs, outcome
-labels, and real-world guidance.
+Scenario XML may now include an optional `<presentation>` element with named
+stages, artifact types, transcripts, choice feedback, warning signs, outcomes,
+and future media paths. `Scripts/scenario-presentation.js` remains a temporary
+presentation-only fallback keyed by scenario path and video ID. XML values take
+priority; missing optional values fall back to the sidecar and then to generic
+accessible content.
 
 The sidecar cannot choose a destination or end a scenario. The XML transition
 graph remains authoritative. Scenes without metadata receive a generic artifact,
 question, transcript, media fallback, and command presentation. The sample
 scenario intentionally relies on these fallbacks.
+
+See `SCENARIO-XML-GUIDE.md` for the catalog format, optional presentation schema,
+media conventions, and steps for adding another independent scenario file.
 
 ## Running Locally
 

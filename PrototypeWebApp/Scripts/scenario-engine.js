@@ -1,16 +1,7 @@
 (function (global) {
     "use strict";
 
-    const availableScenarios = Object.freeze([
-        Object.freeze({
-            id: "sample-scenario",
-            path: "prototypes/active-scenario-01.xml"
-        }),
-        Object.freeze({
-            id: "bank-alert",
-            path: "prototypes/bank-alert-scenario.xml"
-        })
-    ]);
+    let availableScenarios = [];
 
     class ScenarioEngineError extends Error {
         constructor(code, message) {
@@ -31,6 +22,319 @@
         }
 
         return value;
+    }
+
+    function directChild(element, tagName) {
+        return Array.from(element.children).find(
+            (child) => child.tagName === tagName
+        ) || null;
+    }
+
+    function childText(element, tagName) {
+        const child = directChild(element, tagName);
+        return child ? child.textContent.trim() : "";
+    }
+
+    function childTextList(element, containerName, itemName) {
+        const container = directChild(element, containerName);
+
+        if (!container) {
+            return [];
+        }
+
+        return Array.from(container.children)
+            .filter((child) => child.tagName === itemName)
+            .map((child) => child.textContent.trim())
+            .filter(Boolean);
+    }
+
+    function parseBoolean(value, defaultValue) {
+        if (value === null || value === undefined || value === "") {
+            return defaultValue;
+        }
+
+        return /^(true|1|yes)$/i.test(value.trim());
+    }
+
+    function parsePositiveInteger(value) {
+        const number = Number(value);
+
+        return Number.isInteger(number) && number > 0 ? number : null;
+    }
+
+    function parseArtifact(artifactElement) {
+        if (!artifactElement) {
+            return null;
+        }
+
+        const artifact = {
+            type: artifactElement.getAttribute("type") || "narration",
+            sender: childText(artifactElement, "sender"),
+            senderStatus: childText(artifactElement, "senderStatus"),
+            caller: childText(artifactElement, "caller"),
+            callerStatus: childText(artifactElement, "callerStatus"),
+            callStatus: childText(artifactElement, "callStatus"),
+            domain: childText(artifactElement, "domain"),
+            heading: childText(artifactElement, "heading"),
+            message: childText(artifactElement, "message") ||
+                childText(artifactElement, "content"),
+            transcript: childText(artifactElement, "transcript"),
+            requestedInformation: childTextList(
+                artifactElement,
+                "requestedInformation",
+                "item"
+            )
+        };
+        const mediaElement = directChild(artifactElement, "media");
+
+        if (mediaElement) {
+            const videoPath = mediaElement.getAttribute("video") || "";
+            const audioPath = mediaElement.getAttribute("audio") || "";
+            const mediaPath = videoPath || audioPath;
+
+            artifact.mediaSrc = mediaPath;
+            artifact.mediaPath = mediaPath;
+            artifact.posterSrc = mediaElement.getAttribute("poster") || "";
+            artifact.captionSrc = mediaElement.getAttribute("captions") || "";
+            artifact.mediaAvailable = parseBoolean(
+                mediaElement.getAttribute("available"),
+                Boolean(mediaPath)
+            );
+        }
+
+        return artifact;
+    }
+
+    function parseChoice(choiceElement) {
+        const destinationVideoId = requiredAttribute(
+            choiceElement,
+            "destinationVideoId",
+            "Presentation choice"
+        );
+        const feedbackElement = directChild(choiceElement, "feedback");
+
+        return {
+            choiceId: (choiceElement.getAttribute("choiceId") || "").trim(),
+            destinationVideoId: destinationVideoId,
+            metadata: {
+                title: childText(choiceElement, "title"),
+                subtitle: childText(choiceElement, "subtitle"),
+                classification: choiceElement.getAttribute("classification") || "neutral",
+                feedbackHeading: feedbackElement
+                    ? feedbackElement.getAttribute("heading") ||
+                        childText(feedbackElement, "heading")
+                    : "",
+                consequence: feedbackElement
+                    ? childText(feedbackElement, "consequence")
+                    : "",
+                explanation: feedbackElement
+                    ? childText(feedbackElement, "explanation")
+                    : "",
+                warningSigns: feedbackElement
+                    ? childTextList(feedbackElement, "warningSigns", "sign")
+                    : []
+            }
+        };
+    }
+
+    function parseOutcome(outcomeElement) {
+        if (!outcomeElement) {
+            return null;
+        }
+
+        return {
+            classification: outcomeElement.getAttribute("classification") || "neutral",
+            label: childText(outcomeElement, "label"),
+            heading: childText(outcomeElement, "heading"),
+            explanation: childText(outcomeElement, "explanation")
+        };
+    }
+
+    function parsePresentation(playlist) {
+        const presentationElement = directChild(playlist, "presentation");
+
+        if (!presentationElement) {
+            return null;
+        }
+
+        const stages = childTextList(presentationElement, "stages", "stage");
+        const scenes = {};
+        const scenesElement = directChild(presentationElement, "scenes");
+        const finalReviewElement = directChild(presentationElement, "finalReview");
+
+        if (scenesElement) {
+            Array.from(scenesElement.children)
+                .filter((child) => child.tagName === "scene")
+                .forEach((sceneElement) => {
+                    const videoId = requiredAttribute(
+                        sceneElement,
+                        "videoId",
+                        "Presentation scene"
+                    );
+                    const choices = {};
+                    const choicesById = {};
+                    const choicesElement = directChild(sceneElement, "choices");
+
+                    if (choicesElement) {
+                        Array.from(choicesElement.children)
+                            .filter((child) => child.tagName === "choice")
+                            .forEach((choiceElement) => {
+                                const parsedChoice = parseChoice(choiceElement);
+
+                                if (parsedChoice.choiceId) {
+                                    if (choicesById[parsedChoice.choiceId]) {
+                                        throw new ScenarioEngineError(
+                                            "malformed-xml",
+                                            `Presentation scene ${videoId} contains duplicate choiceId ${parsedChoice.choiceId}.`
+                                        );
+                                    }
+
+                                    choicesById[parsedChoice.choiceId] =
+                                        parsedChoice.metadata;
+                                }
+
+                                if (Object.prototype.hasOwnProperty.call(
+                                    choices,
+                                    parsedChoice.destinationVideoId
+                                )) {
+                                    choices[parsedChoice.destinationVideoId] = null;
+                                } else {
+                                    choices[parsedChoice.destinationVideoId] =
+                                        parsedChoice.metadata;
+                                }
+                            });
+                    }
+
+                    scenes[videoId] = {
+                        stageName: sceneElement.getAttribute("stageName") || "",
+                        stageIndex: Number(sceneElement.getAttribute("stageIndex")) || null,
+                        artifact: parseArtifact(directChild(sceneElement, "artifact")),
+                        question: childText(sceneElement, "question"),
+                        description: childText(sceneElement, "description"),
+                        warningSigns: childTextList(
+                            sceneElement,
+                            "warningSigns",
+                            "sign"
+                        ),
+                        choices: choices,
+                        choicesById: choicesById,
+                        outcome: parseOutcome(directChild(sceneElement, "outcome"))
+                    };
+                });
+        }
+
+        return {
+            title: childText(presentationElement, "title"),
+            summary: childText(presentationElement, "summary"),
+            practiceGoal: childText(presentationElement, "practiceGoal"),
+            approximateStages: Number(
+                presentationElement.getAttribute("approximateStages")
+            ) || stages.length || null,
+            stages: stages,
+            scenes: scenes,
+            finalReview: finalReviewElement
+                ? {
+                    warningSigns: childTextList(
+                        finalReviewElement,
+                        "warningSigns",
+                        "sign"
+                    ),
+                    safestAction: childText(finalReviewElement, "safestAction"),
+                    realWorldActions: childTextList(
+                        finalReviewElement,
+                        "realWorldActions",
+                        "action"
+                    )
+                }
+                : null
+        };
+    }
+
+    function parseScenarioCatalogXml(xmlText) {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(xmlText, "text/xml");
+        const parserError = xml.getElementsByTagName("parsererror")[0];
+
+        if (parserError) {
+            throw new ScenarioEngineError(
+                "malformed-catalog",
+                "The scenario catalog contains XML that the browser could not read."
+            );
+        }
+
+        const catalog = xml.getElementsByTagName("scenarios")[0];
+
+        if (!catalog) {
+            throw new ScenarioEngineError(
+                "malformed-catalog",
+                "The scenario catalog does not contain a scenarios element."
+            );
+        }
+
+        const scenarios = Array.from(catalog.children)
+            .filter((child) => child.tagName === "scenario")
+            .map((scenarioElement, index) => ({
+                id: requiredAttribute(
+                    scenarioElement,
+                    "id",
+                    `Catalog scenario ${index + 1}`
+                ),
+                title: childText(scenarioElement, "title"),
+                description: childText(scenarioElement, "description"),
+                path: childText(scenarioElement, "file"),
+                approximateStages: parsePositiveInteger(
+                    scenarioElement.getAttribute("approximateStages")
+                ),
+                enabled: parseBoolean(
+                    scenarioElement.getAttribute("enabled"),
+                    true
+                )
+            }));
+
+        scenarios.forEach((scenario, index) => {
+            if (!scenario.path) {
+                throw new ScenarioEngineError(
+                    "malformed-catalog",
+                    `Catalog scenario ${index + 1} does not specify a file.`
+                );
+            }
+        });
+
+        return scenarios;
+    }
+
+    async function loadScenarioCatalog(path) {
+        try {
+            const response = await fetch(path, { cache: "no-store" });
+
+            if (!response.ok) {
+                throw new ScenarioEngineError(
+                    "catalog-load-failed",
+                    `The scenario catalog could not be loaded (status ${response.status}).`
+                );
+            }
+
+            availableScenarios = parseScenarioCatalogXml(await response.text());
+
+            if (!availableScenarios.some((scenario) => scenario.enabled)) {
+                throw new ScenarioEngineError(
+                    "no-enabled-scenarios",
+                    "The scenario catalog does not contain any enabled scenarios."
+                );
+            }
+
+            return availableScenarios
+                .filter((scenario) => scenario.enabled)
+                .map((scenario) => Object.assign({}, scenario));
+        } catch (error) {
+            availableScenarios = [];
+            throw error instanceof ScenarioEngineError
+                ? error
+                : new ScenarioEngineError(
+                    "catalog-load-failed",
+                    "The scenario catalog could not be loaded."
+                );
+        }
     }
 
     function parseScenarioXml(xmlText, path) {
@@ -89,19 +393,57 @@
                 options: [],
                 files: []
             };
+            const choiceIds = new Set();
+            const destinationCounts = new Map();
 
             Array.from(commandElement.getElementsByTagName("option")).forEach(
                 (optionElement, optionIndex) => {
+                    const choiceId = (optionElement.getAttribute("choiceId") || "").trim();
+                    const destinationVideoId = requiredAttribute(
+                        optionElement,
+                        "id",
+                        `Option ${optionIndex + 1} in scene ${videoId}`
+                    );
+
+                    if (choiceId && choiceIds.has(choiceId)) {
+                        throw new ScenarioEngineError(
+                            "malformed-xml",
+                            `Prompt ${videoId} contains duplicate choiceId ${choiceId}.`
+                        );
+                    }
+
+                    if (choiceId) {
+                        choiceIds.add(choiceId);
+                    }
+
+                    destinationCounts.set(
+                        destinationVideoId,
+                        (destinationCounts.get(destinationVideoId) || 0) + 1
+                    );
                     command.options.push({
-                        destinationVideoId: requiredAttribute(
-                            optionElement,
-                            "id",
-                            `Option ${optionIndex + 1} in scene ${videoId}`
-                        ),
+                        choiceId: choiceId,
+                        destinationVideoId: destinationVideoId,
                         text: optionElement.getAttribute("text") || ""
                     });
                 }
             );
+
+            destinationCounts.forEach((count, destinationVideoId) => {
+                if (count < 2) {
+                    return;
+                }
+
+                const sharedOptions = command.options.filter(
+                    (option) => option.destinationVideoId === destinationVideoId
+                );
+
+                if (sharedOptions.some((option) => !option.choiceId)) {
+                    throw new ScenarioEngineError(
+                        "malformed-xml",
+                        `Prompt ${videoId} has multiple choices for destination ${destinationVideoId}; each requires a unique choiceId.`
+                    );
+                }
+            });
 
             Array.from(commandElement.getElementsByTagName("file")).forEach(
                 (fileElement) => {
@@ -129,7 +471,8 @@
             videoById: videoById,
             commands: commands,
             commandByVideoId: commandByVideoId,
-            startVideoId: commands[0].videoId
+            startVideoId: commands[0].videoId,
+            presentation: parsePresentation(playlist)
         };
     }
 
@@ -179,6 +522,10 @@
                 video: scenario.videoById.get(currentVideoId) || null,
                 command: scenario.commandByVideoId.get(currentVideoId) || null
             };
+        }
+
+        function getPresentation() {
+            return scenario ? scenario.presentation : null;
         }
 
         function getState() {
@@ -305,6 +652,7 @@
 
             pendingChoice = {
                 optionIndex: optionIndex,
+                choiceId: option.choiceId,
                 sourceVideoId: currentVideoId,
                 destinationVideoId: option.destinationVideoId,
                 text: option.text
@@ -415,13 +763,17 @@
             clear: clear,
             getState: getState,
             getCurrentScene: getCurrentScene,
+            getPresentation: getPresentation,
             subscribe: subscribe
         });
     }
 
     global.ScamScenarioEngine = Object.freeze({
+        loadCatalog: loadScenarioCatalog,
         getAvailableScenarios: function () {
-            return availableScenarios.map((scenario) => Object.assign({}, scenario));
+            return availableScenarios
+                .filter((scenario) => scenario.enabled)
+                .map((scenario) => Object.assign({}, scenario));
         },
         create: createScenarioEngine,
         ScenarioEngineError: ScenarioEngineError

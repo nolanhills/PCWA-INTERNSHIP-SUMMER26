@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist autostart="true">
+	<videos>
+		<video id="distressed-call">placeholder/grandchild-emergency/distressed-call.mp4</video>
+		<video id="secrecy-request">placeholder/grandchild-emergency/secrecy-request.mp4</video>
+		<video id="authority-pressure">placeholder/grandchild-emergency/authority-pressure.mp4</video>
+		<video id="payment-demand">placeholder/grandchild-emergency/payment-demand.mp4</video>
+		<video id="verified-known-number">placeholder/grandchild-emergency/verified-known-number.mp4</video>
+		<video id="family-confirmed-safe">placeholder/grandchild-emergency/family-confirmed-safe.mp4</video>
+		<video id="official-verification">placeholder/grandchild-emergency/official-verification.mp4</video>
+		<video id="payment-loss">placeholder/grandchild-emergency/payment-loss.mp4</video>
+		<video id="payment-refused">placeholder/grandchild-emergency/payment-refused.mp4</video>
+		<video id="trusted-support">placeholder/grandchild-emergency/trusted-support.mp4</video>
+	</videos>
+	<presentation approximateStages="4">
+		<title>Grandchild Emergency Call</title>
+		<summary>A caller sounds upset and claims to be the learner's grandchild after an accident or arrest. The scam relies on panic, secrecy, and family loyalty.</summary>
+		<practiceGoal>Verify identity through a known family contact before sending money or providing information.</practiceGoal>
+		<stages>
+			<stage>Distressed call</stage>
+			<stage>Secrecy request</stage>
+			<stage>Authority pressure</stage>
+			<stage>Payment demand</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>A caller uses emotional emergency pressure.</sign>
+				<sign>The caller says not to tell other family members.</sign>
+				<sign>The caller resists independent verification or a call back.</sign>
+				<sign>A second person claims to be an attorney or officer.</sign>
+				<sign>Payment is requested through gift cards, a wire transfer, cryptocurrency, or courier pickup.</sign>
+				<sign>The caller repeatedly asks for secrecy.</sign>
+			</warningSigns>
+			<safestAction>End the call and verify the person's identity through a family number or official source you find and contact independently.</safestAction>
+			<realWorldActions>
+				<action>Do not supply a relative's name or other identity clues to an unknown caller.</action>
+				<action>Call the relative or another family member using a number you already know.</action>
+				<action>Verify legal or court claims through independently located official contact information.</action>
+				<action>Do not pay an emergency caller with gift cards, cryptocurrency, a wire transfer, or courier pickup.</action>
+				<action>Ask a trusted person, store employee, or financial institution for help before sending money.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="distressed-call" stageName="Distressed call" stageIndex="1">
+				<artifact type="phone-call">
+					<caller>Distressed family caller</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Simulated incoming call</callStatus>
+					<heading>An urgent request for help</heading>
+					<message>Grandma or Grandpa, I'm in trouble. I had an accident and I need help.</message>
+					<transcript>A distressed caller says, "Grandma or Grandpa, I'm in trouble. I had an accident and I need help." The caller does not give a name.</transcript>
+					<media video="placeholder/grandchild-emergency/distressed-call.mp4" poster="placeholder/grandchild-emergency/distressed-call.jpg" captions="placeholder/grandchild-emergency/distressed-call.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to the caller?</question>
+				<description>The voice sounds upset, but the caller has not identified themselves.</description>
+				<warningSigns>
+					<sign>The call begins with intense emotion and urgency.</sign>
+					<sign>The caller uses a family title without giving a name.</sign>
+					<sign>The emergency claim has not been independently verified.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="secrecy-request" classification="risky" choiceId="supply-grandchild-name">
+						<title>Say the grandchild's name first</title>
+						<subtitle>Ask whether the caller is the relative you are thinking of.</subtitle>
+						<feedback heading="The caller can adopt the name you supplied">
+							<consequence>The caller now has a family identity to use while continuing the story.</consequence>
+							<explanation>It is natural to search for a familiar explanation during a frightening call. A safer check does not provide the caller with identity details.</explanation>
+							<warningSigns>
+								<sign>The caller did not identify themselves before you supplied a name.</sign>
+								<sign>The emotional opening made it difficult to pause and verify.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="secrecy-request" classification="risky" choiceId="ask-caller-identity">
+						<title>Ask which grandchild is calling</title>
+						<subtitle>Request a name without offering one yourself.</subtitle>
+						<feedback heading="The question creates a useful pause, but it is not verification">
+							<consequence>The caller may dodge, mumble, or turn the conversation back to the emergency.</consequence>
+							<explanation>Not supplying a name is cautious. Independent contact through a known number is still needed before trusting the claim.</explanation>
+							<warningSigns>
+								<sign>The caller avoids a direct identity question.</sign>
+								<sign>The caller keeps attention on the emergency instead of verification.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="verified-known-number" classification="safe" choiceId="verify-known-number">
+						<title>Hang up and call the known number</title>
+						<subtitle>Contact the grandchild using a number already saved or verified.</subtitle>
+						<feedback heading="You changed to an independent contact method">
+							<consequence>The unknown caller can no longer control the conversation or the identity check.</consequence>
+							<explanation>Calling a known number is the strongest way to learn whether the family member is actually in trouble.</explanation>
+							<warningSigns>
+								<sign>The original caller relied on emotion rather than verifiable details.</sign>
+								<sign>The claim arrived from an unverified number.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="secrecy-request" stageName="Secrecy request" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>Distressed family caller</caller>
+					<callerStatus>Identity still not verified</callerStatus>
+					<callStatus>Simulated call in progress</callStatus>
+					<heading>The caller asks for secrecy</heading>
+					<message>Please don't tell my parents. They'll be so mad.</message>
+					<transcript>The caller says, "Please don't tell my parents. They'll be so mad." The caller asks the learner to keep the emergency secret from other family members.</transcript>
+					<media video="placeholder/grandchild-emergency/secrecy-request.mp4" poster="placeholder/grandchild-emergency/secrecy-request.jpg" captions="placeholder/grandchild-emergency/secrecy-request.vtt" available="false" />
+				</artifact>
+				<question>What would you do after the caller asks for secrecy?</question>
+				<description>The request discourages the people most able to confirm whether the story is true.</description>
+				<warningSigns>
+					<sign>The caller says not to tell Mom, Dad, or another family member.</sign>
+					<sign>Secrecy isolates the learner from trusted help.</sign>
+					<sign>The caller's identity remains unverified.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="authority-pressure" classification="risky" choiceId="agree-to-secrecy">
+						<title>Agree to keep it secret</title>
+						<subtitle>Continue helping without contacting anyone else.</subtitle>
+						<feedback heading="Secrecy gives the caller more control">
+							<consequence>The learner remains isolated while the scam story becomes more urgent and detailed.</consequence>
+							<explanation>Wanting to protect a loved one is understandable. In a real emergency, verification and trusted family support are appropriate.</explanation>
+							<warningSigns>
+								<sign>The caller asks you to hide the situation from close family.</sign>
+								<sign>The request prevents independent verification.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="authority-pressure" classification="safe" choiceId="require-verification">
+						<title>State that verification is required</title>
+						<subtitle>Explain that you must confirm the identity before helping.</subtitle>
+						<feedback heading="You set a protective boundary">
+							<consequence>The caller cannot obtain immediate trust and may bring in a second speaker to increase pressure.</consequence>
+							<explanation>Requiring verification is a safer response. The next step is to end the call and verify through a known contact.</explanation>
+							<warningSigns>
+								<sign>The caller escalates when asked to verify.</sign>
+								<sign>Pressure replaces clear identity information.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="family-confirmed-safe" classification="safe" choiceId="contact-family">
+						<title>Contact another family member</title>
+						<subtitle>Use a known number to check the emergency with someone you trust.</subtitle>
+						<feedback heading="You brought a trusted person into the verification">
+							<consequence>A family member can confirm the relative is safe and help end contact with the suspicious caller.</consequence>
+							<explanation>Scams are harder to sustain when the learner pauses, checks the story, and involves someone trustworthy.</explanation>
+							<warningSigns>
+								<sign>The caller specifically tried to prevent family contact.</sign>
+								<sign>The emergency story depended on isolation.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="authority-pressure" stageName="Authority pressure" stageIndex="3">
+				<artifact type="phone-call">
+					<caller>Person claiming to be an attorney</caller>
+					<callerStatus>Identity and authority not verified</callerStatus>
+					<callStatus>Simulated second speaker</callStatus>
+					<heading>Bail is demanded today</heading>
+					<message>I'm the attorney handling this matter. Bail must be paid today to prevent further trouble.</message>
+					<transcript>A second speaker takes the call and says, "I'm the attorney handling this matter. Bail must be paid today to prevent further trouble." No independently verified court or case information has been provided.</transcript>
+					<media video="placeholder/grandchild-emergency/authority-pressure.mp4" poster="placeholder/grandchild-emergency/authority-pressure.jpg" captions="placeholder/grandchild-emergency/authority-pressure.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to the claimed attorney?</question>
+				<description>A confident second speaker can make the original story feel more official.</description>
+				<warningSigns>
+					<sign>A second person appears to add authority to the same unverified story.</sign>
+					<sign>Payment is described as urgent and due today.</sign>
+					<sign>The caller controls both the emergency claim and the supposed proof.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="official-verification" classification="safe" choiceId="verify-officially">
+						<title>Request details, end the call, and verify</title>
+						<subtitle>Ask for courthouse or case information, then check it through official sources.</subtitle>
+						<feedback heading="You separated the claim from the verification">
+							<consequence>The caller cannot direct the official-source check or pressure the learner while it happens.</consequence>
+							<explanation>Courts and legal matters can be checked through contact information located independently. Details supplied by a caller are clues to verify, not proof.</explanation>
+							<warningSigns>
+								<sign>The claimed attorney appeared only after the first caller met resistance.</sign>
+								<sign>The caller demanded same-day payment before independent verification.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="payment-demand" classification="dangerous" choiceId="agree-to-pay">
+						<title>Agree to pay through the caller</title>
+						<subtitle>Follow the payment directions given during the call.</subtitle>
+						<feedback heading="The unverified caller still controls the payment path">
+							<consequence>The caller can direct money to an account, wallet, card, or courier controlled by the scam operation.</consequence>
+							<explanation>Professional language and a second speaker can feel convincing, but payment should never occur before independent identity and case verification.</explanation>
+							<warningSigns>
+								<sign>The caller asks for payment before the claim is verified.</sign>
+								<sign>The supposed authority figure controls the payment instructions.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="payment-demand" classification="risky" choiceId="delay-call">
+						<title>Ask them to call back later</title>
+						<subtitle>Delay the conversation without checking the claim independently.</subtitle>
+						<feedback heading="A delay creates time, but the story remains unverified">
+							<consequence>The caller may call again with stronger pressure or new payment instructions.</consequence>
+							<explanation>Pausing is useful, but the pause becomes protective only when it is used to contact family or an official source independently.</explanation>
+							<warningSigns>
+								<sign>The caller plans to continue contact rather than allow independent verification.</sign>
+								<sign>The learner has not yet checked the identity or legal claim.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="payment-demand" stageName="Payment demand" stageIndex="4">
+				<artifact type="phone-call">
+					<caller>Unverified emergency caller</caller>
+					<callerStatus>Payment destination not verified</callerStatus>
+					<callStatus>Simulated urgent payment request</callStatus>
+					<heading>Unusual payment methods are requested</heading>
+					<message>Pay now using gift cards, a wire transfer, cryptocurrency, or cash collected by a courier.</message>
+					<transcript>The caller requests immediate payment through gift cards, a wire transfer, cryptocurrency, or cash courier pickup. The caller says these methods are necessary because the situation is urgent.</transcript>
+					<media video="placeholder/grandchild-emergency/payment-demand.mp4" poster="placeholder/grandchild-emergency/payment-demand.jpg" captions="placeholder/grandchild-emergency/payment-demand.vtt" available="false" />
+				</artifact>
+				<question>What would you do when unusual payment is requested?</question>
+				<description>Emergency pressure, secrecy, and hard-to-recover payment methods now appear together.</description>
+				<warningSigns>
+					<sign>Gift cards, cryptocurrency, wire transfers, and couriers are difficult to reverse.</sign>
+					<sign>The payment request does not resemble a normal court or family process.</sign>
+					<sign>The caller wants payment before independent verification.</sign>
+				</warningSigns>
+				<choices>
+					<choice destinationVideoId="payment-loss" classification="dangerous" choiceId="provide-gift-card-numbers">
+						<title>Buy gift cards and provide the numbers</title>
+						<subtitle>Follow the caller's instructions to complete the urgent payment.</subtitle>
+						<feedback heading="Gift card numbers transfer value immediately">
+							<consequence>The scammer can redeem the cards quickly, and the money may be difficult or impossible to recover.</consequence>
+							<explanation>People can act quickly when someone they love appears to be in danger. Gift card payment requests are a strong signal to stop and seek help.</explanation>
+							<warningSigns>
+								<sign>An emergency caller requests gift cards as payment.</sign>
+								<sign>The caller asks for card numbers instead of a normal verified payment process.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="payment-refused" classification="safe" choiceId="refuse-unusual-payment">
+						<title>Refuse and verify independently</title>
+						<subtitle>End the payment conversation and check the emergency through trusted contacts.</subtitle>
+						<feedback heading="You recognized an unusual payment warning sign">
+							<consequence>No money or payment information is provided, and the story can be checked without the caller's involvement.</consequence>
+							<explanation>Refusing hard-to-recover payment methods protects the learner while independent family or official verification takes place.</explanation>
+							<warningSigns>
+								<sign>The caller combines urgency with an unusual payment method.</sign>
+								<sign>The payment would bypass normal verified channels.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+					<choice destinationVideoId="trusted-support" classification="safe" choiceId="seek-trusted-help">
+						<title>Ask a store employee or trusted person for help</title>
+						<subtitle>Pause the purchase and describe the request to someone trustworthy.</subtitle>
+						<feedback heading="A second perspective can interrupt the scam">
+							<consequence>A trusted person recognizes the warning signs and helps prevent the payment.</consequence>
+							<explanation>Scammers rely on isolation and momentum. Asking for help introduces time, support, and a clearer view of the request.</explanation>
+							<warningSigns>
+								<sign>The caller discouraged outside advice.</sign>
+								<sign>The purchase is being made only because of an unverified emergency call.</sign>
+							</warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="verified-known-number" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>The known number reaches the real family member</heading>
+					<message>The family member is safe and confirms that the emergency call was false.</message>
+					<transcript>After ending the suspicious call, the learner uses a known family number. The real family member confirms there was no accident or arrest.</transcript>
+					<media video="placeholder/grandchild-emergency/verified-known-number.mp4" poster="placeholder/grandchild-emergency/verified-known-number.jpg" captions="placeholder/grandchild-emergency/verified-known-number.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Identity verified safely</label>
+					<heading>You stopped the scam at the first call</heading>
+					<explanation>You ended the unknown call and verified the family member through a number you already trusted.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller never gave a clear identity.</sign>
+					<sign>The caller tried to trigger immediate emotional action.</sign>
+				</warningSigns>
+			</scene>
+			<scene videoId="family-confirmed-safe" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>Another family member checks the story</heading>
+					<message>A trusted family contact confirms that the relative is safe and the call is a scam.</message>
+					<transcript>The learner contacts another family member using a known number. Together they confirm that the claimed emergency did not happen.</transcript>
+					<media video="placeholder/grandchild-emergency/family-confirmed-safe.mp4" poster="placeholder/grandchild-emergency/family-confirmed-safe.jpg" captions="placeholder/grandchild-emergency/family-confirmed-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Family verification completed</label>
+					<heading>You broke the secrecy request</heading>
+					<explanation>You involved a trusted family contact and confirmed the emergency story was false.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller asked to keep the emergency secret.</sign>
+					<sign>The caller tried to prevent family verification.</sign>
+				</warningSigns>
+			</scene>
+			<scene videoId="official-verification" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>The legal claim cannot be confirmed</heading>
+					<message>Independent official sources do not confirm the claimed case or urgent bail demand.</message>
+					<transcript>The learner ends the call and checks independently located official information. The claimed attorney and urgent bail demand cannot be verified.</transcript>
+					<media video="placeholder/grandchild-emergency/official-verification.mp4" poster="placeholder/grandchild-emergency/official-verification.jpg" captions="placeholder/grandchild-emergency/official-verification.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Authority claim checked</label>
+					<heading>You verified through official sources</heading>
+					<explanation>You ended the pressure call and checked the legal claim independently before sending money.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>A second speaker used authority to increase pressure.</sign>
+					<sign>The claimed case required immediate payment through the caller.</sign>
+				</warningSigns>
+			</scene>
+			<scene videoId="payment-loss" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>The gift card value is taken</heading>
+					<message>The caller redeems the gift card numbers before the emergency story is discovered to be false.</message>
+					<transcript>After the gift card numbers are shared, the scammer redeems them. A later family check confirms that there was no accident, arrest, attorney, or bail emergency.</transcript>
+					<media video="placeholder/grandchild-emergency/payment-loss.mp4" poster="placeholder/grandchild-emergency/payment-loss.jpg" captions="placeholder/grandchild-emergency/payment-loss.vtt" available="false" />
+				</artifact>
+				<outcome classification="dangerous">
+					<label>Payment sent to the scammer</label>
+					<heading>The emergency story caused a financial loss</heading>
+					<explanation>The gift card numbers transferred value to the scammer before the family identity or emergency was independently verified.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller requested gift cards during an emotional emergency.</sign>
+					<sign>The caller wanted payment details that could be redeemed immediately.</sign>
+				</warningSigns>
+			</scene>
+			<scene videoId="payment-refused" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>The unusual payment is refused</heading>
+					<message>No payment is sent, and independent contact confirms that the family member is safe.</message>
+					<transcript>The learner refuses the gift card, wire transfer, cryptocurrency, and courier requests. A trusted family contact confirms the emergency was false.</transcript>
+					<media video="placeholder/grandchild-emergency/payment-refused.mp4" poster="placeholder/grandchild-emergency/payment-refused.jpg" captions="placeholder/grandchild-emergency/payment-refused.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Unusual payment refused</label>
+					<heading>You stopped before sending money</heading>
+					<explanation>You recognized that the requested payment methods did not fit a legitimate family or legal emergency and verified independently.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller demanded a hard-to-recover payment method.</sign>
+					<sign>The claimed emergency had never been independently verified.</sign>
+				</warningSigns>
+			</scene>
+			<scene videoId="trusted-support" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>A trusted person recognizes the scam</heading>
+					<message>A store employee or trusted person helps pause the purchase and verify the family member is safe.</message>
+					<transcript>The learner asks someone trustworthy about the urgent gift card request. That person recognizes the warning signs, stops the purchase, and helps verify the family story.</transcript>
+					<media video="placeholder/grandchild-emergency/trusted-support.mp4" poster="placeholder/grandchild-emergency/trusted-support.jpg" captions="placeholder/grandchild-emergency/trusted-support.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Trusted support prevented payment</label>
+					<heading>You asked for help before acting</heading>
+					<explanation>You interrupted the caller's isolation and pressure by bringing in a trusted second perspective.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller relied on secrecy and urgency.</sign>
+					<sign>The payment request seemed unusual enough to ask for help.</sign>
+				</warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="distressed-call" displayText="A distressed caller claims to be a grandchild who needs emergency help.">
+			<options>
+				<option id="secrecy-request" text="Say the grandchild's name first" choiceId="supply-grandchild-name"></option>
+				<option id="secrecy-request" text="Ask which grandchild is calling" choiceId="ask-caller-identity"></option>
+				<option id="verified-known-number" text="Hang up and call the grandchild's known number" choiceId="verify-known-number"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="secrecy-request" displayText="The caller asks you not to tell their parents about the emergency.">
+			<options>
+				<option id="authority-pressure" text="Agree to keep it secret" choiceId="agree-to-secrecy"></option>
+				<option id="authority-pressure" text="State that verification is required before helping" choiceId="require-verification"></option>
+				<option id="family-confirmed-safe" text="Contact another family member through a known number" choiceId="contact-family"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="authority-pressure" displayText="A second speaker claims to be an attorney and says bail must be paid today.">
+			<options>
+				<option id="official-verification" text="Ask for case information, end the call, and verify through official sources" choiceId="verify-officially"></option>
+				<option id="payment-demand" text="Agree to pay through the caller" choiceId="agree-to-pay"></option>
+				<option id="payment-demand" text="Ask them to call back later" choiceId="delay-call"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="payment-demand" displayText="The caller requests payment through gift cards, a wire transfer, cryptocurrency, or courier pickup.">
+			<options>
+				<option id="payment-loss" text="Buy gift cards and provide the numbers" choiceId="provide-gift-card-numbers"></option>
+				<option id="payment-refused" text="Refuse unusual payment methods and verify independently" choiceId="refuse-unusual-payment"></option>
+				<option id="trusted-support" text="Ask a store employee or trusted person for help" choiceId="seek-trusted-help"></option>
+			</options>
+		</command>
+		<command type="stop" videoId="verified-known-number" displayText="You used a known family number and confirmed that the emergency call was false." />
+		<command type="stop" videoId="family-confirmed-safe" displayText="Another family member confirmed that the relative was safe." />
+		<command type="stop" videoId="official-verification" displayText="Independent official verification did not confirm the claimed legal emergency." />
+		<command type="stop" videoId="payment-loss" displayText="The gift card numbers were redeemed before the false emergency was discovered." />
+		<command type="stop" videoId="payment-refused" displayText="You refused the unusual payment request and verified the story independently." />
+		<command type="stop" videoId="trusted-support" displayText="A trusted person helped stop the payment and verify the story." />
+	</commands>
+</playlist>
