@@ -2,12 +2,9 @@
 
 ## Purpose
 
-`AccessiblePrototype.aspx` is a parallel, age-inclusive redesign of the existing
-XML-driven scam simulator. It presents one simulated artifact, one question, and
-one decision at a time while leaving the existing prototypes unchanged.
-
-The page is an experimental direct URL. It does not replace `Default.aspx` and is
-not linked from the application's default entry page.
+`AccessiblePrototype.aspx` is the official age-inclusive, XML-driven scam
+simulator. It presents one simulated artifact, one question, and one decision at
+a time. The application root is configured to open this page by default.
 
 ## Files Created
 
@@ -35,17 +32,6 @@ catalog and `SCENARIO-XML-GUIDE.md` as the authoring reference. The bank-alert
 scenario is the first XML presentation pilot. Its existing videos, commands,
 destinations, and branching behavior are unchanged.
 
-## Protected Baselines
-
-The following were not modified:
-
-- `Default.aspx`
-- `Default.aspx.vb`
-- `Default.aspx.designer.vb`
-- `prototypes/active-scenario-01.xml`
-- Everything under `modern-prototype/`
-- The deployment-artifact stash
-
 ## Existing Architecture
 
 The tracked application is ASP.NET Web Forms using VB.NET and .NET Framework
@@ -62,7 +48,7 @@ elements and do not cause postbacks.
 `Scripts/scenario-engine.js` is the only layer that interprets XML. It preserves:
 
 - Catalog discovery through `prototypes/scenarios.xml`
-- Both existing scenario URLs
+- Every enabled scenario URL in the catalog
 - The first command as the starting scene
 - XML command order and string video IDs
 - An option's `id` as its destination video ID
@@ -85,8 +71,7 @@ accessible content.
 
 The sidecar cannot choose a destination or end a scenario. The XML transition
 graph remains authoritative. Scenes without metadata receive a generic artifact,
-question, transcript, media fallback, and command presentation. The sample
-scenario intentionally relies on these fallbacks.
+question, transcript, media fallback, and command presentation.
 
 See `SCENARIO-XML-GUIDE.md` for the catalog format, optional presentation schema,
 media conventions, and steps for adding another independent scenario file.
@@ -95,17 +80,11 @@ media conventions, and steps for adding another independent scenario file.
 
 Open the solution in Visual Studio, start IIS Express, and visit:
 
+`https://localhost:44310/`
+
+The page also remains available directly at:
+
 `https://localhost:44310/AccessiblePrototype.aspx`
-
-The implementation was also smoke-tested with IIS Express at:
-
-`http://localhost:8099/AccessiblePrototype.aspx`
-
-Compare the three implementations at:
-
-- `Default.aspx` for the original XML player
-- `AccessiblePrototype.aspx` for the parallel accessible redesign
-- `modern-prototype/index.html` for the independent static design experiment
 
 The page must run through IIS Express or another web server because browser
 `fetch()` loads the XML scenario files.
@@ -154,12 +133,10 @@ region uses a fixed height.
 - JavaScript syntax checks: all three scripts passed
 - Unsafe HTML search: no `innerHTML`, `outerHTML`, or adjacent HTML insertion
 - Browser console: no errors
-- Both existing XML scenarios loaded through the new page
+- Bank Alert and Grandchild Emergency loaded through the flagship page
 - Bank scenario: every prompt option, the call loop, all safe and dangerous
   endings, feedback restart, active restart, completion restart, and scenario menu
-- Sample scenario: every prompt option, download, both jumps,
-  restart-or-quit, stop, and missing-command recovery
-- First-command starts confirmed: bank scene `1`, sample scene `2`
+- First-command starts confirmed for both enabled scenarios
 - Every current XML destination confirmed to reference an existing video ID
 - Generic presentation fallback and unavailable-media fallback confirmed
 - Transcript shortcut and disclosure confirmed
@@ -168,7 +145,6 @@ region uses a fixed height.
 - Desktop and 320px mobile layouts inspected with screenshots
 - No horizontal overflow at desktop or 320px
 - Largest application text setting tested at 320px without horizontal overflow
-- Protected files and deployment stash verified unchanged
 
 ## Manual Verification Still Required
 
@@ -187,8 +163,6 @@ region uses a fixed height.
 
 - Existing XML video paths point to files that are not present in the repository.
   The page therefore shows compact unavailable-media notices and transcripts.
-- The sample scenario has scenario-level metadata but intentionally uses generic
-  scene fallbacks.
 - Named-stage progress is educational and approximate because the XML graph can
   branch or repeat a scene.
 - Scenario state is intentionally browser-memory state and is lost on page reload.

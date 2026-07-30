@@ -2,35 +2,6 @@
     "use strict";
 
     const presentations = {
-        "prototypes/active-scenario-01.xml": {
-            title: "Sample branching scenario",
-            summary: "Explore a general branching example that demonstrates every command supported by the XML player.",
-            practiceGoal: "Practice making choices and following a scenario that can prompt, jump, show files, restart, or stop.",
-            approximateStages: 8,
-            stages: [
-                "Opening choice",
-                "First decision",
-                "Second decision",
-                "File review",
-                "Branch",
-                "Result",
-                "Restart",
-                "Takeaways"
-            ],
-            scenes: {},
-            finalReview: {
-                warningSigns: [
-                    "Pause before acting when a message asks you to make a quick choice.",
-                    "Check what information or files are being requested before continuing."
-                ],
-                safestAction: "When a real message feels uncertain, stop and verify it through a trusted source.",
-                realWorldActions: [
-                    "Leave the message or website if anything feels unusual.",
-                    "Contact the organization using information you found independently.",
-                    "Ask a trusted person for a second opinion."
-                ]
-            }
-        },
         "prototypes/bank-alert-scenario.xml": {
             title: "Bank fraud alert",
             summary: "Practice responding to an unexpected bank text, a pressure call, a fake website, and a security-code request.",

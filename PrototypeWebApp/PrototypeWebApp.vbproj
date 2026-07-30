@@ -95,9 +95,7 @@
     <Content Include="SCENARIO-XML-GUIDE.md" />
     <Content Include="AccessiblePrototype.aspx" />
     <Content Include="Content\accessibility-prototype.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="prototypes\active-scenario-01.xml" />
     <Content Include="prototypes\bank-alert-scenario.xml" />
     <Content Include="prototypes\grandchild-emergency-scenario.xml" />
     <Content Include="prototypes\scenarios.xml" />
@@ -112,13 +110,6 @@
     </Compile>
     <Compile Include="AccessiblePrototype.aspx.vb">
       <DependentUpon>AccessiblePrototype.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.vb">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.vb">
-      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">
@@ -169,10 +160,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
