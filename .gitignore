@@ -158,3 +158,8 @@ vite.config.ts.timestamp-*
 packages/
 *.nupkg
 *.signature.p7s
+
+# Local Visual Studio and Azure publishing metadata
+PrototypeWebApp/My Project/PublishProfiles/*.pubxml
+PrototypeWebApp/Properties/ServiceDependencies/
+PrototypeWebApp/.github/copilot-instructions.md
