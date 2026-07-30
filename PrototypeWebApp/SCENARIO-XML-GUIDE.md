@@ -2,7 +2,7 @@
 
 ## Architecture
 
-The accessible prototype loads `prototypes/scenarios.xml` first. Each enabled
+The accessible flagship application loads `prototypes/scenarios.xml` first. Each enabled
 catalog entry points to one independent scenario XML file. The routing engine in
 `Scripts/scenario-engine.js` reads that scenario's existing `<videos>` and
 `<commands>` elements, while the optional `<presentation>` element supplies the
@@ -12,8 +12,8 @@ Routing and presentation are deliberately separate:
 
 - `<commands>` is authoritative for where a choice goes and when a path ends.
 - `<presentation>` describes how a scene, choice, and outcome should appear.
-- `Scripts/scenario-presentation.js` fills in optional presentation fields that
-  are absent from XML during the migration.
+- `Scripts/scenario-presentation.js` supplies compatibility presentation data
+  when an existing XML field is absent.
 - Generic accessible content is used when neither XML nor the sidecar supplies
   an optional field.
 
@@ -90,9 +90,11 @@ feedback. Choice IDs must be unique within one prompt. Legacy options without
 
 ## Optional Presentation Structure
 
-Place `<presentation>` between `<videos>` and `<commands>`. Every field is
-optional; missing fields fall back to `scenario-presentation.js` and then to
-generic accessible copy.
+Place `<presentation>` between `<videos>` and `<commands>`. The parser permits
+individual fields to be omitted; missing fields fall back to
+`scenario-presentation.js` and then to generic accessible copy. New flagship
+scenarios should provide complete learner-facing presentation metadata rather
+than relying on compatibility fallbacks.
 
 ```xml
 <presentation approximateStages="3">
@@ -237,19 +239,48 @@ sounds. Poster images should not contain essential text that is missing from the
 artifact or transcript. Every scene should have a useful transcript even when a
 video is planned.
 
+## Route Validation
+
+Validate the complete graph before enabling or merging a scenario:
+
+1. Confirm the scenario XML is well formed.
+2. Confirm every command `videoId` has a matching `<video>` and presentation
+   `<scene>`.
+3. Confirm every prompt option `id`, download `nextVideoId`, and jump `targetId`
+   points to an existing video, command, and presentation scene.
+4. Confirm each command is reachable from the first command. Document intentional
+   loops and make sure each loop still offers a path forward or out.
+5. Match every option to presentation feedback by `choiceId`; use the legacy
+   destination match only when maintaining an older scenario.
+6. Exercise every distinct safe, risky, and dangerous decision. Confirm the
+   classification and explanation match the result without changing routing.
+7. Confirm every terminal route reaches a `stop` command and a presentation
+   `<outcome>` with an appropriate classification, label, heading, and
+   explanation.
+8. Confirm every scene has a useful transcript. For unavailable media, require
+   a `<media available="false" ... />` declaration and verify the fallback is
+   understandable without the asset.
+9. Load the scenario through the chooser, test restart and menu behavior, and
+   check the browser console for errors.
+
 ## Adding a Scenario
 
 1. Copy an existing scenario XML file to a new, descriptive filename under
    `prototypes/`.
 2. Give every video, command, and new choice a stable readable ID.
 3. Build and manually review the command graph before adding presentation data.
-4. Add optional `<presentation>` metadata for each learner-facing scene.
+4. Add complete `<presentation>` metadata for each learner-facing scene,
+   including transcripts, choice feedback, warning signs, and terminal outcomes.
 5. Add the scenario to `prototypes/scenarios.xml` with a positive
    `approximateStages` value and `enabled="false"`.
 6. Run the build and JavaScript/XML checks.
-7. Exercise every choice, loop, jump, restart, download, and ending locally.
+7. Follow the route-validation checklist above for every choice, loop, jump,
+   restart, download, and ending.
 8. Set `enabled="true"` after content, accessibility, and routing review.
 
-Keep `Scripts/scenario-presentation.js` entries until the corresponding XML has
-been reviewed and approved. Removing sidecar fallback data should be a separate,
-deliberate migration step.
+`Scripts/scenario-presentation.js` remains an active compatibility dependency:
+the accessible simulator loads its API while resolving scenario metadata. Do not
+remove the script or refactor that dependency as part of ordinary scenario
+authoring. New scenarios should not add sidecar entries when the same information
+can be authored in XML. Removing existing compatibility data or changing the API
+must be a separate, deliberately tested change.

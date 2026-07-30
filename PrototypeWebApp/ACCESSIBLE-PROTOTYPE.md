@@ -1,4 +1,4 @@
-# Accessible Scam Awareness Prototype
+# Accessible Scam Awareness Flagship Application
 
 ## Purpose
 
@@ -6,31 +6,33 @@
 simulator. It presents one simulated artifact, one question, and one decision at
 a time. The application root is configured to open this page by default.
 
-## Files Created
+The active product is maintained on `ui/accessibility-redesign`. It has not yet
+been merged into `main`. The former modern-prototype branch remains available as
+a historical archive; the obsolete implementation is not part of this branch.
 
-- `AccessiblePrototype.aspx`
-- `AccessiblePrototype.aspx.vb`
-- `AccessiblePrototype.aspx.designer.vb`
-- `Content/accessibility-prototype.css`
-- `Scripts/scenario-engine.js`
-- `Scripts/scenario-presentation.js`
-- `Scripts/accessibility-simulator.js`
-- `ACCESSIBLE-PROTOTYPE.md`
+## Entry Point and Root Routing
 
-## File Modified
+The Web Forms entry page is `AccessiblePrototype.aspx`. `Web.config` declares it
+as the IIS default document, so these routes open the same application:
 
-- `PrototypeWebApp.vbproj`
+- `/`
+- `/AccessiblePrototype.aspx`
 
-The project file includes the new page, code-behind, designer, stylesheet,
-scripts, and this document so they are available to Web Application Project
-build and publish tooling.
+This repository-tracked routing is authoritative. Local Visual Studio user
+settings and Azure portal settings are not required to select the flagship page.
 
-## XML Scenario System Phase
+## Runtime Dependency Flow
 
-The reusable scenario phase adds `prototypes/scenarios.xml` as the scenario
-catalog and `SCENARIO-XML-GUIDE.md` as the authoring reference. The bank-alert
-scenario is the first XML presentation pilot. Its existing videos, commands,
-destinations, and branching behavior are unchanged.
+1. IIS serves `AccessiblePrototype.aspx` and its minimal VB.NET code-behind.
+2. The page loads `Content/accessibility-prototype.css`.
+3. The page loads `Scripts/scenario-presentation.js`,
+   `Scripts/scenario-engine.js`, and `Scripts/accessibility-simulator.js`, in
+   that order.
+4. The simulator asks the engine to fetch `prototypes/scenarios.xml`.
+5. The chooser displays enabled catalog entries.
+6. Selecting a scenario causes the engine to fetch and parse its XML file.
+7. The simulator renders artifacts, choices, feedback, transcripts, outcomes,
+   and media or missing-media behavior from the parsed data.
 
 ## Existing Architecture
 
@@ -39,11 +41,22 @@ The tracked application is ASP.NET Web Forms using VB.NET and .NET Framework
 server-side scenario engine, Session or ViewState scenario state, dynamic server
 control tree, UpdatePanel, or server-side XML parser.
 
-The new page keeps a minimal code-behind and uses native HTML controls inside the
+The entry page keeps a minimal code-behind and uses native HTML controls inside the
 single Web Forms server form. Scenario choices are `button type="button"`
 elements and do not cause postbacks.
 
-## XML Behavior
+## Current Scenarios
+
+The catalog currently enables:
+
+- Bank fraud alert — `prototypes/bank-alert-scenario.xml`
+- Grandchild Emergency Call — `prototypes/grandchild-emergency-scenario.xml`
+
+Each scenario is an independent XML file. Future scenarios should be added to
+the catalog only after their content, routing, accessibility, and route coverage
+have been reviewed.
+
+## Scenario Catalog and Routing
 
 `Scripts/scenario-engine.js` is the only layer that interprets XML. It preserves:
 
@@ -60,25 +73,57 @@ elements and do not cause postbacks.
 The engine reports load, parse, missing-command, missing-destination, and
 unsupported-command errors without showing technical stack traces.
 
+`prototypes/scenarios.xml` supplies the stable scenario ID, chooser title,
+description, file path, enabled state, and approximate stage count. Catalog
+order controls chooser order. Disabled entries are not displayed.
+
 ## Presentation Metadata
 
-Scenario XML may now include an optional `<presentation>` element with named
+Scenario XML may include a `<presentation>` element with named
 stages, artifact types, transcripts, choice feedback, warning signs, outcomes,
-and future media paths. `Scripts/scenario-presentation.js` remains a temporary
-presentation-only fallback keyed by scenario path and video ID. XML values take
-priority; missing optional values fall back to the sidecar and then to generic
-accessible content.
+and future media paths.
+
+Presentation values are resolved in this order:
+
+1. Presentation metadata in the selected scenario XML
+2. Compatibility metadata from `Scripts/scenario-presentation.js`
+3. Catalog values, where applicable
+4. Generic accessible defaults
 
 The sidecar cannot choose a destination or end a scenario. The XML transition
 graph remains authoritative. Scenes without metadata receive a generic artifact,
 question, transcript, media fallback, and command presentation.
+
+Stable `choiceId` values are used for presentation lookup before the legacy
+destination-based fallback. This allows two choices to share a destination while
+retaining different feedback and classifications.
+
+## Script Responsibilities
+
+- `Scripts/accessibility-simulator.js` owns page state, accessible DOM rendering,
+  focus movement, feedback, progress, transcript controls, text sizing, sound
+  controls, error presentation, and the scenario chooser.
+- `Scripts/scenario-engine.js` is the only XML interpreter. It loads the catalog,
+  parses routing and presentation data, validates transitions, and exposes the
+  current scenario state.
+- `Scripts/scenario-presentation.js` provides presentation-only compatibility
+  metadata. It cannot alter routing.
+
+`scenario-presentation.js` remains an active dependency because
+`accessibility-simulator.js` obtains its API directly and calls
+`getScenario(path)` while resolving metadata. Removing the file without first
+changing and testing that API dependency would prevent the chooser from
+rendering. New scenarios should place complete presentation metadata in XML
+rather than adding new sidecar data.
 
 See `SCENARIO-XML-GUIDE.md` for the catalog format, optional presentation schema,
 media conventions, and steps for adding another independent scenario file.
 
 ## Running Locally
 
-Open the solution in Visual Studio, start IIS Express, and visit:
+Use Visual Studio 2022 with the ASP.NET and web development workload and the
+.NET Framework 4.7.2 developer tools. Open `PrototypeWebApp.sln`, restore NuGet
+packages, select Debug, and build the solution. Start IIS Express and visit:
 
 `https://localhost:44310/`
 
@@ -89,7 +134,16 @@ The page also remains available directly at:
 The page must run through IIS Express or another web server because browser
 `fetch()` loads the XML scenario files.
 
-## Accessibility Decisions
+## Accessibility and Missing-Media Behavior
+
+Generated video, poster, caption, and audio assets have not yet been added.
+Current scenario XML declares planned media with `available="false"`. The
+simulated artifact, transcript, choices, feedback, and outcome remain available,
+so learners do not need media to understand or complete a scenario. If future
+media is enabled but fails to load, the renderer replaces it with an unavailable
+media notice and directs the learner to the transcript and simulated artifact.
+
+Accessibility decisions include:
 
 - A skip link, semantic landmarks, one active H1, and ordered headings
 - Native buttons and native `details`/`summary` disclosures
@@ -126,7 +180,23 @@ At narrow widths, the toolbar and stage list wrap, simulated artifacts become
 fluid, choices become full width, and completion actions stack. No content
 region uses a fixed height.
 
-## Testing Performed
+## Local Testing Checklist
+
+Before integrating a scenario or publishing the application:
+
+1. Restore NuGet packages.
+2. Run Debug and Release rebuilds and require zero warnings and zero errors.
+3. Run JavaScript syntax checks for all three flagship scripts.
+4. Validate `prototypes/scenarios.xml` and every enabled scenario XML file.
+5. Traverse every choice, destination, loop, and terminal outcome.
+6. Confirm every enabled command has matching video and presentation data.
+7. Confirm each scene has a transcript and correct media availability metadata.
+8. Start IIS Express and verify `/` and `/AccessiblePrototype.aspx`.
+9. Confirm the chooser displays only the intended enabled scenarios.
+10. Exercise keyboard focus, feedback, transcript, restart, and menu behavior.
+11. Check the browser console for errors.
+
+The current flagship has been tested with:
 
 - Debug build: succeeded with zero warnings and zero errors
 - Release build: succeeded with zero warnings and zero errors
@@ -168,9 +238,22 @@ region uses a fixed height.
 - Scenario state is intentionally browser-memory state and is lost on page reload.
 - No analytics, accounts, user data, or server-side persistence are included.
 
-## Deployment Considerations
+## Azure Publishing Workflow
 
-The new files are registered in `PrototypeWebApp.vbproj`, but no Azure publish was
-performed. The existing deployment stash was not restored, changed, dropped, or
-combined with this work. Review any future `.vbproj` conflict carefully before
-applying that stash.
+The Azure App Service is named `AccessiblePrototypePCWAnolan`. Publishing is a
+manual Visual Studio action; commits and pushes do not deploy the site.
+
+1. Confirm the intended branch is clean and synchronized with its remote.
+2. Restore NuGet packages.
+3. Run Debug and Release builds with zero warnings and zero errors.
+4. Review the local Visual Studio publish settings and selected App Service.
+5. Publish only after the application and scenario routes have been approved.
+6. Smoke-test `/`, `/AccessiblePrototype.aspx`, the chooser, and every enabled
+   scenario on Azure.
+
+Visual Studio publish profiles under `My Project/PublishProfiles/` are local and
+ignored by Git. Files under `Properties/ServiceDependencies/`, publish history,
+`.pubxml.user` files, credentials, subscription information, and other Azure
+metadata must also remain local. A new clone can build and run without these
+publishing files, but a developer must create or receive an approved local
+profile before publishing to the existing App Service.
