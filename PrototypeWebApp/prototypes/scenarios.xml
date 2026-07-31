@@ -10,4 +10,9 @@
     <description>A caller claims to be a grandchild in an emergency and uses panic, secrecy, and family loyalty to request money.</description>
     <file>prototypes/grandchild-emergency-scenario.xml</file>
   </scenario>
+  <scenario id="tech-support-popup" approximateStages="8" enabled="true">
+    <title>Tech Support Pop-Up Scam</title>
+    <description>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</description>
+    <file>prototypes/tech-support-popup-scenario.xml</file>
+  </scenario>
 </scenarios>

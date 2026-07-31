@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist autostart="true">
+	<videos>
+		<video id="security-warning">placeholder/tech-support-popup/security-warning.mp4</video>
+		<video id="fake-scan">placeholder/tech-support-popup/fake-scan.mp4</video>
+		<video id="cleanup-failed">placeholder/tech-support-popup/cleanup-failed.mp4</video>
+		<video id="support-call">placeholder/tech-support-popup/support-call.mp4</video>
+		<video id="identity-pressure">placeholder/tech-support-popup/identity-pressure.mp4</video>
+		<video id="remote-connected">placeholder/tech-support-popup/remote-connected.mp4</video>
+		<video id="access-questioned">placeholder/tech-support-popup/access-questioned.mp4</video>
+		<video id="system-logs">placeholder/tech-support-popup/system-logs.mp4</video>
+		<video id="challenged-diagnosis">placeholder/tech-support-popup/challenged-diagnosis.mp4</video>
+		<video id="protection-plan">placeholder/tech-support-popup/protection-plan.mp4</video>
+		<video id="discounted-plan">placeholder/tech-support-popup/discounted-plan.mp4</video>
+		<video id="popup-closed-safe">placeholder/tech-support-popup/popup-closed-safe.mp4</video>
+		<video id="trusted-help-safe">placeholder/tech-support-popup/trusted-help-safe.mp4</video>
+		<video id="official-support-safe">placeholder/tech-support-popup/official-support-safe.mp4</video>
+		<video id="remote-recovery-safe">placeholder/tech-support-popup/remote-recovery-safe.mp4</video>
+		<video id="trusted-recovery-safe">placeholder/tech-support-popup/trusted-recovery-safe.mp4</video>
+		<video id="gift-card-loss">placeholder/tech-support-popup/gift-card-loss.mp4</video>
+	</videos>
+	<presentation approximateStages="8">
+		<title>Tech Support Pop-Up Scam</title>
+		<summary>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</summary>
+		<practiceGoal>Pause when a frightening pop-up appears, verify support independently, refuse unexpected remote access, and recognize gift cards as a payment warning sign.</practiceGoal>
+		<stages>
+			<stage>Security warning</stage>
+			<stage>Fake scan</stage>
+			<stage>Support call</stage>
+			<stage>Identity pressure</stage>
+			<stage>Remote access</stage>
+			<stage>Fake diagnosis</stage>
+			<stage>Protection plan</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>A browser warning fills the screen, sounds an alarm, and appears to lock the computer.</sign>
+				<sign>The warning supplies a phone number and says not to shut down the computer.</sign>
+				<sign>An unexpected caller asks for a remote-support program to be installed.</sign>
+				<sign>A professional name, employee ID, or badge number is offered as proof without independent verification.</sign>
+				<sign>Ordinary system warnings and errors are presented as proof that hackers are connected.</sign>
+				<sign>The caller demands payment by gift card and creates a same-day deadline.</sign>
+			</warningSigns>
+			<safestAction>Close the browser or restart the computer, then locate legitimate support independently if you still have concerns.</safestAction>
+			<realWorldActions>
+				<action>Do not call a phone number or use a button supplied by an unexpected security pop-up.</action>
+				<action>Do not install or authorize remote-access software for an unexpected caller.</action>
+				<action>If remote access was granted, disconnect, remove the remote-access program, and ask a trusted technician to inspect the computer.</action>
+				<action>Change important passwords from a safe device and contact the bank if financial information may have been visible.</action>
+				<action>If gift-card numbers were shared, contact the gift-card issuer immediately and report the fraud through legitimate channels.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="security-warning" stageName="Security warning" stageIndex="1">
+				<artifact type="fake-website">
+					<domain>familiar-news.example</domain>
+					<heading>Critical Security Alert</heading>
+					<message>Your device may be infected. Personal files and banking information are at risk. Do not shut down your computer. Call support immediately: 1-800-555-0147.</message>
+					<requestedInformation>
+						<item>Scan Now</item>
+						<item>Call support: 1-800-555-0147</item>
+					</requestedInformation>
+					<transcript>While browsing a familiar news website, a full-screen warning suddenly covers the page and an alarm sounds. It says, "Critical Security Alert. Your device may be infected. Personal files and banking information are at risk. Do not shut down your computer. Call support immediately." The screen appears locked, but this is only a browser pop-up. It displays a Scan Now button and the phone number 1-800-555-0147.</transcript>
+					<media video="placeholder/tech-support-popup/security-warning.mp4" poster="placeholder/tech-support-popup/security-warning.jpg" captions="placeholder/tech-support-popup/security-warning.vtt" available="false" />
+				</artifact>
+				<question>What would you do when this warning suddenly fills the screen?</question>
+				<description>The alarm and urgent language are meant to create fear. A full-screen browser message is not proof that the computer is infected.</description>
+				<warningSigns>
+					<sign>The warning appeared unexpectedly while browsing a familiar site.</sign>
+					<sign>It says not to shut down the computer.</sign>
+					<sign>It supplies its own support number and demands immediate action.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="close-browser" destinationVideoId="popup-closed-safe" classification="safe">
+						<title>Close the browser</title>
+						<subtitle>Exit the browser instead of using the warning's buttons or phone number.</subtitle>
+						<feedback heading="You ended the pop-up safely">
+							<consequence>The warning disappears when the browser closes.</consequence>
+							<explanation>A browser pop-up can look like a locked computer. Closing the browser shows that the warning itself was not proof of an infection.</explanation>
+							<warningSigns><sign>The warning tried to prevent you from closing it.</sign><sign>The support route came from the pop-up itself.</sign></warningSigns>
+						</feedback>
+					</choice>
+					<choice choiceId="restart-computer" destinationVideoId="popup-closed-safe" classification="safe">
+						<title>Restart the computer</title>
+						<subtitle>Use a normal restart if the browser will not close.</subtitle>
+						<feedback heading="A restart removed the browser warning">
+							<consequence>The warning is gone after the computer restarts.</consequence>
+							<explanation>A page that disappears after a browser close or restart was not proof that the whole device was locked.</explanation>
+							<warningSigns><sign>The pop-up falsely said not to shut down the computer.</sign><sign>The page used a full-screen display to appear more powerful than it was.</sign></warningSigns>
+						</feedback>
+					</choice>
+					<choice choiceId="click-scan-now" destinationVideoId="fake-scan" classification="risky">
+						<title>Click “Scan Now”</title>
+						<subtitle>Let the page perform the scan it recommends.</subtitle>
+						<feedback heading="The page controls the scan and its result">
+							<consequence>A fast animation reports many threats and increases the fear.</consequence>
+							<explanation>A website can display a made-up scan without examining the computer. The result is designed to keep you following the page's instructions.</explanation>
+							<warningSigns><sign>The same page creates both the emergency and the supposed test.</sign><sign>The scan begins from an unexpected pop-up.</sign></warningSigns>
+						</feedback>
+					</choice>
+					<choice choiceId="call-popup-number" destinationVideoId="support-call" classification="dangerous">
+						<title>Call the number in the warning</title>
+						<subtitle>Use the support number displayed by the pop-up.</subtitle>
+						<feedback heading="The pop-up routes you to the scammer">
+							<consequence>A professional-sounding representative answers and treats the false alert as real.</consequence>
+							<explanation>A phone number supplied by a frightening pop-up is not an independent support channel.</explanation>
+							<warningSigns><sign>The warning supplied the only contact information.</sign><sign>The caller already knows the story shown in the pop-up.</sign></warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="fake-scan" stageName="Fake scan" stageIndex="2">
+				<artifact type="fake-website">
+					<domain>familiar-news.example/security-check</domain>
+					<heading>47 threats detected</heading>
+					<message>Banking passwords may be exposed. Immediate technician assistance required.</message>
+					<requestedInformation><item>Clean Threats Now</item><item>Call support: 1-800-555-0147</item></requestedInformation>
+					<transcript>After the learner clicks Scan Now, a progress bar races across the screen. Within seconds the page reports, "47 threats detected. Banking passwords may be exposed. Immediate technician assistance required." It offers a Clean Threats Now button and repeats the support number. The website has not actually examined the computer.</transcript>
+					<media video="placeholder/tech-support-popup/fake-scan.mp4" poster="placeholder/tech-support-popup/fake-scan.jpg" captions="placeholder/tech-support-popup/fake-scan.vtt" available="false" />
+				</artifact>
+				<question>What would you do after the page reports 47 threats?</question>
+				<description>The quick result and large number are meant to make the fake scan seem urgent and technical.</description>
+				<warningSigns><sign>The supposed scan finishes unrealistically quickly.</sign><sign>The result immediately promotes technician help.</sign><sign>The page claims banking passwords are exposed without evidence.</sign></warningSigns>
+				<choices>
+					<choice choiceId="close-after-fake-scan" destinationVideoId="popup-closed-safe" classification="safe">
+						<title>Close the page and seek trusted help</title><subtitle>Leave the warning and contact someone you trust if you remain concerned.</subtitle>
+						<feedback heading="You stopped following the page"><consequence>The fake scan can no longer direct the next step.</consequence><explanation>Closing the page and choosing help independently removes the scammer's control.</explanation><warningSigns><sign>The result came from the same page that created the alarm.</sign><sign>The page pushes its own technician.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-after-fake-scan" destinationVideoId="support-call" classification="dangerous">
+						<title>Call the displayed number</title><subtitle>Ask the advertised technician to remove the reported threats.</subtitle>
+						<feedback heading="The fake scan leads into a fake support call"><consequence>The representative uses the made-up result to justify remote-access instructions.</consequence><explanation>The page and phone number are parts of the same unverified story.</explanation><warningSigns><sign>The support number comes from the warning page.</sign><sign>The call is presented as the only immediate solution.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="click-clean-threats" destinationVideoId="cleanup-failed" classification="risky">
+						<title>Click “Clean Threats Now”</title><subtitle>Let the page try its automatic cleanup.</subtitle>
+						<feedback heading="The cleanup button adds another failure"><consequence>The page says automatic removal failed and insists that a technician must connect.</consequence><explanation>The page can invent each result to move you toward the phone call.</explanation><warningSigns><sign>The supposed solution fails immediately.</sign><sign>Every step points back to the same support number.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="cleanup-failed" stageName="Fake scan" stageIndex="2">
+				<artifact type="fake-website">
+					<domain>familiar-news.example/security-check</domain>
+					<heading>Automatic removal failed</heading>
+					<message>A certified technician must connect to your device to remove the detected threats. Call 1-800-555-0147 now.</message>
+					<requestedInformation><item>Call support: 1-800-555-0147</item></requestedInformation>
+					<transcript>After the learner clicks the cleanup button, the page displays, "Automatic removal failed. A certified technician must connect to your device to remove the detected threats." It again shows the support number 1-800-555-0147. This failure is another message created by the webpage, not evidence of an infection.</transcript>
+					<media video="placeholder/tech-support-popup/cleanup-failed.mp4" poster="placeholder/tech-support-popup/cleanup-failed.jpg" captions="placeholder/tech-support-popup/cleanup-failed.vtt" available="false" />
+				</artifact>
+				<question>What would you do when the page says a technician must connect?</question>
+				<description>The pop-up is narrowing the choices toward a call and remote access.</description>
+				<warningSigns><sign>The page claims that remote access is required.</sign><sign>The supposed cleanup fails in a way that promotes paid support.</sign></warningSigns>
+				<choices>
+					<choice choiceId="close-after-cleanup-failure" destinationVideoId="popup-closed-safe" classification="safe">
+						<title>Close the page</title><subtitle>Stop using the pop-up and seek support independently if needed.</subtitle>
+						<feedback heading="You ended the pop-up's instructions"><consequence>The browser warning disappears without a technician connecting.</consequence><explanation>A browser page cannot prove that remote access is necessary.</explanation><warningSigns><sign>The page insists on a single solution.</sign><sign>The contact number still comes from the pop-up.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-after-cleanup-failure" destinationVideoId="support-call" classification="dangerous">
+						<title>Call support</title><subtitle>Use the number because the automatic cleanup failed.</subtitle>
+						<feedback heading="The invented failure moves the scam to a call"><consequence>The representative claims the computer contacted a security center.</consequence><explanation>The failure message and the support number are both controlled by the same page.</explanation><warningSigns><sign>The page creates a problem that only its own technician can solve.</sign><sign>The call is driven by fear of banking loss.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="support-call" stageName="Support call" stageIndex="3">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Fictional company; identity not verified</callerStatus>
+					<callStatus>You called the number shown by the pop-up</callStatus>
+					<heading>Daniel says the computer sent an alert</heading>
+					<message>Thank you for calling SecureTech Device Support. My name is Daniel. Your computer sent our security center a critical infection alert. Please install SecureAssist Remote Support so I can remove the infection.</message>
+					<transcript>A professional-sounding representative answers, "Thank you for calling SecureTech Device Support. My name is Daniel. Your computer sent our security center a critical infection alert." SecureTech Device Support is fictional. Daniel asks the learner to install a fictional application called SecureAssist Remote Support so he can connect to the device.</transcript>
+					<media video="placeholder/tech-support-popup/support-call.mp4" poster="placeholder/tech-support-popup/support-call.jpg" captions="placeholder/tech-support-popup/support-call.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to Daniel's request to install SecureAssist Remote Support?</question>
+				<description>A calm voice and a company name can sound reassuring, but neither independently verifies the caller.</description>
+				<warningSigns><sign>You reached Daniel through a number in an unexpected pop-up.</sign><sign>He claims the computer contacted his company.</sign><sign>He asks for remote access before the problem is independently confirmed.</sign></warningSigns>
+				<choices>
+					<choice choiceId="install-secureassist" destinationVideoId="remote-connected" classification="dangerous">
+						<title>Install and authorize SecureAssist</title><subtitle>Follow Daniel's instructions and approve the remote-support session.</subtitle>
+						<feedback heading="Remote access is now explicitly authorized"><consequence>Daniel can see the screen and control the device through the installed program.</consequence><explanation>Installing and authorizing remote-access software gives another person powerful access. The session does not begin until you make this explicit choice.</explanation><warningSigns><sign>The request came from an unexpected support contact.</sign><sign>The caller wants control of the device.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="pause-for-trusted-help" destinationVideoId="trusted-help-safe" classification="safe">
+						<title>Stop and ask someone you trust</title><subtitle>End the call and contact a family member or technician you already know.</subtitle>
+						<feedback heading="You paused before granting access"><consequence>No remote-support program is installed or authorized.</consequence><explanation>Trusted help chosen independently can check the computer without relying on Daniel's claims.</explanation><warningSigns><sign>Daniel wants access before you consult anyone else.</sign><sign>The request depends on the pop-up being genuine.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-employee-id" destinationVideoId="identity-pressure" classification="risky">
+						<title>Ask for Daniel's employee ID</title><subtitle>Keep the call active while asking him to prove who he is.</subtitle>
+						<feedback heading="An ID supplied by the caller is not independent proof"><consequence>Daniel gives a polished-sounding employee number and adds more banking pressure.</consequence><explanation>A professional name, employee ID, or badge number can easily be invented. Verification must use a source the caller does not control.</explanation><warningSigns><sign>The person being checked supplies their own proof.</sign><sign>The urgency continues during the identity check.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="identity-pressure" stageName="Identity pressure" stageIndex="4">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Claimed employee ID ST-4821; not independently verified</callerStatus>
+					<callStatus>Call continues</callStatus>
+					<heading>Daniel provides an employee ID and increases urgency</heading>
+					<message>Certainly. My employee ID is ST-4821. But we need to act quickly—your online banking information could already be exposed.</message>
+					<transcript>When asked for identification, Daniel says, "Certainly. My employee ID is ST-4821. But we need to act quickly—your online banking information could already be exposed." A name, employee ID, or badge number provided by the caller can easily be invented and is not independent verification.</transcript>
+					<media video="placeholder/tech-support-popup/identity-pressure.mp4" poster="placeholder/tech-support-popup/identity-pressure.jpg" captions="placeholder/tech-support-popup/identity-pressure.vtt" available="false" />
+				</artifact>
+				<question>What would you do after Daniel gives employee ID ST-4821?</question>
+				<description>The ID sounds specific, but it still comes only from Daniel.</description>
+				<warningSigns><sign>Daniel supplies the information meant to verify himself.</sign><sign>He follows the ID with a threat about online banking.</sign><sign>No official source has confirmed SecureTech or the employee number.</sign></warningSigns>
+				<choices>
+					<choice choiceId="end-call-find-legitimate-support" destinationVideoId="official-support-safe" classification="safe">
+						<title>End the call and locate legitimate support</title><subtitle>Use a device maker, service provider, or technician you identify independently.</subtitle>
+						<feedback heading="You used independent verification"><consequence>Daniel can no longer guide the support search or ask for access.</consequence><explanation>Locating support yourself is stronger proof than any detail supplied by the caller.</explanation><warningSigns><sign>The claimed company came from the pop-up.</sign><sign>The employee ID could not be checked independently during the call.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="official-number-callback" destinationVideoId="official-support-safe" classification="safe">
+						<title>Insist on calling back through an official number</title><subtitle>End this call and find a published number yourself.</subtitle>
+						<feedback heading="A separate official channel breaks the caller's control"><consequence>You do not install SecureAssist and can check whether any support case exists.</consequence><explanation>Always locate the callback number independently rather than accepting one from the caller.</explanation><warningSigns><sign>Daniel wants the current call to continue.</sign><sign>His employee ID has not been confirmed by an official channel.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="accept-id-install-secureassist" destinationVideoId="remote-connected" classification="dangerous">
+						<title>Accept the ID and authorize SecureAssist</title><subtitle>Trust ST-4821 and allow Daniel to connect.</subtitle>
+						<feedback heading="The invented ID led to remote access"><consequence>Daniel gains screen visibility and control after you install and authorize the program.</consequence><explanation>An unverified employee number does not make an unexpected remote-access request safe.</explanation><warningSigns><sign>The ID came from Daniel himself.</sign><sign>Fear about banking information pushed the decision.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="remote-connected" stageName="Remote access" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>SecureAssist Remote Support</domain>
+					<heading>Support session connected</heading>
+					<message>Daniel is now controlling your device.</message>
+					<requestedInformation><item>Allow Daniel to continue</item><item>Disconnect session</item></requestedInformation>
+					<transcript>Only after the learner explicitly installs and authorizes SecureAssist does the screen display, "SecureAssist Remote Support. Support session connected. Daniel is now controlling your device." Daniel says, "I'm connected now. Please do not touch the keyboard or mouse while I check the system."</transcript>
+					<media video="placeholder/tech-support-popup/remote-connected.mp4" poster="placeholder/tech-support-popup/remote-connected.jpg" captions="placeholder/tech-support-popup/remote-connected.vtt" available="false" />
+				</artifact>
+				<question>What would you do once the remote session is connected?</question>
+				<description>Remote access is active because SecureAssist was installed and authorized.</description>
+				<warningSigns><sign>Daniel tells you not to touch your own keyboard or mouse.</sign><sign>An unverified caller now controls the screen.</sign><sign>The support session followed a frightening pop-up.</sign></warningSigns>
+				<choices>
+					<choice choiceId="allow-remote-check" destinationVideoId="system-logs" classification="dangerous">
+						<title>Allow Daniel to continue</title><subtitle>Do not touch the computer while he checks the system.</subtitle>
+						<feedback heading="Daniel can now use ordinary screens as props"><consequence>He opens routine system logs and describes normal warnings as hackers.</consequence><explanation>Continuing gives an unverified person more time to control the device and shape what you see.</explanation><warningSigns><sign>Daniel asks you to surrender control.</sign><sign>He has not identified an actual infection.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="disconnect-immediately" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>Disconnect immediately</title><subtitle>End the remote-support session before Daniel continues.</subtitle>
+						<feedback heading="You stopped the active remote session"><consequence>Daniel loses live control of the device.</consequence><explanation>Disconnecting is the first recovery step. The program should still be removed and the device checked.</explanation><warningSigns><sign>The remote session was requested by an unverified caller.</sign><sign>Daniel tried to prevent you from using the keyboard or mouse.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-visible-information" destinationVideoId="access-questioned" classification="risky">
+						<title>Ask what information he can see</title><subtitle>Keep the session connected while asking about the access.</subtitle>
+						<feedback heading="Daniel avoids a clear answer"><consequence>The remote session remains active while he redirects attention to the supposed infection.</consequence><explanation>Asking is reasonable, but an evasive answer is a reason to disconnect rather than continue.</explanation><warningSigns><sign>Daniel will not clearly describe the access.</sign><sign>The session stays connected during the discussion.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="access-questioned" stageName="Remote access" stageIndex="5">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Unverified caller with active remote access</callerStatus>
+					<callStatus>SecureAssist session remains connected</callStatus>
+					<heading>Daniel avoids explaining the access</heading>
+					<message>The connection only lets me perform the security work we discussed. The important thing is finding the infection before your banking information is stolen. Please don't touch anything.</message>
+					<transcript>When asked what information he can see, Daniel does not give a clear answer. He says, "The connection only lets me perform the security work we discussed. The important thing is finding the infection before your banking information is stolen. Please don't touch anything." He redirects attention from his access to the supposed emergency.</transcript>
+					<media video="placeholder/tech-support-popup/access-questioned.mp4" poster="placeholder/tech-support-popup/access-questioned.jpg" captions="placeholder/tech-support-popup/access-questioned.vtt" available="false" />
+				</artifact>
+				<question>What would you do after Daniel avoids the question?</question>
+				<description>The session remains active, and Daniel still controls the device.</description>
+				<warningSigns><sign>Daniel will not explain what he can view or control.</sign><sign>He returns to fear about banking information.</sign><sign>He again tells you not to touch the computer.</sign></warningSigns>
+				<choices>
+					<choice choiceId="continue-after-evasion" destinationVideoId="system-logs" classification="dangerous">
+						<title>Let Daniel continue</title><subtitle>Assume the access is limited and wait for the diagnosis.</subtitle>
+						<feedback heading="The vague answer leaves Daniel in control"><consequence>He opens ordinary system logs and misrepresents them as evidence of hackers.</consequence><explanation>Avoiding a direct access question is not reassurance. The safe response is to disconnect.</explanation><warningSigns><sign>The caller redirects instead of answering.</sign><sign>The remote session remains active.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="disconnect-after-evasion" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>Disconnect the session</title><subtitle>End remote control and begin recovery steps.</subtitle>
+						<feedback heading="You acted on the evasive answer"><consequence>Daniel loses live access before presenting a fake diagnosis.</consequence><explanation>Disconnecting limits further exposure, though follow-up recovery is still important.</explanation><warningSigns><sign>Daniel could not clearly describe his access.</sign><sign>He used urgency to avoid the question.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="system-logs" stageName="Fake diagnosis" stageIndex="6">
+				<artifact type="fake-website">
+					<domain>Windows system logs — viewed during SecureAssist session</domain>
+					<heading>Routine system warnings and errors</heading>
+					<message>Warning: Application response delay. Error: Service stopped and restarted. Warning: Update retry scheduled.</message>
+					<requestedInformation><item>Daniel asks you to accept his diagnosis</item></requestedInformation>
+					<transcript>Because remote access has been granted, Daniel opens ordinary system logs containing routine warnings and errors. Red symbols appear beside messages about an application delay, a service restart, and an update retry. Daniel says, "See all these red warnings? These are foreign hackers attempting to access your computer and bank account." The logs do not identify a virus or show that hackers are connected.</transcript>
+					<media video="placeholder/tech-support-popup/system-logs.mp4" poster="placeholder/tech-support-popup/system-logs.jpg" captions="placeholder/tech-support-popup/system-logs.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to Daniel's explanation of the red warnings?</question>
+				<description>Ordinary logs often contain warnings and errors. Their color alone does not prove an infection or outside access.</description>
+				<warningSigns><sign>Daniel uses routine system information as a frightening visual prop.</sign><sign>He does not name an actual virus or compromised file.</sign><sign>He connects ordinary warnings to banking loss without evidence.</sign></warningSigns>
+				<choices>
+					<choice choiceId="believe-fake-diagnosis" destinationVideoId="protection-plan" classification="dangerous">
+						<title>Believe the diagnosis</title><subtitle>Accept that the red warnings prove hackers are connected.</subtitle>
+						<feedback heading="The false diagnosis prepares a payment demand"><consequence>Daniel says the device needs a lifetime protection plan.</consequence><explanation>Normal log entries do not prove the story. The diagnosis rests on fear, not an identified threat.</explanation><warningSigns><sign>No virus or compromised file is named.</sign><sign>Visual complexity is used in place of evidence.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="challenge-log-claim" destinationVideoId="challenged-diagnosis" classification="risky">
+						<title>Ask why ordinary warnings prove hackers are connected</title><subtitle>Request an actual virus name or compromised file.</subtitle>
+						<feedback heading="Daniel cannot identify a real threat"><consequence>He responds with authority and fear instead of technical evidence.</consequence><explanation>Challenging the claim reveals the weakness in the diagnosis, but the remote session is still active.</explanation><warningSigns><sign>Daniel avoids naming a specific infection.</sign><sign>He becomes more urgent when questioned.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="disconnect-at-system-logs" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>Disconnect the remote session</title><subtitle>End Daniel's access instead of accepting the log explanation.</subtitle>
+						<feedback heading="You stopped the fake diagnosis"><consequence>Daniel loses control before introducing a payment demand.</consequence><explanation>Routine warnings are not proof of hackers. Disconnecting stops the caller from using them to build more pressure.</explanation><warningSigns><sign>The logs do not show what Daniel claims.</sign><sign>He uses fear about a bank account without evidence.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="challenged-diagnosis" stageName="Fake diagnosis" stageIndex="6">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Cannot identify an actual virus or compromised file</callerStatus>
+					<callStatus>SecureAssist session remains connected</callStatus>
+					<heading>Daniel replaces evidence with fear and authority</heading>
+					<message>I am a certified technician. If we stop now, hackers could empty your bank account. I'm trying to protect you.</message>
+					<transcript>When challenged, Daniel cannot identify an actual virus or compromised file. Instead, he says, "I am a certified technician. If we stop now, hackers could empty your bank account. I'm trying to protect you." His claimed certification and urgent warning do not answer the technical question.</transcript>
+					<media video="placeholder/tech-support-popup/challenged-diagnosis.mp4" poster="placeholder/tech-support-popup/challenged-diagnosis.jpg" captions="placeholder/tech-support-popup/challenged-diagnosis.vtt" available="false" />
+				</artifact>
+				<question>What would you do when Daniel responds with fear instead of evidence?</question>
+				<description>The caller has not identified a threat, and he still has remote access.</description>
+				<warningSigns><sign>A claimed certification is used to end questions.</sign><sign>Daniel predicts immediate banking loss without proof.</sign><sign>He presents himself as the only person who can protect you.</sign></warningSigns>
+				<choices>
+					<choice choiceId="end-session-after-challenge" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>End the remote session</title><subtitle>Disconnect Daniel and begin recovery.</subtitle>
+						<feedback heading="You stopped when the diagnosis failed"><consequence>Daniel loses live control and cannot continue the pressure.</consequence><explanation>A technician who cannot identify the threat has not established that the computer is infected.</explanation><warningSigns><sign>Daniel substituted authority for evidence.</sign><sign>He used a bank-account threat to keep access.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="contact-trusted-after-challenge" destinationVideoId="trusted-recovery-safe" classification="safe">
+						<title>Disconnect and contact a trusted person</title><subtitle>Ask someone you know to help with the recovery steps.</subtitle>
+						<feedback heading="Trusted help replaces the scammer's pressure"><consequence>The remote session ends, and a trusted person helps secure the device and accounts.</consequence><explanation>Bringing in trusted help makes recovery manageable and interrupts isolation.</explanation><warningSigns><sign>Daniel tried to remain the only source of help.</sign><sign>He could not support the diagnosis.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="give-in-ask-protection" destinationVideoId="protection-plan" classification="dangerous">
+						<title>Ask how to protect the computer</title><subtitle>Give Daniel another chance to solve the supposed infection.</subtitle>
+						<feedback heading="The fear leads to a sales demand"><consequence>Daniel introduces an expensive lifetime protection plan and unusual payment instructions.</consequence><explanation>Because the fake diagnosis is now established, the scammer turns the fear into a payment request.</explanation><warningSigns><sign>The technical question was never answered.</sign><sign>The conversation moves from diagnosis to a paid plan.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="protection-plan" stageName="Protection plan" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Unverified caller requesting gift-card payment</callerStatus>
+					<callStatus>Remote session remains connected after the fake diagnosis</callStatus>
+					<heading>A $399 lifetime protection plan</heading>
+					<message>The lifetime protection plan costs $399. Our card-processing system is temporarily unavailable, so payment must be made using gift cards.</message>
+					<transcript>Only after the fake diagnosis has been established does Daniel say, "The lifetime protection plan costs $399. Our card-processing system is temporarily unavailable, so payment must be made using gift cards." He asks the learner to purchase gift cards and read the numbers to him.</transcript>
+					<media video="placeholder/tech-support-popup/protection-plan.mp4" poster="placeholder/tech-support-popup/protection-plan.jpg" captions="placeholder/tech-support-popup/protection-plan.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to the $399 gift-card payment demand?</question>
+				<description>Gift cards work like cash once their numbers are shared. Legitimate support services do not require gift cards for computer protection.</description>
+				<warningSigns><sign>Daniel demands gift cards because normal card processing is supposedly unavailable.</sign><sign>The plan is introduced after a fear-based diagnosis.</sign><sign>The caller wants redeemable numbers instead of a normal invoice.</sign></warningSigns>
+				<choices>
+					<choice choiceId="provide-399-gift-cards" destinationVideoId="gift-card-loss" classification="dangerous">
+						<title>Purchase gift cards and provide the numbers</title><subtitle>Pay $399 for the lifetime protection plan.</subtitle>
+						<feedback heading="The gift-card value can be taken immediately"><consequence>Daniel redeems the card value while remote-access and account risks remain.</consequence><explanation>Gift-card numbers should never be used to pay an unexpected support caller.</explanation><warningSigns><sign>The payment is difficult to reverse.</sign><sign>The caller controls both the diagnosis and the sale.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="refuse-payment-disconnect" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>Refuse the payment and disconnect</title><subtitle>End the call and remote session without buying gift cards.</subtitle>
+						<feedback heading="You stopped before financial loss"><consequence>No gift-card value is sent, and Daniel loses live control.</consequence><explanation>Refusing the unusual payment stops the immediate loss. Recovery steps are still needed because remote access was granted.</explanation><warningSigns><sign>Gift cards are not a normal support payment.</sign><sign>The remote program may still be installed.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-cheaper-option" destinationVideoId="discounted-plan" classification="risky">
+						<title>Ask whether there is a cheaper option</title><subtitle>Keep the call and remote session active while negotiating.</subtitle>
+						<feedback heading="A discount keeps the scam moving"><consequence>Daniel quickly reduces the price but adds a same-day deadline.</consequence><explanation>A lower price does not make the diagnosis, caller, or gift-card request legitimate.</explanation><warningSigns><sign>The price changes immediately.</sign><sign>The payment method remains gift cards.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="discounted-plan" stageName="Protection plan" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>Daniel at SecureTech Device Support</caller>
+					<callerStatus>Unverified caller applying payment pressure</callerStatus>
+					<callStatus>Remote session remains connected</callStatus>
+					<heading>A same-day $199 offer</heading>
+					<message>I received supervisor approval for $199, but you must complete the payment today.</message>
+					<transcript>After the learner asks for a cheaper option, Daniel says, "I received supervisor approval for $199, but you must complete the payment today." He still requires gift cards and asks for the card numbers. The quick discount and deadline are pressure tactics, not proof of a real service.</transcript>
+					<media video="placeholder/tech-support-popup/discounted-plan.mp4" poster="placeholder/tech-support-popup/discounted-plan.jpg" captions="placeholder/tech-support-popup/discounted-plan.vtt" available="false" />
+				</artifact>
+				<question>What would you do after Daniel offers the $199 same-day price?</question>
+				<description>This is the final opportunity to stop before gift-card value is lost.</description>
+				<warningSigns><sign>The price drops as soon as you hesitate.</sign><sign>Daniel invents a supervisor approval that cannot be verified.</sign><sign>The same-day gift-card demand remains.</sign></warningSigns>
+				<choices>
+					<choice choiceId="provide-199-gift-cards" destinationVideoId="gift-card-loss" classification="dangerous">
+						<title>Provide the gift-card numbers</title><subtitle>Accept the $199 offer and complete payment today.</subtitle>
+						<feedback heading="The discounted demand still causes loss"><consequence>Daniel redeems the gift-card value, and remote-access risks remain.</consequence><explanation>A discount does not make a gift-card request safe or legitimate.</explanation><warningSigns><sign>The payment is still difficult to reverse.</sign><sign>The deadline discourages checking with anyone else.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="end-call-after-discount" destinationVideoId="remote-recovery-safe" classification="safe">
+						<title>End the call and disconnect</title><subtitle>Reject the discounted offer and begin recovery.</subtitle>
+						<feedback heading="You stopped the payment pressure"><consequence>No gift-card value is sent, and the remote session ends.</consequence><explanation>Ending the call stops Daniel's deadline. Because access was granted, continue with device and account recovery.</explanation><warningSigns><sign>The price and deadline were controlled by Daniel.</sign><sign>The request remained a gift-card payment.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="contact-trusted-after-discount" destinationVideoId="trusted-recovery-safe" classification="safe">
+						<title>Disconnect and contact someone trusted</title><subtitle>Ask for help before making any payment.</subtitle>
+						<feedback heading="A trusted person helps break the pressure"><consequence>The payment stops, the session disconnects, and recovery begins with support you chose.</consequence><explanation>Consulting someone outside the call restores time and independent judgment.</explanation><warningSigns><sign>Daniel wanted payment before anyone else could be consulted.</sign><sign>The remote session and call kept you isolated.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+			<scene videoId="popup-closed-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>The browser warning disappears</heading>
+					<message>Closing the browser or restarting the computer removes the warning. No caller or remote-support program becomes involved.</message>
+					<transcript>The full-screen warning disappears after the browser is closed or the computer is restarted. This demonstrates that a browser pop-up is not proof that the computer is infected or locked. If concerns remain, the learner can contact a trusted technician using independently located information.</transcript>
+					<media video="placeholder/tech-support-popup/popup-closed-safe.mp4" poster="placeholder/tech-support-popup/popup-closed-safe.jpg" captions="placeholder/tech-support-popup/popup-closed-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Pop-up closed safely</label><heading>You stopped the scam before contact or access</heading><explanation>You left the browser warning instead of trusting its buttons or phone number. A pop-up disappearing after a close or restart shows why the message itself was not proof of infection.</explanation></outcome>
+				<warningSigns><sign>The warning tried to prevent closing or restarting.</sign><sign>It supplied its own scan and support routes.</sign></warningSigns>
+			</scene>
+			<scene videoId="trusted-help-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>Trusted help checks the concern independently</heading>
+					<message>The call ends before SecureAssist is installed. A trusted family member or technician confirms that the browser pop-up did not prove an infection.</message>
+					<transcript>The learner ends the call before installing or authorizing SecureAssist Remote Support. A trusted family member or technician is contacted through known information and helps close the pop-up. No remote-access session begins and no payment is made.</transcript>
+					<media video="placeholder/tech-support-popup/trusted-help-safe.mp4" poster="placeholder/tech-support-popup/trusted-help-safe.jpg" captions="placeholder/tech-support-popup/trusted-help-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Access prevented</label><heading>You paused before granting remote control</heading><explanation>You chose help independently and did not let the unexpected caller into the device.</explanation></outcome>
+				<warningSigns><sign>The caller asked for remote access after an unexpected pop-up.</sign><sign>The caller wanted to remain the only source of help.</sign></warningSigns>
+			</scene>
+			<scene videoId="official-support-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>Independent support does not recognize the claim</heading>
+					<message>You end Daniel's call and use an official number you locate yourself. There is no verified SecureTech case or critical infection alert.</message>
+					<transcript>The learner does not accept Daniel's name or employee ID as proof. After ending the call, the learner locates legitimate support through an official website, device documentation, or a known technician. The claimed SecureTech case cannot be verified. SecureAssist is not installed, remote access never begins, and no payment is made.</transcript>
+					<media video="placeholder/tech-support-popup/official-support-safe.mp4" poster="placeholder/tech-support-popup/official-support-safe.jpg" captions="placeholder/tech-support-popup/official-support-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Caller independently checked</label><heading>You did not rely on an invented employee ID</heading><explanation>A professional name, employee ID, or badge number can be invented. Using contact information you locate independently is a stronger verification step.</explanation></outcome>
+				<warningSigns><sign>Daniel supplied his own proof.</sign><sign>He combined the ID with urgency about online banking.</sign></warningSigns>
+			</scene>
+			<scene videoId="remote-recovery-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>Remote access ends and recovery begins</heading>
+					<message>Disconnect SecureAssist, remove the program, secure important accounts from a safe device, and arrange a trusted computer inspection.</message>
+					<transcript>The learner disconnects the SecureAssist session. Because remote access was granted, the next steps are to uninstall SecureAssist Remote Support, change important passwords from a safe device, contact the bank if financial information may have been visible, and ask a trusted technician to inspect the computer. No gift-card payment is made.</transcript>
+					<media video="placeholder/tech-support-popup/remote-recovery-safe.mp4" poster="placeholder/tech-support-popup/remote-recovery-safe.jpg" captions="placeholder/tech-support-popup/remote-recovery-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Session disconnected</label><heading>You stopped further remote control</heading><explanation>Stopping the session limits further exposure. Recovery is still important because the remote-access program was installed and the caller may have seen information.</explanation></outcome>
+				<warningSigns><sign>The remote session followed an unverified support request.</sign><sign>The caller avoided questions or misrepresented ordinary logs.</sign></warningSigns>
+			</scene>
+			<scene videoId="trusted-recovery-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>A trusted person helps with recovery</heading>
+					<message>The session is disconnected. Trusted help assists with removing SecureAssist, securing accounts, and inspecting the device.</message>
+					<transcript>The learner disconnects the remote session and contacts someone trusted. Together they uninstall SecureAssist Remote Support, change important passwords from a safe device, contact the bank if financial information may have been visible, and arrange for a trusted technician to inspect the computer. No gift-card payment is made.</transcript>
+					<media video="placeholder/tech-support-popup/trusted-recovery-safe.mp4" poster="placeholder/tech-support-popup/trusted-recovery-safe.jpg" captions="placeholder/tech-support-popup/trusted-recovery-safe.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Trusted recovery started</label><heading>You ended the isolation and protected the next steps</heading><explanation>Asking for trusted help is a strong response. It makes the technical and account-recovery steps easier to complete.</explanation></outcome>
+				<warningSigns><sign>Daniel tried to keep the learner in one controlled conversation.</sign><sign>He used fear and deadlines to discourage outside advice.</sign></warningSigns>
+			</scene>
+			<scene videoId="gift-card-loss" stageName="Takeaways" stageIndex="8">
+				<artifact type="review">
+					<heading>The gift-card value is redeemed</heading>
+					<message>Daniel redeems the gift-card value. The device and accounts may still be at risk because remote access was granted.</message>
+					<transcript>After the learner provides the gift-card numbers, the scammer redeems the value. The learner was targeted with a frightening pop-up, professional language, remote control, misleading logs, and urgent payment pressure. These tactics can overwhelm anyone; responsibility belongs to the scammer. Contact the gift-card issuer immediately. Contact the financial institution if information may have been exposed. Disconnect and remove SecureAssist Remote Support, change important passwords from a safe device, contact trusted technical assistance, and report the fraud through legitimate channels.</transcript>
+					<media video="placeholder/tech-support-popup/gift-card-loss.mp4" poster="placeholder/tech-support-popup/gift-card-loss.jpg" captions="placeholder/tech-support-popup/gift-card-loss.vtt" available="false" />
+				</artifact>
+				<outcome classification="dangerous"><label>Gift-card value lost</label><heading>The scam caused financial loss and possible device exposure</heading><explanation>This was not the learner's fault. The scammer deliberately combined fear, false authority, remote access, technical-looking screens, and payment pressure. Acting quickly on recovery can still protect the device and accounts.</explanation></outcome>
+				<warningSigns><sign>The support demand required gift cards.</sign><sign>The caller created a same-day deadline.</sign><sign>Remote access was active during the payment pressure.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="security-warning" displayText="A full-screen security warning appears over a familiar website and sounds an alarm.">
+			<options>
+				<option id="popup-closed-safe" choiceId="close-browser" text="Close the browser" />
+				<option id="popup-closed-safe" choiceId="restart-computer" text="Restart the computer" />
+				<option id="fake-scan" choiceId="click-scan-now" text="Click Scan Now" />
+				<option id="support-call" choiceId="call-popup-number" text="Call the number in the warning" />
+			</options>
+		</command>
+		<command type="prompt" videoId="fake-scan" displayText="The page reports 47 threats and says banking passwords may be exposed.">
+			<options>
+				<option id="popup-closed-safe" choiceId="close-after-fake-scan" text="Close the page and seek trusted help" />
+				<option id="support-call" choiceId="call-after-fake-scan" text="Call the displayed number" />
+				<option id="cleanup-failed" choiceId="click-clean-threats" text="Click Clean Threats Now" />
+			</options>
+		</command>
+		<command type="prompt" videoId="cleanup-failed" displayText="The page says automatic removal failed and a certified technician must connect.">
+			<options>
+				<option id="popup-closed-safe" choiceId="close-after-cleanup-failure" text="Close the page" />
+				<option id="support-call" choiceId="call-after-cleanup-failure" text="Call support" />
+			</options>
+		</command>
+		<command type="prompt" videoId="support-call" displayText="Daniel asks you to install and authorize SecureAssist Remote Support.">
+			<options>
+				<option id="remote-connected" choiceId="install-secureassist" text="Install and authorize SecureAssist" />
+				<option id="trusted-help-safe" choiceId="pause-for-trusted-help" text="Stop and ask someone you trust" />
+				<option id="identity-pressure" choiceId="ask-employee-id" text="Ask for Daniel's employee ID" />
+			</options>
+		</command>
+		<command type="prompt" videoId="identity-pressure" displayText="Daniel gives employee ID ST-4821 and says online banking information could already be exposed.">
+			<options>
+				<option id="official-support-safe" choiceId="end-call-find-legitimate-support" text="End the call and locate legitimate support" />
+				<option id="official-support-safe" choiceId="official-number-callback" text="Call back through an official number" />
+				<option id="remote-connected" choiceId="accept-id-install-secureassist" text="Accept the ID and authorize SecureAssist" />
+			</options>
+		</command>
+		<command type="prompt" videoId="remote-connected" displayText="SecureAssist is connected, and Daniel is now controlling the device.">
+			<options>
+				<option id="system-logs" choiceId="allow-remote-check" text="Allow Daniel to continue" />
+				<option id="remote-recovery-safe" choiceId="disconnect-immediately" text="Disconnect immediately" />
+				<option id="access-questioned" choiceId="ask-visible-information" text="Ask what information he can see" />
+			</options>
+		</command>
+		<command type="prompt" videoId="access-questioned" displayText="Daniel avoids explaining his access and redirects attention to the supposed infection.">
+			<options>
+				<option id="system-logs" choiceId="continue-after-evasion" text="Let Daniel continue" />
+				<option id="remote-recovery-safe" choiceId="disconnect-after-evasion" text="Disconnect the session" />
+			</options>
+		</command>
+		<command type="prompt" videoId="system-logs" displayText="Daniel claims routine warnings and errors prove foreign hackers are connected.">
+			<options>
+				<option id="protection-plan" choiceId="believe-fake-diagnosis" text="Believe the diagnosis" />
+				<option id="challenged-diagnosis" choiceId="challenge-log-claim" text="Ask why ordinary warnings prove hackers are connected" />
+				<option id="remote-recovery-safe" choiceId="disconnect-at-system-logs" text="Disconnect the remote session" />
+			</options>
+		</command>
+		<command type="prompt" videoId="challenged-diagnosis" displayText="Daniel cannot identify a virus or compromised file and increases the fear instead.">
+			<options>
+				<option id="remote-recovery-safe" choiceId="end-session-after-challenge" text="End the remote session" />
+				<option id="trusted-recovery-safe" choiceId="contact-trusted-after-challenge" text="Disconnect and contact a trusted person" />
+				<option id="protection-plan" choiceId="give-in-ask-protection" text="Ask how to protect the computer" />
+			</options>
+		</command>
+		<command type="prompt" videoId="protection-plan" displayText="Daniel demands $399 in gift cards for a lifetime protection plan.">
+			<options>
+				<option id="gift-card-loss" choiceId="provide-399-gift-cards" text="Purchase gift cards and provide the numbers" />
+				<option id="remote-recovery-safe" choiceId="refuse-payment-disconnect" text="Refuse the payment and disconnect" />
+				<option id="discounted-plan" choiceId="ask-cheaper-option" text="Ask whether there is a cheaper option" />
+			</options>
+		</command>
+		<command type="prompt" videoId="discounted-plan" displayText="Daniel offers a $199 same-day price but still requires gift cards.">
+			<options>
+				<option id="gift-card-loss" choiceId="provide-199-gift-cards" text="Provide the gift-card numbers" />
+				<option id="remote-recovery-safe" choiceId="end-call-after-discount" text="End the call and disconnect" />
+				<option id="trusted-recovery-safe" choiceId="contact-trusted-after-discount" text="Disconnect and contact someone trusted" />
+			</options>
+		</command>
+		<command type="stop" videoId="popup-closed-safe" displayText="The browser warning disappeared after the browser was closed or the computer was restarted." />
+		<command type="stop" videoId="trusted-help-safe" displayText="The call ended before any remote-access program was installed or authorized." />
+		<command type="stop" videoId="official-support-safe" displayText="Independent support did not verify Daniel, SecureTech, or the claimed infection alert." />
+		<command type="stop" videoId="remote-recovery-safe" displayText="The remote session ended, and device and account recovery steps are ready." />
+		<command type="stop" videoId="trusted-recovery-safe" displayText="The session ended, and a trusted person is helping with recovery." />
+		<command type="stop" videoId="gift-card-loss" displayText="The scammer redeemed the gift-card value, and device and account recovery should begin immediately." />
+	</commands>
+</playlist>
