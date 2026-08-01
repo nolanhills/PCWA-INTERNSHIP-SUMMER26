@@ -15,4 +15,9 @@
     <description>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</description>
     <file>prototypes/tech-support-popup-scenario.xml</file>
   </scenario>
+  <scenario id="package-delivery-text" approximateStages="7" enabled="true">
+    <title>Package Delivery Text Scam</title>
+    <description>Practice responding to an unexpected package text, a fake tracking website, an address-confirmation request, and a small redelivery-fee scam.</description>
+    <file>prototypes/package-delivery-text-scenario.xml</file>
+  </scenario>
 </scenarios>
