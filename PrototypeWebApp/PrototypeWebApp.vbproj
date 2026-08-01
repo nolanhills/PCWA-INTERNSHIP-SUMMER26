@@ -97,6 +97,7 @@
     <Content Include="Content\accessibility-prototype.css" />
     <Content Include="Global.asax" />
     <Content Include="prototypes\bank-alert-scenario.xml" />
+    <Content Include="prototypes\government-social-security-threat-call-scenario.xml" />
     <Content Include="prototypes\grandchild-emergency-scenario.xml" />
     <Content Include="prototypes\package-delivery-text-scenario.xml" />
     <Content Include="prototypes\scenarios.xml" />
