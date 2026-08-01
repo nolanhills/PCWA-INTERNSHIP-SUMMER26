@@ -20,4 +20,9 @@
     <description>Practice responding to an unexpected package text, a fake tracking website, an address-confirmation request, and a small redelivery-fee scam.</description>
     <file>prototypes/package-delivery-text-scenario.xml</file>
   </scenario>
+  <scenario id="government-social-security-threat-call" approximateStages="8" enabled="true">
+    <title>Government / Social Security Threat Call</title>
+    <description>Practice responding to a government impersonation robocall, a fake federal agent, arrest and account-freeze threats, secrecy demands, and unusual payment instructions.</description>
+    <file>prototypes/government-social-security-threat-call-scenario.xml</file>
+  </scenario>
 </scenarios>
