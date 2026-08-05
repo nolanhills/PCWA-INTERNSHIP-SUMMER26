@@ -518,6 +518,7 @@
 
     function renderArtifact(artifact, scene) {
         const type = artifact && artifact.type ? artifact.type : "narration";
+        const supportingVideo = createSupportingVideo(artifact, type);
         let artifactElement;
 
         elements.artifactTypeLabel.textContent = formatArtifactType(type);
@@ -536,7 +537,65 @@
             artifactElement = createNarrationArtifact(artifact);
         }
 
-        elements.artifactContainer.replaceChildren(artifactElement);
+        elements.artifactContainer.replaceChildren.apply(
+            elements.artifactContainer,
+            supportingVideo ? [supportingVideo, artifactElement] : [artifactElement]
+        );
+    }
+
+    function createSupportingVideo(artifact, artifactType) {
+        const isPrimaryMedia = artifactType === "video" || artifactType === "audio";
+
+        if (
+            isPrimaryMedia ||
+            !artifact ||
+            !artifact.mediaAvailable ||
+            !artifact.mediaSrc
+        ) {
+            return null;
+        }
+
+        const panel = createElement("section", "supporting-video-panel");
+        const heading = createElement("h2", "supporting-video-heading", "Supporting video");
+        const video = document.createElement("video");
+
+        video.controls = true;
+        video.preload = "metadata";
+        video.src = artifact.mediaSrc;
+        video.setAttribute(
+            "aria-label",
+            artifact.heading
+                ? `Supporting video for ${artifact.heading}`
+                : "Supporting video for this scenario step"
+        );
+
+        if (artifact.posterSrc) {
+            video.poster = artifact.posterSrc;
+        }
+
+        if (artifact.captionSrc) {
+            const captions = document.createElement("track");
+            captions.kind = "captions";
+            captions.src = artifact.captionSrc;
+            captions.srclang = "en";
+            captions.label = "English captions";
+            captions.default = true;
+            video.append(captions);
+        }
+
+        video.addEventListener("error", () => {
+            panel.remove();
+
+            if (activeMediaElement === video) {
+                activeMediaElement = null;
+                updateSoundControl();
+            }
+        }, { once: true });
+
+        panel.append(heading, video);
+        activeMediaElement = video;
+        updateSoundControl();
+        return panel;
     }
 
     function formatArtifactType(type) {
