@@ -99,6 +99,7 @@
     <Content Include="prototypes\bank-alert-scenario.xml" />
     <Content Include="prototypes\government-social-security-threat-call-scenario.xml" />
     <Content Include="prototypes\grandchild-emergency-scenario.xml" />
+    <Content Include="prototypes\online-friendship-romance-scenario.xml" />
     <Content Include="prototypes\package-delivery-text-scenario.xml" />
     <Content Include="prototypes\scenarios.xml" />
     <Content Include="prototypes\tech-support-popup-scenario.xml" />
