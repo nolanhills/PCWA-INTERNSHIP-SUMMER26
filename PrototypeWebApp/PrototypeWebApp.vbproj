@@ -104,7 +104,6 @@
     <Content Include="prototypes\tech-support-popup-scenario.xml" />
     <Content Include="Scripts\accessibility-simulator.js" />
     <Content Include="Scripts\scenario-engine.js" />
-    <Content Include="Scripts\scenario-presentation.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
