@@ -12,9 +12,8 @@ Routing and presentation are deliberately separate:
 
 - `<commands>` is authoritative for where a choice goes and when a path ends.
 - `<presentation>` describes how a scene, choice, and outcome should appear.
-- `Scripts/scenario-presentation.js` supplies compatibility presentation data
-  when an existing XML field is absent.
-- Generic accessible content is used when neither XML nor the sidecar supplies
+- Catalog information supplies chooser-level values when an XML field is absent.
+- Generic accessible content is used when neither XML nor the catalog supplies
   an optional field.
 
 The presentation layer cannot change a destination. This preserves the original
@@ -91,10 +90,10 @@ feedback. Choice IDs must be unique within one prompt. Legacy options without
 ## Optional Presentation Structure
 
 Place `<presentation>` between `<videos>` and `<commands>`. The parser permits
-individual fields to be omitted; missing fields fall back to
-`scenario-presentation.js` and then to generic accessible copy. New flagship
-scenarios should provide complete learner-facing presentation metadata rather
-than relying on compatibility fallbacks.
+individual fields to be omitted; missing fields fall back to catalog information
+where applicable and then to generic accessible copy. New flagship scenarios
+should provide complete learner-facing presentation metadata rather than relying
+on fallbacks.
 
 ```xml
 <presentation approximateStages="3">
@@ -215,7 +214,7 @@ same scene without sharing feedback:
 
 When `choiceId` is present, XML presentation lookup uses it first. If it is
 absent, destination-based XML metadata remains the backward-compatible fallback,
-followed by `scenario-presentation.js` and the generic defaults.
+followed by the generic defaults.
 
 ## Media, Posters, Captions, and Transcripts
 
@@ -278,9 +277,5 @@ Validate the complete graph before enabling or merging a scenario:
    restart, download, and ending.
 8. Set `enabled="true"` after content, accessibility, and routing review.
 
-`Scripts/scenario-presentation.js` remains an active compatibility dependency:
-the accessible simulator loads its API while resolving scenario metadata. Do not
-remove the script or refactor that dependency as part of ordinary scenario
-authoring. New scenarios should not add sidecar entries when the same information
-can be authored in XML. Removing existing compatibility data or changing the API
-must be a separate, deliberately tested change.
+Keep learner-facing presentation data in the scenario XML so the artifact,
+feedback, review, and recovery experience remains self-contained.

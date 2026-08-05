@@ -242,7 +242,6 @@
         <div id="statusAnnouncement" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
     </form>
 
-    <script src="Scripts/scenario-presentation.js?v=1"></script>
     <script src="Scripts/scenario-engine.js?v=1"></script>
     <script src="Scripts/accessibility-simulator.js?v=1"></script>
 </body>

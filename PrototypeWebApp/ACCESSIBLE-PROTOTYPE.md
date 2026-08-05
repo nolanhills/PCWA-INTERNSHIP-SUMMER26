@@ -25,9 +25,8 @@ settings and Azure portal settings are not required to select the flagship page.
 
 1. IIS serves `AccessiblePrototype.aspx` and its minimal VB.NET code-behind.
 2. The page loads `Content/accessibility-prototype.css`.
-3. The page loads `Scripts/scenario-presentation.js`,
-   `Scripts/scenario-engine.js`, and `Scripts/accessibility-simulator.js`, in
-   that order.
+3. The page loads `Scripts/scenario-engine.js` and
+   `Scripts/accessibility-simulator.js`, in that order.
 4. The simulator asks the engine to fetch `prototypes/scenarios.xml`.
 5. The chooser displays enabled catalog entries.
 6. Selecting a scenario causes the engine to fetch and parse its XML file.
@@ -86,9 +85,8 @@ and future media paths.
 Presentation values are resolved in this order:
 
 1. Presentation metadata in the selected scenario XML
-2. Compatibility metadata from `Scripts/scenario-presentation.js`
-3. Catalog values, where applicable
-4. Generic accessible defaults
+2. Catalog values, where applicable
+3. Generic accessible defaults
 
 The sidecar cannot choose a destination or end a scenario. The XML transition
 graph remains authoritative. Scenes without metadata receive a generic artifact,
@@ -106,15 +104,9 @@ retaining different feedback and classifications.
 - `Scripts/scenario-engine.js` is the only XML interpreter. It loads the catalog,
   parses routing and presentation data, validates transitions, and exposes the
   current scenario state.
-- `Scripts/scenario-presentation.js` provides presentation-only compatibility
-  metadata. It cannot alter routing.
-
-`scenario-presentation.js` remains an active dependency because
-`accessibility-simulator.js` obtains its API directly and calls
-`getScenario(path)` while resolving metadata. Removing the file without first
-changing and testing that API dependency would prevent the chooser from
-rendering. New scenarios should place complete presentation metadata in XML
-rather than adding new sidecar data.
+Scenario XML should contain complete learner-facing presentation metadata. The
+catalog supplies chooser-level title, summary, and stage-count information when
+needed, and generic accessible defaults cover omitted optional fields.
 
 See `SCENARIO-XML-GUIDE.md` for the catalog format, optional presentation schema,
 media conventions, and steps for adding another independent scenario file.

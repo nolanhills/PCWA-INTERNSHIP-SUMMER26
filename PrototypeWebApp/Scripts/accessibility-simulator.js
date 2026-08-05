@@ -5,7 +5,6 @@
     const textSizes = ["small", "medium", "large"];
     const scenarioCatalogPath = "prototypes/scenarios.xml";
     const engine = window.ScamScenarioEngine.create();
-    const presentation = window.ScamScenarioPresentation;
 
     let selectedScenarioPath = null;
     let history = [];
@@ -211,7 +210,6 @@
                 approximateStages: definition.approximateStages
             }
             : {};
-        const fallbackDetails = presentation.getScenario(path) || {};
         const engineState = engine.getState();
         const xmlDetails = engineState.isLoaded && engineState.scenarioPath === path
             ? engine.getPresentation() || {}
@@ -219,10 +217,7 @@
 
         return mergeMetadata(
             xmlDetails,
-            mergeMetadata(
-                fallbackDetails,
-                mergeMetadata(catalogDetails, genericDetails)
-            )
+            mergeMetadata(catalogDetails, genericDetails)
         );
     }
 
