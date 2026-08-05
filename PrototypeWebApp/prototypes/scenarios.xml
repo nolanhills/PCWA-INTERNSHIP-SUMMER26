@@ -35,4 +35,9 @@
     <description>Practice responding to a government impersonation robocall, a fake federal agent, arrest and account-freeze threats, secrecy demands, and unusual payment instructions.</description>
     <file>prototypes/government-social-security-threat-call-scenario.xml</file>
   </scenario>
+  <scenario id="sweepstakes-prize-advance-fee" approximateStages="8" enabled="true">
+    <title>Sweepstakes / Prize Advance-Fee Scam</title>
+    <description>Practice evaluating an unexpected prize notice, verifying the sponsor independently, protecting sensitive information, and refusing upfront fees or unusual payments.</description>
+    <file>prototypes/sweepstakes-prize-advance-fee-scenario.xml</file>
+  </scenario>
 </scenarios>

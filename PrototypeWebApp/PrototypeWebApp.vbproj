@@ -103,6 +103,7 @@
     <Content Include="prototypes\online-friendship-romance-scenario.xml" />
     <Content Include="prototypes\package-delivery-text-scenario.xml" />
     <Content Include="prototypes\scenarios.xml" />
+    <Content Include="prototypes\sweepstakes-prize-advance-fee-scenario.xml" />
     <Content Include="prototypes\tech-support-popup-scenario.xml" />
     <Content Include="Scripts\accessibility-simulator.js" />
     <Content Include="Scripts\scenario-engine.js" />
