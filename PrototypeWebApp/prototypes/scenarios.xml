@@ -25,6 +25,11 @@
     <description>Practice recognizing gradual trust-building, avoided verification, emotional manipulation, secrecy, and an emergency money request from an online-only relationship.</description>
     <file>prototypes/online-friendship-romance-scenario.xml</file>
   </scenario>
+  <scenario id="fake-charity-disaster-donation" approximateStages="8" enabled="true">
+    <title>Fake Charity / Disaster Donation Scam</title>
+    <description>Practice evaluating an emotional disaster appeal, verifying the exact charity independently, reviewing donation and payment requests, and resisting guilt-based pressure.</description>
+    <file>prototypes/fake-charity-disaster-donation-scenario.xml</file>
+  </scenario>
   <scenario id="government-social-security-threat-call" approximateStages="8" enabled="true">
     <title>Government / Social Security Threat Call</title>
     <description>Practice responding to a government impersonation robocall, a fake federal agent, arrest and account-freeze threats, secrecy demands, and unusual payment instructions.</description>
