@@ -1,5 +1,11 @@
 # XML Scenario Authoring Guide
 
+**Project:** PCWA Senior Scam Awareness Simulator
+**Created by:** Nolan Hill
+
+**Purpose:** Documents the catalog, routing, presentation metadata, media
+conventions, and validation requirements for XML-authored scenarios.
+
 ## Architecture
 
 The accessible flagship application loads `prototypes/scenarios.xml` first. Each enabled

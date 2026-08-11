@@ -1,3 +1,11 @@
+# File: .gitignore
+# Project: PCWA Senior Scam Awareness Simulator
+# Created by: Nolan Hill
+# Purpose: Excludes generated build output, restored dependencies, local IDE
+# metadata, logs, caches, and machine-specific deployment files from Git.
+# Maintenance: Keep project source and shared configuration tracked; never add
+# publish credentials or user-specific Visual Studio files.
+
 # Logs
 logs
 *.log
