@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: scenarios.xml
+  Project: PCWA Senior Scam Awareness Simulator
+
+  Purpose:
+  Registers scenarios displayed in the chooser, including stable catalog IDs,
+  titles, descriptions, stage estimates, enabled state, and XML file paths.
+
+  Maintenance Notes:
+  Update this catalog when adding or removing a scenario. Preserve IDs because
+  application code or future reporting may rely on them, and preserve ordering
+  unless the intended chooser order changes.
+-->
 <scenarios>
   <scenario id="bank-alert" approximateStages="5" enabled="true">
     <title>Bank fraud alert</title>

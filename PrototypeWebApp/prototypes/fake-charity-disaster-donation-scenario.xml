@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: fake-charity-disaster-donation-scenario.xml
+  Project: PCWA Senior Scam Awareness Simulator
+
+  Purpose:
+  Defines branching content and presentation metadata for Fake Charity /
+  Disaster Donation Scam.
+
+  Catalog ID: fake-charity-disaster-donation
+
+  Maintenance Notes:
+  Commands are authoritative for routing; presentation scenes match them by
+  videoId. Keep choiceId values stable and unique within each prompt. Supporting
+  media is optional, and scenario-specific JavaScript should not be added.
+-->
 <playlist autostart="true">
 	<videos>
 		<video id="disaster-appeal-post">placeholder/fake-charity-disaster-donation/disaster-appeal-post.mp4</video>
