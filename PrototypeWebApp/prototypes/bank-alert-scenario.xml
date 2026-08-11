@@ -45,7 +45,7 @@
 					<heading>Suspicious charge alert</heading>
 					<message>BANK ALERT: Suspicious charge of $1,248.50 at Target. Reply YES if this was you, NO to speak with Fraud Prevention. Or use bank-secure-review.example to dispute this yourself.</message>
 					<transcript>A text claims there is a suspicious charge of $1,248.50. It asks for a reply or offers a link to dispute the charge.</transcript>
-					<media video="placeholder/tutorial-bank-alert-text.mp4" poster="placeholder/tutorial-bank-alert-text.jpg" captions="placeholder/tutorial-bank-alert-text.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo1.mp4" available="true" />				
 				</artifact>
 				<question>How would you check whether this alert is real?</question>
 				<description>Choose the first action you would take.</description>

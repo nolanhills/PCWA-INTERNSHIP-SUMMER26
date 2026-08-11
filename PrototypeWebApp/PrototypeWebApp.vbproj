@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACCESSIBLE-PROTOTYPE.md" />
+    <Content Include="media\bank-alert\BankFraudVideo1.mp4" />
     <Content Include="SCENARIO-XML-GUIDE.md" />
     <Content Include="AccessiblePrototype.aspx" />
     <Content Include="Content\accessibility-prototype.css" />
@@ -153,6 +154,8 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\AccessiblePrototypePCWAnolan - FTP.pubxml" />
+    <None Include="My Project\PublishProfiles\AccessiblePrototypePCWAnolan - Web Deploy.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -166,6 +169,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
