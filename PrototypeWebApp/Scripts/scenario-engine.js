@@ -1,6 +1,7 @@
 /**
  * File: scenario-engine.js
  * Project: PCWA Senior Scam Awareness Simulator
+ * Created by: Nolan Hill
  *
  * Purpose:
  * Loads the scenario catalog and XML definitions, normalizes routing and

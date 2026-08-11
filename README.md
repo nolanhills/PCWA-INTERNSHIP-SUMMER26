@@ -1,6 +1,7 @@
 # PCWA Scam Awareness Practice
 
 **Project:** PCWA Senior Scam Awareness Simulator
+**Created by:** Nolan Hill
 
 **Purpose:** Introduces the active accessible simulator, repository layout,
 local development workflow, scenario architecture, and deployment safeguards.

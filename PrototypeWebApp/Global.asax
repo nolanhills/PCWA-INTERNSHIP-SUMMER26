@@ -2,6 +2,7 @@
 <%--
   File: Global.asax
   Project: PCWA Senior Scam Awareness Simulator
+  Created by: Nolan Hill
   Purpose: Connects the ASP.NET application lifecycle to Global.asax.vb.
   Maintenance Notes: Application startup behavior belongs in the code-behind.
 --%>

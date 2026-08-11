@@ -1,6 +1,7 @@
 ' -----------------------------------------------------------------------------
 ' File: AccessiblePrototype.aspx.vb
 ' Project: PCWA Senior Scam Awareness Simulator
+' Created by: Nolan Hill
 '
 ' Purpose:
 ' Provides the Web Forms code-behind for the accessible simulator page.

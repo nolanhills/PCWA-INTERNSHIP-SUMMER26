@@ -1,6 +1,7 @@
 # Accessible Scam Awareness Flagship Application
 
 **Project:** PCWA Senior Scam Awareness Simulator
+**Created by:** Nolan Hill
 
 **Purpose:** Explains the active accessible simulator's runtime architecture,
 accessibility behavior, local testing, and deployment safeguards.

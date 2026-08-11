@@ -1,6 +1,7 @@
 /**
  * File: accessibility-simulator.js
  * Project: PCWA Senior Scam Awareness Simulator
+ * Created by: Nolan Hill
  *
  * Purpose:
  * Renders the catalog, scenario introductions, artifacts, decisions, feedback,

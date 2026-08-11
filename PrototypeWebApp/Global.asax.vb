@@ -2,6 +2,7 @@
 ' -----------------------------------------------------------------------------
 ' File: Global.asax.vb
 ' Project: PCWA Senior Scam Awareness Simulator
+' Created by: Nolan Hill
 '
 ' Purpose:
 ' Provides the ASP.NET application-start lifecycle hook.

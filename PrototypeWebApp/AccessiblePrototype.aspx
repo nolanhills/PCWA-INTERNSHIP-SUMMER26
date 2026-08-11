@@ -3,6 +3,7 @@
 <!--
   File: AccessiblePrototype.aspx
   Project: PCWA Senior Scam Awareness Simulator
+  Created by: Nolan Hill
 
   Purpose:
   Defines the accessible simulator page shell and the regions populated by the
