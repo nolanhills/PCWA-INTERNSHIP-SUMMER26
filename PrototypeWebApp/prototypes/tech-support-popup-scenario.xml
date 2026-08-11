@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: tech-support-popup-scenario.xml
+  Project: PCWA Senior Scam Awareness Simulator
+  Created by: Nolan Hill
+
+  Purpose:
+  Defines branching content and presentation metadata for Tech Support Pop-Up Scam.
+
+  Catalog ID: tech-support-popup
+
+  Maintenance Notes:
+  Commands are authoritative for routing; presentation scenes match them by
+  videoId. Keep choiceId values stable and unique within each prompt. Supporting
+  media is optional, and scenario-specific JavaScript should not be added.
+-->
 <playlist autostart="true">
 	<videos>
 		<video id="security-warning">placeholder/tech-support-popup/security-warning.mp4</video>

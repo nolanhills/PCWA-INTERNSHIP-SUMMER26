@@ -1,3 +1,23 @@
+/**
+ * File: accessibility-simulator.js
+ * Project: PCWA Senior Scam Awareness Simulator
+ * Created by: Nolan Hill
+ *
+ * Purpose:
+ * Renders the catalog, scenario introductions, artifacts, decisions, feedback,
+ * outcomes, transcripts, progress, optional media, and accessible controls.
+ *
+ * Responsibilities:
+ * - Translate generic engine state and XML presentation metadata into the DOM
+ * - Preserve keyboard focus and announce meaningful client-side state changes
+ * - Record the learner's decision history for final review
+ * - Keep optional supporting media separate from the primary simulated artifact
+ *
+ * Maintenance Notes:
+ * Keep scenario-specific content in XML. Add new reusable artifact renderers in
+ * renderArtifact and keep their markup aligned with accessibility-prototype.css.
+ */
+
 (function () {
     "use strict";
 
@@ -11,6 +31,8 @@
     let visitedSceneIds = [];
     let activeMediaElement = null;
 
+    // These stable IDs are the contract between AccessiblePrototype.aspx and the
+    // renderer. Caching them once keeps later view transitions focused on state.
     const elements = {
         chooserView: document.getElementById("chooserView"),
         chooserHeading: document.getElementById("chooserHeading"),
@@ -130,6 +152,8 @@
     }
 
     function announce(message) {
+        // Clearing first ensures repeated messages are exposed as new polite
+        // live-region updates instead of being ignored by assistive technology.
         elements.statusAnnouncement.textContent = "";
         window.setTimeout(() => {
             elements.statusAnnouncement.textContent = message;
@@ -137,11 +161,17 @@
     }
 
     function focusElement(element) {
+        // Defer focus until the browser has applied the preceding hidden-state
+        // and DOM updates, so keyboard and screen-reader context stays in sync.
         window.setTimeout(() => {
             element.focus();
         }, 10);
     }
 
+    /**
+     * Recursively applies presentation fallbacks without mutating parsed XML data.
+     * XML values take precedence, followed by catalog values and generic defaults.
+     */
     function mergeMetadata(primary, fallback) {
         if (Array.isArray(primary)) {
             return primary.length
@@ -262,6 +292,10 @@
         focusElement(elements.chooserHeading);
     }
 
+    /**
+     * Builds chooser cards from enabled catalog entries. Scenario XML is loaded
+     * only after a learner selects a card, while catalog data supplies the menu.
+     */
     function renderScenarioChooser() {
         const scenarioCards = window.ScamScenarioEngine
             .getAvailableScenarios()
@@ -294,6 +328,10 @@
         elements.scenarioList.replaceChildren.apply(elements.scenarioList, scenarioCards);
     }
 
+    /**
+     * Loads the selected XML before presenting its introduction so presentation
+     * metadata and catalog fallbacks are ready when the learner begins.
+     */
     async function loadScenarioForIntroduction(path, sourceButton) {
         selectedScenarioPath = path;
         sourceButton.disabled = true;
@@ -393,6 +431,10 @@
         }
     }
 
+    /**
+     * Renders the shared scene shell, then delegates the command-specific action.
+     * Command routing remains in the engine; this function only selects UI states.
+     */
     function renderScene(scene) {
         if (!scene) {
             showError(new Error("The current scene is unavailable."));
@@ -462,6 +504,10 @@
         );
     }
 
+    /**
+     * Renders approximate named-stage progress. Branches and repeated scenes mean
+     * visited-scene count is only a fallback when XML omits a stage index.
+     */
     function renderProgress(details, sceneMetadata, isComplete, commandCount) {
         const stages = details.stages && details.stages.length
             ? details.stages
@@ -511,6 +557,10 @@
         elements.stageList.replaceChildren.apply(elements.stageList, stageItems);
     }
 
+    /**
+     * Selects a generic artifact renderer by XML type. Add reusable artifact
+     * types here; scenario-specific DOM branches do not belong in this module.
+     */
     function renderArtifact(artifact, scene) {
         const type = artifact && artifact.type ? artifact.type : "narration";
         const supportingVideo = createSupportingVideo(artifact, type);
@@ -532,12 +582,19 @@
             artifactElement = createNarrationArtifact(artifact);
         }
 
+        // Supplemental video precedes but never replaces the simulated artifact,
+        // which contains the evidence needed to make the decision.
         elements.artifactContainer.replaceChildren.apply(
             elements.artifactContainer,
             supportingVideo ? [supportingVideo, artifactElement] : [artifactElement]
         );
     }
 
+    /**
+     * Creates supplemental video only when XML explicitly marks it available.
+     * Returning null avoids an empty panel, warning, or layout gap when optional
+     * media is absent; primary video/audio artifacts handle fallback separately.
+     */
     function createSupportingVideo(artifact, artifactType) {
         const isPrimaryMedia = artifactType === "video" || artifactType === "audio";
 
@@ -579,6 +636,8 @@
         }
 
         video.addEventListener("error", () => {
+            // Remove only failed supplemental media. The primary artifact,
+            // transcript, and decision path remain fully available.
             panel.remove();
 
             if (activeMediaElement === video) {
@@ -721,6 +780,11 @@
         return browser;
     }
 
+    /**
+     * Renders media when it is the primary artifact. Unlike supplemental media,
+     * an unavailable primary asset leaves a compact notice that points learners
+     * to the transcript and other simulated evidence.
+     */
     function createMediaArtifact(artifact, scene, type) {
         const wrapper = createElement("article", "media-artifact");
         const heading = createElement(
@@ -758,6 +822,8 @@
             }
 
             media.addEventListener("error", () => {
+                // Replace the failed player without blocking navigation or
+                // leaving the global sound control attached to unusable media.
                 wrapper.replaceChildren(
                     heading,
                     description,
@@ -849,6 +915,10 @@
         return narration;
     }
 
+    /**
+     * Keeps text alternatives available independently of playable media and
+     * hides disclosures and toolbar shortcuts when they have no content.
+     */
     function renderSupport(sceneMetadata) {
         const artifact = sceneMetadata.artifact || {};
         const transcript = artifact.transcript || artifact.message || "";
@@ -866,6 +936,10 @@
         elements.transcriptShortcutButton.hidden = !hasTranscript;
     }
 
+    /**
+     * Creates native button choices in source order. Native controls retain
+     * expected keyboard behavior while feedback focus is managed after selection.
+     */
     function renderDecision(scene, sceneMetadata) {
         const command = scene.command;
 
@@ -920,6 +994,8 @@
     }
 
     function getChoiceMetadata(sceneMetadata, option) {
+        // Stable choiceId is authoritative when choices converge. Destination
+        // lookup remains as a backward-compatible fallback for older XML.
         if (
             option.choiceId &&
             sceneMetadata.choicesById &&
@@ -954,6 +1030,8 @@
                 createElement("span", "selected-label", "Selected choice")
             );
 
+            // Store learner-facing labels and classifications, not DOM nodes, so
+            // final review can be rebuilt after any number of scene transitions.
             history.push({
                 sceneId: scene.id,
                 choiceId: selectedChoice.choiceId,
@@ -1099,6 +1177,10 @@
         }
     }
 
+    /**
+     * Combines the terminal outcome, decision history, and de-duplicated warning
+     * signs into the final review without changing the route that reached it.
+     */
     function renderCompletion(scene, sceneMetadata, scenarioDetails) {
         const outcome = sceneMetadata.outcome || {
             classification: "neutral",
@@ -1199,6 +1281,11 @@
         );
     }
 
+    /**
+     * Replaces active simulator regions with a focused recovery state. Technical
+     * details remain in the engine while learners receive actionable retry,
+     * restart, or menu options when those actions are valid.
+     */
     function showError(error, options) {
         const settings = options || {};
         const message = error && error.message
@@ -1338,6 +1425,10 @@
         }
     }
 
+    /**
+     * Loads the catalog before exposing the chooser so disabled or malformed
+     * entries never produce incomplete scenario cards.
+     */
     async function initializeScenarioCatalog() {
         elements.scenarioList.replaceChildren(
             createElement("p", "scenario-loading", "Loading scenarios...")

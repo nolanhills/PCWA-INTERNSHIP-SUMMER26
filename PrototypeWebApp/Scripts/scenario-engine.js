@@ -1,3 +1,23 @@
+/**
+ * File: scenario-engine.js
+ * Project: PCWA Senior Scam Awareness Simulator
+ * Created by: Nolan Hill
+ *
+ * Purpose:
+ * Loads the scenario catalog and XML definitions, normalizes routing and
+ * presentation data, and manages the active scenario and scene state.
+ *
+ * Responsibilities:
+ * - Fetch and validate catalog and scenario XML
+ * - Relate commands, videos, and presentation scenes by stable videoId values
+ * - Process choices, jumps, downloads, restarts, and terminal routes
+ * - Publish state changes and errors to the presentation layer
+ *
+ * Maintenance Notes:
+ * Keep this engine presentation-agnostic. New scenario behavior belongs in XML;
+ * DOM rendering and accessibility behavior belong in accessibility-simulator.js.
+ */
+
 (function (global) {
     "use strict";
 
@@ -150,6 +170,14 @@
         };
     }
 
+    /**
+     * Normalizes optional learner-facing metadata without changing routing.
+     * Presentation scenes use videoId as the same stable key used by commands;
+     * choiceId distinguishes choices that intentionally share a destination.
+     *
+     * @param {Element} playlist - The scenario playlist element.
+     * @returns {Object|null} Presentation metadata, or null when it is omitted.
+     */
     function parsePresentation(playlist) {
         const presentationElement = directChild(playlist, "presentation");
 
@@ -193,6 +221,9 @@
                                         parsedChoice.metadata;
                                 }
 
+                                // Destination lookup supports older XML. A repeated
+                                // destination is ambiguous, so only choiceId lookup
+                                // can retain distinct metadata for those choices.
                                 if (Object.prototype.hasOwnProperty.call(
                                     choices,
                                     parsedChoice.destinationVideoId
@@ -250,6 +281,14 @@
         };
     }
 
+    /**
+     * Parses the catalog used to populate the chooser before a scenario is loaded.
+     * Catalog order and enabled state are preserved for the renderer.
+     *
+     * @param {string} xmlText - Raw scenarios.xml content.
+     * @returns {Object[]} Normalized catalog entries, including disabled entries.
+     * @throws {ScenarioEngineError} When XML or a required catalog value is invalid.
+     */
     function parseScenarioCatalogXml(xmlText) {
         const parser = new DOMParser();
         const xml = parser.parseFromString(xmlText, "text/xml");
@@ -303,6 +342,13 @@
         return scenarios;
     }
 
+    /**
+     * Fetches the shared catalog and returns enabled chooser entries.
+     *
+     * @param {string} path - Application-relative catalog URL.
+     * @returns {Promise<Object[]>} Enabled scenario definitions.
+     * @throws {ScenarioEngineError} When loading, parsing, or enablement fails.
+     */
     async function loadScenarioCatalog(path) {
         try {
             const response = await fetch(path, { cache: "no-store" });
@@ -337,6 +383,16 @@
         }
     }
 
+    /**
+     * Creates the runtime model from one scenario XML document.
+     * Required attributes and duplicate choice identifiers are rejected here;
+     * destination existence is checked when a transition is attempted.
+     *
+     * @param {string} xmlText - Raw scenario XML content.
+     * @param {string} path - Source path retained in engine state.
+     * @returns {Object} Parsed routing, video, command, and presentation data.
+     * @throws {ScenarioEngineError} When required XML structure is malformed.
+     */
     function parseScenarioXml(xmlText, path) {
         const parser = new DOMParser();
         const xml = parser.parseFromString(xmlText, "text/xml");
@@ -358,6 +414,8 @@
             );
         }
 
+        // Maps preserve string identifiers exactly as authored. A videoId may
+        // identify planned media, a command, or both, and remains the scene key.
         const videos = [];
         const videoById = new Map();
         const videoElements = Array.from(playlist.getElementsByTagName("video"));
@@ -393,6 +451,8 @@
                 options: [],
                 files: []
             };
+            // Duplicate destinations are legal for converging routes, but each
+            // converging option needs choiceId so feedback remains unambiguous.
             const choiceIds = new Set();
             const destinationCounts = new Map();
 
@@ -476,6 +536,12 @@
         };
     }
 
+    /**
+     * Creates an isolated state machine for one active scenario at a time.
+     * Subscribers receive lifecycle events; the renderer owns all DOM effects.
+     *
+     * @returns {Object} Frozen engine API for loading and navigating scenarios.
+     */
     function createScenarioEngine() {
         const listeners = new Set();
         let scenario = null;
@@ -558,6 +624,10 @@
             return scene;
         }
 
+        /**
+         * Resolves a destination against both media and command maps before state
+         * changes, preventing an invalid reference from silently ending a route.
+         */
         function transitionTo(videoId) {
             requireLoadedScenario();
 
@@ -580,6 +650,14 @@
             return emitCurrentScene("scene-changed");
         }
 
+        /**
+         * Fetches and parses a scenario, then positions state at its first command.
+         * State is cleared before loading so a failed request cannot leave stale
+         * scenario data available to the renderer.
+         *
+         * @param {string} path - Application-relative scenario XML URL.
+         * @returns {Promise<Object>} A snapshot of initialized engine state.
+         */
         async function loadScenario(path) {
             scenario = null;
             currentVideoId = null;
@@ -650,6 +728,8 @@
                 );
             }
 
+            // Selection is deliberately two-phase: retain the learner's choice
+            // while feedback is displayed, then transition on Continue.
             pendingChoice = {
                 optionIndex: optionIndex,
                 choiceId: option.choiceId,
@@ -681,6 +761,8 @@
             return transitionTo(pendingChoice.destinationVideoId);
         }
 
+        // Only command types with a single XML-authored destination use the
+        // generic Continue action. Prompts and terminal commands have dedicated UI.
         function continueCommand() {
             requireLoadedScenario();
 
@@ -768,6 +850,8 @@
         });
     }
 
+    // Expose one generic API. Scenario-specific branches here would couple the
+    // engine to content and bypass the catalog/XML authoring model.
     global.ScamScenarioEngine = Object.freeze({
         loadCatalog: loadScenarioCatalog,
         getAvailableScenarios: function () {

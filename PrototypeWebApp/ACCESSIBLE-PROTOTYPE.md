@@ -1,5 +1,11 @@
 # Accessible Scam Awareness Flagship Application
 
+**Project:** PCWA Senior Scam Awareness Simulator
+**Created by:** Nolan Hill
+
+**Purpose:** Explains the active accessible simulator's runtime architecture,
+accessibility behavior, local testing, and deployment safeguards.
+
 ## Purpose
 
 `AccessiblePrototype.aspx` is the official age-inclusive, XML-driven scam
@@ -50,6 +56,12 @@ The catalog currently enables:
 
 - Bank fraud alert — `prototypes/bank-alert-scenario.xml`
 - Grandchild Emergency Call — `prototypes/grandchild-emergency-scenario.xml`
+- Tech Support Pop-Up Scam — `prototypes/tech-support-popup-scenario.xml`
+- Package Delivery Text Scam — `prototypes/package-delivery-text-scenario.xml`
+- Online Friendship / Romance Scam — `prototypes/online-friendship-romance-scenario.xml`
+- Fake Charity / Disaster Donation Scam — `prototypes/fake-charity-disaster-donation-scenario.xml`
+- Government / Social Security Threat Call — `prototypes/government-social-security-threat-call-scenario.xml`
+- Sweepstakes / Prize Advance-Fee Scam — `prototypes/sweepstakes-prize-advance-fee-scenario.xml`
 
 Each scenario is an independent XML file. Future scenarios should be added to
 the catalog only after their content, routing, accessibility, and route coverage
@@ -178,7 +190,7 @@ Before integrating a scenario or publishing the application:
 
 1. Restore NuGet packages.
 2. Run Debug and Release rebuilds and require zero warnings and zero errors.
-3. Run JavaScript syntax checks for all three flagship scripts.
+3. Run JavaScript syntax checks for both flagship scripts.
 4. Validate `prototypes/scenarios.xml` and every enabled scenario XML file.
 5. Traverse every choice, destination, loop, and terminal outcome.
 6. Confirm every enabled command has matching video and presentation data.
@@ -192,13 +204,13 @@ The current flagship has been tested with:
 
 - Debug build: succeeded with zero warnings and zero errors
 - Release build: succeeded with zero warnings and zero errors
-- JavaScript syntax checks: all three scripts passed
+- JavaScript syntax checks: both scripts passed
 - Unsafe HTML search: no `innerHTML`, `outerHTML`, or adjacent HTML insertion
 - Browser console: no errors
-- Bank Alert and Grandchild Emergency loaded through the flagship page
+- All eight enabled scenarios loaded through the flagship page
 - Bank scenario: every prompt option, the call loop, all safe and dangerous
   endings, feedback restart, active restart, completion restart, and scenario menu
-- First-command starts confirmed for both enabled scenarios
+- First-command starts confirmed for all eight enabled scenarios
 - Every current XML destination confirmed to reference an existing video ID
 - Generic presentation fallback and unavailable-media fallback confirmed
 - Transcript shortcut and disclosure confirmed
