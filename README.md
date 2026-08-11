@@ -1,5 +1,10 @@
 # PCWA Scam Awareness Practice
 
+**Project:** PCWA Senior Scam Awareness Simulator
+
+**Purpose:** Introduces the active accessible simulator, repository layout,
+local development workflow, scenario architecture, and deployment safeguards.
+
 ## Project Purpose
 
 This repository contains an interactive learning application that helps older
@@ -22,6 +27,12 @@ removed from this branch. Its historical branch remains available as an archive.
 
 - Bank fraud alert
 - Grandchild Emergency Call
+- Tech Support Pop-Up Scam
+- Package Delivery Text Scam
+- Online Friendship / Romance Scam
+- Fake Charity / Disaster Donation Scam
+- Government / Social Security Threat Call
+- Sweepstakes / Prize Advance-Fee Scam
 
 Future scenarios should use the same catalog-based XML architecture.
 
@@ -64,7 +75,7 @@ by Git.
 3. Select the Debug configuration and build the solution.
 4. Start the application with IIS Express.
 5. Open either `/` or `/AccessiblePrototype.aspx` on the local site.
-6. Confirm the chooser displays Bank fraud alert and Grandchild Emergency Call.
+6. Confirm the chooser displays all eight enabled scenarios.
 
 From a Visual Studio Developer PowerShell prompt, a Debug rebuild can also be
 run from the repository root:
@@ -111,8 +122,8 @@ subscription identifiers, passwords, or publish secrets to the repository.
 
 Before publishing, verify a clean intended branch, restore packages, run the
 Debug and Release builds, and inspect the publish settings. After publishing,
-smoke-test `/`, `/AccessiblePrototype.aspx`, the chooser, and both enabled
-scenarios.
+smoke-test `/`, `/AccessiblePrototype.aspx`, the chooser, and every enabled
+scenario.
 
 ## Branch Strategy
 

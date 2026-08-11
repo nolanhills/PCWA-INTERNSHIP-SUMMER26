@@ -1,4 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: PrototypeWebApp.vbproj
+  Project: PCWA Senior Scam Awareness Simulator
+
+  Purpose:
+  Defines compilation, references, and project content included in the web app.
+
+  Maintenance Notes:
+  Keep every active scenario XML file included so it is published. Do not add
+  secrets, publish credentials, or machine-specific paths.
+-->
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />

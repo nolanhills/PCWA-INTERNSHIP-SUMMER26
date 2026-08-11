@@ -1,5 +1,18 @@
 <%@ Page Language="vb" AutoEventWireup="false" CodeBehind="AccessiblePrototype.aspx.vb" Inherits="PrototypeWebApp.AccessiblePrototype" %>
 
+<!--
+  File: AccessiblePrototype.aspx
+  Project: PCWA Senior Scam Awareness Simulator
+
+  Purpose:
+  Defines the accessible simulator page shell and the regions populated by the
+  shared scenario engine and client-side renderer.
+
+  Maintenance Notes:
+  Scenario content and routing belong in XML. Preserve control IDs, accessibility
+  relationships, stylesheet and script references, and script loading order.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -48,6 +61,8 @@
             </div>
         </header>
 
+        <!-- The renderer shows one primary view at a time and moves focus to the
+             heading that describes the new chooser, introduction, or scene state. -->
         <main id="mainContent" class="main-content" tabindex="-1">
             <section id="chooserView" class="view-section chooser-view" aria-labelledby="chooserHeading">
                 <div class="intro-copy">
@@ -239,6 +254,7 @@
             <p>This learning tool never asks for real passwords, security codes, or financial information.</p>
         </footer>
 
+        <!-- Meaningful client-side state changes are repeated here for screen readers. -->
         <div id="statusAnnouncement" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
     </form>
 

@@ -1,3 +1,23 @@
+/*
+ * File: accessibility-prototype.css
+ * Project: PCWA Senior Scam Awareness Simulator
+ *
+ * Purpose:
+ * Defines the accessible, responsive presentation for the chooser, simulator
+ * artifacts, decisions, feedback, outcomes, support content, and error states.
+ *
+ * Organization:
+ * 1. Design tokens, base styles, and accessibility utilities
+ * 2. Header, common content, chooser, and introduction
+ * 3. Progress, artifacts, decisions, feedback, commands, and completion
+ * 4. Supporting information, errors, and footer
+ * 5. Responsive, reduced-motion, and print rules
+ *
+ * Maintenance Notes:
+ * Keep selectors aligned with AccessiblePrototype.aspx and the DOM constructed
+ * by accessibility-simulator.js.
+ */
+
 /* Design tokens */
 :root {
     --color-page: #f3f5f1;
