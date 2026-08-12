@@ -13,6 +13,12 @@ adult learners recognize scam warning signs, practice safer decisions, and see
 the consequences of risky choices without using real personal or financial
 information.
 
+## Project Context
+
+This application was developed as a school internship project by Nolan, Will,
+Joe, and Ari. Requirements, team tasks, and planning items are tracked in
+Microsoft Planner.
+
 ## Current Product Status
 
 The accessible XML-driven application is the active flagship product. Its entry
