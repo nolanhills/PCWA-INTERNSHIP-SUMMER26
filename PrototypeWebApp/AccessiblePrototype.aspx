@@ -145,7 +145,7 @@
                     </div>
 
                     <section id="artifactSection" class="artifact-section" aria-labelledby="artifactHeading">
-                        <h2 id="artifactHeading" class="visually-hidden">Current simulated example</h2>
+                        <h2 id="artifactHeading" class="visually-hidden" tabindex="-1">Current simulated example</h2>
                         <div id="artifactContainer"></div>
                     </section>
 

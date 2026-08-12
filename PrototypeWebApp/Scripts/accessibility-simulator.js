@@ -54,6 +54,7 @@
         scenarioProgress: document.getElementById("scenarioProgress"),
         stageList: document.getElementById("stageList"),
         artifactSection: document.getElementById("artifactSection"),
+        artifactHeading: document.getElementById("artifactHeading"),
         artifactContainer: document.getElementById("artifactContainer"),
         artifactTypeLabel: document.getElementById("artifactTypeLabel"),
         decisionSection: document.getElementById("decisionSection"),
@@ -160,12 +161,24 @@
         }, 25);
     }
 
-    function focusElement(element) {
-        // Defer focus until the browser has applied the preceding hidden-state
-        // and DOM updates, so keyboard and screen-reader context stays in sync.
-        window.setTimeout(() => {
+    function focusElement(element, options) {
+        const settings = options || {};
+
+        // Wait for the next rendered frame so hidden-state and DOM updates are
+        // applied before focus and viewport position expose the new context.
+        window.requestAnimationFrame(() => {
+            if (settings.scrollTarget) {
+                element.focus({ preventScroll: true });
+                settings.scrollTarget.scrollIntoView({
+                    behavior: "auto",
+                    block: "start",
+                    inline: "nearest"
+                });
+                return;
+            }
+
             element.focus();
-        }, 10);
+        });
     }
 
     /**
@@ -276,7 +289,11 @@
         elements.feedbackPanel.className = "feedback-panel";
     }
 
-    function showChooser() {
+    function showChooser(options) {
+        const settings = options && options.moveFocus === false
+            ? options
+            : { moveFocus: true };
+
         engine.clear();
         selectedScenarioPath = null;
         history = [];
@@ -289,7 +306,10 @@
         elements.soundButton.hidden = true;
         renderScenarioChooser();
         announce("Scenario selection");
-        focusElement(elements.chooserHeading);
+
+        if (settings.moveFocus) {
+            focusElement(elements.chooserHeading);
+        }
     }
 
     /**
@@ -987,7 +1007,9 @@
 
         elements.choiceList.replaceChildren.apply(elements.choiceList, choiceButtons);
         announce(`${elements.sceneHeading.textContent}. ${command.options.length} choices available.`);
-        focusElement(elements.sceneHeading);
+        focusElement(elements.artifactHeading, {
+            scrollTarget: elements.artifactSection
+        });
     }
 
     function getChoiceMetadata(sceneMetadata, option) {
@@ -1162,7 +1184,9 @@
         }
 
         announce(heading);
-        focusElement(elements.commandHeading);
+        focusElement(elements.artifactHeading, {
+            scrollTarget: elements.artifactSection
+        });
     }
 
     function continueCurrentCommand() {
@@ -1433,7 +1457,7 @@
 
         try {
             await window.ScamScenarioEngine.loadCatalog(scenarioCatalogPath);
-            showChooser();
+            showChooser({ moveFocus: false });
         } catch (error) {
             showError(error, {
                 heading: "The scenario list could not be loaded",
