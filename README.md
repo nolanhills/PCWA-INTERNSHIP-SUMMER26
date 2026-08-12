@@ -1,48 +1,148 @@
-# Scam Awareness Simulation
+# PCWA Scam Awareness Practice
 
-This repository is for our school internship project focused on building an interactive scam awareness simulation for seniors.
+**Project:** PCWA Senior Scam Awareness Simulator
+**Created by:** Nolan Hill
 
-## Project Goal
+**Purpose:** Introduces the active accessible simulator, repository layout,
+local development workflow, scenario architecture, and deployment safeguards.
 
-Build a simple, safe, and easy-to-use simulation that helps users practice identifying scam warning signs through different choices, outcomes, and review screens.
+## Project Purpose
 
-The goal is not to collect real personal information. The simulation is for training and awareness only.
+This repository contains an interactive learning application that helps older
+adult learners recognize scam warning signs, practice safer decisions, and see
+the consequences of risky choices without using real personal or financial
+information.
 
-## Team
+## Project Context
 
-- Nolan
-- Will
-- Joe
-- Ari
+This application was developed as a school internship project by Nolan, Will,
+Joe, and Ari. Requirements, team tasks, and planning items are tracked in
+Microsoft Planner.
 
-## Current Status
+## Current Product Status
 
-This project is currently in the prototype and planning stage.
+The accessible XML-driven application is the active flagship product. Its entry
+page is `PrototypeWebApp/AccessiblePrototype.aspx`, and `Web.config` configures
+the site root to open that page automatically.
 
-We are exploring two main prototype directions:
+The accessible XML-driven application is the repository's primary
+implementation. The former modern prototype is retained only through its
+historical branch as an archive.
 
-### XML / ASP.NET Prototype
+## Enabled Scenarios
 
-This prototype tests the idea of loading scam scenarios from structured XML files. The XML defines scenes, video placeholders, commands, choices, and outcomes.
+- Bank fraud alert
+- Grandchild Emergency Call
+- Tech Support Pop-Up Scam
+- Package Delivery Text Scam
+- Online Friendship / Romance Scam
+- Fake Charity / Disaster Donation Scam
+- Government / Social Security Threat Call
+- Sweepstakes / Prize Advance-Fee Scam
 
-This version is useful as a technical reference for branching scenario logic.
+Future scenarios should use the same catalog-based XML architecture.
 
-### Modern HTML/CSS/JavaScript Prototype
+## Technology Stack
 
-This prototype explores a more polished user experience. It uses simulated text messages, phone calls, fake websites, decision choices, feedback, and final review screens.
+- ASP.NET Web Forms with VB.NET
+- .NET Framework 4.7.2
+- Client-side JavaScript and XML scenario files
+- HTML and CSS designed for an accessible, responsive interface
+- NuGet package restore for `Microsoft.CodeDom.Providers.DotNetCompilerPlatform`
+- IIS Express for local hosting
+- Azure App Service for deployment
 
-This version is useful for testing what the final user-facing simulation could feel like.
+## Repository Layout
 
-## Current Focus
+The repository root contains this README and the `PrototypeWebApp` application
+directory. Open `PrototypeWebApp/PrototypeWebApp.sln` in Visual Studio.
 
-- Decide how to handle the video/avatar/media portion of the simulations
-- Compare the XML/ASP.NET prototype and the modern HTML/CSS/JavaScript prototype
-- Continue improving the first scam scenario
-- Plan how future scam scenarios should be structured
-- Keep the simulation senior-friendly, readable, and easy to use
+Important paths:
 
-## Notes
+- `PrototypeWebApp/AccessiblePrototype.aspx` — flagship entry page
+- `PrototypeWebApp/prototypes/scenarios.xml` — scenario catalog
+- `PrototypeWebApp/prototypes/*.xml` — independent scenario definitions
+- `PrototypeWebApp/Scripts/` — generic scenario engine and accessible renderer
+- `PrototypeWebApp/Content/` — flagship stylesheet
+- `PrototypeWebApp/SCENARIO-XML-GUIDE.md` — detailed authoring guide
 
-This project is still in progress and will continue to change as we build.
+## Local Setup Requirements
 
-Requirements, team tasks, and planning items are tracked in Microsoft Planner.
+Install Visual Studio 2022 with the ASP.NET and web development workload and the
+.NET Framework 4.7.2 developer tools. NuGet restore must be available so the
+project-local `packages/` directory can be recreated. That directory, build
+outputs, Visual Studio user settings, and local deployment metadata are ignored
+by Git.
+
+## Build and Run
+
+1. Open `PrototypeWebApp/PrototypeWebApp.sln` in Visual Studio.
+2. Restore NuGet packages if Visual Studio does not restore them automatically.
+3. Select the Debug configuration and build the solution.
+4. Start the application with IIS Express.
+5. Open either `/` or `/AccessiblePrototype.aspx` on the local site.
+6. Confirm the chooser displays all eight enabled scenarios.
+
+From a Visual Studio Developer PowerShell prompt, a Debug rebuild can also be
+run from the repository root:
+
+```powershell
+msbuild PrototypeWebApp\PrototypeWebApp.sln /t:Rebuild /p:Configuration=Debug
+```
+
+The application must be served through IIS Express, IIS, or another web server.
+Opening the ASPX file directly from disk will not support the browser `fetch()`
+requests used to load the catalog and scenario XML.
+
+## XML Scenario Architecture
+
+`PrototypeWebApp/Scripts/accessibility-simulator.js` initializes the interface
+and asks `PrototypeWebApp/Scripts/scenario-engine.js` to load
+`PrototypeWebApp/prototypes/scenarios.xml`. Each enabled catalog entry points to
+one scenario XML file. In that file:
+
+- `<commands>` controls choices, destinations, loops, and terminal stops.
+- `<presentation>` supplies learner-facing artifacts, transcripts, feedback,
+  warning signs, stage information, outcomes, and optional media paths from each
+  scene artifact's `<media>` element.
+
+Routing remains authoritative in `<commands>`. Presentation metadata cannot
+change a destination. Stable `choiceId` values let authors preserve distinct
+feedback even when multiple choices share a destination.
+
+## Missing-Media Behavior
+
+Bank Alert includes eight playable supporting videos. Other current scenarios
+declare planned media as unavailable through each artifact's `<media>` element.
+The application continues to show the simulated artifact, transcript, decisions,
+feedback, and outcome so every scenario remains understandable and completable
+without media.
+
+## Azure Deployment Overview
+
+The Azure target is the App Service named `AccessiblePrototypePCWAnolan`.
+Publishing is a manual Visual Studio workflow and is not triggered by a commit.
+The Visual Studio publish profile is stored locally under
+`PrototypeWebApp/My Project/PublishProfiles/` and is ignored by Git. Azure
+service-dependency metadata is also local and ignored. Never add credentials,
+subscription identifiers, passwords, or publish secrets to the repository.
+
+Before publishing, verify a clean intended branch, restore packages, run the
+Debug and Release builds, and inspect the publish settings. After publishing,
+smoke-test `/`, `/AccessiblePrototype.aspx`, the chooser, and every enabled
+scenario.
+
+## Branch Strategy
+
+- `main` is the stable integration target for the flagship application.
+- The former modern-prototype branch is retained as a historical archive and
+  should not receive flagship changes.
+- New scenarios should be developed on focused branches and reviewed before
+  being integrated into the flagship branch.
+
+## Further Documentation
+
+- See `PrototypeWebApp/ACCESSIBLE-PROTOTYPE.md` for runtime architecture,
+  accessibility behavior, testing, and publishing details.
+- See `PrototypeWebApp/SCENARIO-XML-GUIDE.md` for XML schema, routing,
+  presentation metadata, media declarations, and route-validation guidance.

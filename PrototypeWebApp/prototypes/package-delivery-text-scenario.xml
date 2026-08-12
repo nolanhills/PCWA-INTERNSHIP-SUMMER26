@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: package-delivery-text-scenario.xml
+  Project: PCWA Senior Scam Awareness Simulator
+  Created by: Nolan Hill
+
+  Purpose:
+  Defines branching content and presentation metadata for Package Delivery Text Scam.
+
+  Catalog ID: package-delivery-text
+
+  Maintenance Notes:
+  Commands are authoritative for routing; presentation scenes match them by
+  videoId. Keep choiceId values stable and unique within each prompt. Supporting
+  media is optional, and scenario-specific JavaScript should not be added.
+-->
+<playlist>
+
+	<presentation approximateStages="7">
+		<title>Package Delivery Text Scam</title>
+		<summary>Practice responding to an unexpected package text, a fake tracking website, an address-confirmation request, and a small redelivery-fee scam.</summary>
+		<practiceGoal>Pause when a delivery message supplies urgency and its own link, then verify the package through a merchant or carrier source you locate independently.</practiceGoal>
+		<stages>
+			<stage>Delivery text</stage>
+			<stage>Follow-up pressure</stage>
+			<stage>Fake tracking page</stage>
+			<stage>Address confirmation</stage>
+			<stage>Redelivery fee</stage>
+			<stage>Verification and recovery</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>The message arrives from an unfamiliar number and does not name the recipient, merchant, or package.</sign>
+				<sign>The sender creates a short deadline and supplies the only link for solving the problem.</sign>
+				<sign>The website uses professional-looking branding but an unfamiliar domain and no legitimate tracking history.</sign>
+				<sign>The page collects personal information before revealing a small redelivery fee.</sign>
+				<sign>A countdown pressures the learner to submit complete card and billing details.</sign>
+			</warningSigns>
+			<safestAction>Delete or close the supplied message and link, then check the order through the merchant or carrier app, website, or phone number you locate independently.</safestAction>
+			<realWorldActions>
+				<action>Do not rely on a logo, sender name, or link supplied by an unexpected text.</action>
+				<action>Block and report the message as junk or spam.</action>
+				<action>If personal information was entered, watch for convincing follow-up delivery, banking, or account scams.</action>
+				<action>If ordinary card information was submitted, contact the issuer immediately, lock or replace the card, and review transactions.</action>
+				<action>Change a password only if a real account password was entered.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="delivery-text" stageName="Delivery text" stageIndex="1">
+				<artifact type="text-message">
+					<sender>ParcelRoute Delivery</sender>
+					<senderStatus>Unfamiliar number</senderStatus>
+					<heading>Address confirmation required</heading>
+					<message>ParcelRoute Delivery: We could not deliver your package because the address information is incomplete. Confirm your address within 12 hours or the package will be returned to sender: parcelroute-reschedule.com/8K2M</message>
+					<transcript>An older adult is expecting at least one package this week but does not know the carrier. A text from an unfamiliar number claims that ParcelRoute Delivery could not deliver a package because the address is incomplete. It demands confirmation within 12 hours and supplies parcelroute-reschedule.com/8K2M. The message does not identify the recipient, merchant, package contents, or real tracking history. ParcelRoute Delivery is fictional.</transcript>
+					<media video="placeholder/package-delivery-text/delivery-text.mp4" poster="placeholder/package-delivery-text/delivery-text.jpg" captions="placeholder/package-delivery-text/delivery-text.vtt" available="false" />
+				</artifact>
+				<question>What would you do with this unexpected delivery text?</question>
+				<description>You are expecting a package sometime this week, but you do not know which carrier will deliver it.</description>
+				<warningSigns>
+					<sign>The sender is unfamiliar.</sign>
+					<sign>No merchant, recipient, package, or earlier tracking history is identified.</sign>
+					<sign>The text creates a 12-hour deadline and supplies its own link.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="open-supplied-link" destinationVideoId="fake-tracking-page" classification="risky">
+						<title>Tap the link to identify the package</title>
+						<subtitle>Open the website supplied by the unfamiliar sender.</subtitle>
+						<feedback heading="The sender chose the website for you">
+							<consequence>The link opens a page controlled by whoever sent the text.</consequence>
+							<explanation>Expecting a package makes the story believable, but it does not verify this sender or link. A safer check begins in an app or website you locate yourself.</explanation>
+							<warningSigns><sign>The text provides both the problem and the only route to fix it.</sign><sign>The message gives no specific package details.</sign></warningSigns>
+						</feedback>
+					</choice>
+					<choice choiceId="delete-and-check-officially" destinationVideoId="official-verification-no-exposure" classification="safe">
+						<title>Delete the text and check officially</title>
+						<subtitle>Open the merchant or carrier app or website independently.</subtitle>
+						<feedback heading="You chose a source the sender does not control">
+							<consequence>The suspicious link stays closed and no information is shared.</consequence>
+							<explanation>Official tracking found through a saved app, typed address, or independently located phone number can confirm the real delivery status.</explanation>
+							<warningSigns><sign>The original text omitted information that real order tracking can provide.</sign><sign>The deadline tried to rush you away from independent checking.</sign></warningSigns>
+						</feedback>
+					</choice>
+					<choice choiceId="reply-stop" destinationVideoId="stop-follow-up" classification="risky">
+						<title>Reply “STOP”</title>
+						<subtitle>Ask the unfamiliar sender to stop texting.</subtitle>
+						<feedback heading="A reply does not verify or resolve the claim">
+							<consequence>The sender knows the number is active and can send another urgent message.</consequence>
+							<explanation>“STOP” can be useful with legitimate subscribed messages, but it does not prove this sender is a carrier or fix a supposed delivery problem.</explanation>
+							<warningSigns><sign>The sender has not shown that this is a legitimate subscription.</sign><sign>The same unknown number still controls the conversation.</sign></warningSigns>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="stop-follow-up" stageName="Follow-up pressure" stageIndex="2">
+				<artifact type="text-message">
+					<sender>ParcelRoute Delivery</sender>
+					<senderStatus>Unfamiliar number; identity not verified</senderStatus>
+					<heading>Unsubscribe request received</heading>
+					<message>Unsubscribe request received. Your delivery still requires action. Package will be returned today unless the address is confirmed: parcelroute-reschedule.com/8K2M</message>
+					<transcript>After the learner replies STOP, another message says the unsubscribe request was received but the delivery still requires action. It claims the package will be returned today unless the address is confirmed through the same link. The reply did not verify the sender or resolve any real delivery issue.</transcript>
+					<media video="placeholder/package-delivery-text/stop-follow-up.mp4" poster="placeholder/package-delivery-text/stop-follow-up.jpg" captions="placeholder/package-delivery-text/stop-follow-up.vtt" available="false" />
+				</artifact>
+				<question>How would you respond to this increased pressure?</question>
+				<description>The supposed deadline has changed from 12 hours to “today,” but no package details have appeared.</description>
+				<warningSigns><sign>The sender continues after the STOP reply.</sign><sign>The deadline becomes more urgent without evidence.</sign><sign>The same link is repeated.</sign></warningSigns>
+				<choices>
+					<choice choiceId="open-link-after-stop" destinationVideoId="fake-tracking-page" classification="risky">
+						<title>Tap the link before the package is returned</title>
+						<subtitle>Act on the new deadline.</subtitle>
+						<feedback heading="Escalating urgency is meant to overcome caution"><consequence>The sender's repeated link opens the same unverified website.</consequence><explanation>A changed deadline is not proof. The sender still has not identified a real shipment.</explanation><warningSigns><sign>The urgency increased after you tried to stop.</sign><sign>No official tracking history was provided.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="block-report-and-verify" destinationVideoId="scam-reported-no-info" classification="safe">
+						<title>Block and report, then check official tracking</title>
+						<subtitle>End contact and use a source you locate independently.</subtitle>
+						<feedback heading="You ended the sender's pressure"><consequence>The sender is blocked, the text is reported, and no personal information is entered.</consequence><explanation>Independent tracking can answer the delivery question without relying on the suspicious sender.</explanation><warningSigns><sign>The sender ignored the meaning of your STOP reply.</sign><sign>The sender continued to demand use of its own link.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-which-package" destinationVideoId="package-details-unavailable" classification="risky">
+						<title>Reply and ask which package it is</title>
+						<subtitle>Keep communicating with the sender for more details.</subtitle>
+						<feedback heading="The sender controls any answer it gives"><consequence>The conversation continues and the sender receives another sign that the number is active.</consequence><explanation>Details supplied by the same unverified sender cannot independently prove a shipment exists.</explanation><warningSigns><sign>The original text omitted the merchant and package.</sign><sign>The sender is being asked to provide its own proof.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="package-details-unavailable" stageName="Follow-up pressure" stageIndex="2">
+				<artifact type="text-message">
+					<sender>ParcelRoute Delivery</sender>
+					<senderStatus>Unfamiliar number; identity not verified</senderStatus>
+					<heading>Shipment details unavailable</heading>
+					<message>Shipment details are unavailable until the delivery address is confirmed. Use the secure link to continue.</message>
+					<transcript>The learner asks which package is being delivered. The sender refuses to identify it and says shipment details are unavailable until the delivery address is confirmed through the supplied “secure” link. Calling a link secure does not make it legitimate.</transcript>
+					<media video="placeholder/package-delivery-text/package-details-unavailable.mp4" poster="placeholder/package-delivery-text/package-details-unavailable.jpg" captions="placeholder/package-delivery-text/package-details-unavailable.vtt" available="false" />
+				</artifact>
+				<question>What would you do after the sender avoids the question?</question>
+				<description>You now have a clear opportunity to stop and verify the package independently.</description>
+				<warningSigns><sign>The sender withholds basic shipment details.</sign><sign>The sender labels its own link “secure” without proof.</sign></warningSigns>
+				<choices>
+					<choice choiceId="stop-and-verify-after-evasion" destinationVideoId="official-verification-no-exposure" classification="safe">
+						<title>Stop replying and verify officially</title><subtitle>Use the merchant account, carrier app, or an independently located phone number.</subtitle>
+						<feedback heading="The refusal is a reason to change channels"><consequence>The conversation ends before the sender receives personal information.</consequence><explanation>Real order history can identify the merchant, status, and tracking events without requiring an unfamiliar text link.</explanation><warningSigns><sign>The sender could not name the shipment.</sign><sign>The sender kept directing you to one link.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="open-link-after-evasion" destinationVideoId="fake-tracking-page" classification="risky">
+						<title>Open the supplied link</title><subtitle>Try the website after the sender refuses to provide details.</subtitle>
+						<feedback heading="The unanswered question remains important"><consequence>The unverified sender directs you to a website it controls.</consequence><explanation>A secure-looking page cannot replace independently verified tracking information.</explanation><warningSigns><sign>The sender requires personal information before identifying the package.</sign><sign>The only path offered is the sender's own link.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="fake-tracking-page" stageName="Fake tracking page" stageIndex="3">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain>
+					<heading>Delivery Attempt Unsuccessful</heading>
+					<message>We could not confirm your address. Update your information now to prevent the package from being returned. Tracking reference: PR-8K2M-DELIVERY. ParcelRoute Delivery is fictional, and this page provides no merchant, recipient, or legitimate tracking history.</message>
+					<transcript>A professional-looking fictional ParcelRoute page appears at parcelroute-reschedule.com. It shows a package icon, vague tracking reference PR-8K2M-DELIVERY, and the heading “Delivery Attempt Unsuccessful.” It says the address could not be confirmed and must be updated now. It does not identify a real merchant, recipient, package, or tracking history.</transcript>
+					<media video="placeholder/package-delivery-text/fake-tracking-page.mp4" poster="placeholder/package-delivery-text/fake-tracking-page.jpg" captions="placeholder/package-delivery-text/fake-tracking-page.vtt" available="false" />
+				</artifact>
+				<question>What matters most when judging this professional-looking page?</question>
+				<description>Logos, package icons, and polished layouts can be copied. The actual domain and independently verified tracking history matter more.</description>
+				<warningSigns><sign>The domain is parcelroute-reschedule.com, not a site independently located by the learner.</sign><sign>The tracking reference is vague and has no prior events.</sign><sign>No merchant or intended recipient is named.</sign></warningSigns>
+				<choices>
+					<choice choiceId="trust-professional-page" destinationVideoId="address-confirmation" classification="risky">
+						<title>Trust the professional appearance and continue</title><subtitle>Assume the branding makes the page legitimate.</subtitle>
+						<feedback heading="Professional design can be copied"><consequence>The page advances to a form that requests personal information.</consequence><explanation>Logos and polished layouts are not proof of ownership. Check the actual domain and compare it with tracking found independently.</explanation><warningSigns><sign>The page came from an unexpected text.</sign><sign>The site has no verifiable tracking history.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="inspect-domain-and-close" destinationVideoId="suspicious-domain-verification" classification="safe">
+						<title>Inspect the address and close the page</title><subtitle>Notice the unusual domain and verify elsewhere.</subtitle>
+						<feedback heading="You looked past the copied design"><consequence>The page closes before any information is entered.</consequence><explanation>The domain and independently verified tracking details are stronger evidence than branding.</explanation><warningSigns><sign>The domain was supplied by the suspicious text.</sign><sign>The page cannot identify a real order.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="return-to-sender" destinationVideoId="sender-repeats-link" classification="risky">
+						<title>Return to the text and keep asking</title><subtitle>Continue communicating with the sender instead of using the page.</subtitle>
+						<feedback heading="The sender still cannot provide independent proof"><consequence>The sender repeats the same instruction and pressure.</consequence><explanation>Returning to the text avoids the form for the moment, but the same unverified sender still controls the conversation.</explanation><warningSigns><sign>The message and website support each other's claims but come from the same source.</sign><sign>No independent tracking source has been checked.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="sender-repeats-link" stageName="Follow-up pressure" stageIndex="2">
+				<artifact type="text-message">
+					<sender>ParcelRoute Delivery</sender><senderStatus>Unfamiliar number; identity not verified</senderStatus>
+					<heading>Address confirmation is the only available step</heading>
+					<message>We cannot release shipment details by text. Complete address confirmation at parcelroute-reschedule.com/8K2M now to prevent return to sender.</message>
+					<transcript>After the learner returns from the fake page and keeps communicating, the sender again refuses to provide shipment details and repeats the same link. The sender's repeated claim still does not verify a package or carrier.</transcript>
+					<media video="placeholder/package-delivery-text/sender-repeats-link.mp4" poster="placeholder/package-delivery-text/sender-repeats-link.jpg" captions="placeholder/package-delivery-text/sender-repeats-link.vtt" available="false" />
+				</artifact>
+				<question>Would you end the conversation or return to the form?</question>
+				<description>This is the final reply branch. Both choices move forward, so the sender cannot trap the learner in an endless exchange.</description>
+				<warningSigns><sign>The sender again avoids the package question.</sign><sign>The same link is presented as the only option.</sign></warningSigns>
+				<choices>
+					<choice choiceId="end-conversation-and-verify" destinationVideoId="official-verification-no-exposure" classification="safe">
+						<title>End the conversation and verify independently</title><subtitle>Stop replying and check the real order source.</subtitle>
+						<feedback heading="You stopped the repeated-pressure branch"><consequence>No information is submitted to the sender or website.</consequence><explanation>Independent verification answers the delivery question without another reply.</explanation><warningSigns><sign>The sender had repeated its demand instead of providing evidence.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="continue-to-address-form" destinationVideoId="address-confirmation" classification="risky">
+						<title>Return to the website and continue</title><subtitle>Open the address-confirmation form.</subtitle>
+						<feedback heading="The repeated request leads back to data collection"><consequence>The fake site now asks for identifying information.</consequence><explanation>Repeated pressure does not make an unverified form safer.</explanation><warningSigns><sign>The sender requires personal data before identifying the shipment.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="address-confirmation" stageName="Address confirmation" stageIndex="4">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain>
+					<heading>Confirm that you are the intended recipient</heading>
+					<message>This information is required to verify that you are the intended recipient.</message>
+					<requestedInformation><item>Full name</item><item>Street address</item><item>Phone number</item><item>Email address</item></requestedInformation>
+					<transcript>The fake ParcelRoute page at parcelroute-reschedule.com displays an address-confirmation form. It requests full name, street address, phone number, and email address, claiming the information is required to verify the intended recipient. No payment request has appeared yet.</transcript>
+					<media video="placeholder/package-delivery-text/address-confirmation.mp4" poster="placeholder/package-delivery-text/address-confirmation.jpg" captions="placeholder/package-delivery-text/address-confirmation.vtt" available="false" />
+				</artifact>
+				<question>How much information would you give this unverified page?</question>
+				<description>The form appears before any redelivery-fee request. Even partial information can be useful to a scammer.</description>
+				<warningSigns><sign>The page asks for several personal details before identifying the package.</sign><sign>The form is on the same unfamiliar domain supplied by the text.</sign></warningSigns>
+				<choices>
+					<choice choiceId="submit-all-personal-details" destinationVideoId="redelivery-fee-full-info" classification="dangerous">
+						<title>Enter all requested information</title><subtitle>Submit name, address, phone number, and email address.</subtitle>
+						<feedback heading="The site now has a useful personal profile"><consequence>The scammer can connect multiple personal details and use them in later scams.</consequence><explanation>Personal information can make future delivery, banking, or account messages sound more convincing.</explanation><warningSigns><sign>The package is still unidentified.</sign><sign>The page requested more information than needed to view ordinary tracking.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="submit-street-address-only" destinationVideoId="redelivery-fee-address-only" classification="risky">
+						<title>Enter only the street address</title><subtitle>Share less because an address seems less sensitive.</subtitle>
+						<feedback heading="Partial information still has value"><consequence>The scammer receives a real address that can be paired with the active phone number.</consequence><explanation>An address can help later scams feel specific and believable, even when no other fields are completed.</explanation><warningSigns><sign>The sender already knows the phone number is active.</sign><sign>The address is being entered on an unverified site.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="close-before-submitting" destinationVideoId="official-verification-no-exposure" classification="safe">
+						<title>Close the page and check the real order</title><subtitle>Use an official source without submitting the form.</subtitle>
+						<feedback heading="You stopped before sharing information"><consequence>The fake site receives no name, address, phone number, or email address.</consequence><explanation>Closing the form and verifying independently prevents the scam from progressing.</explanation><warningSigns><sign>The site asked for personal data before proving a package existed.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="redelivery-fee-full-info" stageName="Redelivery fee" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain><heading>Address confirmed</heading>
+					<message>A redelivery fee is required before the package can be released. Redelivery fee: $1.95. Complete payment within 10 minutes to prevent return to sender.</message>
+					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
+					<transcript>Only after the learner submitted full personal information does the fake page say “Address confirmed” and reveal a $1.95 redelivery fee. A 10-minute countdown appears. The payment form requests name on card, full card number, expiration date, security code, and billing ZIP code. The small amount is meant to feel harmless; the scammer's real goal is card and identity information.</transcript>
+					<media video="placeholder/package-delivery-text/redelivery-fee-full-info.mp4" poster="placeholder/package-delivery-text/redelivery-fee-full-info.jpg" captions="placeholder/package-delivery-text/redelivery-fee-full-info.vtt" available="false" />
+				</artifact>
+				<question>What would you do when the small fee finally appears?</question>
+				<description>The site already received name, address, phone number, and email address. The $1.95 amount and countdown are tactics.</description>
+				<warningSigns><sign>The payment request appeared only after personal information was collected.</sign><sign>A tiny fee requires complete card security details.</sign><sign>A countdown creates artificial urgency.</sign></warningSigns>
+				<choices>
+					<choice choiceId="pay-regular-card-after-full-info" destinationVideoId="card-compromise-recovery" classification="dangerous">
+						<title>Pay $1.95 with a regular card</title><subtitle>Submit the full card and billing details.</subtitle>
+						<feedback heading="The small charge hides a larger theft risk"><consequence>The fraudulent site receives ordinary card, security-code, billing, and personal information.</consequence><explanation>The amount is bait. Complete card details can be used for charges unrelated to $1.95.</explanation><warningSigns><sign>The site asks for every detail needed to use the card.</sign><sign>The fee is tied to a countdown.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="consider-virtual-card-after-full-info" destinationVideoId="virtual-card-full-info" classification="risky">
+						<title>Consider a virtual or temporary card</title><subtitle>Try to limit financial exposure because the amount is small.</subtitle>
+						<feedback heading="A security tool does not verify the website"><consequence>The fraudulent page still requests personal, billing, phone, and card-security information.</consequence><explanation>A virtual card may reduce some financial exposure, but it cannot make this site legitimate or recover information already entered.</explanation><warningSigns><sign>The website itself remains unverified.</sign><sign>Personal information has already been submitted.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="report-after-full-info" destinationVideoId="reported-full-info-recovery" classification="safe">
+						<title>Close the page and report the text</title><subtitle>Stop before entering ordinary card information.</subtitle>
+						<feedback heading="You stopped the payment theft"><consequence>No ordinary card information is submitted, although personal information was already exposed.</consequence><explanation>Reporting and blocking stop this exchange. Recovery now focuses on cautious monitoring for convincing follow-up scams.</explanation><warningSigns><sign>The $1.95 fee was revealed after data collection.</sign><sign>The countdown tried to prevent reflection.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="redelivery-fee-address-only" stageName="Redelivery fee" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain><heading>Address confirmed</heading>
+					<message>A redelivery fee is required before the package can be released. Redelivery fee: $1.95. Complete payment within 10 minutes to prevent return to sender.</message>
+					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
+					<transcript>After the learner submitted only a street address, the fake page says “Address confirmed” and reveals a $1.95 fee with a 10-minute countdown. It requests complete card details. Even though less personal information was entered, the address is still exposed and the payment request remains fraudulent.</transcript>
+					<media video="placeholder/package-delivery-text/redelivery-fee-address-only.mp4" poster="placeholder/package-delivery-text/redelivery-fee-address-only.jpg" captions="placeholder/package-delivery-text/redelivery-fee-address-only.vtt" available="false" />
+				</artifact>
+				<question>What would you do when the $1.95 fee appears?</question>
+				<description>The site has the street address and active phone number. The tiny amount is designed to feel harmless.</description>
+				<warningSigns><sign>The fee appears after the address was collected.</sign><sign>The page requests complete card security information for $1.95.</sign><sign>The timer tries to rush payment.</sign></warningSigns>
+				<choices>
+					<choice choiceId="pay-regular-card-after-address" destinationVideoId="card-compromise-recovery" classification="dangerous">
+						<title>Pay $1.95 with a regular card</title><subtitle>Submit all requested card details.</subtitle>
+						<feedback heading="A tiny fee can expose the entire card"><consequence>The fraudulent page receives enough information to attempt other charges.</consequence><explanation>The scammer is seeking reusable card and billing information, not a legitimate $1.95 delivery fee.</explanation><warningSigns><sign>A small payment asks for complete card credentials.</sign><sign>No official tracking record supports the fee.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="consider-virtual-card-after-address" destinationVideoId="virtual-card-address-only" classification="risky">
+						<title>Consider a virtual or temporary card</title><subtitle>Try to reduce the risk of a small payment.</subtitle>
+						<feedback heading="Limited card exposure is not website verification"><consequence>The page still seeks personal and billing details beyond a temporary card number.</consequence><explanation>A virtual card may limit some charges, but it does not make a fraudulent page legitimate or protect the address already entered.</explanation><warningSigns><sign>The site remains the unfamiliar domain from the text.</sign><sign>The address has already been submitted.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="report-after-address" destinationVideoId="reported-address-recovery" classification="safe">
+						<title>Close the page and report the text</title><subtitle>Stop before entering card information.</subtitle>
+						<feedback heading="You stopped before card compromise"><consequence>No card information is submitted, but the street address may be used in later scams.</consequence><explanation>Blocking and reporting end this contact. Be cautious if later messages combine the address with delivery or account claims.</explanation><warningSigns><sign>The page escalated from address collection to payment.</sign><sign>The tiny amount concealed a request for complete card details.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="virtual-card-full-info" stageName="Redelivery fee" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain><heading>Virtual cards accepted</heading>
+					<message>To continue, enter the virtual card plus your full name, billing address, phone number, expiration date, and card security information.</message>
+					<requestedInformation><item>Virtual card number</item><item>Full name</item><item>Billing address</item><item>Phone number</item><item>Expiration date</item><item>Security code</item></requestedInformation>
+					<transcript>The fake page accepts a virtual card but still requests a virtual card number, full name, billing address, phone number, expiration date, and security code. A virtual card may limit some financial exposure, but the fraudulent site remains illegitimate and already has the learner's name, address, phone number, and email address.</transcript>
+					<media video="placeholder/package-delivery-text/virtual-card-full-info.mp4" poster="placeholder/package-delivery-text/virtual-card-full-info.jpg" captions="placeholder/package-delivery-text/virtual-card-full-info.vtt" available="false" />
+				</artifact>
+				<question>What would you do before sending virtual-card and personal information?</question>
+				<description>The security feature can reduce some card exposure, but it cannot verify ParcelRoute or protect information already entered.</description>
+				<warningSigns><sign>The fraudulent site still asks for identity and billing details.</sign><sign>The same unverified domain controls the payment form.</sign></warningSigns>
+				<choices>
+					<choice choiceId="submit-virtual-card-after-full-info" destinationVideoId="virtual-card-information-recovery" classification="dangerous">
+						<title>Submit the virtual-card information</title><subtitle>Send the card and requested personal details.</subtitle>
+						<feedback heading="The site still receives valuable information"><consequence>The scammer receives payment credentials and a detailed identity profile.</consequence><explanation>A virtual card may limit charge amount or duration, but it does not prevent information theft.</explanation><warningSigns><sign>The page requests personal and security information together.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="contact-carrier-after-full-info" destinationVideoId="official-full-info-recovery" classification="safe">
+						<title>Close the page and contact the carrier independently</title><subtitle>Locate an official app, website, or phone number yourself.</subtitle>
+						<feedback heading="You stopped before sending payment information"><consequence>The card details stay private, while recovery addresses the personal information already entered.</consequence><explanation>Independent carrier contact can confirm the delivery and separate verification from recovery.</explanation><warningSigns><sign>The virtual-card form still belonged to the suspicious domain.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="check-merchant-after-full-info" destinationVideoId="official-full-info-recovery" classification="safe">
+						<title>Return to the original merchant account</title><subtitle>Check the real order where it was placed.</subtitle>
+						<feedback heading="The merchant account provides real order history"><consequence>No payment information is sent to the fraudulent page.</consequence><explanation>The original order source can show whether any address change or fee is actually required.</explanation><warningSigns><sign>The fake page never named the merchant.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="virtual-card-address-only" stageName="Redelivery fee" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>parcelroute-reschedule.com</domain><heading>Virtual cards accepted</heading>
+					<message>To continue, enter the virtual card plus your full name, billing address, phone number, expiration date, and card security information.</message>
+					<requestedInformation><item>Virtual card number</item><item>Full name</item><item>Billing address</item><item>Phone number</item><item>Expiration date</item><item>Security code</item></requestedInformation>
+					<transcript>The fake page says virtual cards are accepted, then requests a virtual card number, full name, billing address, phone number, expiration date, and security code. Only the street address has been entered so far. Submitting this form would reveal much more information.</transcript>
+					<media video="placeholder/package-delivery-text/virtual-card-address-only.mp4" poster="placeholder/package-delivery-text/virtual-card-address-only.jpg" captions="placeholder/package-delivery-text/virtual-card-address-only.vtt" available="false" />
+				</artifact>
+				<question>Would you submit more information or verify the real order?</question>
+				<description>A virtual card may reduce some financial exposure, but it does not make the website legitimate.</description>
+				<warningSigns><sign>The page expands its request from one address to a full identity and payment profile.</sign><sign>The domain remains unverified.</sign></warningSigns>
+				<choices>
+					<choice choiceId="submit-virtual-card-after-address" destinationVideoId="virtual-card-information-recovery" classification="dangerous">
+						<title>Submit the virtual-card information</title><subtitle>Provide the requested identity, billing, and security details.</subtitle>
+						<feedback heading="The virtual card does not prevent information theft"><consequence>The site receives substantially more information than the street address already entered.</consequence><explanation>The tool may limit charges, but the fraudulent site can still misuse personal and payment details.</explanation><warningSigns><sign>The site requests identity and card-security information together.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="contact-carrier-after-address" destinationVideoId="official-address-recovery" classification="safe">
+						<title>Close the page and contact the carrier independently</title><subtitle>Use an official source you find yourself.</subtitle>
+						<feedback heading="You limited the exposure"><consequence>No card information or additional personal details are submitted.</consequence><explanation>Independent tracking can resolve the package question while recovery focuses on the address already shared.</explanation><warningSigns><sign>The payment page still lacked legitimate tracking proof.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="check-merchant-after-address" destinationVideoId="official-address-recovery" classification="safe">
+						<title>Return to the original merchant account</title><subtitle>Review the order where it was placed.</subtitle>
+						<feedback heading="You switched to real order history"><consequence>The fake page receives no more information.</consequence><explanation>The merchant account can show the real package status and whether the address is correct.</explanation><warningSigns><sign>The fake page never identified the merchant.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="official-verification-no-exposure" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Official tracking found independently</heading><message>Package is still in transit. No address correction or redelivery fee is required.</message><transcript>The learner opens the original merchant account, official carrier app or website, or uses an independently located phone number. The real tracking information says, “Package is still in transit. No address correction or redelivery fee is required.” No information was entered on the fraudulent site.</transcript><media video="placeholder/package-delivery-text/official-verification-no-exposure.mp4" poster="placeholder/package-delivery-text/official-verification-no-exposure.jpg" captions="placeholder/package-delivery-text/official-verification-no-exposure.vtt" available="false" /></artifact>
+				<description>The independently located source confirms that the original text and website were fraudulent.</description>
+				<warningSigns><sign>The official status conflicts with the text's urgent claim.</sign><sign>The real tracking history requires no correction or fee.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="suspicious-domain-verification" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>The unusual domain was a useful warning</heading><message>You close parcelroute-reschedule.com and check the order through an official source. Package is still in transit. No address correction or redelivery fee is required.</message><transcript>The learner notices that parcelroute-reschedule.com was supplied by the unexpected text, closes the page without entering information, and verifies through an official source. Real tracking shows the package is still in transit and no correction or fee is required.</transcript><media video="placeholder/package-delivery-text/suspicious-domain-verification.mp4" poster="placeholder/package-delivery-text/suspicious-domain-verification.jpg" captions="placeholder/package-delivery-text/suspicious-domain-verification.vtt" available="false" /></artifact>
+				<description>The professional-looking design was copied; the domain and official tracking told the truth.</description>
+				<warningSigns><sign>The page's domain did not come from an independently located source.</sign><sign>The page had no legitimate tracking history.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="scam-reported-no-info" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Sender blocked and text reported</heading><message>No information was entered. Official tracking says: Package is still in transit. No address correction or redelivery fee is required.</message><transcript>The learner blocks the sender, reports the text as junk or spam, and checks official tracking independently. Because no information was entered, the scam was prevented from progressing. The real package remains in transit.</transcript><media video="placeholder/package-delivery-text/scam-reported-no-info.mp4" poster="placeholder/package-delivery-text/scam-reported-no-info.jpg" captions="placeholder/package-delivery-text/scam-reported-no-info.vtt" available="false" /></artifact>
+				<description>Blocking and reporting reduces further contact; official verification resolves the package question.</description>
+				<warningSigns><sign>The sender kept pressuring after a STOP reply.</sign><sign>The official status did not match the message.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="reported-full-info-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Payment stopped; personal information needs care</heading><message>Block and report the sender. Be cautious about later calls, emails, or texts that use your name, address, phone number, or email. Change a password only if a real account password was entered. Continue monitoring financial accounts and communications.</message><transcript>The learner closes the fake site before entering ordinary card information and reports the text. The site already received a full name, street address, phone number, and email address. These details may be used in later delivery, banking, or account scams. Block and report the sender, watch for convincing follow-up contact, change a password only if a real account password was entered, and continue monitoring accounts and communications. Official tracking says the package remains in transit and no fee is required.</transcript><media video="placeholder/package-delivery-text/reported-full-info-recovery.mp4" poster="placeholder/package-delivery-text/reported-full-info-recovery.jpg" captions="placeholder/package-delivery-text/reported-full-info-recovery.vtt" available="false" /></artifact>
+				<description>Stopping now prevents card compromise. The recovery advice is calm and focused on the information actually entered.</description>
+				<warningSigns><sign>The site collected a personal profile before showing the fee.</sign><sign>Later messages may reuse those details to sound legitimate.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="reported-address-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Payment stopped; street address was exposed</heading><message>Block and report the sender. Be cautious about later delivery, banking, or account messages that mention the address. Change a password only if a real account password was entered. Continue monitoring financial accounts and communications.</message><transcript>The learner closes the fake site before entering card information and reports the text. Only the street address was entered, but it may be paired with the active phone number to make later scams more convincing. Block and report the sender, watch for follow-up contact, and continue monitoring accounts and communications. A password change is needed only if a real account password was entered. Official tracking shows no correction or fee is required.</transcript><media video="placeholder/package-delivery-text/reported-address-recovery.mp4" poster="placeholder/package-delivery-text/reported-address-recovery.jpg" captions="placeholder/package-delivery-text/reported-address-recovery.vtt" available="false" /></artifact>
+				<description>The advice reflects the smaller but still meaningful exposure.</description>
+				<warningSigns><sign>A street address can make future messages sound specific.</sign><sign>The original site was never verified.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="official-full-info-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Official tracking disproves the request</heading><message>Package is still in transit. No address correction or redelivery fee is required. No card information was submitted, but the name, address, phone number, and email may be used in later scams.</message><transcript>The learner closes the virtual-card form and verifies through the original merchant or an official carrier source. The real package remains in transit and needs no correction or fee. The fake site already received a full personal profile, so block and report the sender, watch for follow-up messages using those details, change a password only if a real account password was entered, and monitor financial accounts and communications.</transcript><media video="placeholder/package-delivery-text/official-full-info-recovery.mp4" poster="placeholder/package-delivery-text/official-full-info-recovery.jpg" captions="placeholder/package-delivery-text/official-full-info-recovery.vtt" available="false" /></artifact>
+				<description>Independent verification stopped payment theft and identified the recovery steps for the personal information already entered.</description>
+				<warningSigns><sign>The official order history contradicts the fake page.</sign><sign>Personal details may be reused in follow-up scams.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="official-address-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Official order history shows no fee</heading><message>Package is still in transit. No address correction or redelivery fee is required. No card details were sent; remain alert for messages that use the street address already entered.</message><transcript>The learner closes the virtual-card form and checks the real merchant or carrier source. The package remains in transit. Only the street address was exposed, so block and report the sender, be cautious about follow-up contact using that address, change a password only if a real account password was entered, and continue monitoring accounts and communications.</transcript><media video="placeholder/package-delivery-text/official-address-recovery.mp4" poster="placeholder/package-delivery-text/official-address-recovery.jpg" captions="placeholder/package-delivery-text/official-address-recovery.vtt" available="false" /></artifact>
+				<description>Independent verification prevented additional information and payment exposure.</description>
+				<warningSigns><sign>The real tracking information contradicts the urgent text.</sign><sign>The address could still be used to personalize later scams.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="card-compromise-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Payment received; no delivery is scheduled</heading><message>The fake page says, “Payment received. Your delivery will be rescheduled.” No legitimate delivery is scheduled. Contact the card issuer immediately, lock or replace the card, review recent transactions, dispute unauthorized charges, and monitor for additional fraud. Block and report the text and report the fraudulent website through appropriate legitimate channels.</message><transcript>The learner submits ordinary card information. The fake page claims payment was received and delivery will be rescheduled, but no legitimate delivery is scheduled. The scammer now has the card and billing details. Contact the issuer immediately, lock or replace the card, review transactions, dispute unauthorized charges, monitor for more fraud, block and report the text, and report the website through legitimate channels.</transcript><media video="placeholder/package-delivery-text/card-compromise-recovery.mp4" poster="placeholder/package-delivery-text/card-compromise-recovery.jpg" captions="placeholder/package-delivery-text/card-compromise-recovery.vtt" available="false" /></artifact>
+				<description>The response focuses on prompt recovery without blaming the learner.</description>
+				<warningSigns><sign>The tiny fee collected full card and security details.</sign><sign>The confirmation came only from the fraudulent page.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="virtual-card-information-recovery" stageName="Verification and recovery" stageIndex="6">
+				<artifact type="review"><heading>Virtual-card and personal information submitted</heading><message>A virtual card may limit the amount or duration of possible charges, but the fraudulent website still received payment information and personal details. Lock or cancel the virtual card if appropriate, review activity, block and report the sender, and watch for follow-up scams using the submitted details.</message><transcript>The learner submits virtual-card and personal information. The virtual card may reduce some financial exposure, but it does not make the site legitimate. The scammer receives payment credentials, full name, billing address, phone number, and card security information. Lock or cancel the virtual card if appropriate, review activity, report the scam, and remain cautious about follow-up contact.</transcript><media video="placeholder/package-delivery-text/virtual-card-information-recovery.mp4" poster="placeholder/package-delivery-text/virtual-card-information-recovery.jpg" captions="placeholder/package-delivery-text/virtual-card-information-recovery.vtt" available="false" /></artifact>
+				<description>Security tools can reduce some harm, but they do not replace source verification.</description>
+				<warningSigns><sign>The site still collected identity and payment information.</sign><sign>The virtual card did not verify the domain or package.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="official-tracking-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Official tracking — safest ending</heading><message>You used an app, website, or phone number you located independently. Expecting a package did not make the unexpected delivery text legitimate.</message><transcript>The learner safely verifies the package through an independent official source. The package is still in transit and no address correction or fee is required. The supplied link was not needed.</transcript><media video="placeholder/package-delivery-text/official-tracking-ending.mp4" poster="placeholder/package-delivery-text/official-tracking-ending.jpg" captions="placeholder/package-delivery-text/official-tracking-ending.vtt" available="false" /></artifact>
+				<outcome classification="safe"><label>Official tracking</label><heading>You verified the package safely</heading><explanation>Expecting a package does not make an unexpected delivery text legitimate.</explanation></outcome>
+				<warningSigns><sign>The message lacked real order details.</sign><sign>The official status showed no problem or fee.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="suspicious-domain-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Suspicious website recognized</heading><message>You noticed the unusual domain, closed the page, and verified through an official source.</message><transcript>The learner recognized that logos and professional designs can be copied. Checking the actual web address and using a source located independently prevented information or card exposure.</transcript><media video="placeholder/package-delivery-text/suspicious-domain-ending.mp4" poster="placeholder/package-delivery-text/suspicious-domain-ending.jpg" captions="placeholder/package-delivery-text/suspicious-domain-ending.vtt" available="false" /></artifact>
+				<outcome classification="safe"><label>Suspicious website recognized</label><heading>You looked beyond the copied design</heading><explanation>Check the actual web address and use a source you located independently.</explanation></outcome>
+				<warningSigns><sign>The domain came from the unexpected text.</sign><sign>The page offered no legitimate tracking history.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="scam-reported-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Scam reported before information was entered</heading><message>You blocked the sender, reported the text as junk or spam, and confirmed the real package status independently.</message><transcript>The learner prevented the scam from progressing because no information was entered. The message was reported, the sender was blocked, and official tracking showed the package was still in transit.</transcript><media video="placeholder/package-delivery-text/scam-reported-ending.mp4" poster="placeholder/package-delivery-text/scam-reported-ending.jpg" captions="placeholder/package-delivery-text/scam-reported-ending.vtt" available="false" /></artifact>
+				<outcome classification="safe"><label>Scam reported</label><heading>You stopped further contact</heading><explanation>Blocking, reporting, and checking official tracking ended the pressure safely.</explanation></outcome>
+				<warningSigns><sign>The sender continued after a STOP reply.</sign><sign>The official tracking record contradicted the text.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="personal-information-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Personal information exposed — recovery ending</heading><message>You stopped before submitting ordinary card information. Stay alert for later delivery, banking, or account scams that use the details entered.</message><transcript>The learner stopped before ordinary card compromise. Depending on the route, the fake site received a street address or a fuller set of personal details. Blocking and reporting, monitoring communications and accounts, and treating personalized follow-up contact cautiously are appropriate recovery steps. Change a password only if a real account password was entered.</transcript><media video="placeholder/package-delivery-text/personal-information-ending.mp4" poster="placeholder/package-delivery-text/personal-information-ending.jpg" captions="placeholder/package-delivery-text/personal-information-ending.vtt" available="false" /></artifact>
+				<outcome classification="risky"><label>Personal information exposed</label><heading>You stopped the payment request and began recovery</heading><explanation>Personal details may make later scams more convincing, so block, report, and monitor calmly.</explanation></outcome>
+				<warningSigns><sign>The fake site collected information before revealing its payment goal.</sign><sign>Follow-up scams may reuse the submitted details.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="card-compromised-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Card information compromised</heading><message>The $1.95 fee was bait for reusable card, security-code, billing, and identity information. Immediate issuer contact is the safest next step.</message><transcript>No legitimate delivery was scheduled. The scammer received ordinary card and billing details. Contact the issuer immediately, lock or replace the card, review and dispute transactions, monitor for more fraud, block and report the text, and report the fraudulent site through legitimate channels.</transcript><media video="placeholder/package-delivery-text/card-compromised-ending.mp4" poster="placeholder/package-delivery-text/card-compromised-ending.jpg" captions="placeholder/package-delivery-text/card-compromised-ending.vtt" available="false" /></artifact>
+				<outcome classification="dangerous"><label>Card information compromised</label><heading>The small fee exposed the card</heading><explanation>The scammer's goal was the card and identity information, not a legitimate redelivery payment.</explanation></outcome>
+				<warningSigns><sign>The $1.95 amount made the request seem harmless.</sign><sign>The page collected complete card security information.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="virtual-card-ending" stageName="Takeaways" stageIndex="7">
+				<artifact type="narration"><heading>Virtual-card information submitted</heading><message>A virtual card may limit some charges, but the fraudulent website still received payment and personal information.</message><transcript>The learner used a virtual card on a fraudulent page. The security tool may reduce the amount or duration of charges, but it did not verify the website or protect the submitted identity details. Review card activity, cancel or lock the virtual card if appropriate, report the scam, and watch for follow-up contact.</transcript><media video="placeholder/package-delivery-text/virtual-card-ending.mp4" poster="placeholder/package-delivery-text/virtual-card-ending.jpg" captions="placeholder/package-delivery-text/virtual-card-ending.vtt" available="false" /></artifact>
+				<outcome classification="dangerous"><label>Virtual-card and information exposure</label><heading>A security tool reduced some risk but did not make the site legitimate</heading><explanation>Verify the source before sharing payment or personal information, even when using protective card tools.</explanation></outcome>
+				<warningSigns><sign>The site requested personal details along with the virtual card.</sign><sign>The package and domain were never independently verified.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+
+	<commands>
+		<command type="prompt" videoId="delivery-text" displayText="An unfamiliar number claims a package needs address confirmation within 12 hours."><options>
+			<option id="fake-tracking-page" choiceId="open-supplied-link" text="Tap the link to identify the package" />
+			<option id="official-verification-no-exposure" choiceId="delete-and-check-officially" text="Delete the text and check through an official source" />
+			<option id="stop-follow-up" choiceId="reply-stop" text="Reply STOP" />
+		</options></command>
+		<command type="prompt" videoId="stop-follow-up" displayText="The sender acknowledges STOP but says the package will be returned today."><options>
+			<option id="fake-tracking-page" choiceId="open-link-after-stop" text="Tap the link before the package is returned" />
+			<option id="scam-reported-no-info" choiceId="block-report-and-verify" text="Block and report the sender, then check official tracking" />
+			<option id="package-details-unavailable" choiceId="ask-which-package" text="Ask which package is being delivered" />
+		</options></command>
+		<command type="prompt" videoId="package-details-unavailable" displayText="The sender refuses to identify the shipment until the address is confirmed."><options>
+			<option id="official-verification-no-exposure" choiceId="stop-and-verify-after-evasion" text="Stop replying and verify officially" />
+			<option id="fake-tracking-page" choiceId="open-link-after-evasion" text="Open the supplied link" />
+		</options></command>
+		<command type="prompt" videoId="fake-tracking-page" displayText="A professional-looking tracking page says the delivery attempt failed."><options>
+			<option id="address-confirmation" choiceId="trust-professional-page" text="Trust the professional appearance and continue" />
+			<option id="suspicious-domain-verification" choiceId="inspect-domain-and-close" text="Inspect the web address and close the page" />
+			<option id="sender-repeats-link" choiceId="return-to-sender" text="Return to the text and continue communicating" />
+		</options></command>
+		<command type="prompt" videoId="sender-repeats-link" displayText="The sender again refuses to provide shipment details and repeats the link."><options>
+			<option id="official-verification-no-exposure" choiceId="end-conversation-and-verify" text="End the conversation and verify independently" />
+			<option id="address-confirmation" choiceId="continue-to-address-form" text="Return to the website and continue" />
+		</options></command>
+		<command type="prompt" videoId="address-confirmation" displayText="The page asks for full name, street address, phone number, and email address."><options>
+			<option id="redelivery-fee-full-info" choiceId="submit-all-personal-details" text="Enter all requested information" />
+			<option id="redelivery-fee-address-only" choiceId="submit-street-address-only" text="Enter only the street address" />
+			<option id="official-verification-no-exposure" choiceId="close-before-submitting" text="Close the page and check the real order" />
+		</options></command>
+		<command type="prompt" videoId="redelivery-fee-full-info" displayText="After full personal information is submitted, the page reveals a $1.95 redelivery fee and a 10-minute countdown."><options>
+			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-full-info" text="Pay $1.95 with a regular card" />
+			<option id="virtual-card-full-info" choiceId="consider-virtual-card-after-full-info" text="Consider a virtual or temporary card" />
+			<option id="reported-full-info-recovery" choiceId="report-after-full-info" text="Close the page and report the text" />
+		</options></command>
+		<command type="prompt" videoId="redelivery-fee-address-only" displayText="After the street address is submitted, the page reveals a $1.95 redelivery fee and a 10-minute countdown."><options>
+			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-address" text="Pay $1.95 with a regular card" />
+			<option id="virtual-card-address-only" choiceId="consider-virtual-card-after-address" text="Consider a virtual or temporary card" />
+			<option id="reported-address-recovery" choiceId="report-after-address" text="Close the page and report the text" />
+		</options></command>
+		<command type="prompt" videoId="virtual-card-full-info" displayText="The site accepts virtual cards but still requests full identity, billing, phone, and card-security information."><options>
+			<option id="virtual-card-information-recovery" choiceId="submit-virtual-card-after-full-info" text="Submit the virtual-card information" />
+			<option id="official-full-info-recovery" choiceId="contact-carrier-after-full-info" text="Close the page and contact the carrier independently" />
+			<option id="official-full-info-recovery" choiceId="check-merchant-after-full-info" text="Return to the original merchant account" />
+		</options></command>
+		<command type="prompt" videoId="virtual-card-address-only" displayText="The site accepts virtual cards but requests more identity, billing, phone, and card-security information."><options>
+			<option id="virtual-card-information-recovery" choiceId="submit-virtual-card-after-address" text="Submit the virtual-card information" />
+			<option id="official-address-recovery" choiceId="contact-carrier-after-address" text="Close the page and contact the carrier independently" />
+			<option id="official-address-recovery" choiceId="check-merchant-after-address" text="Return to the original merchant account" />
+		</options></command>
+		<command type="jump" videoId="official-verification-no-exposure" targetId="official-tracking-ending" displayText="Continue to the official-tracking takeaway." />
+		<command type="jump" videoId="suspicious-domain-verification" targetId="suspicious-domain-ending" displayText="Continue to the web-address takeaway." />
+		<command type="jump" videoId="scam-reported-no-info" targetId="scam-reported-ending" displayText="Continue to the reporting takeaway." />
+		<command type="jump" videoId="reported-full-info-recovery" targetId="personal-information-ending" displayText="Continue to the personal-information recovery takeaway." />
+		<command type="jump" videoId="reported-address-recovery" targetId="personal-information-ending" displayText="Continue to the address-exposure recovery takeaway." />
+		<command type="jump" videoId="official-full-info-recovery" targetId="personal-information-ending" displayText="Continue to the personal-information recovery takeaway." />
+		<command type="jump" videoId="official-address-recovery" targetId="personal-information-ending" displayText="Continue to the address-exposure recovery takeaway." />
+		<command type="jump" videoId="card-compromise-recovery" targetId="card-compromised-ending" displayText="Continue to the card-recovery takeaway." />
+		<command type="jump" videoId="virtual-card-information-recovery" targetId="virtual-card-ending" displayText="Continue to the virtual-card recovery takeaway." />
+		<command type="stop" videoId="official-tracking-ending" displayText="Official tracking confirmed the package is still in transit and no correction or fee is required." />
+		<command type="stop" videoId="suspicious-domain-ending" displayText="The unusual domain was recognized, the page was closed, and official tracking disproved the claim." />
+		<command type="stop" videoId="scam-reported-ending" displayText="The sender was blocked, the text was reported, and no information was entered." />
+		<command type="stop" videoId="personal-information-ending" displayText="Payment information was protected, and recovery began for the personal information already entered." />
+		<command type="stop" videoId="card-compromised-ending" displayText="Ordinary card information was submitted, and immediate issuer recovery is required." />
+		<command type="stop" videoId="virtual-card-ending" displayText="A virtual card limited some risk but did not protect the personal and payment information submitted to the fraudulent site." />
+	</commands>
+</playlist>

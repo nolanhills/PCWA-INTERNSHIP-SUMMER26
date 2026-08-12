@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: scenarios.xml
+  Project: PCWA Senior Scam Awareness Simulator
+  Created by: Nolan Hill
+
+  Purpose:
+  Registers scenarios displayed in the chooser, including stable catalog IDs,
+  titles, descriptions, stage estimates, enabled state, and XML file paths.
+
+  Maintenance Notes:
+  Update this catalog when adding or removing a scenario. Preserve IDs because
+  application code or future reporting may rely on them, and preserve ordering
+  unless the intended chooser order changes.
+-->
+<scenarios>
+  <scenario id="bank-alert" approximateStages="5" enabled="true">
+    <title>Bank fraud alert</title>
+    <description>Practice responding to an unexpected bank text, a pressure call, a fake website, and a security-code request.</description>
+    <file>prototypes/bank-alert-scenario.xml</file>
+  </scenario>
+  <scenario id="grandchild-emergency" approximateStages="6" enabled="true">
+    <title>Grandchild Emergency Call</title>
+    <description>A caller claims to be a grandchild in an emergency and uses panic, secrecy, and family loyalty to request money.</description>
+    <file>prototypes/grandchild-emergency-scenario.xml</file>
+  </scenario>
+  <scenario id="tech-support-popup" approximateStages="8" enabled="true">
+    <title>Tech Support Pop-Up Scam</title>
+    <description>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</description>
+    <file>prototypes/tech-support-popup-scenario.xml</file>
+  </scenario>
+  <scenario id="package-delivery-text" approximateStages="7" enabled="true">
+    <title>Package Delivery Text Scam</title>
+    <description>Practice responding to an unexpected package text, a fake tracking website, an address-confirmation request, and a small redelivery-fee scam.</description>
+    <file>prototypes/package-delivery-text-scenario.xml</file>
+  </scenario>
+  <scenario id="online-friendship-romance" approximateStages="8" enabled="true">
+    <title>Online Friendship / Romance Scam</title>
+    <description>Practice recognizing gradual trust-building, avoided verification, emotional manipulation, secrecy, and an emergency money request from an online-only relationship.</description>
+    <file>prototypes/online-friendship-romance-scenario.xml</file>
+  </scenario>
+  <scenario id="fake-charity-disaster-donation" approximateStages="8" enabled="true">
+    <title>Fake Charity / Disaster Donation Scam</title>
+    <description>Practice evaluating an emotional disaster appeal, verifying the exact charity independently, reviewing donation and payment requests, and resisting guilt-based pressure.</description>
+    <file>prototypes/fake-charity-disaster-donation-scenario.xml</file>
+  </scenario>
+  <scenario id="government-social-security-threat-call" approximateStages="8" enabled="true">
+    <title>Government / Social Security Threat Call</title>
+    <description>Practice responding to a government impersonation robocall, a fake federal agent, arrest and account-freeze threats, secrecy demands, and unusual payment instructions.</description>
+    <file>prototypes/government-social-security-threat-call-scenario.xml</file>
+  </scenario>
+  <scenario id="sweepstakes-prize-advance-fee" approximateStages="8" enabled="true">
+    <title>Sweepstakes / Prize Advance-Fee Scam</title>
+    <description>Practice evaluating an unexpected prize notice, verifying the sponsor independently, protecting sensitive information, and refusing upfront fees or unusual payments.</description>
+    <file>prototypes/sweepstakes-prize-advance-fee-scenario.xml</file>
+  </scenario>
+</scenarios>
