@@ -15,34 +15,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="unexpected-prize-notice">placeholder/sweepstakes-prize-advance-fee/unexpected-prize-notice.mp4</video>
-		<video id="independent-entry-check">placeholder/sweepstakes-prize-advance-fee/independent-entry-check.mp4</video>
-		<video id="prize-representative-call">placeholder/sweepstakes-prize-advance-fee/prize-representative-call.mp4</video>
-		<video id="certificate-review">placeholder/sweepstakes-prize-advance-fee/certificate-review.mp4</video>
-		<video id="claim-form">placeholder/sweepstakes-prize-advance-fee/claim-form.mp4</video>
-		<video id="upfront-fee-request">placeholder/sweepstakes-prize-advance-fee/upfront-fee-request.mp4</video>
-		<video id="deduct-fee-question">placeholder/sweepstakes-prize-advance-fee/deduct-fee-question.mp4</video>
-		<video id="mailed-paperwork">placeholder/sweepstakes-prize-advance-fee/mailed-paperwork.mp4</video>
-		<video id="supervisor-confirmation">placeholder/sweepstakes-prize-advance-fee/supervisor-confirmation.mp4</video>
-		<video id="payment-method-review">placeholder/sweepstakes-prize-advance-fee/payment-method-review.mp4</video>
-		<video id="secrecy-pressure">placeholder/sweepstakes-prize-advance-fee/secrecy-pressure.mp4</video>
-		<video id="small-payment-follow-up">placeholder/sweepstakes-prize-advance-fee/small-payment-follow-up.mp4</video>
-		<video id="additional-fee-request">placeholder/sweepstakes-prize-advance-fee/additional-fee-request.mp4</video>
-		<video id="unentered-prize-ending">placeholder/sweepstakes-prize-advance-fee/unentered-prize-ending.mp4</video>
-		<video id="independent-verification-ending">placeholder/sweepstakes-prize-advance-fee/independent-verification-ending.mp4</video>
-		<video id="notice-reported-ending">placeholder/sweepstakes-prize-advance-fee/notice-reported-ending.mp4</video>
-		<video id="trusted-person-ending">placeholder/sweepstakes-prize-advance-fee/trusted-person-ending.mp4</video>
-		<video id="contact-information-ending">placeholder/sweepstakes-prize-advance-fee/contact-information-ending.mp4</video>
-		<video id="identity-information-ending">placeholder/sweepstakes-prize-advance-fee/identity-information-ending.mp4</video>
-		<video id="bank-information-ending">placeholder/sweepstakes-prize-advance-fee/bank-information-ending.mp4</video>
-		<video id="card-information-ending">placeholder/sweepstakes-prize-advance-fee/card-information-ending.mp4</video>
-		<video id="fee-canceled-ending">placeholder/sweepstakes-prize-advance-fee/fee-canceled-ending.mp4</video>
-		<video id="small-payment-ending">placeholder/sweepstakes-prize-advance-fee/small-payment-ending.mp4</video>
-		<video id="full-payment-ending">placeholder/sweepstakes-prize-advance-fee/full-payment-ending.mp4</video>
-		<video id="repeated-fee-ending">placeholder/sweepstakes-prize-advance-fee/repeated-fee-ending.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="8">
 		<title>Sweepstakes / Prize Advance-Fee Scam</title>

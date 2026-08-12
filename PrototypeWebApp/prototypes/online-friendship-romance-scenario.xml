@@ -15,39 +15,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="new-online-contact">placeholder/online-friendship-romance/new-online-contact.mp4</video>
-		<video id="day-four-fast-intimacy">placeholder/online-friendship-romance/day-four-fast-intimacy.mp4</video>
-		<video id="move-off-platform">placeholder/online-friendship-romance/move-off-platform.mp4</video>
-		<video id="video-call-request">placeholder/online-friendship-romance/video-call-request.mp4</video>
-		<video id="verification-excuse">placeholder/online-friendship-romance/verification-excuse.mp4</video>
-		<video id="financial-questions">placeholder/online-friendship-romance/financial-questions.mp4</video>
-		<video id="emergency-money-request">placeholder/online-friendship-romance/emergency-money-request.mp4</video>
-		<video id="fake-travel-proof">placeholder/online-friendship-romance/fake-travel-proof.mp4</video>
-		<video id="bank-transfer-review">placeholder/online-friendship-romance/bank-transfer-review.mp4</video>
-		<video id="small-payment-follow-up">placeholder/online-friendship-romance/small-payment-follow-up.mp4</video>
-		<video id="secrecy-pressure">placeholder/online-friendship-romance/secrecy-pressure.mp4</video>
-		<video id="repeated-payment-request">placeholder/online-friendship-romance/repeated-payment-request.mp4</video>
-		<video id="safe-boundaries-review">placeholder/online-friendship-romance/safe-boundaries-review.mp4</video>
-		<video id="platform-verification-review">placeholder/online-friendship-romance/platform-verification-review.mp4</video>
-		<video id="trusted-person-review">placeholder/online-friendship-romance/trusted-person-review.mp4</video>
-		<video id="independent-verification-review">placeholder/online-friendship-romance/independent-verification-review.mp4</video>
-		<video id="personal-information-review">placeholder/online-friendship-romance/personal-information-review.mp4</video>
-		<video id="transfer-canceled-review">placeholder/online-friendship-romance/transfer-canceled-review.mp4</video>
-		<video id="small-payment-loss-review">placeholder/online-friendship-romance/small-payment-loss-review.mp4</video>
-		<video id="full-payment-loss-review">placeholder/online-friendship-romance/full-payment-loss-review.mp4</video>
-		<video id="repeated-payment-review">placeholder/online-friendship-romance/repeated-payment-review.mp4</video>
-		<video id="safe-boundaries-ending">placeholder/online-friendship-romance/safe-boundaries-ending.mp4</video>
-		<video id="platform-verification-ending">placeholder/online-friendship-romance/platform-verification-ending.mp4</video>
-		<video id="trusted-person-ending">placeholder/online-friendship-romance/trusted-person-ending.mp4</video>
-		<video id="independent-verification-ending">placeholder/online-friendship-romance/independent-verification-ending.mp4</video>
-		<video id="personal-information-ending">placeholder/online-friendship-romance/personal-information-ending.mp4</video>
-		<video id="transfer-canceled-ending">placeholder/online-friendship-romance/transfer-canceled-ending.mp4</video>
-		<video id="small-payment-loss-ending">placeholder/online-friendship-romance/small-payment-loss-ending.mp4</video>
-		<video id="full-payment-loss-ending">placeholder/online-friendship-romance/full-payment-loss-ending.mp4</video>
-		<video id="repeated-payment-ending">placeholder/online-friendship-romance/repeated-payment-ending.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="8">
 		<title>Online Friendship / Romance Scam</title>

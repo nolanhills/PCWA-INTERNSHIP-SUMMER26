@@ -96,10 +96,10 @@ and asks `PrototypeWebApp/Scripts/scenario-engine.js` to load
 `PrototypeWebApp/prototypes/scenarios.xml`. Each enabled catalog entry points to
 one scenario XML file. In that file:
 
-- `<videos>` declares scene identifiers and planned media paths.
 - `<commands>` controls choices, destinations, loops, and terminal stops.
 - `<presentation>` supplies learner-facing artifacts, transcripts, feedback,
-  warning signs, stage information, and outcomes.
+  warning signs, stage information, outcomes, and optional media paths from each
+  scene artifact's `<media>` element.
 
 Routing remains authoritative in `<commands>`. Presentation metadata cannot
 change a destination. Stable `choiceId` values let authors preserve distinct
@@ -107,10 +107,11 @@ feedback even when multiple choices share a destination.
 
 ## Missing-Media Behavior
 
-Generated video, poster, caption, and audio assets have not yet been added.
-Current XML declares planned media as unavailable. The application continues to
-show the simulated artifact, transcript, decisions, feedback, and outcome so a
-scenario remains understandable and completable without media.
+Bank Alert includes eight playable supporting videos. Other current scenarios
+declare planned media as unavailable through each artifact's `<media>` element.
+The application continues to show the simulated artifact, transcript, decisions,
+feedback, and outcome so every scenario remains understandable and completable
+without media.
 
 ## Azure Deployment Overview
 

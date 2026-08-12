@@ -14,26 +14,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="security-warning">placeholder/tech-support-popup/security-warning.mp4</video>
-		<video id="fake-scan">placeholder/tech-support-popup/fake-scan.mp4</video>
-		<video id="cleanup-failed">placeholder/tech-support-popup/cleanup-failed.mp4</video>
-		<video id="support-call">placeholder/tech-support-popup/support-call.mp4</video>
-		<video id="identity-pressure">placeholder/tech-support-popup/identity-pressure.mp4</video>
-		<video id="remote-connected">placeholder/tech-support-popup/remote-connected.mp4</video>
-		<video id="access-questioned">placeholder/tech-support-popup/access-questioned.mp4</video>
-		<video id="system-logs">placeholder/tech-support-popup/system-logs.mp4</video>
-		<video id="challenged-diagnosis">placeholder/tech-support-popup/challenged-diagnosis.mp4</video>
-		<video id="protection-plan">placeholder/tech-support-popup/protection-plan.mp4</video>
-		<video id="discounted-plan">placeholder/tech-support-popup/discounted-plan.mp4</video>
-		<video id="popup-closed-safe">placeholder/tech-support-popup/popup-closed-safe.mp4</video>
-		<video id="trusted-help-safe">placeholder/tech-support-popup/trusted-help-safe.mp4</video>
-		<video id="official-support-safe">placeholder/tech-support-popup/official-support-safe.mp4</video>
-		<video id="remote-recovery-safe">placeholder/tech-support-popup/remote-recovery-safe.mp4</video>
-		<video id="trusted-recovery-safe">placeholder/tech-support-popup/trusted-recovery-safe.mp4</video>
-		<video id="gift-card-loss">placeholder/tech-support-popup/gift-card-loss.mp4</video>
-	</videos>
+<playlist>
 	<presentation approximateStages="8">
 		<title>Tech Support Pop-Up Scam</title>
 		<summary>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</summary>

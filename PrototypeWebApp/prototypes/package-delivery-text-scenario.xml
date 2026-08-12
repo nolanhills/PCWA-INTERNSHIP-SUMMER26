@@ -14,34 +14,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="delivery-text">placeholder/package-delivery-text/delivery-text.mp4</video>
-		<video id="stop-follow-up">placeholder/package-delivery-text/stop-follow-up.mp4</video>
-		<video id="package-details-unavailable">placeholder/package-delivery-text/package-details-unavailable.mp4</video>
-		<video id="fake-tracking-page">placeholder/package-delivery-text/fake-tracking-page.mp4</video>
-		<video id="sender-repeats-link">placeholder/package-delivery-text/sender-repeats-link.mp4</video>
-		<video id="address-confirmation">placeholder/package-delivery-text/address-confirmation.mp4</video>
-		<video id="redelivery-fee-full-info">placeholder/package-delivery-text/redelivery-fee-full-info.mp4</video>
-		<video id="redelivery-fee-address-only">placeholder/package-delivery-text/redelivery-fee-address-only.mp4</video>
-		<video id="virtual-card-full-info">placeholder/package-delivery-text/virtual-card-full-info.mp4</video>
-		<video id="virtual-card-address-only">placeholder/package-delivery-text/virtual-card-address-only.mp4</video>
-		<video id="official-verification-no-exposure">placeholder/package-delivery-text/official-verification-no-exposure.mp4</video>
-		<video id="suspicious-domain-verification">placeholder/package-delivery-text/suspicious-domain-verification.mp4</video>
-		<video id="scam-reported-no-info">placeholder/package-delivery-text/scam-reported-no-info.mp4</video>
-		<video id="reported-full-info-recovery">placeholder/package-delivery-text/reported-full-info-recovery.mp4</video>
-		<video id="reported-address-recovery">placeholder/package-delivery-text/reported-address-recovery.mp4</video>
-		<video id="official-full-info-recovery">placeholder/package-delivery-text/official-full-info-recovery.mp4</video>
-		<video id="official-address-recovery">placeholder/package-delivery-text/official-address-recovery.mp4</video>
-		<video id="card-compromise-recovery">placeholder/package-delivery-text/card-compromise-recovery.mp4</video>
-		<video id="virtual-card-information-recovery">placeholder/package-delivery-text/virtual-card-information-recovery.mp4</video>
-		<video id="official-tracking-ending">placeholder/package-delivery-text/official-tracking-ending.mp4</video>
-		<video id="suspicious-domain-ending">placeholder/package-delivery-text/suspicious-domain-ending.mp4</video>
-		<video id="scam-reported-ending">placeholder/package-delivery-text/scam-reported-ending.mp4</video>
-		<video id="personal-information-ending">placeholder/package-delivery-text/personal-information-ending.mp4</video>
-		<video id="card-compromised-ending">placeholder/package-delivery-text/card-compromised-ending.mp4</video>
-		<video id="virtual-card-ending">placeholder/package-delivery-text/virtual-card-ending.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="7">
 		<title>Package Delivery Text Scam</title>

@@ -79,7 +79,6 @@ have been reviewed.
 - Prompt destinations, download `nextVideoId`, and jump `targetId`
 - `prompt`, `download`, `jump`, `restart-or-quit`, and `stop`
 - Restart to the first command
-- Ignoring `autostart`, `default`, and `timeout`
 
 The engine reports load, parse, missing-command, missing-destination, and
 unsupported-command errors without showing technical stack traces.
@@ -100,9 +99,9 @@ Presentation values are resolved in this order:
 2. Catalog values, where applicable
 3. Generic accessible defaults
 
-The sidecar cannot choose a destination or end a scenario. The XML transition
-graph remains authoritative. Scenes without metadata receive a generic artifact,
-question, transcript, media fallback, and command presentation.
+Presentation metadata cannot choose a destination or end a scenario. The XML
+transition graph remains authoritative. Scenes without metadata receive a
+generic artifact, question, transcript, and command presentation.
 
 Stable `choiceId` values are used for presentation lookup before the legacy
 destination-based fallback. This allows two choices to share a destination while
@@ -140,12 +139,12 @@ The page must run through IIS Express or another web server because browser
 
 ## Accessibility and Missing-Media Behavior
 
-Generated video, poster, caption, and audio assets have not yet been added.
-Current scenario XML declares planned media with `available="false"`. The
-simulated artifact, transcript, choices, feedback, and outcome remain available,
-so learners do not need media to understand or complete a scenario. If future
-media is enabled but fails to load, the renderer replaces it with an unavailable
-media notice and directs the learner to the transcript and simulated artifact.
+Bank Alert includes eight playable supporting videos. Other current scenario XML
+declares planned media with `available="false"`. The simulated artifact,
+transcript, choices, feedback, and outcome remain available, so learners do not
+need media to understand or complete a scenario. If enabled media fails to load,
+the renderer removes failed supplemental media or replaces a failed primary-media
+artifact with an unavailable notice without blocking the scenario.
 
 Accessibility decisions include:
 
@@ -193,7 +192,7 @@ Before integrating a scenario or publishing the application:
 3. Run JavaScript syntax checks for both flagship scripts.
 4. Validate `prototypes/scenarios.xml` and every enabled scenario XML file.
 5. Traverse every choice, destination, loop, and terminal outcome.
-6. Confirm every enabled command has matching video and presentation data.
+6. Confirm every enabled command has matching presentation data.
 7. Confirm each scene has a transcript and correct media availability metadata.
 8. Start IIS Express and verify `/` and `/AccessiblePrototype.aspx`.
 9. Confirm the chooser displays only the intended enabled scenarios.
@@ -211,7 +210,8 @@ The current flagship has been tested with:
 - Bank scenario: every prompt option, the call loop, all safe and dangerous
   endings, feedback restart, active restart, completion restart, and scenario menu
 - First-command starts confirmed for all eight enabled scenarios
-- Every current XML destination confirmed to reference an existing video ID
+- Every current XML destination confirmed to reference an existing command and
+  presentation scene
 - Generic presentation fallback and unavailable-media fallback confirmed
 - Transcript shortcut and disclosure confirmed
 - Text-size increase, reset, and reload persistence confirmed
@@ -229,14 +229,15 @@ The current flagship has been tested with:
 - Actual browser zoom at 200% and 400%; 320px reflow and enlarged application
   text were tested as related checks
 - Operating-system reduced-motion emulation
-- Native video/audio controls, because the repository contains no media files
+- Cross-browser and assistive-technology coverage of native video/audio controls
 - Live malformed-XML, no-command, and network-failure injection
 - Azure App Service smoke testing and publish-package inspection
 
 ## Known Limitations
 
-- Existing XML video paths point to files that are not present in the repository.
-  The page therefore shows compact unavailable-media notices and transcripts.
+- Media other than the eight Bank Alert MP4 files is currently declared
+  unavailable. Those scenes remain complete through their simulated artifacts
+  and transcripts.
 - Named-stage progress is educational and approximate because the XML graph can
   branch or repeat a scene.
 - Scenario state is intentionally browser-memory state and is lost on page reload.

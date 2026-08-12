@@ -14,26 +14,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="distressed-call">placeholder/grandchild-emergency/distressed-call.mp4</video>
-		<video id="accident-secrecy-name-supplied">placeholder/grandchild-emergency/accident-secrecy-name-supplied.mp4</video>
-		<video id="accident-secrecy-identity-dodged">placeholder/grandchild-emergency/accident-secrecy-identity-dodged.mp4</video>
-		<video id="supposed-attorney">placeholder/grandchild-emergency/supposed-attorney.mp4</video>
-		<video id="family-contact-pressure">placeholder/grandchild-emergency/family-contact-pressure.mp4</video>
-		<video id="gift-card-instructions">placeholder/grandchild-emergency/gift-card-instructions.mp4</video>
-		<video id="store-checkout">placeholder/grandchild-emergency/store-checkout.mp4</video>
-		<video id="verified-known-number">placeholder/grandchild-emergency/verified-known-number.mp4</video>
-		<video id="verification-boundary-safe">placeholder/grandchild-emergency/verification-boundary-safe.mp4</video>
-		<video id="family-confirmed-safe">placeholder/grandchild-emergency/family-confirmed-safe.mp4</video>
-		<video id="official-verification">placeholder/grandchild-emergency/official-verification.mp4</video>
-		<video id="family-contact-after-pressure">placeholder/grandchild-emergency/family-contact-after-pressure.mp4</video>
-		<video id="payment-refused">placeholder/grandchild-emergency/payment-refused.mp4</video>
-		<video id="independent-verification-safe">placeholder/grandchild-emergency/independent-verification-safe.mp4</video>
-		<video id="trusted-support">placeholder/grandchild-emergency/trusted-support.mp4</video>
-		<video id="store-known-number-safe">placeholder/grandchild-emergency/store-known-number-safe.mp4</video>
-		<video id="payment-loss">placeholder/grandchild-emergency/payment-loss.mp4</video>
-	</videos>
+<playlist>
 	<presentation approximateStages="6">
 		<title>Grandchild Emergency Call</title>
 		<summary>An unfamiliar caller claims to be a grandchild who was arrested after a car accident. The caller and a supposed attorney use fear, secrecy, and an urgent gift-card demand to keep the learner from verifying the story.</summary>

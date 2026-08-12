@@ -14,17 +14,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="1">placeholder/tutorial-bank-alert-text.mp4</video>
-		<video id="2">placeholder/phone-call-fraud-department.mp4</video>
-		<video id="3">placeholder/fake-bank-login-page.mp4</video>
-		<video id="4">placeholder/official-bank-check.mp4</video>
-		<video id="5">placeholder/wire-transfer-trap.mp4</video>
-		<video id="6">placeholder/two-factor-code-warning.mp4</video>
-		<video id="7">placeholder/win-scam-defeated.mp4</video>
-		<video id="8">placeholder/loss-account-compromised.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="5">
 		<title>Bank fraud alert</title>

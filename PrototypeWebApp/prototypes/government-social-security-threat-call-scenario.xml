@@ -15,37 +15,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="government-robocall">placeholder/government-social-security-threat-call/government-robocall.mp4</video>
-		<video id="caller-id-trap">placeholder/government-social-security-threat-call/caller-id-trap.mp4</video>
-		<video id="search-results-caution">placeholder/government-social-security-threat-call/search-results-caution.mp4</video>
-		<video id="fake-federal-agent">placeholder/government-social-security-threat-call/fake-federal-agent.mp4</video>
-		<video id="instructions-and-secrecy-pressure">placeholder/government-social-security-threat-call/instructions-and-secrecy-pressure.mp4</video>
-		<video id="written-notice-and-secrecy">placeholder/government-social-security-threat-call/written-notice-and-secrecy.mp4</video>
-		<video id="account-freeze-threat">placeholder/government-social-security-threat-call/account-freeze-threat.mp4</video>
-		<video id="fake-supervisor">placeholder/government-social-security-threat-call/fake-supervisor.mp4</video>
-		<video id="supervisor-refuses-writing">placeholder/government-social-security-threat-call/supervisor-refuses-writing.mp4</video>
-		<video id="unusual-payment-demand">placeholder/government-social-security-threat-call/unusual-payment-demand.mp4</video>
-		<video id="immediate-payment-method">placeholder/government-social-security-threat-call/immediate-payment-method.mp4</video>
-		<video id="gift-cards-purchased">placeholder/government-social-security-threat-call/gift-cards-purchased.mp4</video>
-		<video id="official-verification-review">placeholder/government-social-security-threat-call/official-verification-review.mp4</video>
-		<video id="trusted-person-review">placeholder/government-social-security-threat-call/trusted-person-review.mp4</video>
-		<video id="payment-refused-review">placeholder/government-social-security-threat-call/payment-refused-review.mp4</video>
-		<video id="gift-cards-protected-review">placeholder/government-social-security-threat-call/gift-cards-protected-review.mp4</video>
-		<video id="gift-card-loss-review">placeholder/government-social-security-threat-call/gift-card-loss-review.mp4</video>
-		<video id="cryptocurrency-loss-review">placeholder/government-social-security-threat-call/cryptocurrency-loss-review.mp4</video>
-		<video id="wire-loss-review">placeholder/government-social-security-threat-call/wire-loss-review.mp4</video>
-		<video id="cash-loss-review">placeholder/government-social-security-threat-call/cash-loss-review.mp4</video>
-		<video id="official-verification-ending">placeholder/government-social-security-threat-call/official-verification-ending.mp4</video>
-		<video id="trusted-person-ending">placeholder/government-social-security-threat-call/trusted-person-ending.mp4</video>
-		<video id="payment-refused-ending">placeholder/government-social-security-threat-call/payment-refused-ending.mp4</video>
-		<video id="gift-cards-protected-ending">placeholder/government-social-security-threat-call/gift-cards-protected-ending.mp4</video>
-		<video id="gift-card-loss-ending">placeholder/government-social-security-threat-call/gift-card-loss-ending.mp4</video>
-		<video id="cryptocurrency-loss-ending">placeholder/government-social-security-threat-call/cryptocurrency-loss-ending.mp4</video>
-		<video id="wire-loss-ending">placeholder/government-social-security-threat-call/wire-loss-ending.mp4</video>
-		<video id="cash-loss-ending">placeholder/government-social-security-threat-call/cash-loss-ending.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="8">
 		<title>Government / Social Security Threat Call</title>

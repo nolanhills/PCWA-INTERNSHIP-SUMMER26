@@ -9,7 +9,7 @@
  *
  * Responsibilities:
  * - Fetch and validate catalog and scenario XML
- * - Relate commands, videos, and presentation scenes by stable videoId values
+ * - Relate commands and presentation scenes by stable videoId values
  * - Process choices, jumps, downloads, restarts, and terminal routes
  * - Publish state changes and errors to the presentation layer
  *
@@ -390,7 +390,7 @@
      *
      * @param {string} xmlText - Raw scenario XML content.
      * @param {string} path - Source path retained in engine state.
-     * @returns {Object} Parsed routing, video, command, and presentation data.
+     * @returns {Object} Parsed routing, command, and presentation data.
      * @throws {ScenarioEngineError} When required XML structure is malformed.
      */
     function parseScenarioXml(xmlText, path) {
@@ -413,23 +413,6 @@
                 "The scenario file does not contain a playlist."
             );
         }
-
-        // Maps preserve string identifiers exactly as authored. A videoId may
-        // identify planned media, a command, or both, and remains the scene key.
-        const videos = [];
-        const videoById = new Map();
-        const videoElements = Array.from(playlist.getElementsByTagName("video"));
-
-        videoElements.forEach((videoElement, index) => {
-            const id = requiredAttribute(videoElement, "id", `Video ${index + 1}`);
-            const video = {
-                id: id,
-                path: videoElement.textContent.trim()
-            };
-
-            videos.push(video);
-            videoById.set(id, video);
-        });
 
         const commands = [];
         const commandByVideoId = new Map();
@@ -527,8 +510,6 @@
 
         return {
             path: path,
-            videos: videos,
-            videoById: videoById,
             commands: commands,
             commandByVideoId: commandByVideoId,
             startVideoId: commands[0].videoId,
@@ -585,7 +566,6 @@
 
             return {
                 id: currentVideoId,
-                video: scenario.videoById.get(currentVideoId) || null,
                 command: scenario.commandByVideoId.get(currentVideoId) || null
             };
         }
@@ -625,16 +605,14 @@
         }
 
         /**
-         * Resolves a destination against both media and command maps before state
-         * changes, preventing an invalid reference from silently ending a route.
+         * Resolves a destination against the command map before state changes,
+         * preventing an invalid reference from silently ending a route.
          */
         function transitionTo(videoId) {
             requireLoadedScenario();
 
             const destination = String(videoId);
-            const destinationExists =
-                scenario.videoById.has(destination) ||
-                scenario.commandByVideoId.has(destination);
+            const destinationExists = scenario.commandByVideoId.has(destination);
 
             if (!destinationExists) {
                 throw reportError(

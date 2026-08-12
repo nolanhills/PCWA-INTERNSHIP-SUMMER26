@@ -15,39 +15,7 @@
   videoId. Keep choiceId values stable and unique within each prompt. Supporting
   media is optional, and scenario-specific JavaScript should not be added.
 -->
-<playlist autostart="true">
-	<videos>
-		<video id="disaster-appeal-post">placeholder/fake-charity-disaster-donation/disaster-appeal-post.mp4</video>
-		<video id="shared-post-follow-up">placeholder/fake-charity-disaster-donation/shared-post-follow-up.mp4</video>
-		<video id="fake-charity-website">placeholder/fake-charity-disaster-donation/fake-charity-website.mp4</video>
-		<video id="independent-charity-search">placeholder/fake-charity-disaster-donation/independent-charity-search.mp4</video>
-		<video id="donation-form">placeholder/fake-charity-disaster-donation/donation-form.mp4</video>
-		<video id="contact-information-caller">placeholder/fake-charity-disaster-donation/contact-information-caller.mp4</video>
-		<video id="payment-method-selection">placeholder/fake-charity-disaster-donation/payment-method-selection.mp4</video>
-		<video id="mailed-information-caller">placeholder/fake-charity-disaster-donation/mailed-information-caller.mp4</video>
-		<video id="callback-number-pressure">placeholder/fake-charity-disaster-donation/callback-number-pressure.mp4</video>
-		<video id="recurring-charge-alert">placeholder/fake-charity-disaster-donation/recurring-charge-alert.mp4</video>
-		<video id="unusual-payment-follow-up">placeholder/fake-charity-disaster-donation/unusual-payment-follow-up.mp4</video>
-		<video id="second-donation-request">placeholder/fake-charity-disaster-donation/second-donation-request.mp4</video>
-		<video id="verified-giving-review">placeholder/fake-charity-disaster-donation/verified-giving-review.mp4</video>
-		<video id="suspicious-appeal-review">placeholder/fake-charity-disaster-donation/suspicious-appeal-review.mp4</video>
-		<video id="shared-post-recovery">placeholder/fake-charity-disaster-donation/shared-post-recovery.mp4</video>
-		<video id="independent-verification-review">placeholder/fake-charity-disaster-donation/independent-verification-review.mp4</video>
-		<video id="personal-information-recovery">placeholder/fake-charity-disaster-donation/personal-information-recovery.mp4</video>
-		<video id="card-information-recovery">placeholder/fake-charity-disaster-donation/card-information-recovery.mp4</video>
-		<video id="card-payment-recovery">placeholder/fake-charity-disaster-donation/card-payment-recovery.mp4</video>
-		<video id="unusual-payment-recovery">placeholder/fake-charity-disaster-donation/unusual-payment-recovery.mp4</video>
-		<video id="repeated-donation-recovery">placeholder/fake-charity-disaster-donation/repeated-donation-recovery.mp4</video>
-		<video id="verified-giving-ending">placeholder/fake-charity-disaster-donation/verified-giving-ending.mp4</video>
-		<video id="suspicious-appeal-ending">placeholder/fake-charity-disaster-donation/suspicious-appeal-ending.mp4</video>
-		<video id="shared-post-ending">placeholder/fake-charity-disaster-donation/shared-post-ending.mp4</video>
-		<video id="independent-verification-ending">placeholder/fake-charity-disaster-donation/independent-verification-ending.mp4</video>
-		<video id="personal-information-ending">placeholder/fake-charity-disaster-donation/personal-information-ending.mp4</video>
-		<video id="card-information-ending">placeholder/fake-charity-disaster-donation/card-information-ending.mp4</video>
-		<video id="card-payment-ending">placeholder/fake-charity-disaster-donation/card-payment-ending.mp4</video>
-		<video id="unusual-payment-ending">placeholder/fake-charity-disaster-donation/unusual-payment-ending.mp4</video>
-		<video id="repeated-donation-ending">placeholder/fake-charity-disaster-donation/repeated-donation-ending.mp4</video>
-	</videos>
+<playlist>
 
 	<presentation approximateStages="8">
 		<title>Fake Charity / Disaster Donation Scam</title>

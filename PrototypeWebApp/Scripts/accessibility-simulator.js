@@ -405,8 +405,6 @@
 
         if (commandType === "download") {
             artifactType = "file-download";
-        } else if (scene.video && scene.video.path) {
-            artifactType = "video";
         }
 
         return {
@@ -416,7 +414,6 @@
                 heading: `Scene ${scene.id}`,
                 message: displayText,
                 transcript: displayText,
-                mediaPath: scene.video ? scene.video.path : "",
                 mediaAvailable: false
             },
             question: displayText || "Choose what you would do next.",
@@ -575,7 +572,7 @@
         } else if (type === "fake-website") {
             artifactElement = createWebsiteArtifact(artifact);
         } else if (type === "video" || type === "audio") {
-            artifactElement = createMediaArtifact(artifact, scene, type);
+            artifactElement = createMediaArtifact(artifact, type);
         } else if (type === "file-download") {
             artifactElement = createFileArtifact(artifact);
         } else {
@@ -785,7 +782,7 @@
      * an unavailable primary asset leaves a compact notice that points learners
      * to the transcript and other simulated evidence.
      */
-    function createMediaArtifact(artifact, scene, type) {
+    function createMediaArtifact(artifact, type) {
         const wrapper = createElement("article", "media-artifact");
         const heading = createElement(
             "h2",
@@ -848,7 +845,7 @@
             wrapper.append(media, replayButton);
             updateSoundControl();
         } else {
-            const path = artifact.mediaPath || (scene.video ? scene.video.path : "");
+            const path = artifact.mediaPath || "";
             wrapper.append(createUnavailableMediaNotice(path));
         }
 

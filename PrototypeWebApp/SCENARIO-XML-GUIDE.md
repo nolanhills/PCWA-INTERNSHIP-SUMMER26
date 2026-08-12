@@ -10,9 +10,9 @@ conventions, and validation requirements for XML-authored scenarios.
 
 The accessible flagship application loads `prototypes/scenarios.xml` first. Each enabled
 catalog entry points to one independent scenario XML file. The routing engine in
-`Scripts/scenario-engine.js` reads that scenario's existing `<videos>` and
-`<commands>` elements, while the optional `<presentation>` element supplies the
-content shown by the accessible interface.
+`Scripts/scenario-engine.js` reads that scenario's `<commands>` element, while
+the optional `<presentation>` element supplies the content shown by the
+accessible interface, including media declared on each scene artifact.
 
 Routing and presentation are deliberately separate:
 
@@ -45,22 +45,20 @@ Register every scenario in `prototypes/scenarios.xml`:
   path.
 - `approximateStages` is an optional positive whole number displayed in the
   chooser before the scenario XML loads. Missing, zero, negative, or nonnumeric
-  values use the sidecar value when available and otherwise use the generic
+  values use the presentation value when available and otherwise use the generic
   one-stage fallback.
 
 Catalog order controls menu order. A catalog or scenario XML file must be served
 through IIS Express or another web server because the browser loads it with
 `fetch()`.
 
-## Existing Routing Structure
+## Routing Structure
 
-The original structure remains valid:
+The playlist root retains the authoritative commands; optional presentation
+metadata may precede them:
 
 ```xml
-<playlist autostart="true">
-  <videos>
-    <video id="1">media/opening.mp4</video>
-  </videos>
+<playlist>
   <commands>
     <command type="prompt" videoId="1" displayText="What would you do?">
       <options>
@@ -77,15 +75,15 @@ The original structure remains valid:
 
 The engine continues to support these command meanings:
 
-- `prompt`: each option's `id` is its destination video ID.
+- `prompt`: each option's `id` is its destination scene ID.
 - `download`: `nextVideoId` is the Continue destination.
 - `jump`: `targetId` is the Continue destination.
 - `restart-or-quit`: offers restart and return-to-menu actions.
 - `stop`: ends the current path and opens the final review.
 
-The first command remains the starting scene. Keep every destination matched to
-an existing video or command ID. Do not use presentation metadata to express
-routing.
+The first command is the starting scene. Keep every destination matched to an
+existing command ID and, for learner-facing content, a presentation scene. Do
+not use presentation metadata to express routing.
 
 `choiceId` is optional and does not affect routing. It gives an answer a stable
 identity independent of the option's destination. This lets two answers share
@@ -95,11 +93,10 @@ feedback. Choice IDs must be unique within one prompt. Legacy options without
 
 ## Optional Presentation Structure
 
-Place `<presentation>` between `<videos>` and `<commands>`. The parser permits
-individual fields to be omitted; missing fields fall back to catalog information
-where applicable and then to generic accessible copy. New flagship scenarios
-should provide complete learner-facing presentation metadata rather than relying
-on fallbacks.
+Place `<presentation>` before `<commands>`. The parser permits individual fields
+to be omitted; missing fields fall back to catalog information where applicable
+and then to generic accessible copy. New flagship scenarios should provide
+complete learner-facing presentation metadata rather than relying on fallbacks.
 
 ```xml
 <presentation approximateStages="3">
@@ -249,10 +246,9 @@ video is planned.
 Validate the complete graph before enabling or merging a scenario:
 
 1. Confirm the scenario XML is well formed.
-2. Confirm every command `videoId` has a matching `<video>` and presentation
-   `<scene>`.
+2. Confirm every command `videoId` has a matching presentation `<scene>`.
 3. Confirm every prompt option `id`, download `nextVideoId`, and jump `targetId`
-   points to an existing video, command, and presentation scene.
+   points to an existing command and presentation scene.
 4. Confirm each command is reachable from the first command. Document intentional
    loops and make sure each loop still offers a path forward or out.
 5. Match every option to presentation feedback by `choiceId`; use the legacy
@@ -272,7 +268,7 @@ Validate the complete graph before enabling or merging a scenario:
 
 1. Copy an existing scenario XML file to a new, descriptive filename under
    `prototypes/`.
-2. Give every video, command, and new choice a stable readable ID.
+2. Give every command and new choice a stable readable ID.
 3. Build and manually review the command graph before adding presentation data.
 4. Add complete `<presentation>` metadata for each learner-facing scene,
    including transcripts, choice feedback, warning signs, and terminal outcomes.
