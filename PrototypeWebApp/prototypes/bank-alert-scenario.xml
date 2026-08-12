@@ -117,7 +117,7 @@
 					<heading>Your account is being drained</heading>
 					<message>We see a hacker trying to empty your account. To protect your money, transfer it to a temporary government safe vault immediately.</message>
 					<transcript>The caller says hackers are draining the account and insists that the money must be transferred to a temporary government safe vault right now.</transcript>
-					<media video="placeholder/phone-call-fraud-department.mp4" poster="placeholder/phone-call-fraud-department.jpg" captions="placeholder/phone-call-fraud-department.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo2.mp4" available="true" />				
 				</artifact>
 				<question>What would you do while the caller is pressuring you?</question>
 				<description>The caller sounds calm and professional, but insists there is no time to wait.</description>
@@ -177,7 +177,7 @@
 						<item>Full Social Security number</item>
 					</requestedInformation>
 					<transcript>The page asks for a username, password, and full Social Security number. The web address came from an unexpected text and does not match a known bank address.</transcript>
-					<media video="placeholder/fake-bank-login-page.mp4" poster="placeholder/fake-bank-login-page.jpg" captions="placeholder/fake-bank-login-page.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo3.mp4" available="true" />
 				</artifact>
 				<outcome classification="dangerous">
 					<label>Account information at risk</label>
@@ -196,8 +196,7 @@
 					<heading>Official account check</heading>
 					<message>You open the official banking app yourself. The balance is correct and no suspicious charge appears.</message>
 					<transcript>The official banking app shows that the account is fine. The alert did not come from the bank.</transcript>
-					<media video="placeholder/official-bank-check.mp4" poster="placeholder/official-bank-check.jpg" captions="placeholder/official-bank-check.vtt" available="false" />
-				</artifact>
+					<media video="media/bank-alert/BankFraudVideo4.mp4" available="true" />				</artifact>
 				<outcome classification="safe">
 					<label>Account protected</label>
 					<heading>You verified the alert safely</heading>
@@ -217,7 +216,7 @@
 					<heading>A security code is requested</heading>
 					<message>I started the secure transfer. I am texting you a verification code. Read it out loud so I can finalize the security vault.</message>
 					<transcript>The caller says a transfer is underway and asks the learner to read a new verification code aloud.</transcript>
-					<media video="placeholder/wire-transfer-trap.mp4" poster="placeholder/wire-transfer-trap.jpg" captions="placeholder/wire-transfer-trap.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo5.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the caller asks for the code?</question>
 				<description>A text arrives while the caller remains on the line.</description>
@@ -261,7 +260,7 @@
 					<heading>Security code: 994-123</heading>
 					<message>Bank employees will NEVER ask for this code over the phone. Do not share it.</message>
 					<transcript>The security message says bank employees will never ask for this code over the phone and instructs the recipient not to share it.</transcript>
-					<media video="placeholder/two-factor-code-warning.mp4" poster="placeholder/two-factor-code-warning.jpg" captions="placeholder/two-factor-code-warning.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo6.mp4" available="true" />
 				</artifact>
 				<question>What would you do after reading the warning?</question>
 				<description>The caller is still waiting for an answer.</description>
@@ -302,7 +301,7 @@
 					<heading>Trusted contact restored</heading>
 					<message>You ended the suspicious conversation and contacted the bank through an official channel.</message>
 					<transcript>The suspicious conversation ends. The learner contacts the bank using a trusted number.</transcript>
-					<media video="placeholder/win-scam-defeated.mp4" poster="placeholder/win-scam-defeated.jpg" captions="placeholder/win-scam-defeated.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo7.mp4" available="true" />
 				</artifact>
 				<outcome classification="safe">
 					<label>Scam stopped</label>
@@ -320,7 +319,7 @@
 					<heading>Security code shared</heading>
 					<message>The scammer uses the code to bypass account protection and gain access.</message>
 					<transcript>After receiving the one-time code, the scammer can bypass two-factor authentication and compromise the account.</transcript>
-					<media video="placeholder/loss-account-compromised.mp4" poster="placeholder/loss-account-compromised.jpg" captions="placeholder/loss-account-compromised.vtt" available="false" />
+					<media video="media/bank-alert/BankFraudVideo8.mp4" available="true" />
 				</artifact>
 				<outcome classification="dangerous">
 					<label>Account compromised</label>

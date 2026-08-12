@@ -105,6 +105,13 @@
   <ItemGroup>
     <Content Include="ACCESSIBLE-PROTOTYPE.md" />
     <Content Include="media\bank-alert\BankFraudVideo1.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo2.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo3.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo4.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo5.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo6.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo7.mp4" />
+    <Content Include="media\bank-alert\BankFraudVideo8.mp4" />
     <Content Include="SCENARIO-XML-GUIDE.md" />
     <Content Include="AccessiblePrototype.aspx" />
     <Content Include="Content\accessibility-prototype.css" />
