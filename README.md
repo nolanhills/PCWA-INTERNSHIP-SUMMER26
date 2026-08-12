@@ -25,10 +25,9 @@ The accessible XML-driven application is the active flagship product. Its entry
 page is `PrototypeWebApp/AccessiblePrototype.aspx`, and `Web.config` configures
 the site root to open that page automatically.
 
-The flagship work currently lives on `ui/accessibility-redesign`. That branch
-has not been merged into `main`, so `main` must not yet be treated as the
-replacement for the flagship branch. The former modern prototype has been
-removed from this branch. Its historical branch remains available as an archive.
+The accessible XML-driven application is the repository's primary
+implementation. The former modern prototype is retained only through its
+historical branch as an archive.
 
 ## Enabled Scenarios
 
@@ -135,8 +134,7 @@ scenario.
 
 ## Branch Strategy
 
-- `ui/accessibility-redesign` is the current flagship integration branch.
-- `main` has not yet been replaced by the flagship work.
+- `main` is the stable integration target for the flagship application.
 - The former modern-prototype branch is retained as a historical archive and
   should not receive flagship changes.
 - New scenarios should be developed on focused branches and reviewed before
