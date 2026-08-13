@@ -110,6 +110,8 @@
     <Content Include="media\bank-alert\BankFraudVideo6.mp4" />
     <Content Include="media\bank-alert\BankFraudVideo7.mp4" />
     <Content Include="media\bank-alert\BankFraudVideo8.mp4" />
+    <Content Include="prototypes\home-repair-scenario.xml" />
+    <Content Include="prototypes\medicare-scenario.xml" />
     <Content Include="SCENARIO-XML-GUIDE.md" />
     <Content Include="AccessiblePrototype.aspx" />
     <Content Include="Content\accessibility-prototype.css" />
@@ -167,6 +169,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libman.json" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

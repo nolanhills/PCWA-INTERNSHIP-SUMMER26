@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  File: home-repair-scenario.xml
+  Project: PCWA Senior Scam Awareness Simulator
+  Created by: Will Demi
+
+  Purpose:
+  Defines branching content and presentation metadata for Doorstep Contractor / Home Repair Scam.
+
+  Catalog ID: home-repair
+
+  Maintenance Notes:
+  Commands are authoritative for routing; presentation scenes match them by
+  videoId. Keep choiceId values stable and unique within each prompt. Supporting
+  media is optional, and scenario-specific JavaScript should not be added.
+-->
+<playlist>
+	<presentation approximateStages="5">
+
+		<title>Doorstep Contractor / Home Repair Scam</title>
+
+		<summary>
+			A person unexpectedly arrives at the door claiming to have noticed damage to the roof,
+			driveway, gutters, or another part of the home. The person offers to make repairs immediately
+			and claims the homeowner can receive a special discount by deciding today.
+		</summary>
+
+		<practiceGoal>
+			Never agree to high-pressure home repairs without independent verification.
+			Get a written estimate, verify the contractor's license and references, and seek a second opinion
+			before paying a large deposit or allowing work to begin.
+		</practiceGoal>
+
+		<stages>
+			<stage>Unexpected contractor</stage>
+			<stage>Today-only discount</stage>
+			<stage>Large cash deposit</stage>
+			<stage>Pressure and fear</stage>
+			<stage>Takeaways</stage>
+		</stages>
+
+		<finalReview>
+
+			<warningSigns>
+				<sign>An unsolicited contractor arrives at the home without being requested.</sign>
+				<sign>The contractor claims to have noticed serious damage that requires immediate repair.</sign>
+				<sign>The contractor offers a today-only discount or demands an immediate decision.</sign>
+				<sign>The contractor requests a large upfront cash deposit.</sign>
+				<sign>The contractor refuses to provide a written estimate, license information, or references.</sign>
+				<sign>The contractor uses fear or threats about the home being damaged to pressure the homeowner.</sign>
+			</warningSigns>
+
+			<safestAction>
+				Do not agree to repairs or make a large payment during an unsolicited visit.
+				End the conversation, verify the contractor independently, get a written estimate,
+				and seek a second opinion from a trusted contractor.
+			</safestAction>
+
+			<realWorldActions>
+				<action>Do not allow an unexpected contractor to pressure you into making an immediate decision.</action>
+				<action>Ask for a written estimate describing the work, materials, total cost, and payment terms.</action>
+				<action>Verify the contractor's license, insurance, business information, and references independently.</action>
+				<action>Get a second opinion from a contractor you choose yourself.</action>
+				<action>Be cautious about large upfront cash deposits or requests for cash-only payment.</action>
+				<action>Do not let claims about dangerous or urgent damage prevent you from taking time to verify the situation.</action>
+			</realWorldActions>
+
+		</finalReview>
+
+		<scenes>
+
+			<!-- MOMENT 1: UNEXPECTED CONTRACTOR -->
+
+			<scene videoId="doorstep-arrival" stageName="Unexpected contractor" stageIndex="1">
+
+				<artifact type="doorstep-conversation">
+
+					<caller>Home Repair Contractor</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Unexpected visit</callStatus>
+
+					<heading>A contractor unexpectedly arrives at your door</heading>
+
+					<message>
+						The person says, "We're working nearby and noticed some damage on your roof.
+						It looks like it needs immediate repair."
+						The person offers to take a closer look and says they can explain the repair options.
+					</message>
+
+					<transcript>
+						A simulated contractor arrives unexpectedly at the learner's home.
+						The contractor claims to have noticed damage and says the problem may require
+						immediate attention. The contractor has not been independently verified.
+					</transcript>
+
+					<media
+					video="placeholder/contractor-scam/doorstep-arrival.mp4"
+					poster="placeholder/contractor-scam/doorstep-arrival.jpg"
+					captions="placeholder/contractor-scam/doorstep-arrival.vtt"
+					available="false" />
+
+				</artifact>
+
+				<question>What would you do when an unexpected contractor arrives?</question>
+
+				<description>
+					An unsolicited contractor should not automatically be trusted simply because
+					they claim to have noticed a problem with the home.
+				</description>
+
+				<warningSigns>
+					<sign>The contractor was not invited or requested.</sign>
+					<sign>The contractor claims there is serious damage.</sign>
+					<sign>The contractor wants to discuss repairs immediately.</sign>
+				</warningSigns>
+
+				<choices>
+
+					<choice
+					choiceId="invite-inside"
+					destinationVideoId="written-estimate"
+					classification="dangerous">
+
+						<title>Invite them inside to discuss the repair</title>
+
+						<subtitle>
+							Let the contractor inside so they can inspect the problem and explain the repair.
+						</subtitle>
+
+						<feedback heading="An unexpected contractor should not be given immediate access">
+
+							<consequence>
+								You allow an unverified person into your home before establishing who they are
+								or whether the claimed damage actually exists.
+							</consequence>
+
+							<explanation>
+								Unsolicited home repair offers can involve pressure, exaggerated damage claims,
+								or attempts to gain access to the property. You do not need to let an unexpected
+								contractor inside.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor arrived without being requested.</sign>
+								<sign>The contractor has not provided independent proof of their identity or business.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="speak-through-door"
+					destinationVideoId="written-estimate"
+					classification="safe">
+
+						<title>Speak through the door and ask for their business information</title>
+
+						<subtitle>
+							Keep the interaction outside and ask for the contractor's name and business information.
+						</subtitle>
+
+						<feedback heading="You established a safer boundary">
+
+							<consequence>
+								You avoid immediately giving an unexpected visitor access to your home.
+							</consequence>
+
+							<explanation>
+								Keeping the conversation outside gives you time to evaluate the situation.
+								You can independently verify the contractor before considering any work.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor arrived unexpectedly.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="say-no-close-door"
+					destinationVideoId="safe-verification"
+					classification="safe">
+
+						<title>Say no and close the door</title>
+
+						<subtitle>
+							Decline the unsolicited repair offer and end the conversation.
+						</subtitle>
+
+						<feedback heading="You avoided an unsolicited repair offer">
+
+							<consequence>
+								You prevent the unexpected visitor from pressuring you into a repair decision.
+							</consequence>
+
+							<explanation>
+								You are not required to discuss home repairs with someone who unexpectedly
+								arrives at your door. If you are concerned about the condition of your home,
+								you can contact a contractor of your choice.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor initiated the contact unexpectedly.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+				</choices>
+
+			</scene>
+
+
+			<!-- MOMENT 2: TODAY-ONLY DISCOUNT -->
+
+			<scene videoId="written-estimate" stageName="Today-only discount" stageIndex="2">
+
+				<artifact type="doorstep-conversation">
+
+					<caller>Home Repair Contractor</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>High-pressure sales offer</callStatus>
+
+					<heading>The contractor says the discount expires today</heading>
+
+					<message>
+						The contractor says, "I can do the work today for half price,
+						but only if you decide right now. If I leave, I can't guarantee this price."
+					</message>
+
+					<transcript>
+						The simulated contractor offers a major discount but says the homeowner
+						must make an immediate decision. The contractor has not provided a written estimate
+						or allowed time for comparison with another contractor.
+					</transcript>
+
+					<media
+					video="placeholder/contractor-scam/written-estimate.mp4"
+					poster="placeholder/contractor-scam/written-estimate.jpg"
+					captions="placeholder/contractor-scam/written-estimate.vtt"
+					available="false" />
+
+				</artifact>
+
+				<question>What would you do when the contractor says the discount expires today?</question>
+
+				<description>
+					High-pressure deadlines are a warning sign. Legitimate contractors should allow
+					time to review an estimate and compare options.
+				</description>
+
+				<warningSigns>
+					<sign>The contractor creates an immediate deadline.</sign>
+					<sign>The contractor claims the price is available only today.</sign>
+					<sign>The contractor wants a decision before you can compare estimates.</sign>
+				</warningSigns>
+
+				<choices>
+
+					<choice
+					choiceId="agree-discount"
+					destinationVideoId="cash-deposit"
+					classification="dangerous">
+
+						<title>Agree because it sounds like a great deal</title>
+
+						<subtitle>
+							Accept the discounted price and let the contractor begin today.
+						</subtitle>
+
+						<feedback heading="The discount was used to pressure you into acting quickly">
+
+							<consequence>
+								You commit to a repair before independently verifying the contractor,
+								the damage, or the actual cost of the work.
+							</consequence>
+
+							<explanation>
+								A large discount combined with an immediate deadline can be used to prevent
+								you from comparing prices or checking the contractor's credentials.
+							</explanation>
+
+							<warningSigns>
+								<sign>Today-only pricing.</sign>
+								<sign>Pressure to decide immediately.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="request-written-estimate"
+					destinationVideoId="cash-deposit"
+					classification="safe">
+
+						<title>Ask for a written estimate and time to compare</title>
+
+						<subtitle>
+							Request the complete estimate in writing before making a decision.
+						</subtitle>
+
+						<feedback heading="You slowed down the decision">
+
+							<consequence>
+								You avoid being pressured into accepting a repair without documentation.
+							</consequence>
+
+							<explanation>
+								A written estimate should explain the work, materials, total cost,
+								and payment terms. Taking time to compare estimates can help identify
+								unreasonable prices or suspicious contractors.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor wanted an immediate decision.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="ask-neighbor"
+					destinationVideoId="cash-deposit"
+					classification="risky">
+
+						<title>Ask a neighbor what they think</title>
+
+						<subtitle>
+							Ask someone nearby whether they know anything about the contractor.
+						</subtitle>
+
+						<feedback heading="Outside advice can help, but it does not verify the contractor">
+
+							<consequence>
+								You gain another perspective, but the contractor still has not been independently verified.
+							</consequence>
+
+							<explanation>
+								Trusted people can provide useful advice, but you should still verify the
+								contractor's business information and obtain a written estimate before agreeing to work.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor is still pressuring you to make a decision.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+				</choices>
+
+			</scene>
+
+
+			<!-- MOMENT 3: LARGE CASH DEPOSIT -->
+
+			<scene videoId="cash-deposit" stageName="Large cash deposit" stageIndex="3">
+
+				<artifact type="payment-request">
+
+					<caller>Home Repair Contractor</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Large upfront payment request</callStatus>
+
+					<heading>The contractor requests a $2,000 cash deposit</heading>
+
+					<message>
+						The contractor says, "I need $2,000 in cash right now for materials.
+						Once you pay the deposit, I can get started today."
+					</message>
+
+					<transcript>
+						The simulated contractor requests a large cash deposit before work begins.
+						The contractor has not provided enough documentation to independently establish
+						the legitimacy of the business or the repair.
+					</transcript>
+
+					<media
+					video="placeholder/contractor-scam/cash-deposit.mp4"
+					poster="placeholder/contractor-scam/cash-deposit.jpg"
+					captions="placeholder/contractor-scam/cash-deposit.vtt"
+					available="false" />
+
+				</artifact>
+
+				<question>What would you do when the contractor asks for a $2,000 cash deposit?</question>
+
+				<description>
+					A large upfront cash payment to an unverified contractor is a major warning sign.
+					Do not pay until the contractor and agreement have been independently verified.
+				</description>
+
+				<warningSigns>
+					<sign>The contractor requests a large upfront payment.</sign>
+					<sign>The payment must be made in cash.</sign>
+					<sign>The contractor wants payment before verification and before work begins.</sign>
+				</warningSigns>
+
+				<choices>
+
+					<choice
+					choiceId="pay-cash"
+					destinationVideoId="pressure-tactics"
+					classification="dangerous">
+
+						<title>Pay the $2,000 cash deposit</title>
+
+						<subtitle>
+							Give the contractor the requested cash so the work can begin immediately.
+						</subtitle>
+
+						<feedback heading="A large cash deposit creates a serious financial risk">
+
+							<consequence>
+								You give a large amount of money to an unverified contractor.
+								The contractor could take the payment and leave without completing the work.
+							</consequence>
+
+							<explanation>
+								Large cash deposits should not be made to an unsolicited contractor without
+								verifying the business, reviewing a written agreement, and understanding
+								the payment terms.
+							</explanation>
+
+							<warningSigns>
+								<sign>Large upfront cash payment.</sign>
+								<sign>Unverified contractor.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="offer-small-payment"
+					destinationVideoId="pressure-tactics"
+					classification="risky">
+
+						<title>Offer a smaller partial payment</title>
+
+						<subtitle>
+							Offer to give the contractor a smaller amount of money to show good faith.
+						</subtitle>
+
+						<feedback heading="A smaller payment is still risky without verification">
+
+							<consequence>
+								You reduce the amount of money at risk, but you are still paying an unverified contractor.
+							</consequence>
+
+							<explanation>
+								Changing the amount does not solve the underlying problem.
+								Verify the contractor and have a written agreement before making a payment.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor has not been independently verified.</sign>
+								<sign>The contractor is requesting money before the work begins.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="refuse-cash-verify"
+					destinationVideoId="pressure-tactics"
+					classification="safe">
+
+						<title>Refuse the cash deposit and verify the contractor</title>
+
+						<subtitle>
+							Do not pay until you verify the contractor, references, license, and written agreement.
+						</subtitle>
+
+						<feedback heading="You protected yourself from an upfront-payment scam">
+
+							<consequence>
+								You keep control of your money while you independently verify the contractor.
+							</consequence>
+
+							<explanation>
+								Do not let a contractor's payment deadline prevent you from checking
+								the business and getting documentation. A legitimate contractor should
+								be willing to discuss payment terms in writing.
+							</explanation>
+
+							<warningSigns>
+								<sign>Large cash deposit request.</sign>
+								<sign>Pressure to pay immediately.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+				</choices>
+
+			</scene>
+
+
+			<!-- MOMENT 4: PRESSURE AND FEAR -->
+
+			<scene videoId="pressure-tactics" stageName="Pressure and fear" stageIndex="4">
+
+				<artifact type="doorstep-conversation">
+
+					<caller>Home Repair Contractor</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Fear-based pressure</callStatus>
+
+					<heading>The contractor uses fear to pressure you</heading>
+
+					<message>
+						The contractor becomes annoyed and says,
+						"Your roof could collapse. I'm trying to help you.
+						If you don't let me fix it today, the damage could get much worse."
+					</message>
+
+					<transcript>
+						The simulated contractor becomes increasingly urgent and claims that the homeowner
+						could face serious damage if they do not agree to repairs immediately.
+						The contractor uses fear to discourage the homeowner from seeking another opinion.
+					</transcript>
+
+					<media
+					video="placeholder/contractor-scam/pressure-tactics.mp4"
+					poster="placeholder/contractor-scam/pressure-tactics.jpg"
+					captions="placeholder/contractor-scam/pressure-tactics.vtt"
+					available="false" />
+
+				</artifact>
+
+				<question>What would you do when the contractor pressures you with a scary warning?</question>
+
+				<description>
+					Fear and urgency can make people act before they have time to verify a claim.
+					Do not allow pressure to replace an independent inspection.
+				</description>
+
+				<warningSigns>
+					<sign>The contractor claims the home is in immediate danger.</sign>
+					<sign>The contractor discourages you from waiting or getting another opinion.</sign>
+					<sign>The contractor uses fear to pressure you into agreeing to repairs.</sign>
+				</warningSigns>
+
+				<choices>
+
+					<choice
+					choiceId="give-in-pressure"
+					destinationVideoId="takeaways"
+					classification="dangerous">
+
+						<title>Give in to the pressure</title>
+
+						<subtitle>
+							Agree to the repair because you are worried the home could be damaged.
+						</subtitle>
+
+						<feedback heading="Fear caused you to bypass verification">
+
+							<consequence>
+								You allow the contractor's warning to determine your decision before
+								independently confirming that the claimed damage exists.
+							</consequence>
+
+							<explanation>
+								Scammers may exaggerate or invent problems to create fear.
+								Even if a repair really is needed, you can choose a contractor
+								and verify the problem yourself.
+							</explanation>
+
+							<warningSigns>
+								<sign>Fear-based pressure.</sign>
+								<sign>Immediate repair demand.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="end-conversation-call-trusted"
+					destinationVideoId="takeaways"
+					classification="safe">
+
+						<title>End the conversation and call a trusted contractor</title>
+
+						<subtitle>
+							Ask the visitor to leave and contact a contractor you choose yourself.
+						</subtitle>
+
+						<feedback heading="You took control of the decision">
+
+							<consequence>
+								You stop the pressure and create an opportunity to independently inspect
+								and verify the claimed problem.
+							</consequence>
+
+							<explanation>
+								A trusted contractor can inspect the property and provide an independent
+								opinion. The person who arrives unexpectedly should not control the repair decision.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor used fear to demand immediate action.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+
+					<choice
+					choiceId="come-back-tomorrow"
+					destinationVideoId="takeaways"
+					classification="risky">
+
+						<title>Ask them to come back tomorrow</title>
+
+						<subtitle>
+							Delay the decision and tell the contractor you will think about it.
+						</subtitle>
+
+						<feedback heading="Delaying helps, but independent verification is still needed">
+
+							<consequence>
+								You create time to think, but the same contractor may return and continue
+								the pressure.
+							</consequence>
+
+							<explanation>
+								Waiting is safer than making an immediate decision, but you should still
+								verify the contractor independently and get another opinion before agreeing to work.
+							</explanation>
+
+							<warningSigns>
+								<sign>The contractor is using urgency to control the decision.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+				</choices>
+
+			</scene>
+
+
+			<!-- TAKEAWAYS -->
+
+			<scene videoId="takeaways" stageName="Takeaways" stageIndex="5">
+
+				<artifact type="guide">
+
+					<heading>Pause before paying for unexpected home repairs</heading>
+
+					<message>
+						Unsolicited contractors, today-only discounts, large cash deposits,
+						missing paperwork, and fear-based pressure are warning signs.
+						You do not have to make an immediate repair decision.
+					</message>
+
+					<transcript>
+						The guide reminds the learner that unexpected home repair offers should be treated
+						carefully. A contractor who arrives without being requested may use urgency,
+						discounts, large upfront payments, or fear about property damage to pressure the homeowner.
+						The safest approach is to slow down, get a written estimate, verify the contractor,
+						and seek a second opinion.
+					</transcript>
+
+					<media
+					video="placeholder/contractor-scam/takeaways.mp4"
+					poster="placeholder/contractor-scam/takeaways.jpg"
+					captions="placeholder/contractor-scam/takeaways.vtt"
+					available="false" />
+
+				</artifact>
+
+				<question>What is the safest response to an unexpected home repair offer?</question>
+
+				<description>
+					Do not allow an unexpected contractor to pressure you into repairs or payment.
+					Verify the contractor and the claimed damage independently.
+				</description>
+
+				<warningSigns>
+					<sign>Unsolicited contractor</sign>
+					<sign>Today-only discount</sign>
+					<sign>Large upfront cash deposit</sign>
+					<sign>No written estimate or contract</sign>
+					<sign>No license or references</sign>
+					<sign>Pressure and fear about immediate damage</sign>
+				</warningSigns>
+
+				<choices>
+
+					<choice
+					choiceId="verify-contractor"
+					destinationVideoId="safe-verification"
+					classification="safe">
+
+						<title>Verify the contractor and get a second opinion</title>
+
+						<subtitle>
+							Get a written estimate, independently verify the contractor, and compare another opinion before paying.
+						</subtitle>
+
+						<feedback heading="Excellent">
+
+							<consequence>
+								You recognized the warning signs and avoided making a pressured repair decision.
+							</consequence>
+
+							<explanation>
+								The safest approach is to slow down. Get the proposed work and price in writing,
+								verify the contractor using information you find independently, and ask another
+								trusted contractor to inspect the problem.
+							</explanation>
+
+							<warningSigns>
+								<sign>Unsolicited repair offers should be independently verified.</sign>
+								<sign>High-pressure payment demands are a warning sign.</sign>
+							</warningSigns>
+
+						</feedback>
+
+					</choice>
+
+				</choices>
+
+			</scene>
+
+			<scene videoId="safe-verification" stageName="Takeaways" stageIndex="5">
+				<artifact type="review">
+					<heading>Safe verification completed</heading>
+					<message>The contractor was declined or independently verified before any commitments were made.</message>
+					<transcript>The learner successfully avoided the unsolicited offer, declined upfront cash, or independently verified the contractor and estimates.</transcript>
+					<media video="placeholder/contractor-scam/safe-verification.mp4" poster="placeholder/contractor-scam/safe-verification.jpg" captions="placeholder/contractor-scam/safe-verification.vtt" available="false" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Contractor verified safely</label>
+					<heading>You avoided high-pressure repairs</heading>
+					<explanation>You protected your home and finances by refusing unsolicited visits and demanding proper documentation and independent verification.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>Unsolicited contractor arrival.</sign>
+					<sign>High-pressure tactics and urgency.</sign>
+				</warningSigns>
+			</scene>
+
+		</scenes>
+
+	</presentation>
+
+	<commands>
+		<command type="prompt" videoId="doorstep-arrival" displayText="A contractor unexpectedly arrives at your door claiming to have noticed damage to your home.">
+			<options>
+				<option id="written-estimate" text="Invite them inside to discuss the repair" choiceId="invite-inside"></option>
+				<option id="written-estimate" text="Speak through the door and ask for their business information" choiceId="speak-through-door"></option>
+				<option id="safe-verification" text="Say no and close the door" choiceId="say-no-close-door"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="written-estimate" displayText="The contractor offers a major discount but says you must make an immediate decision today.">
+			<options>
+				<option id="cash-deposit" text="Agree because it sounds like a great deal" choiceId="agree-discount"></option>
+				<option id="cash-deposit" text="Ask for a written estimate and time to compare" choiceId="request-written-estimate"></option>
+				<option id="cash-deposit" text="Ask a neighbor what they think" choiceId="ask-neighbor"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="cash-deposit" displayText="The contractor requests a large cash deposit before any work begins.">
+			<options>
+				<option id="pressure-tactics" text="Pay the $2,000 cash deposit" choiceId="pay-cash"></option>
+				<option id="pressure-tactics" text="Offer a smaller partial payment" choiceId="offer-small-payment"></option>
+				<option id="pressure-tactics" text="Refuse the cash deposit and verify the contractor" choiceId="refuse-cash-verify"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="pressure-tactics" displayText="The contractor uses fear and warnings of severe damage to pressure you into agreeing immediately.">
+			<options>
+				<option id="takeaways" text="Give in to the pressure" choiceId="give-in-pressure"></option>
+				<option id="takeaways" text="End the conversation and call a trusted contractor" choiceId="end-conversation-call-trusted"></option>
+				<option id="takeaways" text="Ask them to come back tomorrow" choiceId="come-back-tomorrow"></option>
+			</options>
+		</command>
+		<command type="prompt" videoId="takeaways" displayText="Review the warning signs of home repair scams and choose the safest response.">
+			<options>
+				<option id="safe-verification" text="Verify the contractor and get a second opinion" choiceId="verify-contractor"></option>
+			</options>
+		</command>
+		<command type="stop" videoId="safe-verification" displayText="The learner successfully avoided the home repair scam through safe verification and boundary setting." />
+	</commands>
+</playlist>

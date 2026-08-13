@@ -54,4 +54,14 @@
     <description>Practice evaluating an unexpected prize notice, verifying the sponsor independently, protecting sensitive information, and refusing upfront fees or unusual payments.</description>
     <file>prototypes/sweepstakes-prize-advance-fee-scenario.xml</file>
   </scenario>
+	<scenario id="medicare" approximateStages="5" enabled="true">
+		<title>Medicare Benefits Scam Call</title>
+		<description>Practice responding to unexpected Medicare calls, requests for personal information, free medical equipment offers, and threats about losing benefits.</description>
+		<file>prototypes/medicare-scenario.xml</file>
+	</scenario>
+	<scenario id="home-repair" approximateStages="5" enabled="true">
+		<title>Doorstep Contractor / Home Repair Scam</title>
+		<description>Practice responding to unsolicited contractors, today-only discounts, large cash deposits, and fear-based pressure about home repairs.</description>
+		<file>prototypes/home-repair-scenario.xml</file>
+	</scenario>
 </scenarios>
