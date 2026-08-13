@@ -15,6 +15,9 @@
   media is optional, and scenario-specific JavaScript should not be added.
 -->
 <playlist>
+	<variables>
+		<money id="protectionPlanAmount" values="349,399,449,499" currency="USD" />
+	</variables>
 	<presentation approximateStages="8">
 		<title>Tech Support Pop-Up Scam</title>
 		<summary>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</summary>
@@ -323,17 +326,17 @@
 					<caller>Daniel at SecureTech Device Support</caller>
 					<callerStatus>Unverified caller requesting gift-card payment</callerStatus>
 					<callStatus>Remote session remains connected after the fake diagnosis</callStatus>
-					<heading>A $399 lifetime protection plan</heading>
-					<message>The lifetime protection plan costs $399. Our card-processing system is temporarily unavailable, so payment must be made using gift cards.</message>
-					<transcript>Only after the fake diagnosis has been established does Daniel say, "The lifetime protection plan costs $399. Our card-processing system is temporarily unavailable, so payment must be made using gift cards." He asks the learner to purchase gift cards and read the numbers to him.</transcript>
+					<heading>A {{protectionPlanAmount}} lifetime protection plan</heading>
+					<message>The lifetime protection plan costs {{protectionPlanAmount}}. Our card-processing system is temporarily unavailable, so payment must be made using gift cards.</message>
+					<transcript>Only after the fake diagnosis has been established does Daniel say, "The lifetime protection plan costs {{protectionPlanAmount}}. Our card-processing system is temporarily unavailable, so payment must be made using gift cards." He asks the learner to purchase gift cards and read the numbers to him.</transcript>
 					<media video="placeholder/tech-support-popup/protection-plan.mp4" poster="placeholder/tech-support-popup/protection-plan.jpg" captions="placeholder/tech-support-popup/protection-plan.vtt" available="false" />
 				</artifact>
-				<question>How would you respond to the $399 gift-card payment demand?</question>
+				<question>How would you respond to the {{protectionPlanAmount}} gift-card payment demand?</question>
 				<description>Gift cards work like cash once their numbers are shared. Legitimate support services do not require gift cards for computer protection.</description>
 				<warningSigns><sign>Daniel demands gift cards because normal card processing is supposedly unavailable.</sign><sign>The plan is introduced after a fear-based diagnosis.</sign><sign>The caller wants redeemable numbers instead of a normal invoice.</sign></warningSigns>
 				<choices>
 					<choice choiceId="provide-399-gift-cards" destinationVideoId="gift-card-loss" classification="dangerous">
-						<title>Purchase gift cards and provide the numbers</title><subtitle>Pay $399 for the lifetime protection plan.</subtitle>
+						<title>Purchase {{protectionPlanAmount}} in gift cards and provide the numbers</title><subtitle>Use the gift cards to pay for the lifetime protection plan.</subtitle>
 						<feedback heading="The gift-card value can be taken immediately"><consequence>Daniel redeems the card value while remote-access and account risks remain.</consequence><explanation>Gift-card numbers should never be used to pay an unexpected support caller.</explanation><warningSigns><sign>The payment is difficult to reverse.</sign><sign>The caller controls both the diagnosis and the sale.</sign></warningSigns></feedback>
 					</choice>
 					<choice choiceId="refuse-payment-disconnect" destinationVideoId="remote-recovery-safe" classification="safe">
@@ -499,9 +502,9 @@
 				<option id="protection-plan" choiceId="give-in-ask-protection" text="Ask how to protect the computer" />
 			</options>
 		</command>
-		<command type="prompt" videoId="protection-plan" displayText="Daniel demands $399 in gift cards for a lifetime protection plan.">
+		<command type="prompt" videoId="protection-plan" displayText="Daniel demands {{protectionPlanAmount}} in gift cards for a lifetime protection plan.">
 			<options>
-				<option id="gift-card-loss" choiceId="provide-399-gift-cards" text="Purchase gift cards and provide the numbers" />
+				<option id="gift-card-loss" choiceId="provide-399-gift-cards" text="Purchase {{protectionPlanAmount}} in gift cards and provide the numbers" />
 				<option id="remote-recovery-safe" choiceId="refuse-payment-disconnect" text="Refuse the payment and disconnect" />
 				<option id="discounted-plan" choiceId="ask-cheaper-option" text="Ask whether there is a cheaper option" />
 			</options>

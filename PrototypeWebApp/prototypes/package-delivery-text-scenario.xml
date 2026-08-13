@@ -15,6 +15,9 @@
   media is optional, and scenario-specific JavaScript should not be added.
 -->
 <playlist>
+	<variables>
+		<money id="redeliveryFeeAmount" values="1.95,2.49,2.99,3.49" currency="USD" />
+	</variables>
 
 	<presentation approximateStages="7">
 		<title>Package Delivery Text Scam</title>
@@ -230,18 +233,18 @@
 			<scene videoId="redelivery-fee-full-info" stageName="Redelivery fee" stageIndex="5">
 				<artifact type="fake-website">
 					<domain>parcelroute-reschedule.com</domain><heading>Address confirmed</heading>
-					<message>A redelivery fee is required before the package can be released. Redelivery fee: $1.95. Complete payment within 10 minutes to prevent return to sender.</message>
+					<message>A redelivery fee is required before the package can be released. Redelivery fee: {{redeliveryFeeAmount}}. Complete payment within 10 minutes to prevent return to sender.</message>
 					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
-					<transcript>Only after the learner submitted full personal information does the fake page say “Address confirmed” and reveal a $1.95 redelivery fee. A 10-minute countdown appears. The payment form requests name on card, full card number, expiration date, security code, and billing ZIP code. The small amount is meant to feel harmless; the scammer's real goal is card and identity information.</transcript>
+					<transcript>Only after the learner submitted full personal information does the fake page say “Address confirmed” and reveal a {{redeliveryFeeAmount}} redelivery fee. A 10-minute countdown appears. The payment form requests name on card, full card number, expiration date, security code, and billing ZIP code. The small amount is meant to feel harmless; the scammer's real goal is card and identity information.</transcript>
 					<media video="placeholder/package-delivery-text/redelivery-fee-full-info.mp4" poster="placeholder/package-delivery-text/redelivery-fee-full-info.jpg" captions="placeholder/package-delivery-text/redelivery-fee-full-info.vtt" available="false" />
 				</artifact>
 				<question>What would you do when the small fee finally appears?</question>
-				<description>The site already received name, address, phone number, and email address. The $1.95 amount and countdown are tactics.</description>
+				<description>The site already received name, address, phone number, and email address. The {{redeliveryFeeAmount}} amount and countdown are tactics.</description>
 				<warningSigns><sign>The payment request appeared only after personal information was collected.</sign><sign>A tiny fee requires complete card security details.</sign><sign>A countdown creates artificial urgency.</sign></warningSigns>
 				<choices>
 					<choice choiceId="pay-regular-card-after-full-info" destinationVideoId="card-compromise-recovery" classification="dangerous">
-						<title>Pay $1.95 with a regular card</title><subtitle>Submit the full card and billing details.</subtitle>
-						<feedback heading="The small charge hides a larger theft risk"><consequence>The fraudulent site receives ordinary card, security-code, billing, and personal information.</consequence><explanation>The amount is bait. Complete card details can be used for charges unrelated to $1.95.</explanation><warningSigns><sign>The site asks for every detail needed to use the card.</sign><sign>The fee is tied to a countdown.</sign></warningSigns></feedback>
+						<title>Pay {{redeliveryFeeAmount}} with a regular card</title><subtitle>Submit the full card and billing details.</subtitle>
+						<feedback heading="The small charge hides a larger theft risk"><consequence>The fraudulent site receives ordinary card, security-code, billing, and personal information.</consequence><explanation>The amount is bait. Complete card details can be used for charges unrelated to {{redeliveryFeeAmount}}.</explanation><warningSigns><sign>The site asks for every detail needed to use the card.</sign><sign>The fee is tied to a countdown.</sign></warningSigns></feedback>
 					</choice>
 					<choice choiceId="consider-virtual-card-after-full-info" destinationVideoId="virtual-card-full-info" classification="risky">
 						<title>Consider a virtual or temporary card</title><subtitle>Try to limit financial exposure because the amount is small.</subtitle>
@@ -249,7 +252,7 @@
 					</choice>
 					<choice choiceId="report-after-full-info" destinationVideoId="reported-full-info-recovery" classification="safe">
 						<title>Close the page and report the text</title><subtitle>Stop before entering ordinary card information.</subtitle>
-						<feedback heading="You stopped the payment theft"><consequence>No ordinary card information is submitted, although personal information was already exposed.</consequence><explanation>Reporting and blocking stop this exchange. Recovery now focuses on cautious monitoring for convincing follow-up scams.</explanation><warningSigns><sign>The $1.95 fee was revealed after data collection.</sign><sign>The countdown tried to prevent reflection.</sign></warningSigns></feedback>
+						<feedback heading="You stopped the payment theft"><consequence>No ordinary card information is submitted, although personal information was already exposed.</consequence><explanation>Reporting and blocking stop this exchange. Recovery now focuses on cautious monitoring for convincing follow-up scams.</explanation><warningSigns><sign>The {{redeliveryFeeAmount}} fee was revealed after data collection.</sign><sign>The countdown tried to prevent reflection.</sign></warningSigns></feedback>
 					</choice>
 				</choices>
 			</scene>
@@ -257,18 +260,18 @@
 			<scene videoId="redelivery-fee-address-only" stageName="Redelivery fee" stageIndex="5">
 				<artifact type="fake-website">
 					<domain>parcelroute-reschedule.com</domain><heading>Address confirmed</heading>
-					<message>A redelivery fee is required before the package can be released. Redelivery fee: $1.95. Complete payment within 10 minutes to prevent return to sender.</message>
+					<message>A redelivery fee is required before the package can be released. Redelivery fee: {{redeliveryFeeAmount}}. Complete payment within 10 minutes to prevent return to sender.</message>
 					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
-					<transcript>After the learner submitted only a street address, the fake page says “Address confirmed” and reveals a $1.95 fee with a 10-minute countdown. It requests complete card details. Even though less personal information was entered, the address is still exposed and the payment request remains fraudulent.</transcript>
+					<transcript>After the learner submitted only a street address, the fake page says “Address confirmed” and reveals a {{redeliveryFeeAmount}} fee with a 10-minute countdown. It requests complete card details. Even though less personal information was entered, the address is still exposed and the payment request remains fraudulent.</transcript>
 					<media video="placeholder/package-delivery-text/redelivery-fee-address-only.mp4" poster="placeholder/package-delivery-text/redelivery-fee-address-only.jpg" captions="placeholder/package-delivery-text/redelivery-fee-address-only.vtt" available="false" />
 				</artifact>
-				<question>What would you do when the $1.95 fee appears?</question>
+				<question>What would you do when the {{redeliveryFeeAmount}} fee appears?</question>
 				<description>The site has the street address and active phone number. The tiny amount is designed to feel harmless.</description>
-				<warningSigns><sign>The fee appears after the address was collected.</sign><sign>The page requests complete card security information for $1.95.</sign><sign>The timer tries to rush payment.</sign></warningSigns>
+				<warningSigns><sign>The fee appears after the address was collected.</sign><sign>The page requests complete card security information for {{redeliveryFeeAmount}}.</sign><sign>The timer tries to rush payment.</sign></warningSigns>
 				<choices>
 					<choice choiceId="pay-regular-card-after-address" destinationVideoId="card-compromise-recovery" classification="dangerous">
-						<title>Pay $1.95 with a regular card</title><subtitle>Submit all requested card details.</subtitle>
-						<feedback heading="A tiny fee can expose the entire card"><consequence>The fraudulent page receives enough information to attempt other charges.</consequence><explanation>The scammer is seeking reusable card and billing information, not a legitimate $1.95 delivery fee.</explanation><warningSigns><sign>A small payment asks for complete card credentials.</sign><sign>No official tracking record supports the fee.</sign></warningSigns></feedback>
+						<title>Pay {{redeliveryFeeAmount}} with a regular card</title><subtitle>Submit all requested card details.</subtitle>
+						<feedback heading="A tiny fee can expose the entire card"><consequence>The fraudulent page receives enough information to attempt other charges.</consequence><explanation>The scammer is seeking reusable card and billing information, not a legitimate {{redeliveryFeeAmount}} delivery fee.</explanation><warningSigns><sign>A small payment asks for complete card credentials.</sign><sign>No official tracking record supports the fee.</sign></warningSigns></feedback>
 					</choice>
 					<choice choiceId="consider-virtual-card-after-address" destinationVideoId="virtual-card-address-only" classification="risky">
 						<title>Consider a virtual or temporary card</title><subtitle>Try to reduce the risk of a small payment.</subtitle>
@@ -414,9 +417,9 @@
 			</scene>
 
 			<scene videoId="card-compromised-ending" stageName="Takeaways" stageIndex="7">
-				<artifact type="narration"><heading>Card information compromised</heading><message>The $1.95 fee was bait for reusable card, security-code, billing, and identity information. Immediate issuer contact is the safest next step.</message><transcript>No legitimate delivery was scheduled. The scammer received ordinary card and billing details. Contact the issuer immediately, lock or replace the card, review and dispute transactions, monitor for more fraud, block and report the text, and report the fraudulent site through legitimate channels.</transcript><media video="placeholder/package-delivery-text/card-compromised-ending.mp4" poster="placeholder/package-delivery-text/card-compromised-ending.jpg" captions="placeholder/package-delivery-text/card-compromised-ending.vtt" available="false" /></artifact>
+				<artifact type="narration"><heading>Card information compromised</heading><message>The {{redeliveryFeeAmount}} fee was bait for reusable card, security-code, billing, and identity information. Immediate issuer contact is the safest next step.</message><transcript>No legitimate delivery was scheduled. The scammer received ordinary card and billing details. Contact the issuer immediately, lock or replace the card, review and dispute transactions, monitor for more fraud, block and report the text, and report the fraudulent site through legitimate channels.</transcript><media video="placeholder/package-delivery-text/card-compromised-ending.mp4" poster="placeholder/package-delivery-text/card-compromised-ending.jpg" captions="placeholder/package-delivery-text/card-compromised-ending.vtt" available="false" /></artifact>
 				<outcome classification="dangerous"><label>Card information compromised</label><heading>The small fee exposed the card</heading><explanation>The scammer's goal was the card and identity information, not a legitimate redelivery payment.</explanation></outcome>
-				<warningSigns><sign>The $1.95 amount made the request seem harmless.</sign><sign>The page collected complete card security information.</sign></warningSigns>
+				<warningSigns><sign>The {{redeliveryFeeAmount}} amount made the request seem harmless.</sign><sign>The page collected complete card security information.</sign></warningSigns>
 			</scene>
 
 			<scene videoId="virtual-card-ending" stageName="Takeaways" stageIndex="7">
@@ -456,13 +459,13 @@
 			<option id="redelivery-fee-address-only" choiceId="submit-street-address-only" text="Enter only the street address" />
 			<option id="official-verification-no-exposure" choiceId="close-before-submitting" text="Close the page and check the real order" />
 		</options></command>
-		<command type="prompt" videoId="redelivery-fee-full-info" displayText="After full personal information is submitted, the page reveals a $1.95 redelivery fee and a 10-minute countdown."><options>
-			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-full-info" text="Pay $1.95 with a regular card" />
+		<command type="prompt" videoId="redelivery-fee-full-info" displayText="After full personal information is submitted, the page reveals a {{redeliveryFeeAmount}} redelivery fee and a 10-minute countdown."><options>
+			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-full-info" text="Pay {{redeliveryFeeAmount}} with a regular card" />
 			<option id="virtual-card-full-info" choiceId="consider-virtual-card-after-full-info" text="Consider a virtual or temporary card" />
 			<option id="reported-full-info-recovery" choiceId="report-after-full-info" text="Close the page and report the text" />
 		</options></command>
-		<command type="prompt" videoId="redelivery-fee-address-only" displayText="After the street address is submitted, the page reveals a $1.95 redelivery fee and a 10-minute countdown."><options>
-			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-address" text="Pay $1.95 with a regular card" />
+		<command type="prompt" videoId="redelivery-fee-address-only" displayText="After the street address is submitted, the page reveals a {{redeliveryFeeAmount}} redelivery fee and a 10-minute countdown."><options>
+			<option id="card-compromise-recovery" choiceId="pay-regular-card-after-address" text="Pay {{redeliveryFeeAmount}} with a regular card" />
 			<option id="virtual-card-address-only" choiceId="consider-virtual-card-after-address" text="Consider a virtual or temporary card" />
 			<option id="reported-address-recovery" choiceId="report-after-address" text="Close the page and report the text" />
 		</options></command>
