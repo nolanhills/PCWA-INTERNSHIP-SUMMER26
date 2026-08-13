@@ -50,12 +50,30 @@
         ) || null;
     }
 
-    function childText(element, tagName) {
-        const child = directChild(element, tagName);
-        return child ? child.textContent.trim() : "";
+    function substituteVariables(value, variables) {
+        return String(value || "").replace(
+            /\{\{([A-Za-z][A-Za-z0-9_-]*)\}\}/g,
+            (placeholder, variableId) => {
+                if (!Object.prototype.hasOwnProperty.call(variables, variableId)) {
+                    throw new ScenarioEngineError(
+                        "malformed-xml",
+                        `Learner-facing content references unknown variable ${variableId}.`
+                    );
+                }
+
+                return variables[variableId];
+            }
+        );
     }
 
-    function childTextList(element, containerName, itemName) {
+    function childText(element, tagName, variables) {
+        const child = directChild(element, tagName);
+        return child
+            ? substituteVariables(child.textContent.trim(), variables || {})
+            : "";
+    }
+
+    function childTextList(element, containerName, itemName, variables) {
         const container = directChild(element, containerName);
 
         if (!container) {
@@ -64,7 +82,10 @@
 
         return Array.from(container.children)
             .filter((child) => child.tagName === itemName)
-            .map((child) => child.textContent.trim())
+            .map((child) => substituteVariables(
+                child.textContent.trim(),
+                variables || {}
+            ))
             .filter(Boolean);
     }
 
@@ -82,27 +103,120 @@
         return Number.isInteger(number) && number > 0 ? number : null;
     }
 
-    function parseArtifact(artifactElement) {
+    /**
+     * Chooses opt-in values once while a scenario run is initialized. Money
+     * variables are formatted before substitution so every learner-facing
+     * reference receives the same safe text value without changing identifiers.
+     */
+    function parseScenarioVariables(playlist) {
+        const variablesElement = directChild(playlist, "variables");
+        const variables = {};
+
+        if (!variablesElement) {
+            return variables;
+        }
+
+        Array.from(variablesElement.children).forEach((variableElement, index) => {
+            if (variableElement.tagName !== "money") {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Variable ${index + 1} uses unsupported type ${variableElement.tagName}.`
+                );
+            }
+
+            const variableId = requiredAttribute(
+                variableElement,
+                "id",
+                `Money variable ${index + 1}`
+            ).trim();
+
+            if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(variableId)) {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Money variable ${variableId} must use a readable XML-safe identifier.`
+                );
+            }
+
+            if (Object.prototype.hasOwnProperty.call(variables, variableId)) {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Scenario contains duplicate variable ${variableId}.`
+                );
+            }
+
+            const rawValues = requiredAttribute(
+                variableElement,
+                "values",
+                `Money variable ${variableId}`
+            ).split(",").map((value) => value.trim()).filter(Boolean);
+            const numericValues = rawValues.map(Number);
+
+            if (
+                numericValues.length === 0 ||
+                numericValues.some((value) => !Number.isFinite(value) || value < 0)
+            ) {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Money variable ${variableId} must contain nonnegative numeric values.`
+                );
+            }
+
+            const currency = (variableElement.getAttribute("currency") || "USD")
+                .trim()
+                .toUpperCase();
+
+            if (!/^[A-Z]{3}$/.test(currency)) {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Money variable ${variableId} has an invalid currency code.`
+                );
+            }
+
+            const selectedValue = numericValues[
+                Math.floor(Math.random() * numericValues.length)
+            ];
+            const usesCents = !Number.isInteger(selectedValue);
+
+            try {
+                variables[variableId] = new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: currency,
+                    minimumFractionDigits: usesCents ? 2 : 0,
+                    maximumFractionDigits: usesCents ? 2 : 0
+                }).format(selectedValue);
+            } catch (error) {
+                throw new ScenarioEngineError(
+                    "malformed-xml",
+                    `Money variable ${variableId} could not be formatted.`
+                );
+            }
+        });
+
+        return variables;
+    }
+
+    function parseArtifact(artifactElement, variables) {
         if (!artifactElement) {
             return null;
         }
 
         const artifact = {
             type: artifactElement.getAttribute("type") || "narration",
-            sender: childText(artifactElement, "sender"),
-            senderStatus: childText(artifactElement, "senderStatus"),
-            caller: childText(artifactElement, "caller"),
-            callerStatus: childText(artifactElement, "callerStatus"),
-            callStatus: childText(artifactElement, "callStatus"),
-            domain: childText(artifactElement, "domain"),
-            heading: childText(artifactElement, "heading"),
-            message: childText(artifactElement, "message") ||
-                childText(artifactElement, "content"),
-            transcript: childText(artifactElement, "transcript"),
+            sender: childText(artifactElement, "sender", variables),
+            senderStatus: childText(artifactElement, "senderStatus", variables),
+            caller: childText(artifactElement, "caller", variables),
+            callerStatus: childText(artifactElement, "callerStatus", variables),
+            callStatus: childText(artifactElement, "callStatus", variables),
+            domain: childText(artifactElement, "domain", variables),
+            heading: childText(artifactElement, "heading", variables),
+            message: childText(artifactElement, "message", variables) ||
+                childText(artifactElement, "content", variables),
+            transcript: childText(artifactElement, "transcript", variables),
             requestedInformation: childTextList(
                 artifactElement,
                 "requestedInformation",
-                "item"
+                "item",
+                variables
             )
         };
         const mediaElement = directChild(artifactElement, "media");
@@ -125,7 +239,7 @@
         return artifact;
     }
 
-    function parseChoice(choiceElement) {
+    function parseChoice(choiceElement, variables) {
         const destinationVideoId = requiredAttribute(
             choiceElement,
             "destinationVideoId",
@@ -137,36 +251,44 @@
             choiceId: (choiceElement.getAttribute("choiceId") || "").trim(),
             destinationVideoId: destinationVideoId,
             metadata: {
-                title: childText(choiceElement, "title"),
-                subtitle: childText(choiceElement, "subtitle"),
+                title: childText(choiceElement, "title", variables),
+                subtitle: childText(choiceElement, "subtitle", variables),
                 classification: choiceElement.getAttribute("classification") || "neutral",
                 feedbackHeading: feedbackElement
-                    ? feedbackElement.getAttribute("heading") ||
-                        childText(feedbackElement, "heading")
+                    ? substituteVariables(
+                        feedbackElement.getAttribute("heading") ||
+                            childText(feedbackElement, "heading", variables),
+                        variables
+                    )
                     : "",
                 consequence: feedbackElement
-                    ? childText(feedbackElement, "consequence")
+                    ? childText(feedbackElement, "consequence", variables)
                     : "",
                 explanation: feedbackElement
-                    ? childText(feedbackElement, "explanation")
+                    ? childText(feedbackElement, "explanation", variables)
                     : "",
                 warningSigns: feedbackElement
-                    ? childTextList(feedbackElement, "warningSigns", "sign")
+                    ? childTextList(
+                        feedbackElement,
+                        "warningSigns",
+                        "sign",
+                        variables
+                    )
                     : []
             }
         };
     }
 
-    function parseOutcome(outcomeElement) {
+    function parseOutcome(outcomeElement, variables) {
         if (!outcomeElement) {
             return null;
         }
 
         return {
             classification: outcomeElement.getAttribute("classification") || "neutral",
-            label: childText(outcomeElement, "label"),
-            heading: childText(outcomeElement, "heading"),
-            explanation: childText(outcomeElement, "explanation")
+            label: childText(outcomeElement, "label", variables),
+            heading: childText(outcomeElement, "heading", variables),
+            explanation: childText(outcomeElement, "explanation", variables)
         };
     }
 
@@ -178,14 +300,19 @@
      * @param {Element} playlist - The scenario playlist element.
      * @returns {Object|null} Presentation metadata, or null when it is omitted.
      */
-    function parsePresentation(playlist) {
+    function parsePresentation(playlist, variables) {
         const presentationElement = directChild(playlist, "presentation");
 
         if (!presentationElement) {
             return null;
         }
 
-        const stages = childTextList(presentationElement, "stages", "stage");
+        const stages = childTextList(
+            presentationElement,
+            "stages",
+            "stage",
+            variables
+        );
         const scenes = {};
         const scenesElement = directChild(presentationElement, "scenes");
         const finalReviewElement = directChild(presentationElement, "finalReview");
@@ -207,7 +334,7 @@
                         Array.from(choicesElement.children)
                             .filter((child) => child.tagName === "choice")
                             .forEach((choiceElement) => {
-                                const parsedChoice = parseChoice(choiceElement);
+                                const parsedChoice = parseChoice(choiceElement, variables);
 
                                 if (parsedChoice.choiceId) {
                                     if (choicesById[parsedChoice.choiceId]) {
@@ -237,27 +364,37 @@
                     }
 
                     scenes[videoId] = {
-                        stageName: sceneElement.getAttribute("stageName") || "",
+                        stageName: substituteVariables(
+                            sceneElement.getAttribute("stageName") || "",
+                            variables
+                        ),
                         stageIndex: Number(sceneElement.getAttribute("stageIndex")) || null,
-                        artifact: parseArtifact(directChild(sceneElement, "artifact")),
-                        question: childText(sceneElement, "question"),
-                        description: childText(sceneElement, "description"),
+                        artifact: parseArtifact(
+                            directChild(sceneElement, "artifact"),
+                            variables
+                        ),
+                        question: childText(sceneElement, "question", variables),
+                        description: childText(sceneElement, "description", variables),
                         warningSigns: childTextList(
                             sceneElement,
                             "warningSigns",
-                            "sign"
+                            "sign",
+                            variables
                         ),
                         choices: choices,
                         choicesById: choicesById,
-                        outcome: parseOutcome(directChild(sceneElement, "outcome"))
+                        outcome: parseOutcome(
+                            directChild(sceneElement, "outcome"),
+                            variables
+                        )
                     };
                 });
         }
 
         return {
-            title: childText(presentationElement, "title"),
-            summary: childText(presentationElement, "summary"),
-            practiceGoal: childText(presentationElement, "practiceGoal"),
+            title: childText(presentationElement, "title", variables),
+            summary: childText(presentationElement, "summary", variables),
+            practiceGoal: childText(presentationElement, "practiceGoal", variables),
             approximateStages: Number(
                 presentationElement.getAttribute("approximateStages")
             ) || stages.length || null,
@@ -268,13 +405,19 @@
                     warningSigns: childTextList(
                         finalReviewElement,
                         "warningSigns",
-                        "sign"
+                        "sign",
+                        variables
                     ),
-                    safestAction: childText(finalReviewElement, "safestAction"),
+                    safestAction: childText(
+                        finalReviewElement,
+                        "safestAction",
+                        variables
+                    ),
                     realWorldActions: childTextList(
                         finalReviewElement,
                         "realWorldActions",
-                        "action"
+                        "action",
+                        variables
                     )
                 }
                 : null
@@ -414,6 +557,7 @@
             );
         }
 
+        const variables = parseScenarioVariables(playlist);
         const commands = [];
         const commandByVideoId = new Map();
         const commandElements = Array.from(playlist.getElementsByTagName("command"));
@@ -428,7 +572,10 @@
             const command = {
                 type: type,
                 videoId: videoId,
-                displayText: commandElement.getAttribute("displayText") || "",
+                displayText: substituteVariables(
+                    commandElement.getAttribute("displayText") || "",
+                    variables
+                ),
                 nextVideoId: commandElement.getAttribute("nextVideoId"),
                 targetId: commandElement.getAttribute("targetId"),
                 options: [],
@@ -466,7 +613,10 @@
                     command.options.push({
                         choiceId: choiceId,
                         destinationVideoId: destinationVideoId,
-                        text: optionElement.getAttribute("text") || ""
+                        text: substituteVariables(
+                            optionElement.getAttribute("text") || "",
+                            variables
+                        )
                     });
                 }
             );
@@ -491,7 +641,10 @@
             Array.from(commandElement.getElementsByTagName("file")).forEach(
                 (fileElement) => {
                     command.files.push({
-                        name: fileElement.getAttribute("name") || "File",
+                        name: substituteVariables(
+                            fileElement.getAttribute("name") || "File",
+                            variables
+                        ),
                         path: fileElement.getAttribute("path") || ""
                     });
                 }
@@ -510,10 +663,11 @@
 
         return {
             path: path,
+            sourceXml: xmlText,
             commands: commands,
             commandByVideoId: commandByVideoId,
             startVideoId: commands[0].videoId,
-            presentation: parsePresentation(playlist)
+            presentation: parsePresentation(playlist, variables)
         };
     }
 
@@ -792,6 +946,7 @@
 
         function restart() {
             requireLoadedScenario();
+            scenario = parseScenarioXml(scenario.sourceXml, scenario.path);
             currentVideoId = scenario.startVideoId;
             pendingChoice = null;
             return emitCurrentScene("scenario-restarted");

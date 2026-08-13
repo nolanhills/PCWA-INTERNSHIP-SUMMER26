@@ -15,6 +15,10 @@
   media is optional, and scenario-specific JavaScript should not be added.
 -->
 <playlist>
+	<variables>
+		<money id="depositAmount" values="1500,2000,2500,3000" currency="USD" />
+	</variables>
+
 	<presentation approximateStages="5">
 
 		<title>Doorstep Contractor / Home Repair Scam</title>
@@ -373,15 +377,15 @@
 					<callerStatus>Identity not verified</callerStatus>
 					<callStatus>Large upfront payment request</callStatus>
 
-					<heading>The contractor requests a $2,000 cash deposit</heading>
+					<heading>The contractor requests a {{depositAmount}} cash deposit</heading>
 
 					<message>
-						The contractor says, "I need $2,000 in cash right now for materials.
+						The contractor says, "I need {{depositAmount}} in cash right now for materials.
 						Once you pay the deposit, I can get started today."
 					</message>
 
 					<transcript>
-						The simulated contractor requests a large cash deposit before work begins.
+						The simulated contractor requests a {{depositAmount}} cash deposit before work begins.
 						The contractor has not provided enough documentation to independently establish
 						the legitimacy of the business or the repair.
 					</transcript>
@@ -394,7 +398,7 @@
 
 				</artifact>
 
-				<question>What would you do when the contractor asks for a $2,000 cash deposit?</question>
+				<question>What would you do when the contractor asks for a {{depositAmount}} cash deposit?</question>
 
 				<description>
 					A large upfront cash payment to an unverified contractor is a major warning sign.
@@ -414,7 +418,7 @@
 					destinationVideoId="pressure-tactics"
 					classification="dangerous">
 
-						<title>Pay the $2,000 cash deposit</title>
+						<title>Pay the {{depositAmount}} cash deposit</title>
 
 						<subtitle>
 							Give the contractor the requested cash so the work can begin immediately.
@@ -423,7 +427,7 @@
 						<feedback heading="A large cash deposit creates a serious financial risk">
 
 							<consequence>
-								You give a large amount of money to an unverified contractor.
+								You give {{depositAmount}} in cash to an unverified contractor.
 								The contractor could take the payment and leave without completing the work.
 							</consequence>
 
@@ -784,7 +788,7 @@
 		</command>
 		<command type="prompt" videoId="cash-deposit" displayText="The contractor requests a large cash deposit before any work begins.">
 			<options>
-				<option id="pressure-tactics" text="Pay the $2,000 cash deposit" choiceId="pay-cash"></option>
+				<option id="pressure-tactics" text="Pay the {{depositAmount}} cash deposit" choiceId="pay-cash"></option>
 				<option id="pressure-tactics" text="Offer a smaller partial payment" choiceId="offer-small-payment"></option>
 				<option id="pressure-tactics" text="Refuse the cash deposit and verify the contractor" choiceId="refuse-cash-verify"></option>
 			</options>

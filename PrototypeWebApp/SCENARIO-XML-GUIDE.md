@@ -3,8 +3,8 @@
 **Project:** PCWA Senior Scam Awareness Simulator
 **Created by:** Nolan Hill
 
-**Purpose:** Documents the catalog, routing, presentation metadata, media
-conventions, and validation requirements for XML-authored scenarios.
+**Purpose:** Documents the catalog, routing, run-scoped variables, presentation
+metadata, media conventions, and validation requirements for XML-authored scenarios.
 
 ## Architecture
 
@@ -18,6 +18,8 @@ Routing and presentation are deliberately separate:
 
 - `<commands>` is authoritative for where a choice goes and when a path ends.
 - `<presentation>` describes how a scene, choice, and outcome should appear.
+- `<variables>` optionally defines values chosen once per scenario run for
+  learner-facing text substitution.
 - Catalog information supplies chooser-level values when an XML field is absent.
 - Generic accessible content is used when neither XML nor the catalog supplies
   an optional field.
@@ -90,6 +92,67 @@ identity independent of the option's destination. This lets two answers share
 one destination while retaining different titles, classifications, and
 feedback. Choice IDs must be unique within one prompt. Legacy options without
 `choiceId` continue to use their destination `id` for presentation lookup.
+
+The interface randomizes the visible choice order once per decision scene and
+keeps that display order stable if the scene is revisited during the same run.
+Each displayed choice retains its original command-option index, so XML order,
+destinations, `choiceId`, classifications, feedback, and history remain
+authoritative. Starting or restarting a scenario clears the display-order cache.
+
+## Run-Scoped Money Variables
+
+Place an optional `<variables>` element directly under `<playlist>`, before
+`<presentation>` and `<commands>`. The initial implementation supports explicit
+money value lists:
+
+```xml
+<playlist>
+  <variables>
+    <money
+      id="depositAmount"
+      values="1500,2000,2500,3000"
+      currency="USD" />
+  </variables>
+
+  <presentation>
+    <scenes>
+      <scene videoId="cash-deposit">
+        <artifact type="payment-request">
+          <heading>Deposit requested: {{depositAmount}}</heading>
+          <message>Pay {{depositAmount}} in cash today.</message>
+        </artifact>
+        <question>Would you pay {{depositAmount}}?</question>
+      </scene>
+    </scenes>
+  </presentation>
+
+  <commands>
+    <command type="prompt" videoId="cash-deposit"
+             displayText="The contractor asks for {{depositAmount}}.">
+      <options>
+        <option id="next" choiceId="pay"
+                text="Pay {{depositAmount}}" />
+      </options>
+    </command>
+  </commands>
+</playlist>
+```
+
+- `id` must start with a letter and may contain letters, numbers, `_`, or `-`.
+- `values` is a finite comma-separated list of nonnegative numbers. Do not use
+  an unrestricted range for educational content.
+- `currency` is an optional three-letter currency code and defaults to `USD`.
+- Reference the formatted value with `{{variableId}}` only in learner-facing
+  text. Do not place variables in routing IDs, `choiceId`, media paths, phone
+  numbers, security codes, dates, account identifiers, or lesson thresholds.
+- The engine chooses and formats one allowed value when the scenario loads. The
+  same value is substituted in presentation text, choice content, command
+  `displayText`, option text, feedback, outcomes, and review copy for that run.
+- Scene changes and loops do not reroll values. Restarting, returning to the
+  menu and loading the scenario again, or starting another scenario creates a
+  fresh run and may choose another allowed value.
+- Duplicate declarations, invalid money values, unsupported variable types, or
+  references to undeclared variables are treated as malformed XML.
 
 ## Optional Presentation Structure
 
@@ -236,6 +299,13 @@ only after the referenced asset has been added and tested. When media is absent,
 unavailable, or fails to load, the player keeps the simulated artifact and
 transcript available; media is never required to understand or finish a scene.
 
+After the learner activates **Start scenario**, the runtime attempts to play
+only the first scene's available video. It uses the native `video.play()` API,
+keeps all native controls, and silently leaves the player ready for manual Play
+if browser autoplay policy rejects the request. Later scene videos never
+autoplay. Restarting or starting another scenario makes only that run's first
+scene eligible again.
+
 Caption files should use WebVTT (`.vtt`) and describe all meaningful speech and
 sounds. Poster images should not contain essential text that is missing from the
 artifact or transcript. Every scene should have a useful transcript even when a
@@ -263,6 +333,8 @@ Validate the complete graph before enabling or merging a scenario:
    understandable without the asset.
 9. Load the scenario through the chooser, test restart and menu behavior, and
    check the browser console for errors.
+10. If variables are declared, start and restart several runs. Confirm every
+    reference uses one allowed value consistently and routing remains unchanged.
 
 ## Adding a Scenario
 

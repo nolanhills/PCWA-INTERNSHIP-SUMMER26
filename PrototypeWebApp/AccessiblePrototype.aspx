@@ -120,22 +120,23 @@
 
             <section id="simulatorView" class="simulator-view" aria-labelledby="simulatorTitle" hidden>
                 <h1 id="simulatorTitle" class="visually-hidden"></h1>
-                <section class="progress-section" aria-labelledby="progressHeading">
-                    <div class="progress-copy">
-                        <div>
-                            <p class="progress-label">Current stage</p>
-                            <h2 id="progressHeading" class="progress-heading"></h2>
+                <div class="simulator-layout">
+                    <section class="progress-section" aria-labelledby="progressHeading">
+                        <div class="progress-copy">
+                            <div>
+                                <p class="progress-label">Current stage</p>
+                                <h2 id="progressHeading" class="progress-heading"></h2>
+                            </div>
+                            <p id="stepText" class="step-text"></p>
                         </div>
-                        <p id="stepText" class="step-text"></p>
-                    </div>
-                    <progress id="scenarioProgress" class="progress-bar" max="100" value="0">
-                        0 percent
-                    </progress>
-                    <p class="progress-note">Your route may change based on your decisions.</p>
-                    <ol id="stageList" class="stage-list" aria-label="Scenario stages"></ol>
-                </section>
+                        <progress id="scenarioProgress" class="progress-bar" max="100" value="0">
+                            0 percent
+                        </progress>
+                        <p class="progress-note">Your route may change based on your decisions.</p>
+                        <ol id="stageList" class="stage-list" aria-label="Scenario stages"></ol>
+                    </section>
 
-                <section class="activity-workspace">
+                    <section class="activity-workspace">
                     <div class="artifact-header">
                         <p class="simulation-label">
                             <span class="simulation-dot" aria-hidden="true"></span>
@@ -242,7 +243,8 @@
                             <ul id="contextWarningSigns"></ul>
                         </details>
                     </section>
-                </section>
+                    </section>
+                </div>
 
                 <nav id="scenarioUtilities" class="scenario-utilities" aria-label="Scenario controls">
                     <button id="restartButton" class="text-button" type="button">Restart scenario</button>

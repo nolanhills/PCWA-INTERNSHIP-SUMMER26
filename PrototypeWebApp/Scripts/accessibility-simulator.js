@@ -30,6 +30,8 @@
     let history = [];
     let visitedSceneIds = [];
     let activeMediaElement = null;
+    let initialMediaAutoplayEligible = false;
+    const choiceOrderByScene = new Map();
 
     // These stable IDs are the contract between AccessiblePrototype.aspx and the
     // renderer. Caching them once keeps later view transitions focused on state.
@@ -299,6 +301,8 @@
         history = [];
         visitedSceneIds = [];
         activeMediaElement = null;
+        initialMediaAutoplayEligible = false;
+        choiceOrderByScene.clear();
         hidePrimaryViews();
         setHidden(elements.chooserView, false);
         elements.headerScenarioTitle.textContent = "Choose a scenario to begin";
@@ -406,6 +410,8 @@
     function beginScenario() {
         history = [];
         visitedSceneIds = [];
+        choiceOrderByScene.clear();
+        initialMediaAutoplayEligible = true;
 
         try {
             const scene = engine.start();
@@ -470,6 +476,10 @@
 
         rememberVisitedScene(scene.id);
 
+        const engineState = engine.getState();
+        const shouldAutoplayInitialMedia = initialMediaAutoplayEligible &&
+            String(scene.id) === String(engineState.startVideoId);
+        initialMediaAutoplayEligible = false;
         const details = getScenarioDetails(selectedScenarioPath);
         const sceneMetadata = getSceneDetails(details, scene);
         const isComplete = Boolean(scene.command && scene.command.type === "stop");
@@ -478,8 +488,8 @@
         elements.simulatorTitle.textContent = /scenario$/i.test(details.title)
             ? details.title
             : `${details.title} scenario`;
-        renderProgress(details, sceneMetadata, isComplete, engine.getState().commandCount);
-        renderArtifact(sceneMetadata.artifact, scene);
+        renderProgress(details, sceneMetadata, isComplete, engineState.commandCount);
+        renderArtifact(sceneMetadata.artifact, scene, shouldAutoplayInitialMedia);
         renderSupport(sceneMetadata);
 
         if (!scene.command) {
@@ -558,16 +568,24 @@
             const item = createElement("li", "stage-item");
             const number = createElement("span", "stage-number", String(index + 1));
             const label = createElement("span", "stage-name", stage);
+            const status = createElement("span", "stage-status", "Upcoming");
+            const copy = createElement("span", "stage-copy");
 
             if (index + 1 < currentIndex) {
                 item.classList.add("is-complete");
-                number.textContent = "Done";
+                number.textContent = "\u2713";
+                number.setAttribute("aria-hidden", "true");
+                status.textContent = "Completed";
             } else if (index + 1 === currentIndex) {
                 item.classList.add("is-current");
                 item.setAttribute("aria-current", "step");
+                status.textContent = "Current";
+            } else {
+                item.classList.add("is-upcoming");
             }
 
-            item.append(number, label);
+            copy.append(label, status);
+            item.append(number, copy);
             return item;
         });
 
@@ -578,7 +596,7 @@
      * Selects a generic artifact renderer by XML type. Add reusable artifact
      * types here; scenario-specific DOM branches do not belong in this module.
      */
-    function renderArtifact(artifact, scene) {
+    function renderArtifact(artifact, scene, shouldAutoplay) {
         const type = artifact && artifact.type ? artifact.type : "narration";
         const supportingVideo = createSupportingVideo(artifact, type);
         let artifactElement;
@@ -605,6 +623,13 @@
             elements.artifactContainer,
             supportingVideo ? [supportingVideo, artifactElement] : [artifactElement]
         );
+
+        if (
+            activeMediaElement &&
+            activeMediaElement.tagName === "VIDEO"
+        ) {
+            attemptInitialMediaPlayback(activeMediaElement, shouldAutoplay);
+        }
     }
 
     /**
@@ -667,6 +692,25 @@
         activeMediaElement = video;
         updateSoundControl();
         return panel;
+    }
+
+    function attemptInitialMediaPlayback(media, shouldAutoplay) {
+        if (!shouldAutoplay || !media || typeof media.play !== "function") {
+            return;
+        }
+
+        try {
+            const playback = media.play();
+
+            if (playback && typeof playback.catch === "function") {
+                // Autoplay policies may reject even after the Start interaction.
+                // The native controls remain available, so no error state is needed.
+                playback.catch(() => {});
+            }
+        } catch (error) {
+            // Synchronous playback failures are handled the same as policy
+            // rejections: leave the normal player ready for learner control.
+        }
     }
 
     function formatArtifactType(type) {
@@ -954,8 +998,8 @@
     }
 
     /**
-     * Creates native button choices in source order. Native controls retain
-     * expected keyboard behavior while feedback focus is managed after selection.
+     * Creates native button choices in stable run-scoped display order. Each
+     * display entry retains its original engine index so routing is unchanged.
      */
     function renderDecision(scene, sceneMetadata) {
         const command = scene.command;
@@ -974,11 +1018,13 @@
             return;
         }
 
-        const choiceButtons = command.options.map((option, index) => {
+        const displayChoices = getDisplayChoices(scene);
+        const choiceButtons = displayChoices.map((displayChoice, displayIndex) => {
+            const option = displayChoice.option;
             const choiceMetadata = getChoiceMetadata(sceneMetadata, option);
             const titleText = choiceMetadata && choiceMetadata.title
                 ? choiceMetadata.title
-                : option.text || `Choice ${index + 1}`;
+                : option.text || `Choice ${displayIndex + 1}`;
             const subtitleText = choiceMetadata && choiceMetadata.subtitle
                 ? choiceMetadata.subtitle
                 : `Continue with this action to scene ${option.destinationVideoId}.`;
@@ -986,13 +1032,14 @@
             const choiceNumber = createElement(
                 "span",
                 "choice-index",
-                `Choice ${index + 1}`
+                `Choice ${displayIndex + 1}`
             );
             const title = createElement("span", "choice-title", titleText);
             const subtitle = createElement("span", "choice-subtitle", subtitleText);
 
             button.type = "button";
             button.dataset.destination = option.destinationVideoId;
+            button.dataset.optionIndex = String(displayChoice.originalIndex);
 
             if (option.choiceId) {
                 button.dataset.choiceId = option.choiceId;
@@ -1000,7 +1047,12 @@
 
             button.append(choiceNumber, title, subtitle);
             button.addEventListener("click", () => {
-                selectChoice(scene, index, button, choiceMetadata);
+                selectChoice(
+                    scene,
+                    displayChoice.originalIndex,
+                    button,
+                    choiceMetadata
+                );
             });
             return button;
         });
@@ -1010,6 +1062,32 @@
         focusElement(elements.artifactHeading, {
             scrollTarget: elements.artifactSection
         });
+    }
+
+    function getDisplayChoices(scene) {
+        const sceneId = String(scene.id);
+        const options = scene.command.options;
+        let originalIndexes = choiceOrderByScene.get(sceneId);
+
+        if (!originalIndexes || originalIndexes.length !== options.length) {
+            originalIndexes = options.map((option, index) => index);
+
+            // Fisher-Yates shuffles only the display representation. The XML
+            // option array remains authoritative and is never reordered.
+            for (let index = originalIndexes.length - 1; index > 0; index -= 1) {
+                const swapIndex = Math.floor(Math.random() * (index + 1));
+                const current = originalIndexes[index];
+                originalIndexes[index] = originalIndexes[swapIndex];
+                originalIndexes[swapIndex] = current;
+            }
+
+            choiceOrderByScene.set(sceneId, originalIndexes);
+        }
+
+        return originalIndexes.map((originalIndex) => ({
+            option: options[originalIndex],
+            originalIndex: originalIndex
+        }));
     }
 
     function getChoiceMetadata(sceneMetadata, option) {
@@ -1355,6 +1433,8 @@
 
         history = [];
         visitedSceneIds = [];
+        choiceOrderByScene.clear();
+        initialMediaAutoplayEligible = true;
 
         try {
             const scene = engine.restart();

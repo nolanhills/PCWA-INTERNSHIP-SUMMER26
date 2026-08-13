@@ -12,9 +12,8 @@ accessibility behavior, local testing, and deployment safeguards.
 simulator. It presents one simulated artifact, one question, and one decision at
 a time. The application root is configured to open this page by default.
 
-The active product is maintained on `ui/accessibility-redesign`. It has not yet
-been merged into `main`. The former modern-prototype branch remains available as
-a historical archive; the obsolete implementation is not part of this branch.
+The active product is maintained from `main`. Historical prototype branches may
+remain available for reference, but this XML-driven page is the supported entry point.
 
 ## Entry Point and Root Routing
 
@@ -62,6 +61,8 @@ The catalog currently enables:
 - Fake Charity / Disaster Donation Scam — `prototypes/fake-charity-disaster-donation-scenario.xml`
 - Government / Social Security Threat Call — `prototypes/government-social-security-threat-call-scenario.xml`
 - Sweepstakes / Prize Advance-Fee Scam — `prototypes/sweepstakes-prize-advance-fee-scenario.xml`
+- Medicare Benefits Scam Call — `prototypes/medicare-scenario.xml`
+- Doorstep Contractor / Home Repair Scam — `prototypes/home-repair-scenario.xml`
 
 Each scenario is an independent XML file. Future scenarios should be added to
 the catalog only after their content, routing, accessibility, and route coverage
@@ -107,14 +108,21 @@ Stable `choiceId` values are used for presentation lookup before the legacy
 destination-based fallback. This allows two choices to share a destination while
 retaining different feedback and classifications.
 
+Scenario XML may also declare opt-in `<money>` variables under `<variables>`.
+The engine chooses one allowed value while initializing a run and substitutes
+its formatted text into learner-facing presentation and command fields. The
+value remains stable across scene changes and rerolls on restart or a fresh
+scenario load. See `SCENARIO-XML-GUIDE.md` for syntax and validation rules.
+
 ## Script Responsibilities
 
 - `Scripts/accessibility-simulator.js` owns page state, accessible DOM rendering,
   focus movement, feedback, progress, transcript controls, text sizing, sound
-  controls, error presentation, and the scenario chooser.
+  controls, first-scene autoplay attempts, run-scoped choice display order,
+  error presentation, and the scenario chooser.
 - `Scripts/scenario-engine.js` is the only XML interpreter. It loads the catalog,
-  parses routing and presentation data, validates transitions, and exposes the
-  current scenario state.
+  parses routing, presentation data, and generic variables, validates
+  transitions, and exposes the current scenario state.
 Scenario XML should contain complete learner-facing presentation metadata. The
 catalog supplies chooser-level title, summary, and stage-count information when
 needed, and generic accessible defaults cover omitted optional fields.
@@ -154,6 +162,8 @@ Accessibility decisions include:
   errors, and the scenario chooser
 - A restrained polite live region for meaningful state changes
 - Accessible progress text and a native `progress` element
+- A vertical stage rail with explicit Completed, Current, and Upcoming text;
+  the current item retains `aria-current="step"`
 - Status text and symbols in addition to green, warning, or danger colors
 - Approximately 18px default body text with comfortable line height
 - Decision targets taller than 56px with visible focus, selected, and disabled states
@@ -162,11 +172,21 @@ Accessibility decisions include:
 - No important information available only through media
 - Motion limited to short hover transitions under `prefers-reduced-motion: no-preference`
 
+After the learner clicks **Start scenario**, the renderer calls `play()` for an
+available first-scene video while the user interaction is active. Native video
+controls remain intact and playback is never forced, muted, or looped. Rejected
+playback promises are ignored so browser autoplay policy leaves a fully usable
+manual player. Later scene videos do not autoplay. Restart and a newly selected
+scenario reset first-scene eligibility.
+
 ## Keyboard and Text Size
 
-All scenario actions are native buttons in normal document order. Selecting a
-choice locks the decision cards, exposes feedback, and moves focus to the
-feedback heading. Continuing moves focus to the next question or command.
+All scenario actions are native buttons in normal document order. Decision
+cards use a Fisher-Yates display shuffle once per scene per run. The visible
+Choice 1, Choice 2, and Choice 3 labels follow that display order, while each
+button passes the original XML option index to the engine. Selecting a choice
+locks the decision cards, exposes feedback, and moves focus to the feedback
+heading. Continuing moves focus to the next question or command.
 
 The accessibility toolbar can decrease, reset, or increase application text.
 The preference is stored in `localStorage` and persists after reload. Transcript
@@ -175,13 +195,17 @@ only when playable media exists.
 
 ## Responsive Behavior
 
-The page uses one logical reading order on desktop, tablet, and mobile. The
-artifact remains the primary surface, followed by the question, decisions,
-feedback, transcript, and secondary navigation.
+The page uses one logical reading order on desktop, tablet, and mobile. At wider
+desktop and tablet layouts, the artifact and decisions occupy the wider left
+column while a sticky vertical progress rail occupies the narrower right
+column. The progress markup precedes the activity in source order so it returns
+above the activity when the layout collapses.
 
-At narrow widths, the toolbar and stage list wrap, simulated artifacts become
-fluid, choices become full width, and completion actions stack. No content
-region uses a fixed height.
+At narrow widths, the rail becomes a normal block above the activity rather
+than squeezing both regions side by side. The toolbar wraps, simulated
+artifacts remain fluid, choices become full width, and completion actions
+stack. No content region uses a fixed height, and stage labels can wrap for the
+largest application text setting.
 
 ## Local Testing Checklist
 
@@ -206,10 +230,10 @@ The current flagship has been tested with:
 - JavaScript syntax checks: both scripts passed
 - Unsafe HTML search: no `innerHTML`, `outerHTML`, or adjacent HTML insertion
 - Browser console: no errors
-- All eight enabled scenarios loaded through the flagship page
+- All ten enabled scenarios loaded through the flagship page
 - Bank scenario: every prompt option, the call loop, all safe and dangerous
   endings, feedback restart, active restart, completion restart, and scenario menu
-- First-command starts confirmed for all eight enabled scenarios
+- First-command starts confirmed for all ten enabled scenarios
 - Every current XML destination confirmed to reference an existing command and
   presentation scene
 - Generic presentation fallback and unavailable-media fallback confirmed
@@ -240,6 +264,8 @@ The current flagship has been tested with:
   and transcripts.
 - Named-stage progress is educational and approximate because the XML graph can
   branch or repeat a scene.
+- Browsers may block first-scene playback despite the Start interaction. The
+  native Play control remains the fallback and no error is shown.
 - Scenario state is intentionally browser-memory state and is lost on page reload.
 - No analytics, accounts, user data, or server-side persistence are included.
 

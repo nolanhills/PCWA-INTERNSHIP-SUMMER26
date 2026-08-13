@@ -506,15 +506,20 @@ button:disabled {
     margin: 0 auto;
 }
 
+.simulator-layout {
+    min-width: 0;
+}
+
 .progress-section {
     margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    border: var(--border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
 }
 
 .progress-copy {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-4);
+    display: block;
 }
 
 .progress-label {
@@ -526,11 +531,11 @@ button:disabled {
 
 .progress-heading {
     margin-bottom: var(--space-2);
-    font-size: 1.35rem;
+    font-size: 1.2rem;
 }
 
 .step-text {
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
     color: var(--color-text-muted);
     font-weight: 750;
 }
@@ -558,46 +563,110 @@ button:disabled {
 }
 
 .progress-note {
-    margin: var(--space-2) 0 var(--space-4);
+    margin: var(--space-2) 0 var(--space-5);
     color: var(--color-text-muted);
     font-size: 0.9rem;
 }
 
 .stage-list {
-    display: flex;
+    display: grid;
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: 0;
     list-style: none;
 }
 
 .stage-item {
-    display: flex;
-    min-width: 7rem;
-    flex: 1 1 7rem;
-    padding: var(--space-2);
-    border-top: 3px solid var(--color-border);
-    align-items: center;
-    gap: var(--space-2);
+    position: relative;
+    display: grid;
+    min-width: 0;
+    padding: 0 0 var(--space-5);
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-3);
     color: var(--color-text-muted);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+}
+
+.stage-item:last-child {
+    padding-bottom: 0;
+}
+
+.stage-item::after {
+    position: absolute;
+    top: 2.25rem;
+    bottom: 0;
+    left: calc(1.125rem - 1px);
+    width: 2px;
+    background: var(--color-border);
+    content: "";
+}
+
+.stage-item:last-child::after {
+    display: none;
 }
 
 .stage-number {
-    min-width: 1.7rem;
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-text-muted);
     font-weight: 800;
+    line-height: 1;
+    place-items: center;
+    z-index: 1;
+}
+
+.stage-copy,
+.stage-name,
+.stage-status {
+    display: block;
+    min-width: 0;
+}
+
+.stage-name {
+    color: var(--color-text);
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+
+.stage-status {
+    margin-top: 0.15rem;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
 }
 
 .stage-item.is-complete {
-    border-color: var(--color-primary);
     color: var(--color-primary-dark);
 }
 
+.stage-item.is-complete::after {
+    background: var(--color-primary);
+}
+
+.stage-item.is-complete .stage-number {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #ffffff;
+}
+
 .stage-item.is-current {
-    border-color: var(--color-focus);
     color: var(--color-text);
     font-weight: 750;
+}
+
+.stage-item.is-current .stage-number {
+    border: 3px solid var(--color-primary-dark);
+    outline: 3px solid var(--color-primary-soft);
+    color: var(--color-primary-dark);
+}
+
+.stage-item.is-current .stage-status {
+    color: var(--color-primary-dark);
+    font-weight: 800;
 }
 
 /* Artifact workspace */
@@ -1303,6 +1372,27 @@ button:disabled {
 }
 
 /* Responsive rules */
+@media (min-width: 56rem) {
+    .simulator-layout {
+        display: grid;
+        grid-template-areas: "activity progress";
+        grid-template-columns: minmax(0, 1fr) minmax(14rem, 17rem);
+        align-items: start;
+        gap: var(--space-6);
+    }
+
+    .activity-workspace {
+        grid-area: activity;
+    }
+
+    .progress-section {
+        position: sticky;
+        top: var(--space-4);
+        grid-area: progress;
+        margin-bottom: 0;
+    }
+}
+
 @media (min-width: 46rem) {
     .scenario-card {
         grid-template-columns: minmax(0, 1fr) auto;
@@ -1335,7 +1425,6 @@ button:disabled {
         padding: var(--space-4);
     }
 
-    .progress-copy,
     .artifact-header {
         align-items: flex-start;
         flex-direction: column;
@@ -1344,10 +1433,6 @@ button:disabled {
 
     .step-text {
         margin-bottom: 0;
-    }
-
-    .stage-item {
-        flex-basis: calc(50% - var(--space-2));
     }
 
     .artifact-section {
@@ -1428,11 +1513,6 @@ button:disabled {
         border-left: 0;
     }
 
-    .stage-item {
-        min-width: 100%;
-        flex-basis: 100%;
-    }
-
     .message-device {
         border-width: 5px;
         border-radius: 16px;
@@ -1498,6 +1578,15 @@ button:disabled {
     .main-content {
         max-width: none;
         padding: 0;
+    }
+
+    .simulator-layout {
+        display: block;
+    }
+
+    .progress-section {
+        position: static;
+        break-inside: avoid;
     }
 
     .support-disclosure[open] {
