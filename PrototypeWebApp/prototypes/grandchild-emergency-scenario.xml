@@ -54,7 +54,7 @@
 					<heading>A frightened caller claims to be family</heading>
 					<message>Grandma? Grandpa? It's me. I was in a car accident and the police arrested me. My phone was damaged, so I'm calling from someone else's phone.</message>
 					<transcript>A frightened young person calls from an unfamiliar number and says, "Grandma? Grandpa? It's me. I was in a car accident and the police arrested me. My phone was damaged, so I'm calling from someone else's phone." The caller does not provide a name.</transcript>
-					<media video="placeholder/grandchild-emergency/distressed-call.mp4" poster="placeholder/grandchild-emergency/distressed-call.jpg" captions="placeholder/grandchild-emergency/distressed-call.vtt" available="false" />
+					<media video="media/grandchild-emergency/distressed-call.mp4" available="true" />
 				</artifact>
 				<question>How would you respond before the caller has identified themselves?</question>
 				<description>The caller sounds frightened and describes an emergency, but you do not yet know who is calling.</description>
@@ -110,7 +110,7 @@
 					<heading>The caller uses the name and asks for secrecy</heading>
 					<message>Yes, that's me. Please don't tell Mom or Dad. They'll panic, and they'll be furious with me. I just need you to help me get home before they find out.</message>
 					<transcript>After the learner supplies a possible grandchild's name, the caller adopts it by saying, "Yes, that's me." The caller repeats that the car accident led to an arrest and says, "Please don't tell Mom or Dad. They'll panic, and they'll be furious with me. I just need you to help me get home before they find out." The caller adds, "The attorney helping me is here. They can explain what needs to happen."</transcript>
-					<media video="placeholder/grandchild-emergency/accident-secrecy-name-supplied.mp4" poster="placeholder/grandchild-emergency/accident-secrecy-name-supplied.jpg" captions="placeholder/grandchild-emergency/accident-secrecy-name-supplied.vtt" available="false" />
+					<media video="media/grandchild-emergency/accident-secrecy-name-supplied.mp4" available="true" />
 				</artifact>
 				<question>What would you do after the caller adopts the name and asks for secrecy?</question>
 				<description>The caller has not proved their identity and now wants to prevent contact with the people who could verify the story.</description>
@@ -166,7 +166,7 @@
 					<heading>The caller redirects to the emergency and asks for secrecy</heading>
 					<message>I'm too shaken up to talk about that. Please don't tell Mom or Dad. They'll panic, and they'll be furious with me. I just need you to help me get home before they find out.</message>
 					<transcript>After being asked to identify themselves, the caller says they are too shaken up to answer clearly and redirects attention to the car accident and arrest. The caller says, "Please don't tell Mom or Dad. They'll panic, and they'll be furious with me. I just need you to help me get home before they find out." The caller adds, "The attorney helping me is here. They can explain what needs to happen."</transcript>
-					<media video="placeholder/grandchild-emergency/accident-secrecy-identity-dodged.mp4" poster="placeholder/grandchild-emergency/accident-secrecy-identity-dodged.jpg" captions="placeholder/grandchild-emergency/accident-secrecy-identity-dodged.vtt" available="false" />
+					<media video="media/grandchild-emergency/accident-secrecy-identity-dodged.mp4" available="true" />
 				</artifact>
 				<question>What would you do after the caller avoids identification and asks for secrecy?</question>
 				<description>The identity question was not answered. The caller instead increases emotional pressure and discourages family contact.</description>
@@ -222,7 +222,7 @@
 					<heading>A supposed attorney explains the arrest and urgent bond</heading>
 					<message>This is Daniel Mercer. I'm the court-appointed attorney assisting your grandchild. They were arrested after the accident and are currently being held until bond is paid.</message>
 					<transcript>The distressed caller says, "The attorney helping me is here. They can explain what needs to happen," and hands the phone to a second person. The second person says, "This is Daniel Mercer. I'm the court-appointed attorney assisting your grandchild. They were arrested after the accident and are currently being held until bond is paid." He claims that a judge set an urgent bond, that payment must be arranged before the courthouse closes, and that contacting the parents could delay the release.</transcript>
-					<media video="placeholder/grandchild-emergency/supposed-attorney.mp4" poster="placeholder/grandchild-emergency/supposed-attorney.jpg" captions="placeholder/grandchild-emergency/supposed-attorney.vtt" available="false" />
+					<media video="media/grandchild-emergency/supposed-attorney.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to the supposed attorney's urgent bond demand?</question>
 				<description>The second person sounds confident, but everything known about the attorney, arrest, and bond still comes from the same unverified call.</description>
@@ -278,7 +278,7 @@
 					<heading>The supposed attorney tries to stop family contact</heading>
 					<message>Do not call the parents right now. That could delay the release, and the courthouse closes soon. Stay on the line so we can finish this.</message>
 					<transcript>After the learner says that the parents or another family member must be contacted, the supposed attorney responds, "Do not call the parents right now. That could delay the release, and the courthouse closes soon. Stay on the line so we can finish this."</transcript>
-					<media video="placeholder/grandchild-emergency/family-contact-pressure.mp4" poster="placeholder/grandchild-emergency/family-contact-pressure.jpg" captions="placeholder/grandchild-emergency/family-contact-pressure.vtt" available="false" />
+					<media video="media/grandchild-emergency/family-contact-pressure.mp4" available="true" />
 				</artifact>
 				<question>Will you follow through with independent family verification?</question>
 				<description>The pressure does not provide proof. It tries to keep you inside the caller's version of events.</description>
@@ -322,7 +322,7 @@
 					<heading>The supposed attorney demands prepaid cards</heading>
 					<message>The bond office cannot accept a personal check over the phone. You'll need to purchase prepaid payment cards from a nearby store. Stay on the line, and I'll explain how to submit the card numbers to the bond account.</message>
 					<transcript>The learner is still at home. The supposed attorney says, "The bond office cannot accept a personal check over the phone. You'll need to purchase prepaid payment cards from a nearby store. Stay on the line, and I'll explain how to submit the card numbers to the bond account."</transcript>
-					<media video="placeholder/grandchild-emergency/gift-card-instructions.mp4" poster="placeholder/grandchild-emergency/gift-card-instructions.jpg" captions="placeholder/grandchild-emergency/gift-card-instructions.vtt" available="false" />
+					<media video="media/grandchild-emergency/gift-card-instructions.mp4" available="true" />
 				</artifact>
 				<question>What would you do after the gift-card instructions?</question>
 				<description>Legitimate courts and attorneys do not collect bail using gift cards. The caller wants you to stay connected while leaving home to make the purchase.</description>
@@ -375,7 +375,7 @@
 					<heading>A store employee notices the gift-card purchase</heading>
 					<message>Are you buying these because someone on the phone told you to? That's a common scam. Courts and attorneys do not collect bail using gift cards.</message>
 					<transcript>After agreeing to the instructions, the learner drives to a nearby store while the supposed attorney remains on the phone. At checkout, the learner attempts to purchase the prepaid cards. A store employee notices the large gift-card purchase and asks, "Are you buying these because someone on the phone told you to? That's a common scam. Courts and attorneys do not collect bail using gift cards."</transcript>
-					<media video="placeholder/grandchild-emergency/store-checkout.mp4" poster="placeholder/grandchild-emergency/store-checkout.jpg" captions="placeholder/grandchild-emergency/store-checkout.vtt" available="false" />
+					<media video="media/grandchild-emergency/store-checkout.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to the employee's warning before completing the purchase?</question>
 				<description>The employee has been introduced at checkout and is offering a chance to stop before any card numbers are shared.</description>

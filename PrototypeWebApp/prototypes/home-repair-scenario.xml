@@ -98,10 +98,8 @@
 					</transcript>
 
 					<media
-					video="placeholder/contractor-scam/doorstep-arrival.mp4"
-					poster="placeholder/contractor-scam/doorstep-arrival.jpg"
-					captions="placeholder/contractor-scam/doorstep-arrival.vtt"
-					available="false" />
+					video="media/home-repair/doorstep-arrival.mp4"
+					available="true" />
 
 				</artifact>
 
@@ -245,10 +243,8 @@
 					</transcript>
 
 					<media
-					video="placeholder/contractor-scam/written-estimate.mp4"
-					poster="placeholder/contractor-scam/written-estimate.jpg"
-					captions="placeholder/contractor-scam/written-estimate.vtt"
-					available="false" />
+					video="media/home-repair/written-estimate.mp4"
+					available="true" />
 
 				</artifact>
 
@@ -391,10 +387,8 @@
 					</transcript>
 
 					<media
-					video="placeholder/contractor-scam/cash-deposit.mp4"
-					poster="placeholder/contractor-scam/cash-deposit.jpg"
-					captions="placeholder/contractor-scam/cash-deposit.vtt"
-					available="false" />
+					video="media/home-repair/cash-deposit.mp4"
+					available="true" />
 
 				</artifact>
 
@@ -541,10 +535,8 @@
 					</transcript>
 
 					<media
-					video="placeholder/contractor-scam/pressure-tactics.mp4"
-					poster="placeholder/contractor-scam/pressure-tactics.jpg"
-					captions="placeholder/contractor-scam/pressure-tactics.vtt"
-					available="false" />
+					video="media/home-repair/pressure-tactics.mp4"
+					available="true" />
 
 				</artifact>
 
