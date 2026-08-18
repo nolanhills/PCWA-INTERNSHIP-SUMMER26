@@ -15,20 +15,11 @@
   media is optional, and scenario-specific JavaScript should not be added.
 -->
 <playlist>
+
 	<presentation approximateStages="5">
-
 		<title>Medicare Benefits Scam Call</title>
-
-		<summary>
-			A caller offers a new Medicare card, refund, or free medical device.
-			The scam tries to collect Medicare number, SSN, date of birth, or insurance information.
-		</summary>
-
-		<practiceGoal>
-			Never give Medicare or personal information to an unexpected caller.
-			Verify unexpected benefits calls independently using an official source.
-		</practiceGoal>
-
+		<summary>A caller offers a new Medicare card, refund, or free medical device. The scam tries to collect Medicare number, SSN, date of birth, or insurance information.</summary>
+		<practiceGoal>Never give Medicare or personal information to an unexpected caller. Verify unexpected benefits calls independently using an official source.</practiceGoal>
 		<stages>
 			<stage>Medicare card verification</stage>
 			<stage>Known personal information</stage>
@@ -36,9 +27,7 @@
 			<stage>Benefit pressure</stage>
 			<stage>Takeaways</stage>
 		</stages>
-
 		<finalReview>
-
 			<warningSigns>
 				<sign>A caller claims that a new Medicare card is required.</sign>
 				<sign>The caller offers free medical equipment or a refund.</sign>
@@ -46,11 +35,7 @@
 				<sign>The caller asks for a Medicare number, Social Security number, date of birth, or insurance information.</sign>
 				<sign>The caller already knows some personal information and uses it to appear legitimate.</sign>
 			</warningSigns>
-
-			<safestAction>
-				End the unexpected call and verify the request independently using an official source.
-			</safestAction>
-
+			<safestAction>End the unexpected call and verify the request independently using an official source.</safestAction>
 			<realWorldActions>
 				<action>Do not provide your Medicare number or Social Security number to an unexpected caller.</action>
 				<action>Do not confirm personal information simply because the caller already knows some details.</action>
@@ -58,627 +43,256 @@
 				<action>Do not allow threats about losing benefits to pressure you into acting immediately.</action>
 				<action>Use the official contact information on your Medicare card or other trusted documentation to verify the caller.</action>
 			</realWorldActions>
-
 		</finalReview>
+		<scenes>
+			<scene videoId="1" stageName="Medicare card verification" stageIndex="1">
+				<artifact type="phone-call">
+					<caller>Medicare Benefits Representative</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Unexpected benefits call</callStatus>
+					<heading>The caller says your Medicare card needs to be updated</heading>
+					<message>The caller says, "We're updating Medicare cards. I just need to verify your number." The caller asks for the learner's Medicare number and says the information is needed to make sure benefits continue without interruption.</message>
+					<transcript>A simulated caller says that Medicare cards are being updated and asks the learner to verify their Medicare number. The caller has contacted the learner unexpectedly and has not been independently verified.</transcript>
+					<media video="placeholder/medicare-scam/unexpected-call.mp4" available="true" />
+				</artifact>
+				<question>What would you do when the caller asks for your Medicare number?</question>
+				<description>An unexpected caller asking for Medicare information should not be trusted without independent verification.</description>
+				<warningSigns>
+					<sign>The caller claims that a new Medicare card is required.</sign>
+					<sign>The caller asks for the Medicare number during an unexpected call.</sign>
+					<sign>The caller wants the learner to verify sensitive information immediately.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="read-number" destinationVideoId="8" classification="dangerous">
+						<title>Read the Medicare number</title>
+						<subtitle>Provide your sensitive Medicare number to the caller.</subtitle>
+						<feedback heading="Your information was compromised">
+							<consequence>You gave your Medicare number to an unverified caller.</consequence>
+							<explanation>Never share your Medicare number over an unexpected phone call.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="mail-info" destinationVideoId="2" classification="risky">
+						<title>Ask them to mail the information</title>
+						<subtitle>Request that they send written details instead.</subtitle>
+						<feedback heading="A cautious step, but still engaging">
+							<consequence>You avoid giving your number right away, but remain on the line.</consequence>
+							<explanation>The safest approach is to hang up entirely.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="hang-up" destinationVideoId="7" classification="safe">
+						<title>Hang up and call the number on your Medicare card</title>
+						<subtitle>End the call and use official contact channels.</subtitle>
+						<feedback heading="Excellent">
+							<consequence>You successfully protected your sensitive information.</consequence>
+							<explanation>Always verify unexpected calls using official numbers found on your card.</explanation>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
 
+			<scene videoId="2" stageName="Known personal information" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>Medicare Benefits Representative</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Caller claims to know personal details</callStatus>
+					<heading>Knowing your information does not prove the caller is legitimate</heading>
+					<message>The caller knows the learner's name and address and says, "We already have your information, so you know we're official." The caller then asks the learner to confirm additional information.</message>
+					<transcript>The simulated caller knows the learner's name and address and uses those details to appear legitimate. The caller then asks the learner to confirm additional personal information.</transcript>
+					<media video="placeholder/medicare-scam/known-information.mp4" available="true" />
+				</artifact>
+				<question>What would you do when the caller already knows your name and address?</question>
+				<description>Known personal details do not prove that a caller is an official representative.</description>
+				<warningSigns>
+					<sign>The caller uses information they already know as proof of identity.</sign>
+					<sign>Basic personal information may be public or exposed through a data leak.</sign>
+					<sign>The caller continues asking for more sensitive information.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="trust-caller" destinationVideoId="3" classification="dangerous">
+						<title>Trust them because they know your details</title>
+						<subtitle>Assume they are legitimate because they have your address.</subtitle>
+						<feedback heading="Scammers often use public data">
+							<consequence>Basic details do not verify official status.</consequence>
+							<explanation>Public directories and data breaches give scammers basic personal facts.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="ask-why" destinationVideoId="3" classification="risky">
+						<title>Ask why they need more information</title>
+						<subtitle>Question their request while staying on the line.</subtitle>
+						<feedback heading="Proceed with caution">
+							<consequence>You question their motives, but staying on the line is risky.</consequence>
+							<explanation>It is safer to hang up than to negotiate with an unverified caller.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="refuse-confirm" destinationVideoId="7" classification="safe">
+						<title>Refuse to confirm anything</title>
+						<subtitle>End the call and refuse to give further information.</subtitle>
+						<feedback heading="Great job">
+							<consequence>You stopped the conversation before disclosing sensitive details.</consequence>
+							<explanation>Refusing to confirm details protects you from identity theft.</explanation>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="3" stageName="Free medical equipment" stageIndex="3">
+				<artifact type="phone-call">
+					<caller>Medicare Benefits Representative</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Free equipment offer</callStatus>
+					<heading>The caller offers free medical equipment</heading>
+					<message>The caller says the learner qualifies for a free back brace, test kit, or other medical equipment. The caller asks for doctor and insurance information to process the offer.</message>
+					<transcript>The simulated caller offers free medical equipment and asks the learner to provide doctor and insurance information. The caller has not been independently verified.</transcript>
+					<media video="placeholder/medicare-scam/free-medical-equipment.mp4" available="true" />
+				</artifact>
+				<question>What would you do when the caller offers free medical equipment?</question>
+				<description>Unexpected medical equipment offers can be used to collect insurance information or submit fraudulent claims.</description>
+				<warningSigns>
+					<sign>The equipment is offered unexpectedly over the phone.</sign>
+					<sign>The caller asks for doctor or insurance information.</sign>
+					<sign>The caller describes the equipment as free to encourage quick compliance.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="accept-equipment" destinationVideoId="8" classification="dangerous">
+						<title>Accept and provide doctor and insurance information</title>
+						<subtitle>Give your medical details to receive the free item.</subtitle>
+						<feedback heading="Compromised data">
+							<consequence>You shared medical and insurance data with a scammer.</consequence>
+							<explanation>Scammers use this data to bill Medicare for equipment you never ordered.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="ask-doctor" destinationVideoId="7" classification="safe">
+						<title>Ask your doctor first</title>
+						<subtitle>Consult your trusted primary care provider.</subtitle>
+						<feedback heading="Safe approach">
+							<consequence>You involve your actual healthcare provider instead of the caller.</consequence>
+							<explanation>Legitimate medical equipment always originates through your doctor.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="ask-copay" destinationVideoId="5" classification="risky">
+						<title>Ask if there is a copay</title>
+						<subtitle>Inquire about potential costs.</subtitle>
+						<feedback heading="Deeper into the pitch">
+							<consequence>You keep the conversation going, leading to further pressure.</consequence>
+							<explanation>Unsolicited offers should be declined immediately.</explanation>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="5" stageName="Benefit pressure" stageIndex="4">
+				<artifact type="phone-call">
+					<caller>Medicare Benefits Representative</caller>
+					<callerStatus>Identity not verified</callerStatus>
+					<callStatus>Urgent threat about benefits</callStatus>
+					<heading>The caller says your benefits could be paused</heading>
+					<message>The caller says, "Your benefits could be paused if you don't act today." The caller pressures the learner to provide information immediately.</message>
+					<transcript>The simulated caller threatens that the learner's benefits could be paused if action is not taken immediately. The caller uses urgency to pressure the learner into complying.</transcript>
+					<media video="placeholder/medicare-scam/benefit-pressure.mp4" available="true" />
+				</artifact>
+				<question>What would you do when the caller says your benefits could be paused today?</question>
+				<description>Threats about losing benefits are designed to create panic and discourage independent verification.</description>
+				<warningSigns>
+					<sign>The caller creates a deadline.</sign>
+					<sign>The caller threatens that benefits could be paused.</sign>
+					<sign>The caller wants immediate action before you can verify the claim.</sign>
+				</warningSigns>
+				<choices>
+					<choice choiceId="panic-comply" destinationVideoId="8" classification="dangerous">
+						<title>Panic and comply</title>
+						<subtitle>Give the requested information out of fear.</subtitle>
+						<feedback heading="Scam successful">
+							<consequence>Urgency tricked you into compromising your account.</consequence>
+							<explanation>Official agencies will never threaten to pause benefits instantly over an unsolicited phone call.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="end-call-verify" destinationVideoId="7" classification="safe">
+						<title>End the call and verify independently</title>
+						<subtitle>Hang up and check your status through official channels.</subtitle>
+						<feedback heading="Excellent">
+							<consequence>You ignored high-pressure tactics and protected your benefits.</consequence>
+							<explanation>Fear tactics are a primary warning sign of a scam.</explanation>
+						</feedback>
+					</choice>
+					<choice choiceId="ask-supervisor" destinationVideoId="8" classification="dangerous">
+						<title>Ask for a supervisor</title>
+						<subtitle>Ask to speak to someone higher up.</subtitle>
+						<feedback heading="Still interacting with the scammer">
+							<consequence>Escalating within a fraudulent call does not make it legitimate.</consequence>
+							<explanation>Always disconnect when pressure tactics are used.</explanation>
+						</feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="7" stageName="Takeaways" stageIndex="5">
+				<artifact type="narration">
+					<heading>Trusted contact restored</heading>
+					<message>You ended the suspicious conversation and contacted Medicare through an official channel.</message>
+					<transcript>The suspicious conversation ends. The learner contacts Medicare using a trusted number.</transcript>
+					<media video="placeholder/medicare-scam/safe-verification.mp4" available="true" />
+				</artifact>
+				<outcome classification="safe">
+					<label>Scam stopped</label>
+					<heading>You protected your benefits</heading>
+					<explanation>You ended the suspicious conversation and verified the request through an official channel.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller created urgency.</sign>
+					<sign>The caller requested personal or Medicare information.</sign>
+				</warningSigns>
+			</scene>
+
+			<scene videoId="8" stageName="Takeaways" stageIndex="5">
+				<artifact type="narration">
+					<heading>Information compromised</heading>
+					<message>The scammer used the information to compromise your Medicare benefits and personal security.</message>
+					<transcript>After sharing sensitive details, the scammer can commit identity or medical billing fraud.</transcript>
+					<media video="placeholder/medicare-scam/takeaways.mp4" available="true" />
+				</artifact>
+				<outcome classification="dangerous">
+					<label>Account compromised</label>
+					<heading>The scammer gained access</heading>
+					<explanation>The scammer used the provided information to compromise identity and medical benefits.</explanation>
+				</outcome>
+				<warningSigns>
+					<sign>The caller requested sensitive personal info.</sign>
+					<sign>The caller claimed normal security rules did not apply.</sign>
+				</warningSigns>
+			</scene>
+		</scenes>
 	</presentation>
 
-	<scenes>
-
-		<!-- MOMENT 1: MEDICARE CARD VERIFICATION -->
-		<scene videoId="unexpected-call" stageName="Medicare card verification" stageIndex="1">
-
-			<artifact type="phone-call">
-				<caller>Medicare Benefits Representative</caller>
-				<callerStatus>Identity not verified</callerStatus>
-				<callStatus>Unexpected benefits call</callStatus>
-
-				<heading>The caller says your Medicare card needs to be updated</heading>
-
-				<message>
-					The caller says, "We're updating Medicare cards. I just need to verify your number."
-					The caller asks for the learner's Medicare number and says the information is needed
-					to make sure benefits continue without interruption.
-				</message>
-
-				<transcript>
-					A simulated caller says that Medicare cards are being updated and asks the learner
-					to verify their Medicare number. The caller has contacted the learner unexpectedly
-					and has not been independently verified.
-				</transcript>
-
-				<media
-				  video="placeholder/medicare-scam/unexpected-call.mp4"
-				  poster="placeholder/medicare-scam/unexpected-call.jpg"
-				  captions="placeholder/medicare-scam/unexpected-call.vtt"
-				  available="false" />
-			</artifact>
-
-			<question>What would you do when the caller asks for your Medicare number?</question>
-
-			<description>
-				An unexpected caller asking for Medicare information should not be trusted
-				without independent verification.
-			</description>
-
-			<warningSigns>
-				<sign>The caller claims that a new Medicare card is required.</sign>
-				<sign>The caller asks for the Medicare number during an unexpected call.</sign>
-				<sign>The caller wants the learner to verify sensitive information immediately.</sign>
-			</warningSigns>
-
-			<choices>
-
-				<choice
-				  choiceId="read-medicare-number"
-				  destinationVideoId="known-information"
-				  classification="dangerous">
-
-					<title>Read the Medicare number</title>
-					<subtitle>Give the caller the Medicare number so they can verify the account.</subtitle>
-
-					<feedback heading="Sharing the number creates an identity and benefits fraud risk">
-						<consequence>
-							The caller now has sensitive Medicare information that could be used for fraud.
-						</consequence>
-
-						<explanation>
-							An unexpected caller should not receive your Medicare number simply because
-							they claim to be updating benefits.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller requested sensitive information before independent verification.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="ask-mail-information"
-				  destinationVideoId="known-information"
-				  classification="risky">
-
-					<title>Ask them to mail the information</title>
-					<subtitle>Ask the caller to send information through the mail instead.</subtitle>
-
-					<feedback heading="Delaying the decision is safer, but verification is still needed">
-						<consequence>
-							You avoid immediately providing the Medicare number, but the caller may continue trying to persuade you.
-						</consequence>
-
-						<explanation>
-							Do not rely on information supplied by the unexpected caller as proof of identity.
-							Use independently located contact information to verify the request.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller initiated the contact unexpectedly.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="hang-up-and-verify"
-				  destinationVideoId="safe-verification"
-				  classification="safe">
-
-					<title>Hang up and call the number on your Medicare card</title>
-					<subtitle>End the unexpected call and verify the request independently.</subtitle>
-
-					<feedback heading="You chose independent verification">
-						<consequence>
-							You avoid giving sensitive information to the unexpected caller.
-						</consequence>
-
-						<explanation>
-							Unexpected benefits calls should be verified independently rather than
-							through a phone number or contact information supplied by the caller.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller could not independently establish their identity.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-			</choices>
-		</scene>
-
-
-		<!-- MOMENT 2: KNOWN PERSONAL INFORMATION -->
-		<scene videoId="known-information" stageName="Known personal information" stageIndex="2">
-
-			<artifact type="phone-call">
-				<caller>Medicare Benefits Representative</caller>
-				<callerStatus>Identity not verified</callerStatus>
-				<callStatus>Caller claims to know personal details</callStatus>
-
-				<heading>Knowing your information does not prove the caller is legitimate</heading>
-
-				<message>
-					The caller knows the learner's name and address and says,
-					"We already have your information, so you know we're official."
-					The caller then asks the learner to confirm additional information.
-				</message>
-
-				<transcript>
-					The simulated caller knows the learner's name and address and uses those details
-					to appear legitimate. The caller then asks the learner to confirm additional
-					personal information.
-				</transcript>
-
-				<media
-				  video="placeholder/medicare-scam/known-information.mp4"
-				  poster="placeholder/medicare-scam/known-information.jpg"
-				  captions="placeholder/medicare-scam/known-information.vtt"
-				  available="false" />
-			</artifact>
-
-			<question>What would you do when the caller already knows your name and address?</question>
-
-			<description>
-				Known personal details do not prove that a caller is an official representative.
-			</description>
-
-			<warningSigns>
-				<sign>The caller uses information they already know as proof of identity.</sign>
-				<sign>Basic personal information may be public or exposed through a data leak.</sign>
-				<sign>The caller continues asking for more sensitive information.</sign>
-			</warningSigns>
-
-			<choices>
-
-				<choice
-				  choiceId="trust-known-information"
-				  destinationVideoId="free-equipment"
-				  classification="risky">
-
-					<title>Trust them because they know your details</title>
-					<subtitle>Assume the caller is legitimate because they know your name and address.</subtitle>
-
-					<feedback heading="Known information does not prove identity">
-						<consequence>
-							The caller gains additional credibility without actually proving who they are.
-						</consequence>
-
-						<explanation>
-							Names and addresses can be obtained from public records, previous contacts,
-							or data exposure. They should not be treated as proof that an unexpected caller is legitimate.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller is using information they already possess as proof of identity.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="ask-why-more-information"
-				  destinationVideoId="free-equipment"
-				  classification="risky">
-
-					<title>Ask why they need more information</title>
-					<subtitle>Question the caller about why additional information is necessary.</subtitle>
-
-					<feedback heading="Questioning the request is a good warning sign">
-						<consequence>
-							The caller may pressure you or provide another explanation for requesting sensitive information.
-						</consequence>
-
-						<explanation>
-							Asking questions is useful, but the safest response to an unexpected request
-							is to stop the call and verify independently.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller still has not independently established their identity.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="refuse-confirmation"
-				  destinationVideoId="safe-verification"
-				  classification="safe">
-
-					<title>Refuse to confirm anything</title>
-					<subtitle>Do not confirm personal information to the unexpected caller.</subtitle>
-
-					<feedback heading="You protected your personal information">
-						<consequence>
-							You prevent the caller from using additional personal information to strengthen the scam.
-						</consequence>
-
-						<explanation>
-							Knowing a few details about you does not establish that the caller is legitimate.
-							Stop the conversation and verify independently.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller attempted to use known information as proof of identity.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-			</choices>
-		</scene>
-
-
-		<!-- MOMENT 3: FREE MEDICAL EQUIPMENT -->
-		<scene videoId="free-equipment" stageName="Free medical equipment" stageIndex="3">
-
-			<artifact type="phone-call">
-				<caller>Medicare Benefits Representative</caller>
-				<callerStatus>Identity not verified</callerStatus>
-				<callStatus>Free equipment offer</callStatus>
-
-				<heading>The caller offers free medical equipment</heading>
-
-				<message>
-					The caller says the learner qualifies for a free back brace, test kit,
-					or other medical equipment. The caller asks for doctor and insurance information
-					to process the offer.
-				</message>
-
-				<transcript>
-					The simulated caller offers free medical equipment and asks the learner
-					to provide doctor and insurance information. The caller has not been independently verified.
-				</transcript>
-
-				<media
-				  video="placeholder/medicare-scam/free-medical-equipment.mp4"
-				  poster="placeholder/medicare-scam/free-medical-equipment.jpg"
-				  captions="placeholder/medicare-scam/free-medical-equipment.vtt"
-				  available="false" />
-			</artifact>
-
-			<question>What would you do when the caller offers free medical equipment?</question>
-
-			<description>
-				Unexpected medical equipment offers can be used to collect insurance information
-				or submit fraudulent claims.
-			</description>
-
-			<warningSigns>
-				<sign>The equipment is offered unexpectedly over the phone.</sign>
-				<sign>The caller asks for doctor or insurance information.</sign>
-				<sign>The caller describes the equipment as free to encourage quick compliance.</sign>
-			</warningSigns>
-
-			<choices>
-
-				<choice
-				  choiceId="accept-equipment-provide-information"
-				  destinationVideoId="takeaways"
-				  classification="dangerous">
-
-					<title>Accept and provide doctor and insurance information</title>
-					<subtitle>Give the caller the requested information to receive the free equipment.</subtitle>
-
-					<feedback heading="The free offer can create a medical billing fraud risk">
-						<consequence>
-							The caller receives insurance information that could potentially be used for fraudulent billing.
-						</consequence>
-
-						<explanation>
-							An unexpected offer of medical equipment should not be accepted by providing
-							insurance information to an unverified caller.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller requested insurance information for an unsolicited offer.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="ask-doctor-first"
-				  destinationVideoId="safe-verification"
-				  classification="safe">
-
-					<title>Ask your doctor first</title>
-					<subtitle>Discuss the equipment with your doctor or trusted medical provider.</subtitle>
-
-					<feedback heading="You chose a trusted medical provider">
-						<consequence>
-							You avoid providing insurance information to the unexpected caller.
-						</consequence>
-
-						<explanation>
-							Using a trusted doctor or provider gives you an independent way to determine
-							whether the equipment is actually needed or available.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller made the offer without an established relationship.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="ask-about-copay"
-				  destinationVideoId="benefit-pressure"
-				  classification="risky">
-
-					<title>Ask if there is a copay</title>
-					<subtitle>Ask whether you would have to pay anything for the equipment.</subtitle>
-
-					<feedback heading="The payment question does not verify the caller">
-						<consequence>
-							The caller may simply say there is no copay and continue requesting information.
-						</consequence>
-
-						<explanation>
-							Whether an offer is free or has a copay does not establish that the caller
-							is legitimate. Verify the offer through a trusted provider.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller still has not been independently verified.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-			</choices>
-		</scene>
-
-
-		<!-- MOMENT 4: BENEFIT PRESSURE -->
-		<scene videoId="benefit-pressure" stageName="Benefit pressure" stageIndex="4">
-
-			<artifact type="phone-call">
-				<caller>Medicare Benefits Representative</caller>
-				<callerStatus>Identity not verified</callerStatus>
-				<callStatus>Urgent threat about benefits</callStatus>
-
-				<heading>The caller says your benefits could be paused</heading>
-
-				<message>
-					The caller says, "Your benefits could be paused if you don't act today."
-					The caller pressures the learner to provide information immediately.
-				</message>
-
-				<transcript>
-					The simulated caller threatens that the learner's benefits could be paused
-					if action is not taken immediately. The caller uses urgency to pressure
-					the learner into complying.
-				</transcript>
-
-				<media
-				  video="placeholder/medicare-scam/benefit-pressure.mp4"
-				  poster="placeholder/medicare-scam/benefit-pressure.jpg"
-				  captions="placeholder/medicare-scam/benefit-pressure.vtt"
-				  available="false" />
-			</artifact>
-
-			<question>What would you do when the caller says your benefits could be paused today?</question>
-
-			<description>
-				Threats about losing benefits are designed to create panic and discourage independent verification.
-			</description>
-
-			<warningSigns>
-				<sign>The caller creates a deadline.</sign>
-				<sign>The caller threatens that benefits could be paused.</sign>
-				<sign>The caller wants immediate action before you can verify the claim.</sign>
-			</warningSigns>
-
-			<choices>
-
-				<choice
-				  choiceId="panic-and-comply"
-				  destinationVideoId="takeaways"
-				  classification="dangerous">
-
-					<title>Panic and comply</title>
-					<subtitle>Give the caller the requested information because you are worried about losing benefits.</subtitle>
-
-					<feedback heading="Urgency caused you to bypass verification">
-						<consequence>
-							The caller receives sensitive information because the threat created pressure to act immediately.
-						</consequence>
-
-						<explanation>
-							Scammers use urgency and threats to make people act before they have time to verify a request.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller demanded immediate action.</sign>
-							<sign>The caller used a threat about losing benefits.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="end-call-verify-independently"
-				  destinationVideoId="takeaways"
-				  classification="safe">
-
-					<title>End the call and verify independently</title>
-					<subtitle>Do not comply with the deadline. End the call and verify through a trusted source.</subtitle>
-
-					<feedback heading="You stopped the pressure and verified independently">
-						<consequence>
-							You avoid giving sensitive information to the caller and take control of the verification process.
-						</consequence>
-
-						<explanation>
-							Pressure about losing benefits is a warning sign. Ending the call allows you
-							to verify the claim without the scammer controlling the conversation.
-						</explanation>
-
-						<warningSigns>
-							<sign>The caller attempted to use urgency to prevent independent verification.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-				<choice
-				  choiceId="ask-for-supervisor"
-				  destinationVideoId="takeaways"
-				  classification="risky">
-
-					<title>Ask for a supervisor</title>
-					<subtitle>Request to speak with someone higher up at the organization.</subtitle>
-
-					<feedback heading="A supervisor may not provide independent verification">
-						<consequence>
-							The caller may simply transfer you to another person who repeats the same story.
-						</consequence>
-
-						<explanation>
-							Moving to another person within the same unexpected call does not independently
-							verify the organization. End the call and use a trusted contact method instead.
-						</explanation>
-
-						<warningSigns>
-							<sign>The entire conversation is still controlled by the unexpected caller.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-			</choices>
-		</scene>
-
-
-		<!-- TAKEAWAYS -->
-		<scene videoId="takeaways" stageName="Takeaways" stageIndex="5">
-
-			<artifact type="guide">
-
-				<heading>Protect Medicare information like financial information</heading>
-
-				<message>
-					Medicare numbers, Social Security numbers, dates of birth, and insurance information
-					are sensitive personal information. Do not provide them to an unexpected caller.
-				</message>
-
-				<transcript>
-					The guide reminds the learner to protect Medicare information like financial information.
-					Unexpected calls, free medical equipment offers, requests for sensitive information,
-					and threats about losing benefits are warning signs. When in doubt, end the call and
-					verify independently through a trusted source.
-				</transcript>
-
-				<media
-				  video="placeholder/medicare-scam/takeaways.mp4"
-				  poster="placeholder/medicare-scam/takeaways.jpg"
-				  captions="placeholder/medicare-scam/takeaways.vtt"
-				  available="false" />
-
-			</artifact>
-
-			<question>What is the safest response to an unexpected Medicare-related call?</question>
-
-			<description>
-				Protect sensitive information and verify unexpected requests independently.
-			</description>
-
-			<warningSigns>
-				<sign>New-card claims</sign>
-				<sign>Free medical equipment offers</sign>
-				<sign>Requests for Medicare or Social Security information</sign>
-				<sign>Threats about losing benefits</sign>
-				<sign>Pressure to act immediately</sign>
-			</warningSigns>
-
-			<choices>
-
-				<choice
-				  choiceId="verify-and-protect"
-				  destinationVideoId="safe-verification"
-				  classification="safe">
-
-					<title>Verify independently and protect your information</title>
-					<subtitle>End unexpected calls and use trusted contact information to verify the request.</subtitle>
-
-					<feedback heading="Excellent">
-						<consequence>
-							You recognized the warning signs and avoided giving sensitive information to the caller.
-						</consequence>
-
-						<explanation>
-							Independent verification prevents the unexpected caller from controlling
-							the information used to establish trust.
-						</explanation>
-
-						<warningSigns>
-							<sign>Unexpected requests for sensitive information should be independently verified.</sign>
-						</warningSigns>
-					</feedback>
-
-				</choice>
-
-			</choices>
-
-		</scene>
-
-		<scene videoId="safe-verification" stageName="Takeaways" stageIndex="5">
-			<artifact type="review">
-				<heading>Safe verification completed</heading>
-				<message>The unexpected Medicare call was declined or verified independently using an official source.</message>
-				<transcript>The learner successfully avoided sharing sensitive information, hung up on the caller, or verified the request through trusted official channels.</transcript>
-				<media video="placeholder/medicare-scam/safe-verification.mp4" poster="placeholder/medicare-scam/safe-verification.jpg" captions="placeholder/medicare-scam/safe-verification.vtt" available="false" />
-			</artifact>
-			<outcome classification="safe">
-				<label>Medicare benefits verified safely</label>
-				<heading>You protected your personal and insurance information</heading>
-				<explanation>You avoided falling for unverified benefit updates, fake medical equipment offers, and high-pressure threats by hanging up and verifying independently.</explanation>
-			</outcome>
-			<warningSigns>
-				<sign>Unexpected benefits or new-card claims.</sign>
-				<sign>Urgent threats about pausing benefits.</sign>
-			</warningSigns>
-		</scene>
-
-	</scenes>
-
 	<commands>
-		<command type="prompt" videoId="unexpected-call" displayText="A caller claims that your Medicare card needs to be updated and asks to verify your number.">
+		<command type="prompt" videoId="1" displayText="A caller claims that your Medicare card needs to be updated and asks to verify your number.">
 			<options>
-				<option id="known-information" text="Read the Medicare number" choiceId="read-medicare-number"></option>
-				<option id="known-information" text="Ask them to mail the information" choiceId="ask-mail-information"></option>
-				<option id="safe-verification" text="Hang up and call the number on your Medicare card" choiceId="hang-up-and-verify"></option>
+				<option id="8" text="Read the Medicare number" choiceId="read-number"></option>
+				<option id="2" text="Ask them to mail the information" choiceId="mail-info"></option>
+				<option id="7" text="Hang up and call the number on your Medicare card" choiceId="hang-up"></option>
 			</options>
 		</command>
-		<command type="prompt" videoId="known-information" displayText="The caller knows your name and address and asks you to confirm additional personal information.">
+		<command type="prompt" videoId="2" displayText="The caller knows your name and address and asks you to confirm additional personal information.">
 			<options>
-				<option id="free-equipment" text="Trust them because they know your details" choiceId="trust-known-information"></option>
-				<option id="free-equipment" text="Ask why they need more information" choiceId="ask-why-more-information"></option>
-				<option id="safe-verification" text="Refuse to confirm anything" choiceId="refuse-confirmation"></option>
+				<option id="3" text="Trust them because they know your details" choiceId="trust-caller"></option>
+				<option id="3" text="Ask why they need more information" choiceId="ask-why"></option>
+				<option id="7" text="Refuse to confirm anything" choiceId="refuse-confirm"></option>
 			</options>
 		</command>
-		<command type="prompt" videoId="free-equipment" displayText="The caller offers free medical equipment and asks for your doctor and insurance information.">
+		<command type="prompt" videoId="3" displayText="The caller offers free medical equipment and asks for your doctor and insurance information.">
 			<options>
-				<option id="takeaways" text="Accept and provide doctor and insurance information" choiceId="accept-equipment-provide-information"></option>
-				<option id="safe-verification" text="Ask your doctor first" choiceId="ask-doctor-first"></option>
-				<option id="benefit-pressure" text="Ask if there is a copay" choiceId="ask-about-copay"></option>
+				<option id="8" text="Accept and provide doctor and insurance information" choiceId="accept-equipment"></option>
+				<option id="7" text="Ask your doctor first" choiceId="ask-doctor"></option>
+				<option id="5" text="Ask if there is a copay" choiceId="copay"></option>
 			</options>
 		</command>
-		<command type="prompt" videoId="benefit-pressure" displayText="The caller threatens that your benefits could be paused if you don't act today.">
+		<command type="prompt" videoId="5" displayText="The caller threatens that your benefits could be paused if you don't act today.">
 			<options>
-				<option id="takeaways" text="Panic and comply" choiceId="panic-and-comply"></option>
-				<option id="takeaways" text="End the call and verify independently" choiceId="end-call-verify-independently"></option>
-				<option id="takeaways" text="Ask for a supervisor" choiceId="ask-for-supervisor"></option>
+				<option id="8" text="Panic and comply" choiceId="panic-comply"></option>
+				<option id="7" text="End the call and verify independently" choiceId="end-call-verify"></option>
+				<option id="8" text="Ask for a supervisor" choiceId="ask-supervisor"></option>
 			</options>
 		</command>
-		<command type="prompt" videoId="takeaways" displayText="Review the warning signs of Medicare scams and choose the safest response.">
-			<options>
-				<option id="safe-verification" text="Verify independently and protect your information" choiceId="verify-and-protect"></option>
-			</options>
-		</command>
-		<command type="stop" videoId="safe-verification" displayText="The learner successfully avoided the Medicare benefits scam by refusing to share information and verifying independently." />
+		<command type="stop" videoId="7" displayText="Win condition: You stopped the scam and verified through an official channel." />
+		<command type="stop" videoId="8" displayText="Critical loss: Sensitive information was compromised by an unverified caller." />
 	</commands>
 </playlist>
