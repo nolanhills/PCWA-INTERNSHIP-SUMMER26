@@ -53,7 +53,7 @@
 					<heading>The caller says your Medicare card needs to be updated</heading>
 					<message>The caller says, "We're updating Medicare cards. I just need to verify your number." The caller asks for the learner's Medicare number and says the information is needed to make sure benefits continue without interruption.</message>
 					<transcript>A simulated caller says that Medicare cards are being updated and asks the learner to verify their Medicare number. The caller has contacted the learner unexpectedly and has not been independently verified.</transcript>
-					<media video="placeholder/medicare-scam/unexpected-call.mp4" available="true" />
+					<media video="media/medicare/unexpected-call.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the caller asks for your Medicare number?</question>
 				<description>An unexpected caller asking for Medicare information should not be trusted without independent verification.</description>
@@ -98,7 +98,7 @@
 					<heading>Knowing your information does not prove the caller is legitimate</heading>
 					<message>The caller knows the learner's name and address and says, "We already have your information, so you know we're official." The caller then asks the learner to confirm additional information.</message>
 					<transcript>The simulated caller knows the learner's name and address and uses those details to appear legitimate. The caller then asks the learner to confirm additional personal information.</transcript>
-					<media video="placeholder/medicare-scam/known-information.mp4" available="true" />
+					<media video="media/medicare/known-information.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the caller already knows your name and address?</question>
 				<description>Known personal details do not prove that a caller is an official representative.</description>
@@ -143,7 +143,7 @@
 					<heading>The caller offers free medical equipment</heading>
 					<message>The caller says the learner qualifies for a free back brace, test kit, or other medical equipment. The caller asks for doctor and insurance information to process the offer.</message>
 					<transcript>The simulated caller offers free medical equipment and asks the learner to provide doctor and insurance information. The caller has not been independently verified.</transcript>
-					<media video="placeholder/medicare-scam/free-medical-equipment.mp4" available="true" />
+					<media video="media/medicare/free-medical-equipment.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the caller offers free medical equipment?</question>
 				<description>Unexpected medical equipment offers can be used to collect insurance information or submit fraudulent claims.</description>
@@ -188,7 +188,7 @@
 					<heading>The caller says your benefits could be paused</heading>
 					<message>The caller says, "Your benefits could be paused if you don't act today." The caller pressures the learner to provide information immediately.</message>
 					<transcript>The simulated caller threatens that the learner's benefits could be paused if action is not taken immediately. The caller uses urgency to pressure the learner into complying.</transcript>
-					<media video="placeholder/medicare-scam/benefit-pressure.mp4" available="true" />
+					<media video="media/medicare/benefit-pressure.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the caller says your benefits could be paused today?</question>
 				<description>Threats about losing benefits are designed to create panic and discourage independent verification.</description>
@@ -230,7 +230,7 @@
 					<heading>Trusted contact restored</heading>
 					<message>You ended the suspicious conversation and contacted Medicare through an official channel.</message>
 					<transcript>The suspicious conversation ends. The learner contacts Medicare using a trusted number.</transcript>
-					<media video="placeholder/medicare-scam/safe-verification.mp4" available="true" />
+					<media video="media/medicare/safe-verification.mp4" available="true" />
 				</artifact>
 				<outcome classification="safe">
 					<label>Scam stopped</label>
@@ -248,7 +248,7 @@
 					<heading>Information compromised</heading>
 					<message>The scammer used the information to compromise your Medicare benefits and personal security.</message>
 					<transcript>After sharing sensitive details, the scammer can commit identity or medical billing fraud.</transcript>
-					<media video="placeholder/medicare-scam/takeaways.mp4" available="true" />
+					<media video="media/medicare/takeaways.mp4" available="true" />
 				</artifact>
 				<outcome classification="dangerous">
 					<label>Account compromised</label>
