@@ -171,3 +171,7 @@ packages/
 PrototypeWebApp/My Project/PublishProfiles/*.pubxml
 PrototypeWebApp/Properties/ServiceDependencies/
 PrototypeWebApp/.github/copilot-instructions.md
+
+# Generated static deployment package
+/StaticPackage/
+/StaticPackage.zip
