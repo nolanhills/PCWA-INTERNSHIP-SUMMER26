@@ -61,7 +61,7 @@
 						<item>Call support: 1-800-555-0147</item>
 					</requestedInformation>
 					<transcript>While browsing a familiar news website, a full-screen warning suddenly covers the page and an alarm sounds. It says, "Critical Security Alert. Your device may be infected. Personal files and banking information are at risk. Do not shut down your computer. Call support immediately." The screen appears locked, but this is only a browser pop-up. It displays a Scan Now button and the phone number 1-800-555-0147.</transcript>
-					<media video="placeholder/tech-support-popup/security-warning.mp4" poster="placeholder/tech-support-popup/security-warning.jpg" captions="placeholder/tech-support-popup/security-warning.vtt" available="false" />
+					<media video="media/tech-support-popup/security-warning.mp4" available="true" />
 				</artifact>
 				<question>What would you do when this warning suddenly fills the screen?</question>
 				<description>The alarm and urgent language are meant to create fear. A full-screen browser message is not proof that the computer is infected.</description>
@@ -116,7 +116,7 @@
 					<message>Banking passwords may be exposed. Immediate technician assistance required.</message>
 					<requestedInformation><item>Clean Threats Now</item><item>Call support: 1-800-555-0147</item></requestedInformation>
 					<transcript>After the learner clicks Scan Now, a progress bar races across the screen. Within seconds the page reports, "47 threats detected. Banking passwords may be exposed. Immediate technician assistance required." It offers a Clean Threats Now button and repeats the support number. The website has not actually examined the computer.</transcript>
-					<media video="placeholder/tech-support-popup/fake-scan.mp4" poster="placeholder/tech-support-popup/fake-scan.jpg" captions="placeholder/tech-support-popup/fake-scan.vtt" available="false" />
+					<media video="media/tech-support-popup/fake-scan.mp4" available="true" />
 				</artifact>
 				<question>What would you do after the page reports 47 threats?</question>
 				<description>The quick result and large number are meant to make the fake scan seem urgent and technical.</description>
@@ -143,7 +143,7 @@
 					<message>A certified technician must connect to your device to remove the detected threats. Call 1-800-555-0147 now.</message>
 					<requestedInformation><item>Call support: 1-800-555-0147</item></requestedInformation>
 					<transcript>After the learner clicks the cleanup button, the page displays, "Automatic removal failed. A certified technician must connect to your device to remove the detected threats." It again shows the support number 1-800-555-0147. This failure is another message created by the webpage, not evidence of an infection.</transcript>
-					<media video="placeholder/tech-support-popup/cleanup-failed.mp4" poster="placeholder/tech-support-popup/cleanup-failed.jpg" captions="placeholder/tech-support-popup/cleanup-failed.vtt" available="false" />
+					<media video="media/tech-support-popup/cleanup-failed.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the page says a technician must connect?</question>
 				<description>The pop-up is narrowing the choices toward a call and remote access.</description>
@@ -167,7 +167,7 @@
 					<heading>Daniel says the computer sent an alert</heading>
 					<message>Thank you for calling SecureTech Device Support. My name is Daniel. Your computer sent our security center a critical infection alert. Please install SecureAssist Remote Support so I can remove the infection.</message>
 					<transcript>A professional-sounding representative answers, "Thank you for calling SecureTech Device Support. My name is Daniel. Your computer sent our security center a critical infection alert." SecureTech Device Support is fictional. Daniel asks the learner to install a fictional application called SecureAssist Remote Support so he can connect to the device.</transcript>
-					<media video="placeholder/tech-support-popup/support-call.mp4" poster="placeholder/tech-support-popup/support-call.jpg" captions="placeholder/tech-support-popup/support-call.vtt" available="false" />
+					<media video="media/tech-support-popup/support-call.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to Daniel's request to install SecureAssist Remote Support?</question>
 				<description>A calm voice and a company name can sound reassuring, but neither independently verifies the caller.</description>
@@ -195,7 +195,7 @@
 					<heading>Daniel provides an employee ID and increases urgency</heading>
 					<message>Certainly. My employee ID is ST-4821. But we need to act quickly—your online banking information could already be exposed.</message>
 					<transcript>When asked for identification, Daniel says, "Certainly. My employee ID is ST-4821. But we need to act quickly—your online banking information could already be exposed." A name, employee ID, or badge number provided by the caller can easily be invented and is not independent verification.</transcript>
-					<media video="placeholder/tech-support-popup/identity-pressure.mp4" poster="placeholder/tech-support-popup/identity-pressure.jpg" captions="placeholder/tech-support-popup/identity-pressure.vtt" available="false" />
+					<media video="media/tech-support-popup/identity-pressure.mp4" available="true" />
 				</artifact>
 				<question>What would you do after Daniel gives employee ID ST-4821?</question>
 				<description>The ID sounds specific, but it still comes only from Daniel.</description>
@@ -222,7 +222,7 @@
 					<message>Daniel is now controlling your device.</message>
 					<requestedInformation><item>Allow Daniel to continue</item><item>Disconnect session</item></requestedInformation>
 					<transcript>Only after the learner explicitly installs and authorizes SecureAssist does the screen display, "SecureAssist Remote Support. Support session connected. Daniel is now controlling your device." Daniel says, "I'm connected now. Please do not touch the keyboard or mouse while I check the system."</transcript>
-					<media video="placeholder/tech-support-popup/remote-connected.mp4" poster="placeholder/tech-support-popup/remote-connected.jpg" captions="placeholder/tech-support-popup/remote-connected.vtt" available="false" />
+					<media video="media/tech-support-popup/remote-connected.mp4" available="true" />
 				</artifact>
 				<question>What would you do once the remote session is connected?</question>
 				<description>Remote access is active because SecureAssist was installed and authorized.</description>
@@ -250,7 +250,7 @@
 					<heading>Daniel avoids explaining the access</heading>
 					<message>The connection only lets me perform the security work we discussed. The important thing is finding the infection before your banking information is stolen. Please don't touch anything.</message>
 					<transcript>When asked what information he can see, Daniel does not give a clear answer. He says, "The connection only lets me perform the security work we discussed. The important thing is finding the infection before your banking information is stolen. Please don't touch anything." He redirects attention from his access to the supposed emergency.</transcript>
-					<media video="placeholder/tech-support-popup/access-questioned.mp4" poster="placeholder/tech-support-popup/access-questioned.jpg" captions="placeholder/tech-support-popup/access-questioned.vtt" available="false" />
+					<media video="media/tech-support-popup/access-questioned.mp4" available="true" />
 				</artifact>
 				<question>What would you do after Daniel avoids the question?</question>
 				<description>The session remains active, and Daniel still controls the device.</description>
@@ -273,7 +273,7 @@
 					<message>Warning: Application response delay. Error: Service stopped and restarted. Warning: Update retry scheduled.</message>
 					<requestedInformation><item>Daniel asks you to accept his diagnosis</item></requestedInformation>
 					<transcript>Because remote access has been granted, Daniel opens ordinary system logs containing routine warnings and errors. Red symbols appear beside messages about an application delay, a service restart, and an update retry. Daniel says, "See all these red warnings? These are foreign hackers attempting to access your computer and bank account." The logs do not identify a virus or show that hackers are connected.</transcript>
-					<media video="placeholder/tech-support-popup/system-logs.mp4" poster="placeholder/tech-support-popup/system-logs.jpg" captions="placeholder/tech-support-popup/system-logs.vtt" available="false" />
+					<media video="media/tech-support-popup/system-logs.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to Daniel's explanation of the red warnings?</question>
 				<description>Ordinary logs often contain warnings and errors. Their color alone does not prove an infection or outside access.</description>
@@ -301,7 +301,7 @@
 					<heading>Daniel replaces evidence with fear and authority</heading>
 					<message>I am a certified technician. If we stop now, hackers could empty your bank account. I'm trying to protect you.</message>
 					<transcript>When challenged, Daniel cannot identify an actual virus or compromised file. Instead, he says, "I am a certified technician. If we stop now, hackers could empty your bank account. I'm trying to protect you." His claimed certification and urgent warning do not answer the technical question.</transcript>
-					<media video="placeholder/tech-support-popup/challenged-diagnosis.mp4" poster="placeholder/tech-support-popup/challenged-diagnosis.jpg" captions="placeholder/tech-support-popup/challenged-diagnosis.vtt" available="false" />
+					<media video="media/tech-support-popup/challenged-diagnosis.mp4" available="true" />
 				</artifact>
 				<question>What would you do when Daniel responds with fear instead of evidence?</question>
 				<description>The caller has not identified a threat, and he still has remote access.</description>
@@ -329,7 +329,7 @@
 					<heading>A {{protectionPlanAmount}} lifetime protection plan</heading>
 					<message>The lifetime protection plan costs {{protectionPlanAmount}}. Our card-processing system is temporarily unavailable, so payment must be made using gift cards.</message>
 					<transcript>Only after the fake diagnosis has been established does Daniel say, "The lifetime protection plan costs {{protectionPlanAmount}}. Our card-processing system is temporarily unavailable, so payment must be made using gift cards." He asks the learner to purchase gift cards and read the numbers to him.</transcript>
-					<media video="placeholder/tech-support-popup/protection-plan.mp4" poster="placeholder/tech-support-popup/protection-plan.jpg" captions="placeholder/tech-support-popup/protection-plan.vtt" available="false" />
+					<media video="media/tech-support-popup/protection-plan.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to the {{protectionPlanAmount}} gift-card payment demand?</question>
 				<description>Gift cards work like cash once their numbers are shared. Legitimate support services do not require gift cards for computer protection.</description>
@@ -357,7 +357,7 @@
 					<heading>A same-day $199 offer</heading>
 					<message>I received supervisor approval for $199, but you must complete the payment today.</message>
 					<transcript>After the learner asks for a cheaper option, Daniel says, "I received supervisor approval for $199, but you must complete the payment today." He still requires gift cards and asks for the card numbers. The quick discount and deadline are pressure tactics, not proof of a real service.</transcript>
-					<media video="placeholder/tech-support-popup/discounted-plan.mp4" poster="placeholder/tech-support-popup/discounted-plan.jpg" captions="placeholder/tech-support-popup/discounted-plan.vtt" available="false" />
+					<media video="media/tech-support-popup/discounted-plan.mp4" available="true" />
 				</artifact>
 				<question>What would you do after Daniel offers the $199 same-day price?</question>
 				<description>This is the final opportunity to stop before gift-card value is lost.</description>
