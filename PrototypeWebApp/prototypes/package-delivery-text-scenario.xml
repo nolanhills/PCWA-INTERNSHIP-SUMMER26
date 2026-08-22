@@ -57,7 +57,7 @@
 					<heading>Address confirmation required</heading>
 					<message>ParcelRoute Delivery: We could not deliver your package because the address information is incomplete. Confirm your address within 12 hours or the package will be returned to sender: parcelroute-reschedule.com/8K2M</message>
 					<transcript>An older adult is expecting at least one package this week but does not know the carrier. A text from an unfamiliar number claims that ParcelRoute Delivery could not deliver a package because the address is incomplete. It demands confirmation within 12 hours and supplies parcelroute-reschedule.com/8K2M. The message does not identify the recipient, merchant, package contents, or real tracking history. ParcelRoute Delivery is fictional.</transcript>
-					<media video="placeholder/package-delivery-text/delivery-text.mp4" poster="placeholder/package-delivery-text/delivery-text.jpg" captions="placeholder/package-delivery-text/delivery-text.vtt" available="false" />
+					<media video="media/package-delivery-text/delivery-text.mp4" available="true" />
 				</artifact>
 				<question>What would you do with this unexpected delivery text?</question>
 				<description>You are expecting a package sometime this week, but you do not know which carrier will deliver it.</description>
@@ -104,7 +104,7 @@
 					<heading>Unsubscribe request received</heading>
 					<message>Unsubscribe request received. Your delivery still requires action. Package will be returned today unless the address is confirmed: parcelroute-reschedule.com/8K2M</message>
 					<transcript>After the learner replies STOP, another message says the unsubscribe request was received but the delivery still requires action. It claims the package will be returned today unless the address is confirmed through the same link. The reply did not verify the sender or resolve any real delivery issue.</transcript>
-					<media video="placeholder/package-delivery-text/stop-follow-up.mp4" poster="placeholder/package-delivery-text/stop-follow-up.jpg" captions="placeholder/package-delivery-text/stop-follow-up.vtt" available="false" />
+					<media video="media/package-delivery-text/stop-follow-up.mp4" available="true" />
 				</artifact>
 				<question>How would you respond to this increased pressure?</question>
 				<description>The supposed deadline has changed from 12 hours to “today,” but no package details have appeared.</description>
@@ -135,7 +135,7 @@
 					<heading>Shipment details unavailable</heading>
 					<message>Shipment details are unavailable until the delivery address is confirmed. Use the secure link to continue.</message>
 					<transcript>The learner asks which package is being delivered. The sender refuses to identify it and says shipment details are unavailable until the delivery address is confirmed through the supplied “secure” link. Calling a link secure does not make it legitimate.</transcript>
-					<media video="placeholder/package-delivery-text/package-details-unavailable.mp4" poster="placeholder/package-delivery-text/package-details-unavailable.jpg" captions="placeholder/package-delivery-text/package-details-unavailable.vtt" available="false" />
+					<media video="media/package-delivery-text/package-details-unavailable.mp4" available="true" />
 				</artifact>
 				<question>What would you do after the sender avoids the question?</question>
 				<description>You now have a clear opportunity to stop and verify the package independently.</description>
@@ -158,7 +158,7 @@
 					<heading>Delivery Attempt Unsuccessful</heading>
 					<message>We could not confirm your address. Update your information now to prevent the package from being returned. Tracking reference: PR-8K2M-DELIVERY. ParcelRoute Delivery is fictional, and this page provides no merchant, recipient, or legitimate tracking history.</message>
 					<transcript>A professional-looking fictional ParcelRoute page appears at parcelroute-reschedule.com. It shows a package icon, vague tracking reference PR-8K2M-DELIVERY, and the heading “Delivery Attempt Unsuccessful.” It says the address could not be confirmed and must be updated now. It does not identify a real merchant, recipient, package, or tracking history.</transcript>
-					<media video="placeholder/package-delivery-text/fake-tracking-page.mp4" poster="placeholder/package-delivery-text/fake-tracking-page.jpg" captions="placeholder/package-delivery-text/fake-tracking-page.vtt" available="false" />
+					<media video="media/package-delivery-text/fake-tracking-page.mp4" available="true" />
 				</artifact>
 				<question>What matters most when judging this professional-looking page?</question>
 				<description>Logos, package icons, and polished layouts can be copied. The actual domain and independently verified tracking history matter more.</description>
@@ -185,7 +185,7 @@
 					<heading>Address confirmation is the only available step</heading>
 					<message>We cannot release shipment details by text. Complete address confirmation at parcelroute-reschedule.com/8K2M now to prevent return to sender.</message>
 					<transcript>After the learner returns from the fake page and keeps communicating, the sender again refuses to provide shipment details and repeats the same link. The sender's repeated claim still does not verify a package or carrier.</transcript>
-					<media video="placeholder/package-delivery-text/sender-repeats-link.mp4" poster="placeholder/package-delivery-text/sender-repeats-link.jpg" captions="placeholder/package-delivery-text/sender-repeats-link.vtt" available="false" />
+					<media video="media/package-delivery-text/sender-repeats-link.mp4" available="true" />
 				</artifact>
 				<question>Would you end the conversation or return to the form?</question>
 				<description>This is the final reply branch. Both choices move forward, so the sender cannot trap the learner in an endless exchange.</description>
@@ -209,7 +209,7 @@
 					<message>This information is required to verify that you are the intended recipient.</message>
 					<requestedInformation><item>Full name</item><item>Street address</item><item>Phone number</item><item>Email address</item></requestedInformation>
 					<transcript>The fake ParcelRoute page at parcelroute-reschedule.com displays an address-confirmation form. It requests full name, street address, phone number, and email address, claiming the information is required to verify the intended recipient. No payment request has appeared yet.</transcript>
-					<media video="placeholder/package-delivery-text/address-confirmation.mp4" poster="placeholder/package-delivery-text/address-confirmation.jpg" captions="placeholder/package-delivery-text/address-confirmation.vtt" available="false" />
+					<media video="media/package-delivery-text/address-confirmation.mp4" available="true" />
 				</artifact>
 				<question>How much information would you give this unverified page?</question>
 				<description>The form appears before any redelivery-fee request. Even partial information can be useful to a scammer.</description>
@@ -236,7 +236,7 @@
 					<message>A redelivery fee is required before the package can be released. Redelivery fee: {{redeliveryFeeAmount}}. Complete payment within 10 minutes to prevent return to sender.</message>
 					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
 					<transcript>Only after the learner submitted full personal information does the fake page say “Address confirmed” and reveal a {{redeliveryFeeAmount}} redelivery fee. A 10-minute countdown appears. The payment form requests name on card, full card number, expiration date, security code, and billing ZIP code. The small amount is meant to feel harmless; the scammer's real goal is card and identity information.</transcript>
-					<media video="placeholder/package-delivery-text/redelivery-fee-full-info.mp4" poster="placeholder/package-delivery-text/redelivery-fee-full-info.jpg" captions="placeholder/package-delivery-text/redelivery-fee-full-info.vtt" available="false" />
+					<media video="media/package-delivery-text/redelivery-fee-full-info.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the small fee finally appears?</question>
 				<description>The site already received name, address, phone number, and email address. The {{redeliveryFeeAmount}} amount and countdown are tactics.</description>
@@ -263,7 +263,7 @@
 					<message>A redelivery fee is required before the package can be released. Redelivery fee: {{redeliveryFeeAmount}}. Complete payment within 10 minutes to prevent return to sender.</message>
 					<requestedInformation><item>Name on card</item><item>Full card number</item><item>Expiration date</item><item>Security code</item><item>Billing ZIP code</item></requestedInformation>
 					<transcript>After the learner submitted only a street address, the fake page says “Address confirmed” and reveals a {{redeliveryFeeAmount}} fee with a 10-minute countdown. It requests complete card details. Even though less personal information was entered, the address is still exposed and the payment request remains fraudulent.</transcript>
-					<media video="placeholder/package-delivery-text/redelivery-fee-address-only.mp4" poster="placeholder/package-delivery-text/redelivery-fee-address-only.jpg" captions="placeholder/package-delivery-text/redelivery-fee-address-only.vtt" available="false" />
+					<media video="media/package-delivery-text/redelivery-fee-address-only.mp4" available="true" />
 				</artifact>
 				<question>What would you do when the {{redeliveryFeeAmount}} fee appears?</question>
 				<description>The site has the street address and active phone number. The tiny amount is designed to feel harmless.</description>
@@ -290,7 +290,7 @@
 					<message>To continue, enter the virtual card plus your full name, billing address, phone number, expiration date, and card security information.</message>
 					<requestedInformation><item>Virtual card number</item><item>Full name</item><item>Billing address</item><item>Phone number</item><item>Expiration date</item><item>Security code</item></requestedInformation>
 					<transcript>The fake page accepts a virtual card but still requests a virtual card number, full name, billing address, phone number, expiration date, and security code. A virtual card may limit some financial exposure, but the fraudulent site remains illegitimate and already has the learner's name, address, phone number, and email address.</transcript>
-					<media video="placeholder/package-delivery-text/virtual-card-full-info.mp4" poster="placeholder/package-delivery-text/virtual-card-full-info.jpg" captions="placeholder/package-delivery-text/virtual-card-full-info.vtt" available="false" />
+					<media video="media/package-delivery-text/virtual-card-full-info.mp4" available="true" />
 				</artifact>
 				<question>What would you do before sending virtual-card and personal information?</question>
 				<description>The security feature can reduce some card exposure, but it cannot verify ParcelRoute or protect information already entered.</description>
@@ -317,7 +317,7 @@
 					<message>To continue, enter the virtual card plus your full name, billing address, phone number, expiration date, and card security information.</message>
 					<requestedInformation><item>Virtual card number</item><item>Full name</item><item>Billing address</item><item>Phone number</item><item>Expiration date</item><item>Security code</item></requestedInformation>
 					<transcript>The fake page says virtual cards are accepted, then requests a virtual card number, full name, billing address, phone number, expiration date, and security code. Only the street address has been entered so far. Submitting this form would reveal much more information.</transcript>
-					<media video="placeholder/package-delivery-text/virtual-card-address-only.mp4" poster="placeholder/package-delivery-text/virtual-card-address-only.jpg" captions="placeholder/package-delivery-text/virtual-card-address-only.vtt" available="false" />
+					<media video="media/package-delivery-text/virtual-card-address-only.mp4" available="true" />
 				</artifact>
 				<question>Would you submit more information or verify the real order?</question>
 				<description>A virtual card may reduce some financial exposure, but it does not make the website legitimate.</description>
