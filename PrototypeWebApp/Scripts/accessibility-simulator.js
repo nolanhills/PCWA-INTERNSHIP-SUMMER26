@@ -22,7 +22,7 @@
     "use strict";
 
     const textSizeKey = "scam-awareness-text-size";
-    const textSizes = ["small", "medium", "large"];
+    const textSizes = ["small", "medium", "large", "x-large", "xx-large"];
     const scenarioCatalogPath = "prototypes/scenarios.xml";
     const engine = window.ScamScenarioEngine.create();
 
@@ -1466,6 +1466,7 @@
 
     function setTextSize(size, shouldAnnounce) {
         const safeSize = textSizes.includes(size) ? size : "medium";
+        const sizeIndex = textSizes.indexOf(safeSize);
         document.documentElement.dataset.textSize = safeSize;
 
         try {
@@ -1474,8 +1475,8 @@
             // The preference still applies for this page when storage is unavailable.
         }
 
-        elements.decreaseTextButton.disabled = safeSize === "small";
-        elements.increaseTextButton.disabled = safeSize === "large";
+        elements.decreaseTextButton.disabled = sizeIndex === 0;
+        elements.increaseTextButton.disabled = sizeIndex === textSizes.length - 1;
         elements.resetTextButton.disabled = safeSize === "medium";
 
         if (shouldAnnounce) {

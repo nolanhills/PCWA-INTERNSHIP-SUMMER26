@@ -19,7 +19,7 @@
 		<money id="protectionPlanAmount" values="349,399,449,499" currency="USD" />
 	</variables>
 	<presentation approximateStages="8">
-		<title>Tech Support Pop-Up Scam</title>
+		<title>Tech Pop-Up Scam</title>
 		<summary>Practice responding to a frightening security pop-up, a fake support call, remote-access pressure, misleading system logs, and a gift-card payment demand.</summary>
 		<practiceGoal>Pause when a frightening pop-up appears, verify support independently, refuse unexpected remote access, and recognize gift cards as a payment warning sign.</practiceGoal>
 		<stages>
