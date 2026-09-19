@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Book 2 / S19: Fake Investment App and Manufactured Profits
+  All brands, people, recipients, balances, and domains are fictional. The
+  simulated platform cannot create accounts, link banks, or send money.
+-->
+<playlist>
+	<presentation approximateStages="8">
+		<title>Fake Investment App and Manufactured Profits</title>
+		<summary>Practice recognizing a confidence-building investment scam that uses social proof, a polished dashboard, fabricated gains, blocked withdrawals, and repeated fee demands.</summary>
+		<practiceGoal>Verify investments independently, treat displayed profits as unproven, refuse payments to release funds, and protect savings and retirement assets.</practiceGoal>
+		<stages>
+			<stage>Private group invitation</stage>
+			<stage>Starter deposit</stage>
+			<stage>Manufactured gains</stage>
+			<stage>Large wire pressure</stage>
+			<stage>Blocked withdrawal</stage>
+			<stage>Escalating fees</stage>
+			<stage>Retirement pressure</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>A private group promises unusually high or guaranteed returns.</sign>
+				<sign>The coach directs the learner to an unfamiliar platform and recipient.</sign>
+				<sign>A small deposit or apparent early success is used to build confidence.</sign>
+				<sign>The platform displays profits that cannot be independently verified or withdrawn.</sign>
+				<sign>Taxes, insurance, clearance charges, or other fees are demanded before withdrawal.</sign>
+				<sign>The coach pressures the learner to borrow or move retirement savings.</sign>
+			</warningSigns>
+			<safestAction>Do not fund or link an unfamiliar platform until the firm, people, recipient, custody, and withdrawal process have been independently verified.</safestAction>
+			<realWorldActions>
+				<action>Pause new payments and contact the real bank promptly about transfers already made.</action>
+				<action>Preserve private copies of messages, recipient details, and transaction records.</action>
+				<action>Contact a trusted financial professional or the real retirement custodian before moving long-term savings.</action>
+				<action>Do not pay another fee to unlock money shown on a screen.</action>
+				<action>Reject anyone who promises guaranteed recovery for an upfront payment.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="group-invitation" stageName="Private group invitation" stageIndex="1">
+				<artifact type="text-message">
+					<sender>Harbor Growth Circle</sender>
+					<senderStatus>Private online group; fictional and unverified</senderStatus>
+					<heading>Members are earning 20% every month</heading>
+					<message>Join our private circle. Members share daily success stories, and a coach will help you start on the Harbor Returns platform.</message>
+					<transcript>A friendly online contact invites the learner to the fictional Harbor Growth Circle. Group posts claim members earn 20 percent every month and show glowing success stories. A coach offers a supplied link to a fictional investment platform. Group messages and testimonials can be controlled by the same people running the scam.</transcript>
+					<media video="media/fake-investment-app/group-invitation.mp4" available="false" />
+				</artifact>
+				<question>How would you evaluate the opportunity?</question>
+				<description>Independent research matters more than testimonials inside a private group.</description>
+				<warningSigns><sign>The return claim is unusually high.</sign><sign>The group is private and controls its own success stories.</sign><sign>The supplied link is the only route offered.</sign></warningSigns>
+				<choices>
+					<choice choiceId="research-firm-independently" destinationVideoId="research-safe" classification="safe">
+						<title>Research independently and ask a trusted professional</title><subtitle>Check the firm, people, and platform outside the group.</subtitle>
+						<feedback heading="The claims cannot be independently verified"><consequence>No account is created and no money is sent.</consequence><explanation>Independent checking separates real evidence from social proof controlled by the promoter.</explanation><warningSigns><sign>The group supplied every testimonial.</sign><sign>The promised return is presented as routine.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="observe-group-without-investing" destinationVideoId="starter-deposit" classification="risky">
+						<title>Observe the group without investing</title><subtitle>Watch the messages before deciding.</subtitle>
+						<feedback heading="No money moves, but confidence pressure continues"><consequence>Repeated testimonials and friendly attention make the platform feel familiar.</consequence><explanation>Waiting avoids immediate loss, but a controlled group can manufacture consensus over time.</explanation><warningSigns><sign>Only positive stories appear.</sign><sign>Members repeat the coach's claims without independent evidence.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="join-through-supplied-link" destinationVideoId="starter-deposit" classification="dangerous">
+						<title>Join through the supplied link</title><subtitle>Create a profile on the unfamiliar platform.</subtitle>
+						<feedback heading="The scammers control the environment"><consequence>The fictional platform begins collecting personal details and guiding funding.</consequence><explanation>A polished site reached through a private promoter is not proof that investments or custody are real.</explanation><warningSigns><sign>The platform was chosen by the coach.</sign><sign>No independent source has verified it.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="starter-deposit" stageName="Starter deposit" stageIndex="2">
+				<artifact type="fake-website">
+					<domain>harbor-returns.example</domain>
+					<heading>Start with $250</heading>
+					<message>Your coach recommends a small starter deposit and says profits can be withdrawn at any time. This training page cannot accept money or bank details.</message>
+					<requestedInformation><item>Decline funding</item><item>Simulate a $250 deposit</item><item>Simulate linking a checking account</item></requestedInformation>
+					<transcript>The fictional Harbor Returns dashboard recommends a $250 starter deposit. The coach says the amount is small and can be withdrawn at any time. The training page cannot create an account, collect credentials, link a bank, or send money. A small test payment is not proof that the platform is legitimate.</transcript>
+				</artifact>
+				<question>Does a small starter deposit verify the platform?</question>
+				<description>Scammers may deliberately start small to build trust for larger transfers.</description>
+				<warningSigns><sign>The coach frames payment as a harmless test.</sign><sign>The platform and recipient remain unverified.</sign><sign>Bank linking would create an ongoing money path.</sign></warningSigns>
+				<choices>
+					<choice choiceId="decline-until-verified" destinationVideoId="research-safe" classification="safe">
+						<title>Decline until everything is independently verified</title><subtitle>Do not fund or link the platform.</subtitle>
+						<feedback heading="You did not use money as a test"><consequence>No deposit or bank link is created.</consequence><explanation>Verification should come from trustworthy outside evidence, not from sending money to the promoter.</explanation><warningSigns><sign>The same people control the invitation and platform.</sign><sign>The withdrawal promise has not been tested independently.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-starter-deposit" destinationVideoId="manufactured-gains" classification="risky">
+						<title>Make only the $250 starter deposit</title><subtitle>Keep the test amount small.</subtitle>
+						<feedback heading="The small payment starts the trust-building cycle"><consequence>The dashboard soon shows a profit, and the coach asks for more.</consequence><explanation>A scam may allow an early apparent gain or even a small withdrawal to make a later large request believable.</explanation><warningSigns><sign>The platform controls what the balance displays.</sign><sign>The coach immediately plans the next deposit.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-link-checking-account" destinationVideoId="manufactured-gains" classification="dangerous">
+						<title>Link the checking account for automatic funding</title><subtitle>Let the platform make future deposits easier.</subtitle>
+						<feedback heading="An unverified platform gains a continuing funding path"><consequence>Bank information and future transfers may be placed at risk.</consequence><explanation>A convenient link increases exposure without proving that the investment exists.</explanation><warningSigns><sign>The platform was not independently verified.</sign><sign>Automatic funding reduces future pauses.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="manufactured-gains" stageName="Manufactured gains" stageIndex="3">
+				<artifact type="fake-website">
+					<domain>harbor-returns.example/portfolio</domain>
+					<heading>Your displayed profit: $5,000</heading>
+					<message>The group celebrates the rapid gain. The chart and balance are fictional screen content, not evidence of assets or custody.</message>
+					<transcript>Within days, the fictional dashboard displays a $5,000 profit and a steadily rising chart. Group members congratulate the learner. A plain-language summary states that the displayed line and balance are claims made by the platform. They do not prove that any asset was purchased, held, or available for withdrawal.</transcript>
+				</artifact>
+				<question>What does the on-screen balance prove?</question>
+				<description>A platform can display any number. Ownership, custody, and withdrawals need independent evidence.</description>
+				<warningSigns><sign>The profit appears unusually fast and steady.</sign><sign>The same group that promoted the platform celebrates the result.</sign><sign>No independent statement confirms the assets.</sign></warningSigns>
+				<choices>
+					<choice choiceId="treat-dashboard-as-unverified" destinationVideoId="dashboard-questioned-safe" classification="safe">
+						<title>Treat the dashboard as an unverified claim</title><subtitle>Stop funding and verify custody and withdrawal independently.</subtitle>
+						<feedback heading="You separated a display from real evidence"><consequence>No larger transfer is made.</consequence><explanation>A polished balance can be fabricated. Independent custody and withdrawal evidence must come from outside the platform.</explanation><warningSigns><sign>The platform owns the display.</sign><sign>The returns have not been independently confirmed.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="request-original-deposit-withdrawal" destinationVideoId="large-wire-pressure" classification="risky">
+						<title>Request the original deposit before adding more</title><subtitle>Use a withdrawal as a test.</subtitle>
+						<feedback heading="A withdrawal request may expose the scam"><consequence>The coach delays, redirects, or permits only an apparent small success.</consequence><explanation>A small withdrawal can be part of trust-building, so it still does not validate the whole platform.</explanation><warningSigns><sign>The coach controls whether the request succeeds.</sign><sign>The displayed profit remains unverified.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="move-more-savings-after-gains" destinationVideoId="large-wire-pressure" classification="dangerous">
+						<title>Move more savings because the profit looks real</title><subtitle>Increase the investment while returns are high.</subtitle>
+						<feedback heading="The fabricated balance drives a larger transfer"><consequence>The coach prepares new wire instructions for an unfamiliar recipient.</consequence><explanation>The dashboard can increase without any real market activity or assets behind it.</explanation><warningSigns><sign>The decision relies on a screen controlled by the promoter.</sign><sign>The coach creates urgency around the apparent gain.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="large-wire-pressure" stageName="Large wire pressure" stageIndex="4">
+				<artifact type="phone-call">
+					<caller>“Elena,” Harbor Growth coach</caller>
+					<callerStatus>Fictional coach; not independently verified</callerStatus>
+					<callStatus>Limited-time funding call</callStatus>
+					<heading>A larger opportunity closes today</heading>
+					<message>Wire more savings to a new company or individual today. The coach can provide polished documents if the bank asks questions.</message>
+					<transcript>The fictional coach Elena says a limited-time opportunity requires a large wire to a new company or individual. She offers polished documents and urges completion before the deadline. No real recipient, routing information, or payment instructions appear in this simulation.</transcript>
+				</artifact>
+				<question>How should you review the proposed wire?</question>
+				<description>A deadline and polished documents do not replace independent verification.</description>
+				<warningSigns><sign>The recipient is new.</sign><sign>The opportunity expires before outside review.</sign><sign>The coach expects bank questions and supplies a story.</sign></warningSigns>
+				<choices>
+					<choice choiceId="pause-verify-wire-recipient" destinationVideoId="wire-paused-safe" classification="safe">
+						<title>Pause and verify independently with the bank</title><subtitle>Check the recipient, firm, and investment outside the group.</subtitle>
+						<feedback heading="The major transfer is interrupted"><consequence>The new recipient cannot be independently connected to a legitimate investment.</consequence><explanation>A real opportunity can withstand careful review. Urgency should not override a new-recipient check.</explanation><warningSigns><sign>The recipient differs from the displayed platform name.</sign><sign>The deadline discourages independent advice.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-coach-for-documents" destinationVideoId="blocked-withdrawal" classification="risky">
+						<title>Ask the coach for documents</title><subtitle>Stay in the group while reviewing what she sends.</subtitle>
+						<feedback heading="The coach supplies convincing-looking paperwork"><consequence>The documents repeat the same unverified claims and preserve the deadline.</consequence><explanation>Evidence created by the promoter is not independent verification.</explanation><warningSigns><sign>The coach controls the documents and recipient.</sign><sign>No outside source confirms the claims.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-large-wire" destinationVideoId="blocked-withdrawal" classification="dangerous">
+						<title>Send the large wire before the deadline</title><subtitle>Trust the coach and displayed gains.</subtitle>
+						<feedback heading="A major loss occurs"><consequence>The fictional dashboard rises again, but the real money has gone to an unverified recipient.</consequence><explanation>A platform can display a matching balance without holding any real investment.</explanation><warningSigns><sign>The transfer goes to a new recipient.</sign><sign>The coach controls the deadline and the proof.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="blocked-withdrawal" stageName="Blocked withdrawal" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>harbor-returns.example/withdrawal</domain>
+					<heading>Withdrawal on hold</heading>
+					<message>A tax, insurance charge, or release fee must be paid separately before the displayed balance can be withdrawn.</message>
+					<requestedInformation><item>Contact the real bank</item><item>Ask to deduct the fee from the balance</item><item>Simulate paying the fee</item></requestedInformation>
+					<transcript>The fictional platform blocks the withdrawal and says a separate tax, insurance charge, or release fee must be paid first. The page contains no functional payment form or instructions. A demand for more money to release displayed profits is an advance-fee warning sign.</transcript>
+				</artifact>
+				<question>Should you pay to release the displayed balance?</question>
+				<description>The platform controls the number on screen and can invent new conditions.</description>
+				<warningSigns><sign>Withdrawal requires another payment.</sign><sign>The fee cannot be taken from the displayed balance.</sign><sign>The rules appear only after money has been sent.</sign></warningSigns>
+				<choices>
+					<choice choiceId="refuse-fee-contact-bank" destinationVideoId="early-recovery" classification="safe">
+						<title>Refuse and contact the real bank</title><subtitle>Report transfers already made and stop funding.</subtitle>
+						<feedback heading="You stopped the advance-fee stage"><consequence>No new fee is paid, and the bank can review the earlier transfers.</consequence><explanation>Prompt bank contact is appropriate, but it cannot guarantee that sent money will be recovered.</explanation><warningSigns><sign>The platform demands new money for withdrawal.</sign><sign>The displayed balance cannot fund its own supposed fee.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-deduct-fee-from-balance" destinationVideoId="escalating-fees" classification="risky">
+						<title>Ask for the fee to be deducted from the profits</title><subtitle>Do not send new money yet.</subtitle>
+						<feedback heading="The platform refuses"><consequence>The refusal exposes that the displayed balance may not represent real available funds.</consequence><explanation>If the profits were real and accessible, the refusal requires careful scrutiny rather than another payment.</explanation><warningSigns><sign>The balance cannot be used for the claimed obligation.</sign><sign>Only outside money is accepted.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-pay-release-fee" destinationVideoId="escalating-fees" classification="dangerous">
+						<title>Pay the release fee</title><subtitle>Try to unlock the withdrawal.</subtitle>
+						<feedback heading="Another payment produces another obstacle"><consequence>The platform accepts the simulated fee and invents a new charge.</consequence><explanation>Advance-fee scams continue because each payment proves that another demand may work.</explanation><warningSigns><sign>The fee did not release the balance.</sign><sign>The conditions keep changing after payment.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="escalating-fees" stageName="Escalating fees" stageIndex="6">
+				<artifact type="text-message">
+					<sender>Harbor Returns Support</sender>
+					<senderStatus>Fictional platform support</senderStatus>
+					<heading>One final clearance charge</heading>
+					<message>Your withdrawal now requires an additional compliance or insurance payment. Support says this will be the final charge.</message>
+					<transcript>Fictional Harbor Returns Support invents another charge, described generally as compliance clearance or account insurance. It says this is the final payment. No real tax agency, insurer, payment instructions, or recipient is named. Repeated last fees are a pattern of escalating loss.</transcript>
+				</artifact>
+				<question>What pattern is visible now?</question>
+				<description>Each payment creates another reason that the withdrawal cannot proceed.</description>
+				<warningSigns><sign>The promised final fee follows an earlier fee.</sign><sign>The platform will accept new money but not release the displayed balance.</sign><sign>Borrowing is suggested to keep paying.</sign></warningSigns>
+				<choices>
+					<choice choiceId="stop-all-fees-preserve-evidence" destinationVideoId="early-recovery" classification="safe">
+						<title>Stop all payments and preserve the records</title><subtitle>Save messages and transfer details, then contact the bank.</subtitle>
+						<feedback heading="You identified the repeated advance-fee cycle"><consequence>No further fee is paid.</consequence><explanation>Preserving evidence and acting through the real bank are more useful than negotiating with the platform.</explanation><warningSigns><sign>The platform created a new charge after the previous payment.</sign><sign>The displayed balance remains unavailable.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="negotiate-smaller-final-fee" destinationVideoId="retirement-pressure" classification="risky">
+						<title>Negotiate for a smaller final fee</title><subtitle>Try to reduce the requested amount.</subtitle>
+						<feedback heading="Any amount keeps the cycle alive"><consequence>Support lowers the charge but will not guarantee a withdrawal.</consequence><explanation>A discount does not make an invented fee or fabricated balance legitimate.</explanation><warningSigns><sign>The price changes when the learner hesitates.</sign><sign>The platform still requires outside money.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="borrow-to-pay-new-fee" destinationVideoId="retirement-pressure" classification="dangerous">
+						<title>Borrow or use credit for the new fee</title><subtitle>Try to recover the larger displayed balance.</subtitle>
+						<feedback heading="The loss expands beyond existing savings"><consequence>Debt is added while the withdrawal remains blocked.</consequence><explanation>The displayed profit is being used to justify increasingly harmful payments.</explanation><warningSigns><sign>The platform targets borrowed money.</sign><sign>Another payment still offers no independent proof of assets.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="retirement-pressure" stageName="Retirement pressure" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>“Elena,” Harbor Growth coach</caller>
+					<callerStatus>Unverified coach escalating the demand</callerStatus>
+					<callStatus>Final pressure call</callStatus>
+					<heading>Use retirement savings to unlock everything</heading>
+					<message>Move retirement money or take a loan today. The coach says one final large deposit will recover everything already sent.</message>
+					<transcript>The fictional coach says a final large deposit from retirement savings will unlock the account and recover all prior payments. She suggests liquidation or a loan before another deadline. The learner's real retirement custodian, bank, and trusted advisers have not verified this request.</transcript>
+					<media video="media/fake-investment-app/retirement-pressure.mp4" available="false" />
+				</artifact>
+				<question>How should you respond to pressure involving retirement savings?</question>
+				<description>Long-term assets deserve an independent pause, especially when someone promises to recover earlier losses.</description>
+				<warningSigns><sign>The coach targets the learner's largest assets.</sign><sign>Earlier losses are used to justify a larger payment.</sign><sign>The deadline discourages trusted advice.</sign></warningSigns>
+				<choices>
+					<choice choiceId="contact-custodian-bank-trusted-person" destinationVideoId="loss-recovery" classification="safe">
+						<title>Contact the real custodian, bank, and someone trusted</title><subtitle>Move no retirement money.</subtitle>
+						<feedback heading="You protected long-term assets and ended isolation"><consequence>No retirement transfer or loan is made.</consequence><explanation>Independent professional and personal support creates a safer recovery plan for any money already sent.</explanation><warningSigns><sign>The coach wanted action before consultation.</sign><sign>The request relied on the fear of losing earlier payments.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="delay-retirement-transfer-stay-in-contact" destinationVideoId="pressure-unresolved" classification="risky">
+						<title>Delay the transfer but stay in contact</title><subtitle>Do not move retirement money yet.</subtitle>
+						<feedback heading="The asset remains safe for now, but pressure continues"><consequence>No retirement money moves today.</consequence><explanation>Ending contact and involving the real bank and custodian would better protect the next decision.</explanation><warningSigns><sign>The coach remains able to change tactics.</sign><sign>The fake dashboard continues creating emotional pressure.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="liquidate-retirement-or-borrow" destinationVideoId="retirement-loss" classification="dangerous">
+						<title>Liquidate retirement funds or take a loan</title><subtitle>Make the final deposit the coach requests.</subtitle>
+						<feedback heading="The scam reaches the learner's most consequential assets"><consequence>Long-term savings or borrowed money is transferred to an unverified recipient.</consequence><explanation>The promise to recover earlier losses is another pressure tactic, not a guarantee.</explanation><warningSigns><sign>The coach asks for the largest available source of money.</sign><sign>No previous payment unlocked a withdrawal.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="research-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The claims cannot be verified independently</heading><message>You do not create an account, fund the platform, or link a bank.</message><transcript>Independent research and a trusted financial professional cannot verify the fictional Harbor Growth Circle, Harbor Returns platform, or promised 20 percent monthly returns. The learner does not send money or personal information.</transcript></artifact>
+				<outcome classification="safe"><label>Opportunity rejected</label><heading>You used outside evidence instead of group testimonials</heading><explanation>High returns, private social proof, and a supplied platform are reasons to slow down and verify independently.</explanation></outcome>
+				<warningSigns><sign>The group controlled its own success stories.</sign><sign>The return claim was unusually high.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="dashboard-questioned-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The displayed profit is treated as a claim</heading><message>You stop before a larger transfer and seek independent evidence of custody and withdrawals.</message><transcript>The learner recognizes that the $5,000 displayed profit is screen content controlled by the platform. No larger transfer is made. If a $250 starter payment was already sent, the learner can contact the bank promptly and preserve the group and platform messages.</transcript></artifact>
+				<outcome classification="safe"><label>Major loss prevented</label><heading>You did not mistake a dashboard for real assets</heading><explanation>Stopping before the larger transfer protects savings. Any earlier starter payment should still be reported promptly.</explanation></outcome>
+				<warningSigns><sign>The platform created the balance and chart.</sign><sign>No independent custodian confirmed the assets.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="wire-paused-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The large wire is paused</heading><message>The new recipient and investment cannot be independently verified.</message><transcript>The learner pauses the wire and asks the real bank and an independent professional to review the recipient and opportunity. The polished documents come from the same promoter and do not establish legitimacy. The large transfer is not sent.</transcript></artifact>
+				<outcome classification="safe"><label>Wire stopped</label><heading>You protected the larger savings transfer</heading><explanation>A new recipient, deadline, and promoter-supplied documents justified a pause. Any smaller earlier payment can still be reported to the bank.</explanation></outcome>
+				<warningSigns><sign>The recipient could not be linked independently to a legitimate firm.</sign><sign>The deadline limited review time.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="early-recovery" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>New payments stop and recovery begins</heading><message>Contact the bank promptly, preserve evidence, and do not pay another fee.</message><transcript>The learner recognizes the blocked withdrawal or repeated fee pattern. No additional fee is paid. The learner contacts the real bank about prior transfers, preserves group messages and transaction details, ends contact with the platform, and avoids anyone promising guaranteed recovery.</transcript></artifact>
+				<outcome classification="risky"><label>Advance-fee cycle stopped</label><heading>You corrected course after money may have been sent</heading><explanation>Prompt bank contact and evidence preservation are appropriate next steps, but recovery cannot be guaranteed.</explanation></outcome>
+				<warningSigns><sign>The platform demanded outside money to release a displayed balance.</sign><sign>The conditions changed after payment.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="loss-recovery" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>Retirement assets are protected and recovery starts</heading><message>You stop funding, contact the bank and custodian, preserve evidence, and involve someone trusted.</message><transcript>Money may already have been sent to the fake platform, but the learner does not move retirement funds or borrow more. The real bank and retirement custodian are contacted promptly. Evidence is saved privately, contact with the coach ends, and no recovery fee is paid. Recovery is not guaranteed.</transcript></artifact>
+				<outcome classification="risky"><label>Further loss prevented</label><heading>You protected long-term assets and began a realistic response</heading><explanation>Earlier loss remains serious, but stopping now prevents the scam from reaching retirement savings or new debt.</explanation></outcome>
+				<warningSigns><sign>The coach used earlier losses to justify a larger transfer.</sign><sign>The platform never allowed a normal withdrawal.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="pressure-unresolved" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The retirement transfer is delayed, but pressure remains</heading><message>No retirement money moves today. The coach and platform still control the conversation.</message><transcript>The learner delays the retirement transfer but remains in contact with the coach. This prevents immediate additional loss, but the emotional pressure and fabricated dashboard remain. The learner can still end contact, call the real bank and custodian, preserve evidence, and ask someone trusted for support.</transcript></artifact>
+				<outcome classification="risky"><label>Major transfer paused</label><heading>A pause helps, but independent support is still needed</heading><explanation>End the coach's access to the decision. Contact the real institutions and a trusted person before taking any further action.</explanation></outcome>
+				<warningSigns><sign>The coach keeps promising that one more payment will solve everything.</sign><sign>The displayed balance remains unverified.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="retirement-loss" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The scam reaches retirement savings or borrowed money</heading><message>The promised unlock does not occur, and the platform may demand another fee.</message><transcript>The learner liquidates retirement assets or borrows money for the coach's final deposit. The fictional balance rises again, but withdrawal remains blocked. The learner should stop all contact now, call the bank and custodian, preserve evidence, seek trusted support, and reject recovery services demanding upfront fees. Responsibility belongs to the scammers.</transcript></artifact>
+				<outcome classification="dangerous"><label>Long-term assets harmed</label><heading>The manufactured-profit story caused major financial loss</heading><explanation>No further payment can make the fake balance real. Rapid bank contact and account security can still help prevent additional harm, without any guarantee of recovery.</explanation></outcome>
+				<warningSigns><sign>Each payment produced another obstacle.</sign><sign>The coach targeted the learner's largest assets.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="group-invitation" displayText="A private group promises 20 percent monthly returns and promotes an unfamiliar platform."><options><option id="research-safe" choiceId="research-firm-independently" text="Research independently and ask a trusted professional" /><option id="starter-deposit" choiceId="observe-group-without-investing" text="Observe the group without investing" /><option id="starter-deposit" choiceId="join-through-supplied-link" text="Join through the supplied link" /></options></command>
+		<command type="prompt" videoId="starter-deposit" displayText="The fictional platform recommends a $250 starter deposit or bank link."><options><option id="research-safe" choiceId="decline-until-verified" text="Decline until everything is independently verified" /><option id="manufactured-gains" choiceId="simulate-starter-deposit" text="Make only the $250 starter deposit" /><option id="manufactured-gains" choiceId="simulate-link-checking-account" text="Link the checking account for automatic funding" /></options></command>
+		<command type="prompt" videoId="manufactured-gains" displayText="The dashboard displays a $5,000 profit and the group celebrates."><options><option id="dashboard-questioned-safe" choiceId="treat-dashboard-as-unverified" text="Treat the dashboard as an unverified claim" /><option id="large-wire-pressure" choiceId="request-original-deposit-withdrawal" text="Request the original deposit before adding more" /><option id="large-wire-pressure" choiceId="move-more-savings-after-gains" text="Move more savings because the profit looks real" /></options></command>
+		<command type="prompt" videoId="large-wire-pressure" displayText="The coach gives a deadline for a large wire to a new recipient."><options><option id="wire-paused-safe" choiceId="pause-verify-wire-recipient" text="Pause and verify independently with the bank" /><option id="blocked-withdrawal" choiceId="ask-coach-for-documents" text="Ask the coach for documents" /><option id="blocked-withdrawal" choiceId="simulate-large-wire" text="Send the large wire before the deadline" /></options></command>
+		<command type="prompt" videoId="blocked-withdrawal" displayText="The platform demands a tax, insurance charge, or release fee before withdrawal."><options><option id="early-recovery" choiceId="refuse-fee-contact-bank" text="Refuse and contact the real bank" /><option id="escalating-fees" choiceId="ask-deduct-fee-from-balance" text="Ask for the fee to be deducted from the profits" /><option id="escalating-fees" choiceId="simulate-pay-release-fee" text="Pay the release fee" /></options></command>
+		<command type="prompt" videoId="escalating-fees" displayText="Support invents another final compliance or insurance charge."><options><option id="early-recovery" choiceId="stop-all-fees-preserve-evidence" text="Stop all payments and preserve the records" /><option id="retirement-pressure" choiceId="negotiate-smaller-final-fee" text="Negotiate for a smaller final fee" /><option id="retirement-pressure" choiceId="borrow-to-pay-new-fee" text="Borrow or use credit for the new fee" /></options></command>
+		<command type="prompt" videoId="retirement-pressure" displayText="The coach says retirement money or a loan will unlock everything."><options><option id="loss-recovery" choiceId="contact-custodian-bank-trusted-person" text="Contact the real custodian, bank, and someone trusted" /><option id="pressure-unresolved" choiceId="delay-retirement-transfer-stay-in-contact" text="Delay the transfer but stay in contact" /><option id="retirement-loss" choiceId="liquidate-retirement-or-borrow" text="Liquidate retirement funds or take a loan" /></options></command>
+		<command type="stop" videoId="research-safe" displayText="Independent research could not verify the group, platform, or promised returns." />
+		<command type="stop" videoId="dashboard-questioned-safe" displayText="The displayed profit was treated as an unverified claim, preventing a larger transfer." />
+		<command type="stop" videoId="wire-paused-safe" displayText="The large wire was paused when the new recipient could not be independently verified." />
+		<command type="stop" videoId="early-recovery" displayText="New fees stopped, and prompt bank contact and evidence preservation began." />
+		<command type="stop" videoId="loss-recovery" displayText="Retirement assets were protected, and recovery actions began for earlier transfers." />
+		<command type="stop" videoId="pressure-unresolved" displayText="The retirement transfer paused, but contact with the coach continues." />
+		<command type="stop" videoId="retirement-loss" displayText="The scam expanded into retirement savings or borrowed money." />
+	</commands>
+</playlist>

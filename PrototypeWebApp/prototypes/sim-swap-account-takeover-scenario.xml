@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist>
+  <presentation approximateStages="8">
+    <title>SIM Swap Account Takeover</title>
+    <summary>Practice responding when sudden phone-service loss appears alongside password resets, a new device, profile changes, and a pending bank transfer.</summary>
+    <practiceGoal>Treat unexplained service loss and financial alerts as one connected security event, then contact the carrier, bank, and email provider through channels you already trust.</practiceGoal>
+    <stages>
+      <stage>Phone loses service</stage>
+      <stage>Security emails</stage>
+      <stage>Fake carrier contact</stage>
+      <stage>Carrier verification</stage>
+      <stage>Bank access review</stage>
+      <stage>Pending transfer</stage>
+      <stage>Connected accounts</stage>
+      <stage>Final outcome</stage>
+    </stages>
+    <finalReview>
+      <warningSigns>
+        <sign>Your phone suddenly shows SOS or No Service while nearby phones work.</sign>
+        <sign>You receive password-reset or new-device messages that you did not initiate.</sign>
+        <sign>An incoming caller asks for a carrier PIN or security code to restore service.</sign>
+        <sign>Your bank profile shows an unfamiliar device, changed phone number, or new payee.</sign>
+        <sign>A pending transfer appears while your normal phone number is unavailable.</sign>
+      </warningSigns>
+      <safestAction>Use another trusted phone or device to contact both the carrier and the bank through known channels, then secure the connected email account and recovery methods.</safestAction>
+      <realWorldActions>
+        <action>Ask the carrier whether a SIM or number transfer occurred, restore control, add a strong carrier PIN, and document unauthorized changes.</action>
+        <action>Tell the bank about every unfamiliar device, contact change, payee, session, and transaction.</action>
+        <action>Ask the bank immediately to review or stop pending unauthorized money movement. Available options depend on timing and bank procedures.</action>
+        <action>Secure email, review recovery addresses and phone numbers, and terminate unknown sessions from a trusted device.</action>
+        <action>Preserve alerts and case information. Restored phone service does not by itself remove unauthorized bank or email access.</action>
+      </realWorldActions>
+    </finalReview>
+    <scenes>
+      <scene videoId="phone-loses-service" stageName="Phone loses service" stageIndex="1">
+        <artifact type="narration">
+          <heading>Your phone shows SOS / No Service</heading>
+          <message>Calls and text messages stop working even though nearby phones still have normal service.</message>
+          <requestedInformation>
+            <item>Mobile status: SOS / No Service</item>
+            <item>Nearby phones: Connected</item>
+          </requestedInformation>
+          <transcript>The learner's phone suddenly displays "SOS / No Service." Calls and text messages do not work, even though nearby phones on the same afternoon still have service. The cause is not yet known, but the unexplained outage may affect account security.</transcript>
+        </artifact>
+        <question>How would you respond to the sudden outage?</question>
+        <description>A brief restart can be reasonable, but financial alerts make delay more dangerous.</description>
+        <warningSigns>
+          <sign>The outage is unexpected and affects only this phone.</sign>
+          <sign>Security codes and account alerts may no longer reach the learner.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="contact-carrier-and-bank-from-other-device" destinationVideoId="security-emails" classification="safe">
+            <title>Use another trusted device to call the carrier and bank</title>
+            <subtitle>Treat the outage as a possible security event while checking for alerts.</subtitle>
+            <feedback heading="You changed to channels the missing phone does not control">
+              <consequence>The carrier and bank can review unauthorized changes promptly.</consequence>
+              <explanation>Unexpected service loss can be technical, but it deserves urgent attention when account access may depend on the phone number.</explanation>
+              <warningSigns>
+                <sign>The learner cannot receive normal calls or security texts.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="restart-and-check-alerts" destinationVideoId="security-emails-compromised" classification="risky">
+            <title>Restart once and check other alerts</title>
+            <subtitle>Try a brief technical check while reviewing email from another device.</subtitle>
+            <feedback heading="The brief check was reasonable, but the alerts matter">
+              <consequence>The signal does not return, and security emails show that the issue may be larger than an ordinary outage.</consequence>
+              <explanation>Once account alerts appear, continue with independent carrier and bank contact rather than repeated restarts.</explanation>
+              <warningSigns>
+                <sign>The outage continues while account activity changes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-until-tomorrow" destinationVideoId="security-emails-compromised" classification="dangerous">
+            <title>Wait until tomorrow</title>
+            <subtitle>Assume the carrier will restore service without any action.</subtitle>
+            <feedback heading="The delay gave the attacker more time">
+              <consequence>Password resets, device enrollment, and money movement may continue while the phone number is out of the learner's control.</consequence>
+              <explanation>An isolated outage combined with security alerts requires prompt verification.</explanation>
+              <warningSigns>
+                <sign>Loss of service can interrupt the learner's normal warnings and recovery codes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="security-emails" stageName="Security emails" stageIndex="2">
+        <artifact type="fake-website">
+          <domain>inbox.personal-mail.example</domain>
+          <heading>Two account-security messages</heading>
+          <message>An email says the Riverbend Bank password was reset. A second says a new mobile device was enrolled. The learner did not request either change.</message>
+          <requestedInformation>
+            <item>Password reset completed</item>
+            <item>New mobile device enrolled</item>
+            <item>Secure Account button in the email</item>
+          </requestedInformation>
+          <transcript>A simulated email inbox shows two messages about the fictional Riverbend Bank. One says the banking password was reset. The other says a new mobile device was enrolled. The learner did not make either change. Each message includes a Secure Account button, but the safest verification route is the known bank app or a trusted number.</transcript>
+        </artifact>
+        <question>How would you verify the messages?</question>
+        <description>The alerts may describe real unauthorized activity, but an email button is not automatically a safe sign-in path.</description>
+        <warningSigns>
+          <sign>The learner did not request the password reset.</sign>
+          <sign>The new device is unfamiliar.</sign>
+          <sign>The phone outage may prevent normal security messages from arriving.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="verify-with-known-bank-channel" destinationVideoId="fake-carrier-contact" classification="safe">
+            <title>Use the known bank app or trusted number</title>
+            <subtitle>Verify from another device without using the email buttons.</subtitle>
+            <feedback heading="You verified outside the message">
+              <consequence>The bank can review the reset and device enrollment without the email controlling the sign-in.</consequence>
+              <explanation>A real alert and a phishing message can look similar. A trusted bank channel separates the investigation from the email.</explanation>
+              <warningSigns>
+                <sign>The account changes were not initiated by the learner.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="read-emails-and-wait" destinationVideoId="fake-carrier-contact-compromised" classification="risky">
+            <title>Read the messages but wait</title>
+            <subtitle>Gather information without contacting the bank yet.</subtitle>
+            <feedback heading="You noticed the evidence but left the account active">
+              <consequence>The alerts are preserved, but an unfamiliar device may remain signed in.</consequence>
+              <explanation>Reading carefully is useful; prompt bank contact is still needed when the changes are unauthorized.</explanation>
+              <warningSigns>
+                <sign>The new device may already have account access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="enter-credentials-from-email" destinationVideoId="fake-carrier-contact-compromised" classification="dangerous">
+            <title>Use the email button and enter credentials</title>
+            <subtitle>Follow the message's Secure Account route.</subtitle>
+            <feedback heading="The supplied route created another exposure">
+              <consequence>The simulation treats the credentials as disclosed to an unverified page.</consequence>
+              <explanation>Use the bank app or web address you already know. Never let an unexpected message choose the sign-in path.</explanation>
+              <warningSigns>
+                <sign>The email arrived during a confusing account takeover.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="fake-carrier-contact" stageName="Fake carrier contact" stageIndex="3">
+        <artifact type="phone-call">
+          <caller>Harbor Mobile Account Support</caller>
+          <callerStatus>Incoming caller; identity not verified; fictional carrier</callerStatus>
+          <callStatus>Call received on a household phone</callStatus>
+          <heading>The caller offers to restore service</heading>
+          <message>We detected a network error on your mobile line. Read me the security code sent to your email, or provide your carrier PIN, and I can restore the number.</message>
+          <transcript>An incoming caller claims to represent the fictional Harbor Mobile carrier. The caller says, "We detected a network error on your mobile line. Read me the security code sent to your email, or provide your carrier PIN, and I can restore the number." The learner did not independently contact Harbor Mobile.</transcript>
+        </artifact>
+        <question>Would you trust this incoming carrier call?</question>
+        <description>A caller who knows about the outage may be involved in the number takeover.</description>
+        <warningSigns>
+          <sign>The carrier contact was unsolicited.</sign>
+          <sign>The caller requests a code or account PIN.</sign>
+          <sign>The promised solution depends on sharing an authorization secret.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="end-call-contact-real-carrier" destinationVideoId="carrier-verification" classification="safe">
+            <title>End the call and contact the carrier yourself</title>
+            <subtitle>Use a known number or official app from another trusted device.</subtitle>
+            <feedback heading="You removed the incoming caller from verification">
+              <consequence>The real carrier can check the number transfer without receiving a code through this caller.</consequence>
+              <explanation>Carrier codes and PINs authorize account changes. Independent contact protects them.</explanation>
+              <warningSigns>
+                <sign>The incoming caller asked for authorization information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-caller-more-without-code" destinationVideoId="carrier-verification-compromised" classification="risky">
+            <title>Ask for more information without sharing a code</title>
+            <subtitle>Keep the call active but protect the PIN and security code.</subtitle>
+            <feedback heading="The immediate secret stayed private, but the caller kept applying pressure">
+              <consequence>The caller supplies a polished case number that still cannot verify the identity.</consequence>
+              <explanation>Details supplied by the caller are not independent proof. End the call and locate the carrier yourself.</explanation>
+              <warningSigns>
+                <sign>The caller controls both the story and the supposed proof.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="share-carrier-code-or-pin" destinationVideoId="carrier-verification-compromised" classification="dangerous">
+            <title>Share the code or carrier PIN</title>
+            <subtitle>Give the caller what is requested to restore service.</subtitle>
+            <feedback heading="The caller gained stronger control of the mobile account">
+              <consequence>The authorization information may help an attacker keep the phone number on another device.</consequence>
+              <explanation>Security codes and carrier PINs protect account changes. An unexpected caller should not receive them.</explanation>
+              <warningSigns>
+                <sign>The code was requested by someone who called unexpectedly.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="carrier-verification" stageName="Carrier verification" stageIndex="4">
+        <artifact type="phone-call">
+          <caller>Harbor Mobile security representative</caller>
+          <callerStatus>Reached through a known channel; fictional carrier</callerStatus>
+          <callStatus>Unauthorized number-transfer review</callStatus>
+          <heading>The real carrier finds an unauthorized transfer</heading>
+          <message>A SIM or number transfer was requested earlier today. We can restore the line, document the unauthorized change, and add stronger account protection.</message>
+          <transcript>The learner reaches the fictional Harbor Mobile carrier through a trusted channel. The security representative confirms that a SIM or number transfer was requested earlier that day. The representative offers to restore service, document the unauthorized change, and add a strong carrier PIN.</transcript>
+        </artifact>
+        <question>What should the learner request?</question>
+        <description>Restoring the signal is important, but documenting and securing the carrier account are also needed.</description>
+        <warningSigns>
+          <sign>An unauthorized transfer explains the sudden service loss.</sign>
+          <sign>The phone number may have received security messages on another device.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="restore-pin-and-document" destinationVideoId="bank-access-review" classification="safe">
+            <title>Restore service, add a PIN, and document the change</title>
+            <subtitle>Secure the mobile account and preserve the incident details.</subtitle>
+            <feedback heading="You restored and strengthened the carrier account">
+              <consequence>The learner regains the number and creates a record of the unauthorized transfer.</consequence>
+              <explanation>Restoration, stronger protection, and documentation address both access and recovery.</explanation>
+              <warningSigns>
+                <sign>The number transfer was not authorized.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="restore-service-only" destinationVideoId="bank-access-review-compromised" classification="risky">
+            <title>Restore service only</title>
+            <subtitle>Skip the carrier PIN and incident documentation.</subtitle>
+            <feedback heading="Calls returned, but the carrier account remained less protected">
+              <consequence>The immediate outage ends, but fewer safeguards and records remain.</consequence>
+              <explanation>Service restoration does not explain every change or prevent another attempt.</explanation>
+              <warningSigns>
+                <sign>The carrier account was changed without permission.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="assume-bank-safe-after-signal" destinationVideoId="bank-access-review-compromised" classification="dangerous">
+            <title>Assume the bank account is safe now</title>
+            <subtitle>Treat the restored phone signal as the end of the incident.</subtitle>
+            <feedback heading="The restored signal did not remove bank access">
+              <consequence>Unknown devices, profile changes, payees, or sessions may still exist at the bank.</consequence>
+              <explanation>A SIM swap can support changes in several connected accounts. Each one must be reviewed.</explanation>
+              <warningSigns>
+                <sign>The password reset and device enrollment occurred before service returned.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="bank-access-review" stageName="Bank access review" stageIndex="5">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Unfamiliar access and payment changes</heading>
+          <message>The simulated bank review shows a new mobile device, a changed phone number, and a new payee that the learner does not recognize.</message>
+          <requestedInformation>
+            <item>Device: New mobile device</item>
+            <item>Profile phone: Changed</item>
+            <item>Payee: Unfamiliar</item>
+          </requestedInformation>
+          <transcript>The fictional Riverbend Bank review shows three unauthorized changes: a new mobile device, a changed profile phone number, and an unfamiliar new payee. The learner is viewing this information through a trusted channel with the real bank representative.</transcript>
+        </artifact>
+        <question>What should the learner report?</question>
+        <description>The device, contact channel, and payee are connected parts of the account takeover.</description>
+        <warningSigns>
+          <sign>The bank device is unfamiliar.</sign>
+          <sign>The profile phone number changed during the service outage.</sign>
+          <sign>A new payee creates a path for money movement.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="report-every-bank-change" destinationVideoId="pending-transfer" classification="safe">
+            <title>Report every unauthorized change</title>
+            <subtitle>Include devices, profile details, payees, sessions, and transactions.</subtitle>
+            <feedback heading="The bank can review the full takeover">
+              <consequence>Access and payment settings are examined together.</consequence>
+              <explanation>Removing only one symptom may leave another route open.</explanation>
+              <warningSigns>
+                <sign>Several account settings changed in the same period.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="remove-device-only" destinationVideoId="pending-transfer-compromised" classification="risky">
+            <title>Remove only the unfamiliar device</title>
+            <subtitle>Leave the changed phone number and new payee for later.</subtitle>
+            <feedback heading="One access route closed, but payment settings remained">
+              <consequence>The device is removed, while the attacker may still control a recovery channel or payee.</consequence>
+              <explanation>A complete review includes profile details, sessions, payees, and recent transactions.</explanation>
+              <warningSigns>
+                <sign>The changed phone number may support another reset.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-original-caller-for-help" destinationVideoId="pending-transfer-compromised" classification="dangerous">
+            <title>Ask the original caller to help</title>
+            <subtitle>Return to the person who requested the carrier code.</subtitle>
+            <feedback heading="The attacker regained control of the response">
+              <consequence>The caller may request more codes or explain away the bank's warnings.</consequence>
+              <explanation>Continue only with the carrier and bank contacts reached independently.</explanation>
+              <warningSigns>
+                <sign>The original caller asked for authorization secrets.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="pending-transfer" stageName="Pending transfer" stageIndex="6">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Transfer to the new payee is pending</heading>
+          <message>An unfamiliar transfer may complete soon. A separate caller says another security code is required to cancel it.</message>
+          <requestedInformation>
+            <item>Status: Pending</item>
+            <item>Recipient: New unfamiliar payee</item>
+            <item>Authorization: Not initiated by learner</item>
+          </requestedInformation>
+          <transcript>The simulated bank screen shows a pending transfer to the unfamiliar payee. The amount and recipient are not authorized by the learner. A separate unverified caller claims that a security code must be approved to cancel the transfer. The real bank representative can review the pending transaction through the trusted call.</transcript>
+        </artifact>
+        <question>How quickly should the learner act?</question>
+        <description>Pending status may give the bank time to review, but no outcome is guaranteed.</description>
+        <warningSigns>
+          <sign>The transfer goes to the newly added payee.</sign>
+          <sign>The learner did not initiate it.</sign>
+          <sign>An unverified caller asks for another security code.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-bank-to-stop-transfer-now" destinationVideoId="connected-account-security" classification="safe">
+            <title>Ask the real bank to review it now</title>
+            <subtitle>Request that the bank stop or investigate the pending transfer and secure access.</subtitle>
+            <feedback heading="You acted while the transfer was pending">
+              <consequence>The bank checks what options remain and continues securing the account.</consequence>
+              <explanation>Prompt reporting can improve available options, but the bank must determine what is possible.</explanation>
+              <warningSigns>
+                <sign>The payment was not authorized by the learner.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-service-to-stabilize" destinationVideoId="connected-account-security-compromised" classification="risky">
+            <title>Wait for the phone service to stabilize</title>
+            <subtitle>Delay the bank request until the original phone works normally.</subtitle>
+            <feedback heading="The transfer continued during the delay">
+              <consequence>The pending period may end before the bank is asked to act.</consequence>
+              <explanation>Use the trusted device already available. The original phone does not need to be fully restored before bank contact.</explanation>
+              <warningSigns>
+                <sign>The transaction may complete soon.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="approve-code-to-cancel-transfer" destinationVideoId="connected-account-security-compromised" classification="dangerous">
+            <title>Approve the caller's cancellation code</title>
+            <subtitle>Follow the unverified caller's instructions to stop the transfer.</subtitle>
+            <feedback heading="The code may authorize more activity">
+              <consequence>The attacker may use the approval to finalize access or money movement.</consequence>
+              <explanation>A security code authorizes an action; it is not proof that the caller is canceling fraud.</explanation>
+              <warningSigns>
+                <sign>The code request came from someone outside the trusted bank contact.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="connected-account-security" stageName="Connected accounts" stageIndex="7">
+        <artifact type="narration">
+          <heading>Email can reopen the carrier and bank</heading>
+          <message>The bank and carrier reviews show that the learner's email account and recovery methods may also have been used during the takeover.</message>
+          <requestedInformation>
+            <item>Review email sessions</item>
+            <item>Review recovery phone numbers and addresses</item>
+            <item>Preserve incident records</item>
+          </requestedInformation>
+          <transcript>The learner has contacted the carrier and bank. The review now turns to the connected email account because it may have received reset links or carrier codes. Unknown email sessions and changed recovery methods can allow another takeover even after the bank password or phone signal is restored.</transcript>
+        </artifact>
+        <question>Which accounts still need attention?</question>
+        <description>Bank, carrier, and email recovery channels form one security chain.</description>
+        <warningSigns>
+          <sign>Email may have been used to reset both the carrier and bank.</sign>
+          <sign>Unknown sessions can remain active after a password change.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="secure-email-recovery-and-sessions" destinationVideoId="final-timeline" classification="safe">
+            <title>Secure email, recovery methods, and sessions</title>
+            <subtitle>Follow the bank's and carrier's guidance while preserving evidence.</subtitle>
+            <feedback heading="You repaired the connected security chain">
+              <consequence>Unknown sessions and recovery routes receive the same attention as the bank and carrier accounts.</consequence>
+              <explanation>Coordinated recovery reduces the chance that one compromised channel will reopen another.</explanation>
+              <warningSigns>
+                <sign>Several accounts depended on the same phone number and email.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="change-bank-password-only" destinationVideoId="final-timeline-compromised" classification="risky">
+            <title>Change only the bank password</title>
+            <subtitle>Leave email sessions and carrier recovery methods unchanged.</subtitle>
+            <feedback heading="One credential changed, but reset routes remained">
+              <consequence>The email or carrier account may still allow another password reset.</consequence>
+              <explanation>A new bank password is useful only as part of the broader recovery.</explanation>
+              <warningSigns>
+                <sign>The attacker may control another recovery channel.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-new-accounts-without-documenting" destinationVideoId="final-timeline-compromised" classification="dangerous">
+            <title>Open new accounts without documenting the incident</title>
+            <subtitle>Abandon the old accounts without completing the reviews.</subtitle>
+            <feedback heading="The original compromise stayed active and undocumented">
+              <consequence>Important evidence, legitimate account continuity, and unresolved sessions may be lost.</consequence>
+              <explanation>Follow the carrier's and bank's transition guidance before replacing accounts or services.</explanation>
+              <warningSigns>
+                <sign>The existing accounts may still contain active access and pending activity.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="final-timeline" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>One connected event</heading>
+          <message>Phone service loss, security emails, a new bank device, profile changes, a new payee, and a pending transfer form one account-takeover timeline.</message>
+          <requestedInformation>
+            <item>Phone number transferred</item>
+            <item>Password reset and device added</item>
+            <item>Profile and payee changed</item>
+            <item>Transfer attempted</item>
+          </requestedInformation>
+          <transcript>The final timeline connects the sudden phone outage with the bank password reset, new device, changed phone number, unfamiliar payee, and pending transfer. Regaining the phone signal is only one step. The learner must continue with the real carrier, bank, and email provider through trusted channels.</transcript>
+        </artifact>
+        <question>What should the learner remember?</question>
+        <description>The strongest response treats the phone, bank, and email as connected.</description>
+        <warningSigns>
+          <sign>A restored signal does not terminate unknown sessions.</sign>
+          <sign>Focusing on only one alert can leave other access routes open.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="coordinate-carrier-bank-email-recovery" destinationVideoId="coordinated-recovery-safe" classification="safe">
+            <title>Coordinate carrier, bank, and email recovery</title>
+            <subtitle>Use trusted channels and report every unauthorized change promptly.</subtitle>
+            <feedback heading="You treated the takeover as one connected event">
+              <consequence>Each access route and payment setting receives review.</consequence>
+              <explanation>This complete approach gives the legitimate providers the best available information without guaranteeing a transfer outcome.</explanation>
+              <warningSigns>
+                <sign>The same phone and email supported several account changes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="focus-on-bank-alert-only" destinationVideoId="partial-recovery-risky" classification="risky">
+            <title>Focus only on the bank alert</title>
+            <subtitle>Leave the carrier and email reviews unfinished.</subtitle>
+            <feedback heading="The payment risk received attention, but access routes remained">
+              <consequence>The bank may secure part of the account while carrier or email recovery channels stay exposed.</consequence>
+              <explanation>The account takeover crossed several connected services.</explanation>
+              <warningSigns>
+                <sign>The phone-number transfer occurred before the bank changes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="restored-signal-means-resolved" destinationVideoId="takeover-unresolved-dangerous" classification="dangerous">
+            <title>Treat the restored signal as the end</title>
+            <subtitle>Do not review sessions, profile changes, payees, or email.</subtitle>
+            <feedback heading="The visible outage ended, but account access remained">
+              <consequence>Unauthorized sessions or payment settings may continue after calls and texts return.</consequence>
+              <explanation>The phone signal is only one part of the security chain.</explanation>
+              <warningSigns>
+                <sign>The bank and email changes do not disappear when service returns.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="security-emails-compromised" stageName="Security emails" stageIndex="2">
+        <artifact type="fake-website">
+          <heading>Security changes progressed while the phone stayed offline</heading>
+          <message>After waiting or using an email link, the learner sees a completed password reset and a new-device enrollment that were not requested.</message>
+          <transcript>The phone remained without service while bank-security messages accumulated. The learner may have delayed action or entered information through an email link. The genuine alerts now show that an attacker progressed farther, and any untrusted login route must be reported.</transcript>
+        </artifact>
+        <question>How should these progressed changes be handled?</question>
+        <description>The learner can still move to trusted channels, but the account-takeover sequence has already advanced.</description>
+        <warningSigns>
+          <sign>The phone remained offline during security changes.</sign>
+          <sign>A password reset and device enrollment were not authorized.</sign>
+          <sign>An email link may have exposed credentials.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="verify-with-known-bank-channel-compromised" destinationVideoId="fake-carrier-contact-compromised" classification="safe">
+            <title>Use the known bank app or trusted number</title>
+            <subtitle>Verify from another device without using the email buttons.</subtitle>
+            <feedback heading="You verified outside the message">
+              <consequence>The bank can review the reset and device enrollment without the email controlling the sign-in.</consequence>
+              <explanation>A real alert and a phishing message can look similar. A trusted bank channel separates the investigation from the email. The later recovery must account for the delay or possible credential exposure.</explanation>
+              <warningSigns>
+                <sign>The account changes were not initiated by the learner.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="read-emails-and-wait-compromised" destinationVideoId="fake-carrier-contact-compromised" classification="risky">
+            <title>Read the messages but wait</title>
+            <subtitle>Gather information without contacting the bank yet.</subtitle>
+            <feedback heading="You noticed the evidence but left the account active">
+              <consequence>The alerts are preserved, but an unfamiliar device may remain signed in.</consequence>
+              <explanation>Reading carefully is useful; prompt bank contact is still needed when the changes are unauthorized. The later recovery must account for the delay or possible credential exposure.</explanation>
+              <warningSigns>
+                <sign>The new device may already have account access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="enter-credentials-from-email-compromised" destinationVideoId="fake-carrier-contact-compromised" classification="dangerous">
+            <title>Use the email button and enter credentials</title>
+            <subtitle>Follow the message's Secure Account route.</subtitle>
+            <feedback heading="The supplied route created another exposure">
+              <consequence>The simulation treats the credentials as disclosed to an unverified page.</consequence>
+              <explanation>Use the bank app or web address you already know. Never let an unexpected message choose the sign-in path. The later recovery must account for the delay or possible credential exposure.</explanation>
+              <warningSigns>
+                <sign>The email arrived during a confusing account takeover.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="fake-carrier-contact-compromised" stageName="Fake carrier contact" stageIndex="3">
+        <artifact type="phone-call">
+          <heading>A fake carrier caller uses the active account confusion</heading>
+          <message>The caller offers to restore service and asks for an email security code or carrier PIN while bank changes are already underway.</message>
+          <transcript>An incoming caller claims to represent the fictional carrier. Because service was lost and account changes have progressed, the request may sound convincing. The caller asks for a carrier PIN or genuine code that could authorize more control. The learner has not yet independently reached the real carrier.</transcript>
+        </artifact>
+        <question>What should the learner do with this incoming caller?</question>
+        <description>The caller is not verified, and the earlier delay or credential exposure increases the urgency of changing channels.</description>
+        <warningSigns>
+          <sign>The carrier contact is incoming and unverified.</sign>
+          <sign>The caller requests a genuine security code or PIN.</sign>
+          <sign>Bank changes are happening while the phone number is controlled elsewhere.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="end-call-contact-real-carrier-compromised" destinationVideoId="carrier-verification-compromised" classification="safe">
+            <title>End the call and contact the carrier yourself</title>
+            <subtitle>Use a known number or official app from another trusted device.</subtitle>
+            <feedback heading="You removed the incoming caller from verification">
+              <consequence>The real carrier can check the number transfer without receiving a code through this caller.</consequence>
+              <explanation>Carrier codes and PINs authorize account changes. Independent contact protects them. Even refusing now does not erase the account changes that already progressed.</explanation>
+              <warningSigns>
+                <sign>The incoming caller asked for authorization information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-caller-more-without-code-compromised" destinationVideoId="carrier-verification-compromised" classification="risky">
+            <title>Ask for more information without sharing a code</title>
+            <subtitle>Keep the call active but protect the PIN and security code.</subtitle>
+            <feedback heading="The immediate secret stayed private, but the caller kept applying pressure">
+              <consequence>The caller supplies a polished case number that still cannot verify the identity.</consequence>
+              <explanation>Details supplied by the caller are not independent proof. End the call and locate the carrier yourself. Even refusing now does not erase the account changes that already progressed.</explanation>
+              <warningSigns>
+                <sign>The caller controls both the story and the supposed proof.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="share-carrier-code-or-pin-compromised" destinationVideoId="carrier-verification-compromised" classification="dangerous">
+            <title>Share the code or carrier PIN</title>
+            <subtitle>Give the caller what is requested to restore service.</subtitle>
+            <feedback heading="The caller gained stronger control of the mobile account">
+              <consequence>The authorization information may help an attacker keep the phone number on another device.</consequence>
+              <explanation>Security codes and carrier PINs protect account changes. An unexpected caller should not receive them. Even refusing now does not erase the account changes that already progressed.</explanation>
+              <warningSigns>
+                <sign>The code was requested by someone who called unexpectedly.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="carrier-verification-compromised" stageName="Carrier verification" stageIndex="4">
+        <artifact type="phone-call">
+          <heading>The real carrier is reached after delay or code sharing</heading>
+          <message>Using another trusted device and a known number, the learner finally reaches the real carrier. The carrier confirms that the number transfer progressed and documents any code or PIN exposure.</message>
+          <transcript>After remaining with the fake caller, delaying action, or sharing a security code, the learner changes course and contacts the real carrier independently. The carrier confirms the unauthorized number transfer, restores control where possible, and explains that bank and email access still require separate review.</transcript>
+        </artifact>
+        <question>What should the learner ask the real carrier to do now?</question>
+        <description>Independent carrier contact is a strong recovery step, but it follows a period of attacker control.</description>
+        <warningSigns>
+          <sign>The number transfer progressed before the real carrier was reached.</sign>
+          <sign>A code or PIN may have been exposed.</sign>
+          <sign>Restored phone service does not secure bank or email access.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="restore-pin-and-document-compromised" destinationVideoId="bank-access-review-compromised" classification="safe">
+            <title>Restore service, add a PIN, and document the change</title>
+            <subtitle>Secure the mobile account and preserve the incident details.</subtitle>
+            <feedback heading="You restored and strengthened the carrier account">
+              <consequence>The learner regains the number and creates a record of the unauthorized transfer.</consequence>
+              <explanation>Restoration, stronger protection, and documentation address both access and recovery. The bank review must still acknowledge the earlier delay or code sharing.</explanation>
+              <warningSigns>
+                <sign>The number transfer was not authorized.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="restore-service-only-compromised" destinationVideoId="bank-access-review-compromised" classification="risky">
+            <title>Restore service only</title>
+            <subtitle>Skip the carrier PIN and incident documentation.</subtitle>
+            <feedback heading="Calls returned, but the carrier account remained less protected">
+              <consequence>The immediate outage ends, but fewer safeguards and records remain.</consequence>
+              <explanation>Service restoration does not explain every change or prevent another attempt. The bank review must still acknowledge the earlier delay or code sharing.</explanation>
+              <warningSigns>
+                <sign>The carrier account was changed without permission.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="assume-bank-safe-after-signal-compromised" destinationVideoId="bank-access-review-compromised" classification="dangerous">
+            <title>Assume the bank account is safe now</title>
+            <subtitle>Treat the restored phone signal as the end of the incident.</subtitle>
+            <feedback heading="The restored signal did not remove bank access">
+              <consequence>Unknown devices, profile changes, payees, or sessions may still exist at the bank.</consequence>
+              <explanation>A SIM swap can support changes in several connected accounts. Each one must be reviewed. The bank review must still acknowledge the earlier delay or code sharing.</explanation>
+              <warningSigns>
+                <sign>The password reset and device enrollment occurred before service returned.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="bank-access-review-compromised" stageName="Bank access review" stageIndex="5">
+        <artifact type="fake-website">
+          <heading>The bank confirms that unauthorized access progressed</heading>
+          <message>The review shows an enrolled device, changed contact details, a new payee, and activity that occurred while the phone number was controlled elsewhere.</message>
+          <transcript>The real bank is contacted after the SIM swap and possible code or credential sharing. An unfamiliar device is trusted, profile information changed, and a new payee was added. These are consequences of the earlier takeover, not new instructions from the real carrier.</transcript>
+        </artifact>
+        <question>What should the learner report to the bank?</question>
+        <description>A complete report can contain the takeover, but the unauthorized changes have already occurred.</description>
+        <warningSigns>
+          <sign>A new device is already enrolled.</sign>
+          <sign>Contact details and a payee changed.</sign>
+          <sign>The attacker may still have an active session.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="report-every-bank-change-compromised" destinationVideoId="pending-transfer-compromised" classification="safe">
+            <title>Report every unauthorized change</title>
+            <subtitle>Include devices, profile details, payees, sessions, and transactions.</subtitle>
+            <feedback heading="The bank can review the full takeover">
+              <consequence>Access and payment settings are examined together.</consequence>
+              <explanation>Removing only one symptom may leave another route open. The pending-transfer scene will retain the more advanced takeover state.</explanation>
+              <warningSigns>
+                <sign>Several account settings changed in the same period.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="remove-device-only-compromised" destinationVideoId="pending-transfer-compromised" classification="risky">
+            <title>Remove only the unfamiliar device</title>
+            <subtitle>Leave the changed phone number and new payee for later.</subtitle>
+            <feedback heading="One access route closed, but payment settings remained">
+              <consequence>The device is removed, while the attacker may still control a recovery channel or payee.</consequence>
+              <explanation>A complete review includes profile details, sessions, payees, and recent transactions. The pending-transfer scene will retain the more advanced takeover state.</explanation>
+              <warningSigns>
+                <sign>The changed phone number may support another reset.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-original-caller-for-help-compromised" destinationVideoId="pending-transfer-compromised" classification="dangerous">
+            <title>Ask the original caller to help</title>
+            <subtitle>Return to the person who requested the carrier code.</subtitle>
+            <feedback heading="The attacker regained control of the response">
+              <consequence>The caller may request more codes or explain away the bank's warnings.</consequence>
+              <explanation>Continue only with the carrier and bank contacts reached independently. The pending-transfer scene will retain the more advanced takeover state.</explanation>
+              <warningSigns>
+                <sign>The original caller asked for authorization secrets.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="pending-transfer-compromised" stageName="Pending transfer" stageIndex="6">
+        <artifact type="fake-website">
+          <heading>The unauthorized payee is already being used</heading>
+          <message>A transfer has been submitted to the new payee and may complete soon. An unverified caller requests another code, while the real bank needs the full takeover timeline.</message>
+          <transcript>Because the attacker controlled the phone number or received a code, the unfamiliar device and payee have progressed to money movement. The transfer may still be pending, but delay can reduce available options. The learner should use only the real bank's trusted channel.</transcript>
+        </artifact>
+        <question>What should the learner do about the advanced transfer?</question>
+        <description>Late action may still stop or document the transfer, but the account takeover has already caused material harm.</description>
+        <warningSigns>
+          <sign>The transfer uses an attacker-added payee.</sign>
+          <sign>Another caller requests a code to supposedly cancel it.</sign>
+          <sign>Device and profile changes remain part of the incident.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-bank-to-stop-transfer-now-compromised" destinationVideoId="connected-account-security-compromised" classification="safe">
+            <title>Ask the real bank to review it now</title>
+            <subtitle>Request that the bank stop or investigate the pending transfer and secure access.</subtitle>
+            <feedback heading="You acted while the transfer was pending">
+              <consequence>The bank checks what options remain and continues securing the account.</consequence>
+              <explanation>Prompt reporting can improve available options, but the bank must determine what is possible. Later recovery will not treat the account as though the takeover was caught at the beginning.</explanation>
+              <warningSigns>
+                <sign>The payment was not authorized by the learner.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-service-to-stabilize-compromised" destinationVideoId="connected-account-security-compromised" classification="risky">
+            <title>Wait for the phone service to stabilize</title>
+            <subtitle>Delay the bank request until the original phone works normally.</subtitle>
+            <feedback heading="The transfer continued during the delay">
+              <consequence>The pending period may end before the bank is asked to act.</consequence>
+              <explanation>Use the trusted device already available. The original phone does not need to be fully restored before bank contact. Later recovery will not treat the account as though the takeover was caught at the beginning.</explanation>
+              <warningSigns>
+                <sign>The transaction may complete soon.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="approve-code-to-cancel-transfer-compromised" destinationVideoId="connected-account-security-compromised" classification="dangerous">
+            <title>Approve the caller's cancellation code</title>
+            <subtitle>Follow the unverified caller's instructions to stop the transfer.</subtitle>
+            <feedback heading="The code may authorize more activity">
+              <consequence>The attacker may use the approval to finalize access or money movement.</consequence>
+              <explanation>A security code authorizes an action; it is not proof that the caller is canceling fraud. Later recovery will not treat the account as though the takeover was caught at the beginning.</explanation>
+              <warningSigns>
+                <sign>The code request came from someone outside the trusted bank contact.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="connected-account-security-compromised" stageName="Connected accounts" stageIndex="7">
+        <artifact type="narration">
+          <heading>Recovery must cover every connected access path</heading>
+          <message>The bank and carrier response now includes an active takeover, possible code or credential exposure, email recovery settings, devices, profile details, payees, and transaction status.</message>
+          <transcript>The learner is now recovering after the attacker progressed through the phone number into bank access. The bank, carrier, email account, and trusted device must be reviewed together. A completed or pending transfer cannot be promised recoverable.</transcript>
+        </artifact>
+        <question>Which recovery approach fits the advanced takeover?</question>
+        <description>A complete late response can limit more harm while preserving the consequences already seen.</description>
+        <warningSigns>
+          <sign>The email or phone could reopen bank access.</sign>
+          <sign>Unknown sessions and payees may remain.</sign>
+          <sign>Transaction status must be reviewed by the real bank.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="secure-email-recovery-and-sessions-compromised" destinationVideoId="final-timeline-compromised" classification="safe">
+            <title>Secure email, recovery methods, and sessions</title>
+            <subtitle>Follow the bank's and carrier's guidance while preserving evidence.</subtitle>
+            <feedback heading="You repaired the connected security chain">
+              <consequence>Unknown sessions and recovery routes receive the same attention as the bank and carrier accounts.</consequence>
+              <explanation>Coordinated recovery reduces the chance that one compromised channel will reopen another. The final timeline will distinguish late recovery from an early safe intervention.</explanation>
+              <warningSigns>
+                <sign>Several accounts depended on the same phone number and email.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="change-bank-password-only-compromised" destinationVideoId="final-timeline-compromised" classification="risky">
+            <title>Change only the bank password</title>
+            <subtitle>Leave email sessions and carrier recovery methods unchanged.</subtitle>
+            <feedback heading="One credential changed, but reset routes remained">
+              <consequence>The email or carrier account may still allow another password reset.</consequence>
+              <explanation>A new bank password is useful only as part of the broader recovery. The final timeline will distinguish late recovery from an early safe intervention.</explanation>
+              <warningSigns>
+                <sign>The attacker may control another recovery channel.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-new-accounts-without-documenting-compromised" destinationVideoId="final-timeline-compromised" classification="dangerous">
+            <title>Open new accounts without documenting the incident</title>
+            <subtitle>Abandon the old accounts without completing the reviews.</subtitle>
+            <feedback heading="The original compromise stayed active and undocumented">
+              <consequence>Important evidence, legitimate account continuity, and unresolved sessions may be lost.</consequence>
+              <explanation>Follow the carrier's and bank's transition guidance before replacing accounts or services. The final timeline will distinguish late recovery from an early safe intervention.</explanation>
+              <warningSigns>
+                <sign>The existing accounts may still contain active access and pending activity.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="final-timeline-compromised" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The takeover progressed before recovery began</heading>
+          <message>Phone service loss led to password reset, device enrollment, profile and payee changes, and possible money movement before trusted channels took control.</message>
+          <transcript>The final timeline shows how an unexplained outage became an account takeover. The learner's later choices can secure the carrier, bank, email, and device, but they do not erase shared codes, unauthorized settings, or transaction consequences.</transcript>
+        </artifact>
+        <question>What should the final recovery emphasize?</question>
+        <description>The strongest late response is coordinated, honest, and immediate from this point forward.</description>
+        <warningSigns>
+          <sign>The outage and bank changes were connected.</sign>
+          <sign>A genuine code may have authorized the attacker.</sign>
+          <sign>Restored signal alone does not close the incident.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="coordinate-carrier-bank-email-recovery-compromised" destinationVideoId="takeover-recovery-started" classification="safe">
+            <title>Coordinate carrier, bank, and email recovery</title>
+            <subtitle>Use trusted channels and report every unauthorized change promptly.</subtitle>
+            <feedback heading="You treated the takeover as one connected event">
+              <consequence>Each access route and payment setting receives review.</consequence>
+              <explanation>This complete approach gives the legitimate providers the best available information without guaranteeing a transfer outcome. The ending will acknowledge the earlier takeover even if the learner now chooses a complete response.</explanation>
+              <warningSigns>
+                <sign>The same phone and email supported several account changes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="focus-on-bank-alert-only-compromised" destinationVideoId="takeover-recovery-partial" classification="risky">
+            <title>Focus only on the bank alert</title>
+            <subtitle>Leave the carrier and email reviews unfinished.</subtitle>
+            <feedback heading="The payment risk received attention, but access routes remained">
+              <consequence>The bank may secure part of the account while carrier or email recovery channels stay exposed.</consequence>
+              <explanation>The account takeover crossed several connected services. The ending will acknowledge the earlier takeover even if the learner now chooses a complete response.</explanation>
+              <warningSigns>
+                <sign>The phone-number transfer occurred before the bank changes.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="restored-signal-means-resolved-compromised" destinationVideoId="takeover-unresolved-dangerous" classification="dangerous">
+            <title>Treat the restored signal as the end</title>
+            <subtitle>Do not review sessions, profile changes, payees, or email.</subtitle>
+            <feedback heading="The visible outage ended, but account access remained">
+              <consequence>Unauthorized sessions or payment settings may continue after calls and texts return.</consequence>
+              <explanation>The phone signal is only one part of the security chain. The ending will acknowledge the earlier takeover even if the learner now chooses a complete response.</explanation>
+              <warningSigns>
+                <sign>The bank and email changes do not disappear when service returns.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="takeover-recovery-started" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>Coordinated recovery begins after the takeover progressed</heading>
+          <message>The learner now works with the real carrier, bank, and email provider and discloses the code, device, profile, payee, and transfer timeline.</message>
+          <transcript>The unauthorized phone transfer and bank changes already occurred, and transaction status remains under review. The learner now secures every connected channel, ends attacker contact, preserves records, and seeks trusted support. Recovery of money is not guaranteed.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Takeover progressed; full recovery started</label>
+          <heading>You changed course and addressed every access path</heading>
+          <explanation>The complete late response may limit further harm while still acknowledging the device, profile, payee, and transaction consequences.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>A later safe response does not erase the period of attacker control.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="takeover-recovery-partial" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>Only part of the progressed takeover is secured</heading>
+          <message>Some access is restored, but email, sessions, profile details, payees, or transaction status still need review.</message>
+          <transcript>The attacker progressed through the phone number into bank access. A password change or one removed device is not enough to address every recovery path. The learner can still contact the real bank and carrier with the full timeline.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Takeover progressed; recovery incomplete</label>
+          <heading>Important access paths remain open</heading>
+          <explanation>Partial action helps, but the earlier code, device, payee, and transfer consequences require a coordinated response.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>The restored phone signal can hide unresolved bank and email access.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="coordinated-recovery-safe" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The connected accounts are under review</heading>
+          <message>You used trusted channels to coordinate the carrier, bank, and email response.</message>
+          <transcript>The learner reports the unauthorized number transfer, bank changes, pending payment, and possible email exposure to the legitimate providers. Each provider will determine its available recovery steps. A pending transfer may or may not be stopped, so the scenario does not guarantee recovery.</transcript>
+        </artifact>
+        <outcome classification="safe">
+          <label>Coordinated recovery</label>
+          <heading>You secured the full account chain</heading>
+          <explanation>Independent contact, complete disclosure, and review of every connected access route provide the strongest response.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="partial-recovery-risky" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>Part of the takeover was addressed</heading>
+          <message>The bank alert received attention, but carrier or email access may still support another reset.</message>
+          <transcript>The learner takes a useful step with the bank but leaves parts of the connected security chain unfinished. Contact the legitimate carrier and email provider through trusted channels, document the number transfer, review recovery methods, and terminate unknown sessions.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Partial recovery</label>
+          <heading>More access routes need review</heading>
+          <explanation>Securing one account helps, but the compromised phone number or email may still reopen it.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="takeover-unresolved-dangerous" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The account takeover remains active</heading>
+          <message>The phone signal returned, but bank sessions, profile changes, payees, email access, or money movement may still be unauthorized.</message>
+          <transcript>The visible service outage has ended, but connected accounts remain exposed. This can happen to anyone. Use a trusted device to contact the carrier and bank immediately, tell them the complete timeline, secure email and recovery methods, preserve records, and follow their guidance. Recovery is not guaranteed.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Takeover unresolved</label>
+          <heading>Restored service was not complete recovery</heading>
+          <explanation>Prompt, coordinated action can still reduce additional harm even when unauthorized access or money movement has already occurred.</explanation>
+        </outcome>
+      </scene>
+    </scenes>
+  </presentation>
+  <commands>
+    <command type="prompt" videoId="phone-loses-service" displayText="The phone suddenly shows SOS / No Service while nearby phones remain connected.">
+      <options>
+        <option id="security-emails" choiceId="contact-carrier-and-bank-from-other-device" text="Use another trusted device to call the carrier and bank" />
+        <option id="security-emails-compromised" choiceId="restart-and-check-alerts" text="Restart once and check other alerts" />
+        <option id="security-emails-compromised" choiceId="wait-until-tomorrow" text="Wait until tomorrow" />
+      </options>
+    </command>
+    <command type="prompt" videoId="security-emails" displayText="Email shows a bank password reset and new-device enrollment the learner did not initiate.">
+      <options>
+        <option id="fake-carrier-contact" choiceId="verify-with-known-bank-channel" text="Use the known bank app or trusted number" />
+        <option id="fake-carrier-contact-compromised" choiceId="read-emails-and-wait" text="Read the messages but wait" />
+        <option id="fake-carrier-contact-compromised" choiceId="enter-credentials-from-email" text="Use the email button and enter credentials" />
+      </options>
+    </command>
+    <command type="prompt" videoId="fake-carrier-contact" displayText="An incoming caller offers to restore service in exchange for a carrier PIN or security code.">
+      <options>
+        <option id="carrier-verification" choiceId="end-call-contact-real-carrier" text="End the call and contact the carrier yourself" />
+        <option id="carrier-verification-compromised" choiceId="ask-caller-more-without-code" text="Ask for more information without sharing a code" />
+        <option id="carrier-verification-compromised" choiceId="share-carrier-code-or-pin" text="Share the code or carrier PIN" />
+      </options>
+    </command>
+    <command type="prompt" videoId="carrier-verification" displayText="The real carrier confirms an unauthorized SIM or number transfer.">
+      <options>
+        <option id="bank-access-review" choiceId="restore-pin-and-document" text="Restore service, add a PIN, and document the change" />
+        <option id="bank-access-review-compromised" choiceId="restore-service-only" text="Restore service only" />
+        <option id="bank-access-review-compromised" choiceId="assume-bank-safe-after-signal" text="Assume the bank account is safe now" />
+      </options>
+    </command>
+    <command type="prompt" videoId="bank-access-review" displayText="The bank shows an unfamiliar device, changed phone number, and new payee.">
+      <options>
+        <option id="pending-transfer" choiceId="report-every-bank-change" text="Report every unauthorized change" />
+        <option id="pending-transfer-compromised" choiceId="remove-device-only" text="Remove only the unfamiliar device" />
+        <option id="pending-transfer-compromised" choiceId="ask-original-caller-for-help" text="Ask the original caller to help" />
+      </options>
+    </command>
+    <command type="prompt" videoId="pending-transfer" displayText="A transfer to the new payee is pending, and an unverified caller asks for another code.">
+      <options>
+        <option id="connected-account-security" choiceId="ask-bank-to-stop-transfer-now" text="Ask the real bank to review it now" />
+        <option id="connected-account-security-compromised" choiceId="wait-for-service-to-stabilize" text="Wait for the phone service to stabilize" />
+        <option id="connected-account-security-compromised" choiceId="approve-code-to-cancel-transfer" text="Approve the caller's cancellation code" />
+      </options>
+    </command>
+    <command type="prompt" videoId="connected-account-security" displayText="The email account may have helped reset both the carrier and bank accounts.">
+      <options>
+        <option id="final-timeline" choiceId="secure-email-recovery-and-sessions" text="Secure email, recovery methods, and sessions" />
+        <option id="final-timeline-compromised" choiceId="change-bank-password-only" text="Change only the bank password" />
+        <option id="final-timeline-compromised" choiceId="open-new-accounts-without-documenting" text="Open new accounts without documenting the incident" />
+      </options>
+    </command>
+    <command type="prompt" videoId="final-timeline" displayText="The final timeline connects the phone outage, bank changes, and attempted transfer.">
+      <options>
+        <option id="coordinated-recovery-safe" choiceId="coordinate-carrier-bank-email-recovery" text="Coordinate carrier, bank, and email recovery" />
+        <option id="partial-recovery-risky" choiceId="focus-on-bank-alert-only" text="Focus only on the bank alert" />
+        <option id="takeover-unresolved-dangerous" choiceId="restored-signal-means-resolved" text="Treat the restored signal as the end" />
+      </options>
+    </command>
+    <command type="prompt" videoId="security-emails-compromised" displayText="Bank-security changes progressed while phone service was unavailable.">
+      <options>
+        <option id="fake-carrier-contact-compromised" choiceId="verify-with-known-bank-channel-compromised" text="Use the known bank app or trusted number" />
+        <option id="fake-carrier-contact-compromised" choiceId="read-emails-and-wait-compromised" text="Read the messages but wait" />
+        <option id="fake-carrier-contact-compromised" choiceId="enter-credentials-from-email-compromised" text="Use the email button and enter credentials" />
+      </options>
+    </command>
+    <command type="prompt" videoId="fake-carrier-contact-compromised" displayText="A fake carrier caller requests another security credential during the takeover.">
+      <options>
+        <option id="carrier-verification-compromised" choiceId="end-call-contact-real-carrier-compromised" text="End the call and contact the carrier yourself" />
+        <option id="carrier-verification-compromised" choiceId="ask-caller-more-without-code-compromised" text="Ask for more information without sharing a code" />
+        <option id="carrier-verification-compromised" choiceId="share-carrier-code-or-pin-compromised" text="Share the code or carrier PIN" />
+      </options>
+    </command>
+    <command type="prompt" videoId="carrier-verification-compromised" displayText="The real carrier begins recovery after the unauthorized transfer progressed.">
+      <options>
+        <option id="bank-access-review-compromised" choiceId="restore-pin-and-document-compromised" text="Restore service, add a PIN, and document the change" />
+        <option id="bank-access-review-compromised" choiceId="restore-service-only-compromised" text="Restore service only" />
+        <option id="bank-access-review-compromised" choiceId="assume-bank-safe-after-signal-compromised" text="Assume the bank account is safe now" />
+      </options>
+    </command>
+    <command type="prompt" videoId="bank-access-review-compromised" displayText="The real bank confirms device, profile, and payee changes after the SIM swap.">
+      <options>
+        <option id="pending-transfer-compromised" choiceId="report-every-bank-change-compromised" text="Report every unauthorized change" />
+        <option id="pending-transfer-compromised" choiceId="remove-device-only-compromised" text="Remove only the unfamiliar device" />
+        <option id="pending-transfer-compromised" choiceId="ask-original-caller-for-help-compromised" text="Ask the original caller to help" />
+      </options>
+    </command>
+    <command type="prompt" videoId="pending-transfer-compromised" displayText="Money movement has begun after unauthorized device and payee changes.">
+      <options>
+        <option id="connected-account-security-compromised" choiceId="ask-bank-to-stop-transfer-now-compromised" text="Ask the real bank to review it now" />
+        <option id="connected-account-security-compromised" choiceId="wait-for-service-to-stabilize-compromised" text="Wait for the phone service to stabilize" />
+        <option id="connected-account-security-compromised" choiceId="approve-code-to-cancel-transfer-compromised" text="Approve the caller's cancellation code" />
+      </options>
+    </command>
+    <command type="prompt" videoId="connected-account-security-compromised" displayText="The recovery plan covers the bank, carrier, email, devices, and transfer.">
+      <options>
+        <option id="final-timeline-compromised" choiceId="secure-email-recovery-and-sessions-compromised" text="Secure email, recovery methods, and sessions" />
+        <option id="final-timeline-compromised" choiceId="change-bank-password-only-compromised" text="Change only the bank password" />
+        <option id="final-timeline-compromised" choiceId="open-new-accounts-without-documenting-compromised" text="Open new accounts without documenting the incident" />
+      </options>
+    </command>
+    <command type="prompt" videoId="final-timeline-compromised" displayText="The final timeline records an account takeover that progressed before recovery.">
+      <options>
+        <option id="takeover-recovery-started" choiceId="coordinate-carrier-bank-email-recovery-compromised" text="Coordinate carrier, bank, and email recovery" />
+        <option id="takeover-recovery-partial" choiceId="focus-on-bank-alert-only-compromised" text="Focus only on the bank alert" />
+        <option id="takeover-unresolved-dangerous" choiceId="restored-signal-means-resolved-compromised" text="Treat the restored signal as the end" />
+      </options>
+    </command>
+    <command type="stop" videoId="takeover-recovery-started" displayText="The account takeover progressed, and coordinated recovery is now underway." />
+    <command type="stop" videoId="takeover-recovery-partial" displayText="The takeover progressed, and recovery remains incomplete." />
+    <command type="stop" videoId="coordinated-recovery-safe" displayText="The carrier, bank, and email accounts are under coordinated review." />
+    <command type="stop" videoId="partial-recovery-risky" displayText="The bank alert received attention, but other recovery channels remain exposed." />
+    <command type="stop" videoId="takeover-unresolved-dangerous" displayText="The phone signal returned while unauthorized access and payment risks remain unresolved." />
+  </commands>
+</playlist>

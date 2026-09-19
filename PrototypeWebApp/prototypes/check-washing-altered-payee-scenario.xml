@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist>
+  <presentation approximateStages="8">
+    <title>Check Washing and Altered Payee</title>
+    <summary>Practice comparing a processed check with your records, reporting an altered check promptly, reviewing other exposed checks, and preserving evidence privately.</summary>
+    <practiceGoal>Use a trusted bank channel to inspect an unexpected check, report the full mismatch, and follow the bank's guidance without assuming reimbursement is guaranteed.</practiceGoal>
+    <stages>
+      <stage>Unfamiliar check alert</stage>
+      <stage>Check image comparison</stage>
+      <stage>Report the alteration</stage>
+      <stage>Review missing mail</stage>
+      <stage>Second check attempt</stage>
+      <stage>Secure the account</stage>
+      <stage>Protect future payments</stage>
+      <stage>Outcome and evidence</stage>
+    </stages>
+    <finalReview>
+      <warningSigns>
+        <sign>A processed check has an amount or payee that does not match your records.</sign>
+        <sign>A mailed payment never reaches the intended company.</sign>
+        <sign>Nearby check numbers are missing, duplicated, or used unexpectedly.</sign>
+        <sign>A second altered check appears after the first mismatch.</sign>
+        <sign>An unexpected alert link asks you to sign in instead of using your known bank channel.</sign>
+      </warningSigns>
+      <safestAction>Open the bank app or statement you already trust, compare the processed check with your records, and report every mismatch promptly.</safestAction>
+      <realWorldActions>
+        <action>Tell the bank the original payee, original amount, check number, mailing date, and every other outstanding check you know about.</action>
+        <action>Ask the bank about monitoring, stop payments, and whether the exposed account number should be replaced.</action>
+        <action>Review nearby check numbers, missing mail, recurring payments, deposits, and automatic withdrawals.</action>
+        <action>Preserve check images, transaction details, alerts, notes, and bank case information privately.</action>
+        <action>Use secure mail collection and review account activity regularly. Follow the bank's instructions because procedures and recovery options vary.</action>
+      </realWorldActions>
+    </finalReview>
+    <scenes>
+      <scene videoId="unfamiliar-check-alert" stageName="Unfamiliar check alert" stageIndex="1">
+        <artifact type="text-message">
+          <sender>Riverbend Bank Alerts</sender>
+          <senderStatus>Simulated alert; verify in the known bank app</senderStatus>
+          <heading>Check 214 paid for $4,860</heading>
+          <message>A check was paid to an unfamiliar person. An email copy of the alert also includes a Review Transaction button.</message>
+          <requestedInformation>
+            <item>Check number: 214</item>
+            <item>Amount: $4,860</item>
+            <item>Payee: Unfamiliar</item>
+          </requestedInformation>
+          <transcript>A simulated bank alert says, "Check 214 paid for $4,860," to a person the learner does not recognize. An email copy includes a Review Transaction button. The learner does not remember writing a check for that amount or to that payee.</transcript>
+        </artifact>
+        <question>How would you verify this check?</question>
+        <description>The amount and payee are unfamiliar. Use a bank channel you already trust before deciding what happened.</description>
+        <warningSigns>
+          <sign>The amount is much larger than expected.</sign>
+          <sign>The payee is unfamiliar.</sign>
+          <sign>The email supplies its own sign-in route.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="inspect-through-known-app" destinationVideoId="check-image-comparison" classification="safe">
+            <title>Open the known bank app</title>
+            <subtitle>Find check 214 in the account history and view the processed image.</subtitle>
+            <feedback heading="You moved to a trusted bank channel">
+              <consequence>You can inspect the transaction without relying on the alert's button.</consequence>
+              <explanation>The processed image, account history, and your own records provide useful evidence.</explanation>
+              <warningSigns>
+                <sign>The alert's amount and payee do not match your memory.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-family-before-review" destinationVideoId="check-image-comparison-delayed" classification="risky">
+            <title>Ask a family member first</title>
+            <subtitle>Wait to see whether someone else recognizes the check.</subtitle>
+            <feedback heading="You gathered context but delayed the bank review">
+              <consequence>A family member may help, but the transaction remains unverified.</consequence>
+              <explanation>Checking with family can be useful, but it should not replace prompt review through the bank.</explanation>
+              <warningSigns>
+                <sign>An unexplained check may be part of broader account exposure.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="use-alert-email-button" destinationVideoId="check-image-comparison-delayed" classification="dangerous">
+            <title>Use the button in the alert email</title>
+            <subtitle>Follow the email's Review Transaction route.</subtitle>
+            <feedback heading="The supplied link created another risk">
+              <consequence>The simulation shows why an unexpected alert link should not control the sign-in path.</consequence>
+              <explanation>Even when the check problem is real, a separate phishing message can imitate a bank alert. Use the app or address you already know.</explanation>
+              <warningSigns>
+                <sign>The email asked you to use its own sign-in route.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="check-image-comparison" stageName="Check image comparison" stageIndex="2">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Compare your record with the processed check</heading>
+          <message>Your register says check 214 was written for $86 to Green Valley Utilities. The processed image shows $4,860 to an unfamiliar payee. The check number and signature look familiar.</message>
+          <requestedInformation>
+            <item>Your record: $86 to Green Valley Utilities</item>
+            <item>Processed image: $4,860 to an unfamiliar payee</item>
+            <item>Check number: 214</item>
+          </requestedInformation>
+          <transcript>Inside the simulated known bank app, the learner compares two text descriptions. The personal register says check 214 was for $86 to Green Valley Utilities. The processed check image shows the same check number and a familiar-looking signature, but the amount is $4,860 and the payee is unfamiliar. Green Valley Utilities and Riverbend Bank are fictional.</transcript>
+        </artifact>
+        <question>What does this mismatch call for?</question>
+        <description>A familiar check number or signature does not make the changed amount and payee legitimate.</description>
+        <warningSigns>
+          <sign>The processed amount does not match the register.</sign>
+          <sign>The processed payee does not match the intended company.</sign>
+          <sign>A small mailed payment may have been stolen and altered.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="report-altered-check-now" destinationVideoId="reporting-altered-check" classification="safe">
+            <title>Report an altered check now</title>
+            <subtitle>Contact the bank through a trusted number and explain both mismatches.</subtitle>
+            <feedback heading="You recognized the alteration">
+              <consequence>The bank can begin reviewing the check and the account exposure promptly.</consequence>
+              <explanation>A changed amount and payee are strong reasons to report the processed check immediately.</explanation>
+              <warningSigns>
+                <sign>Both important payment details changed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-utility-confirmation" destinationVideoId="reporting-altered-check-delayed" classification="risky">
+            <title>Wait for the utility company to confirm</title>
+            <subtitle>Contact the intended payee before telling the bank.</subtitle>
+            <feedback heading="Extra confirmation caused a delay">
+              <consequence>The utility may confirm it never received the check, but the account remains exposed during the wait.</consequence>
+              <explanation>The bank can investigate the clear mismatch while you also contact the intended payee.</explanation>
+              <warningSigns>
+                <sign>The bank image already conflicts with your own record.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="change-register-to-match-image" destinationVideoId="reporting-altered-check-delayed" classification="dangerous">
+            <title>Change the register to match the image</title>
+            <subtitle>Assume the processed image must be correct.</subtitle>
+            <feedback heading="The fraud remained unreported">
+              <consequence>The unexplained payment stays in the account history without a bank investigation.</consequence>
+              <explanation>A processed image records what cleared; it does not prove that the amount and payee were authorized.</explanation>
+              <warningSigns>
+                <sign>Your original record and intended bill still do not match the payment.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="reporting-altered-check" stageName="Report the alteration" stageIndex="3">
+        <artifact type="phone-call">
+          <caller>Riverbend Bank fraud representative</caller>
+          <callerStatus>Reached through a trusted number; fictional bank</callerStatus>
+          <callStatus>Incident review</callStatus>
+          <heading>The bank asks about the full check sequence</heading>
+          <message>Please tell me when check 214 was mailed, what you originally wrote, and whether any nearby checks are still outstanding.</message>
+          <transcript>The learner calls the fictional Riverbend Bank using a trusted number. The representative asks when check 214 was mailed, whether the processed image matches the original amount and payee, and whether any other checks are outstanding. The representative explains that the answers help the bank review the broader exposure.</transcript>
+        </artifact>
+        <question>How much information would you give the bank?</question>
+        <description>The altered check may be one part of a larger mail or account problem.</description>
+        <warningSigns>
+          <sign>Other mailed checks may contain the same exposed account information.</sign>
+          <sign>Nearby check numbers may also be at risk.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-all-outstanding-checks" destinationVideoId="missing-mail-sequence" classification="safe">
+            <title>Review every outstanding check</title>
+            <subtitle>Explain the mismatch, mailing details, and all nearby checks.</subtitle>
+            <feedback heading="The bank received the full picture">
+              <consequence>The review can include the altered check, the mailing route, and other exposed checks.</consequence>
+              <explanation>Complete information helps the bank identify related activity instead of treating one transaction in isolation.</explanation>
+              <warningSigns>
+                <sign>The original check carried the account and routing information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="report-single-check-only" destinationVideoId="missing-mail-sequence-delayed" classification="risky">
+            <title>Report only check 214</title>
+            <subtitle>Keep the conversation limited to the first altered check.</subtitle>
+            <feedback heading="The immediate check was reported, but the review was incomplete">
+              <consequence>The bank knows about check 214 but may not know which other checks could be exposed.</consequence>
+              <explanation>Reporting one transaction is useful, but nearby check numbers and missing mail also matter.</explanation>
+              <warningSigns>
+                <sign>The stolen check may not be the only item taken.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-money-to-return" destinationVideoId="missing-mail-sequence-delayed" classification="dangerous">
+            <title>Wait for the money to return automatically</title>
+            <subtitle>Take no further action for several days.</subtitle>
+            <feedback heading="Waiting left the account exposed">
+              <consequence>The bank has less timely information while other checks may be attempted.</consequence>
+              <explanation>Do not assume an altered payment will correct itself. Recovery rules and timing vary, so prompt bank contact matters.</explanation>
+              <warningSigns>
+                <sign>The transaction is already shown as paid.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="missing-mail-sequence" stageName="Review missing mail" stageIndex="4">
+        <artifact type="narration">
+          <heading>More mailed checks may be exposed</heading>
+          <message>The $86 utility payment never arrived. Checks 213 and 215 were also placed in the home mailbox and have not cleared.</message>
+          <requestedInformation>
+            <item>Check 213: outstanding</item>
+            <item>Check 214: altered and paid</item>
+            <item>Check 215: outstanding</item>
+          </requestedInformation>
+          <transcript>The learner reviews recent payments. Green Valley Utilities never received the original $86 payment. Checks 213 and 215 were also placed in the home mailbox and have not cleared. This pattern suggests that outgoing mail and nearby check numbers may be exposed.</transcript>
+        </artifact>
+        <question>What should the learner review next?</question>
+        <description>The missing utility payment connects the altered check to a possible mail-theft pattern.</description>
+        <warningSigns>
+          <sign>The intended bill payment never posted.</sign>
+          <sign>Multiple nearby check numbers remain outstanding.</sign>
+          <sign>The checks used the same outgoing mailbox.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-mail-history-and-sequence" destinationVideoId="second-check-attempt" classification="safe">
+            <title>Review mail and nearby checks with the bank</title>
+            <subtitle>Include the intended payees, dates, and check numbers.</subtitle>
+            <feedback heading="You identified the broader pattern">
+              <consequence>The bank can help review the exposed sequence while intended payees are contacted separately.</consequence>
+              <explanation>Looking at the mailing route and nearby checks can reveal risk beyond one altered item.</explanation>
+              <warningSigns>
+                <sign>Several checks shared the same unsecured mailing route.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="contact-utility-only" destinationVideoId="second-check-attempt-compromised" classification="risky">
+            <title>Contact only the utility company</title>
+            <subtitle>Replace the missed bill but do not expand the bank review.</subtitle>
+            <feedback heading="One bill was addressed, but the account risk remained">
+              <consequence>The utility can correct the missed payment, but it cannot secure the bank account.</consequence>
+              <explanation>Both the intended payee and the bank have different roles in the response.</explanation>
+              <warningSigns>
+                <sign>Other check numbers and the account information may still be exposed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="mail-replacements-same-box" destinationVideoId="second-check-attempt-compromised" classification="dangerous">
+            <title>Mail replacement checks from the same box</title>
+            <subtitle>Use the same outgoing-mail route immediately.</subtitle>
+            <feedback heading="The same exposure continued">
+              <consequence>Replacement checks may travel through the same unsafe path.</consequence>
+              <explanation>Secure the mailing method and coordinate with the bank before sending more checks tied to the exposed account.</explanation>
+              <warningSigns>
+                <sign>The first check may have been stolen from that location.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="second-check-attempt" stageName="Second check attempt" stageIndex="5">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Another check needs review</heading>
+          <message>Check 215 now appears as a pending $2,180 payment to another unfamiliar payee.</message>
+          <requestedInformation>
+            <item>Status: Pending</item>
+            <item>Amount: $2,180</item>
+            <item>Payee: Unfamiliar</item>
+          </requestedInformation>
+          <transcript>The simulated bank account now shows check 215 as a pending $2,180 payment to another unfamiliar payee. The second check connects the original alteration to a wider account and mail-security problem.</transcript>
+        </artifact>
+        <question>What would you do about the second check?</question>
+        <description>The second attempt makes it important to discuss the whole account with the bank.</description>
+        <warningSigns>
+          <sign>A nearby check number is now being used.</sign>
+          <sign>The payee and amount are again unfamiliar.</sign>
+          <sign>The account number printed on the checks may be exposed.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-bank-about-broader-protection" destinationVideoId="account-security-decision" classification="safe">
+            <title>Ask the bank about broader protection</title>
+            <subtitle>Discuss stop payments, monitoring, and possible account-number replacement.</subtitle>
+            <feedback heading="The response expanded to the compromised account">
+              <consequence>The bank can explain available steps while the second check is still pending.</consequence>
+              <explanation>Two altered checks suggest that protecting only one transaction is not enough.</explanation>
+              <warningSigns>
+                <sign>The same account details may support additional attempts.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-second-check-to-post" destinationVideoId="account-security-decision-compromised" classification="risky">
+            <title>Wait for the second check to post</title>
+            <subtitle>Take action only if the payment completes.</subtitle>
+            <feedback heading="The pending period was not used">
+              <consequence>The bank may have fewer options after the check is paid.</consequence>
+              <explanation>A pending unfamiliar item is a reason to contact the bank, not a reason to wait.</explanation>
+              <warningSigns>
+                <sign>The second altered check is already in process.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="contact-unfamiliar-payee" destinationVideoId="account-security-decision-compromised" classification="dangerous">
+            <title>Contact the unfamiliar payee</title>
+            <subtitle>Use information shown with the processed check.</subtitle>
+            <feedback heading="The unfamiliar payee was not a trusted recovery channel">
+              <consequence>The contact may be false or connected to the fraud while the bank remains uninformed.</consequence>
+              <explanation>Work through the bank and the intended legitimate payee, not the name inserted into an altered check.</explanation>
+              <warningSigns>
+                <sign>The payee appeared only after the check was altered.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="account-security-decision" stageName="Secure the account" stageIndex="6">
+        <artifact type="phone-call">
+          <caller>Riverbend Bank fraud representative</caller>
+          <callerStatus>Trusted bank contact; fictional bank</callerStatus>
+          <callStatus>Account-security planning</callStatus>
+          <heading>The printed account number may be exposed</heading>
+          <message>Depending on the review, we may recommend a replacement account number. We will also help identify legitimate deposits and payments that must move carefully.</message>
+          <transcript>The fictional bank representative explains that paper checks display routing and account information. Depending on the bank's review, a replacement account number, additional monitoring, or other steps may be recommended. The representative says the learner should plan for legitimate deposits, bills, and automatic payments before making account changes.</transcript>
+        </artifact>
+        <question>Which response is most complete?</question>
+        <description>Bank procedures differ. The safest transition is coordinated rather than rushed or improvised.</description>
+        <warningSigns>
+          <sign>Destroying unused checks does not erase account information already exposed.</sign>
+          <sign>Unplanned account closure can interrupt legitimate income and bills.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="follow-bank-transition-plan" destinationVideoId="future-payment-safety" classification="safe">
+            <title>Follow the bank's transition plan</title>
+            <subtitle>Move legitimate deposits and payments carefully if replacement is recommended.</subtitle>
+            <feedback heading="You coordinated account protection">
+              <consequence>The altered-check review and legitimate-payment transition can be handled together.</consequence>
+              <explanation>The bank can explain its procedures and help reduce unnecessary disruption.</explanation>
+              <warningSigns>
+                <sign>Both fraudulent and legitimate activity must be reviewed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="shred-checks-only" destinationVideoId="future-payment-safety-compromised" classification="risky">
+            <title>Shred the remaining checks only</title>
+            <subtitle>Keep the same account unchanged.</subtitle>
+            <feedback heading="Future paper checks were reduced, but prior exposure remained">
+              <consequence>No more unused checks are available at home, but stolen checks or copied account details may still be used.</consequence>
+              <explanation>Shredding is helpful for unused documents, but it does not replace the bank's account review.</explanation>
+              <warningSigns>
+                <sign>At least two checks from the account were already exposed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="close-account-without-plan" destinationVideoId="future-payment-safety-compromised" classification="dangerous">
+            <title>Close the account without a transition plan</title>
+            <subtitle>Move nothing and notify no legitimate payer or biller first.</subtitle>
+            <feedback heading="A rushed closure created new problems">
+              <consequence>Legitimate deposits or bills may fail while the fraud documentation remains incomplete.</consequence>
+              <explanation>Account replacement may be appropriate, but it should follow the bank's guidance and a careful payment inventory.</explanation>
+              <warningSigns>
+                <sign>Important deposits and recurring payments still depend on the account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="future-payment-safety" stageName="Protect future payments" stageIndex="7">
+        <artifact type="narration">
+          <heading>Plan safer mail and payment habits</heading>
+          <message>The immediate bank review is underway. The learner now chooses how to reduce future exposure without publishing private check information.</message>
+          <requestedInformation>
+            <item>Secure outgoing mail</item>
+            <item>Review transactions regularly</item>
+            <item>Use safer payment options when appropriate</item>
+          </requestedInformation>
+          <transcript>The learner reviews prevention choices. Secure mail collection, regular account review, and payment methods selected through legitimate providers can reduce future exposure. Posting a processed check publicly can reveal the signature, routing number, account number, and other private details.</transcript>
+        </artifact>
+        <question>Which habit best reduces future exposure?</question>
+        <description>Choose a prevention plan that protects both the payment and the account information printed on it.</description>
+        <warningSigns>
+          <sign>The prior home-mail route may have been exposed.</sign>
+          <sign>A public check image can reveal private financial information.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="secure-mail-and-monitor" destinationVideoId="outcome-evidence" classification="safe">
+            <title>Use secure mail and monitor the account</title>
+            <subtitle>Review transactions often and use safer payment options when appropriate.</subtitle>
+            <feedback heading="You reduced several future risks">
+              <consequence>The mailing route and account activity receive ongoing attention.</consequence>
+              <explanation>Prevention works best when secure handling and regular review are combined.</explanation>
+              <warningSigns>
+                <sign>The prior loss involved both mail and account information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="keep-mailing-monitor-weekly" destinationVideoId="outcome-evidence-compromised" classification="risky">
+            <title>Keep using the home mailbox and check weekly</title>
+            <subtitle>Rely on monitoring without changing the mailing route.</subtitle>
+            <feedback heading="Monitoring improved, but the mailing risk continued">
+              <consequence>Unexpected transactions may be noticed, but another check could follow the same exposed route.</consequence>
+              <explanation>Reviewing the account helps, but it does not prevent mail theft.</explanation>
+              <warningSigns>
+                <sign>The original check may have been taken from that mailbox.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="post-check-image-publicly" destinationVideoId="outcome-evidence-compromised" classification="dangerous">
+            <title>Post the altered check image publicly</title>
+            <subtitle>Warn neighbors by sharing the full processed image.</subtitle>
+            <feedback heading="The warning exposed more private information">
+              <consequence>The image may reveal account, routing, signature, and payment details.</consequence>
+              <explanation>Share general warnings without publishing financial evidence. Preserve the image privately for the bank and legitimate reports.</explanation>
+              <warningSigns>
+                <sign>A check image contains information that can support more misuse.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="outcome-evidence" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>Keep a private record of what happened</heading>
+          <message>The bank's review may lead to different results. Preserve the evidence needed for the bank and legitimate reports without assuming a particular reimbursement outcome.</message>
+          <requestedInformation>
+            <item>Processed check images</item>
+            <item>Transaction details and alerts</item>
+            <item>Mailing dates and intended payees</item>
+            <item>Bank case information and notes</item>
+          </requestedInformation>
+          <transcript>The final review explains that recovery depends on the facts, timing, and the bank's procedures. The learner can preserve processed check images, transaction details, alerts, intended-payment records, mailing dates, and bank case information privately. Embarrassment is not a reason to erase useful evidence.</transcript>
+        </artifact>
+        <question>What evidence plan would you choose?</question>
+        <description>A complete private record helps the bank review the incident. It does not guarantee a specific recovery result.</description>
+        <warningSigns>
+          <sign>Deleting records can make the incident harder to document.</sign>
+          <sign>A paper register alone does not preserve the processed images or alerts.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="preserve-private-evidence" destinationVideoId="check-recovery-safe" classification="safe">
+            <title>Preserve the full record privately</title>
+            <subtitle>Keep the images, transaction details, notes, and bank case information.</subtitle>
+            <feedback heading="You created a useful recovery record">
+              <consequence>The bank and legitimate reporting channels can review the available evidence.</consequence>
+              <explanation>Private, organized records support follow-up while protecting account information.</explanation>
+              <warningSigns>
+                <sign>The altered check and related attempts form one connected event.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="keep-register-only" destinationVideoId="check-recovery-risky" classification="risky">
+            <title>Keep only the paper register</title>
+            <subtitle>Discard the processed images and alerts.</subtitle>
+            <feedback heading="Some evidence remained, but important records were missing">
+              <consequence>The original payment intent is documented, but the processed images and notification history are unavailable.</consequence>
+              <explanation>The register is useful, but the bank's records and alerts also show how the checks were used.</explanation>
+              <warningSigns>
+                <sign>A single record does not show the whole incident.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="delete-incident-records" destinationVideoId="check-recovery-dangerous" classification="dangerous">
+            <title>Delete every record</title>
+            <subtitle>Remove the images, alerts, and notes because the event feels embarrassing.</subtitle>
+            <feedback heading="Useful recovery evidence was lost">
+              <consequence>The learner has less documentation for the bank and legitimate reports.</consequence>
+              <explanation>Scammers and thieves create these situations. Preserving evidence is a practical step, not a reason for shame.</explanation>
+              <warningSigns>
+                <sign>The altered checks may be connected to other account activity.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="check-image-comparison-delayed" stageName="Check image comparison" stageIndex="2">
+        <artifact type="fake-website">
+          <heading>The processed image is reviewed after a delay</heading>
+          <message>After asking family or using an unverified alert route, the learner opens the known bank app. Check 214 still shows $4,860 to an unfamiliar payee while the register shows $86 to Green Valley Utilities.</message>
+          <transcript>The learner eventually uses the known bank app and compares the processed image with the paper register. The amount and payee do not match. Because action was delayed, the bank has not yet been notified; if the email button was used, credentials may also need review.</transcript>
+        </artifact>
+        <question>What should happen after the mismatch is confirmed?</question>
+        <description>The altered check is now visible, but the earlier delay or untrusted link remains part of the recovery.</description>
+        <warningSigns>
+          <sign>The bank has not yet received a report.</sign>
+          <sign>A caller or email route may have added credential exposure.</sign>
+          <sign>Nearby mailed checks may still be at risk.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="report-altered-check-now-delayed" destinationVideoId="reporting-altered-check-delayed" classification="safe">
+            <title>Report an altered check now</title>
+            <subtitle>Contact the bank through a trusted number and explain both mismatches.</subtitle>
+            <feedback heading="You recognized the alteration">
+              <consequence>The bank can begin reviewing the check and the account exposure promptly.</consequence>
+              <explanation>A changed amount and payee are strong reasons to report the processed check immediately. The earlier delay or untrusted route will remain part of the later outcome.</explanation>
+              <warningSigns>
+                <sign>Both important payment details changed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-utility-confirmation-delayed" destinationVideoId="reporting-altered-check-delayed" classification="risky">
+            <title>Wait for the utility company to confirm</title>
+            <subtitle>Contact the intended payee before telling the bank.</subtitle>
+            <feedback heading="Extra confirmation caused a delay">
+              <consequence>The utility may confirm it never received the check, but the account remains exposed during the wait.</consequence>
+              <explanation>The bank can investigate the clear mismatch while you also contact the intended payee. The earlier delay or untrusted route will remain part of the later outcome.</explanation>
+              <warningSigns>
+                <sign>The bank image already conflicts with your own record.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="change-register-to-match-image-delayed" destinationVideoId="reporting-altered-check-delayed" classification="dangerous">
+            <title>Change the register to match the image</title>
+            <subtitle>Assume the processed image must be correct.</subtitle>
+            <feedback heading="The fraud remained unreported">
+              <consequence>The unexplained payment stays in the account history without a bank investigation.</consequence>
+              <explanation>A processed image records what cleared; it does not prove that the amount and payee were authorized. The earlier delay or untrusted route will remain part of the later outcome.</explanation>
+              <warningSigns>
+                <sign>Your original record and intended bill still do not match the payment.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="reporting-altered-check-delayed" stageName="Report the alteration" stageIndex="3">
+        <artifact type="narration">
+          <heading>The utility confirms that the original $86 payment never arrived</heading>
+          <message>No complete bank report has been made yet. The missing utility payment and altered processed image now point to check theft or alteration.</message>
+          <transcript>After waiting or changing the register, the learner confirms that Green Valley Utilities never received check 214. The known bank has not yet received the full story. Reporting now can still help, but nearby checks have had more time to be used.</transcript>
+        </artifact>
+        <question>How complete should the late report be?</question>
+        <description>A late report can still start recovery, but it cannot erase the time when the account remained exposed.</description>
+        <warningSigns>
+          <sign>The original payee never received the check.</sign>
+          <sign>The amount and payee were altered.</sign>
+          <sign>Other mailed checks may have been exposed during the delay.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-all-outstanding-checks-delayed" destinationVideoId="missing-mail-sequence-delayed" classification="safe">
+            <title>Review every outstanding check</title>
+            <subtitle>Explain the mismatch, mailing details, and all nearby checks.</subtitle>
+            <feedback heading="The bank received the full picture">
+              <consequence>The review can include the altered check, the mailing route, and other exposed checks.</consequence>
+              <explanation>Complete information helps the bank identify related activity instead of treating one transaction in isolation. Even a complete report now must account for the delay and possible additional checks.</explanation>
+              <warningSigns>
+                <sign>The original check carried the account and routing information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="report-single-check-only-delayed" destinationVideoId="missing-mail-sequence-delayed" classification="risky">
+            <title>Report only check 214</title>
+            <subtitle>Keep the conversation limited to the first altered check.</subtitle>
+            <feedback heading="The immediate check was reported, but the review was incomplete">
+              <consequence>The bank knows about check 214 but may not know which other checks could be exposed.</consequence>
+              <explanation>Reporting one transaction is useful, but nearby check numbers and missing mail also matter. Even a complete report now must account for the delay and possible additional checks.</explanation>
+              <warningSigns>
+                <sign>The stolen check may not be the only item taken.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-money-to-return-delayed" destinationVideoId="missing-mail-sequence-delayed" classification="dangerous">
+            <title>Wait for the money to return automatically</title>
+            <subtitle>Take no further action for several days.</subtitle>
+            <feedback heading="Waiting left the account exposed">
+              <consequence>The bank has less timely information while other checks may be attempted.</consequence>
+              <explanation>Do not assume an altered payment will correct itself. Recovery rules and timing vary, so prompt bank contact matters. Even a complete report now must account for the delay and possible additional checks.</explanation>
+              <warningSigns>
+                <sign>The transaction is already shown as paid.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="missing-mail-sequence-delayed" stageName="Review missing mail" stageIndex="4">
+        <artifact type="narration">
+          <heading>The check sequence is reviewed after more exposure time</heading>
+          <message>Checks 213 and 215 were mailed from the same home mailbox. The bank review begins late or remains incomplete while those checks are still at risk.</message>
+          <transcript>The learner reviews the missing utility payment, mailbox timing, and nearby check numbers. Because the first mismatch was not reported promptly or fully, the bank cannot assume that check 214 is the only altered item.</transcript>
+        </artifact>
+        <question>How should the learner respond to the broader exposure?</question>
+        <description>The next action may contain the problem, but a second altered check is now more likely to appear.</description>
+        <warningSigns>
+          <sign>Several checks used the same exposed mailbox.</sign>
+          <sign>The first mismatch was not promptly or fully reported.</sign>
+          <sign>The printed account information may be available to someone else.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-mail-history-and-sequence-delayed" destinationVideoId="second-check-attempt-compromised" classification="safe">
+            <title>Review mail and nearby checks with the bank</title>
+            <subtitle>Include the intended payees, dates, and check numbers.</subtitle>
+            <feedback heading="You identified the broader pattern">
+              <consequence>The bank can help review the exposed sequence while intended payees are contacted separately.</consequence>
+              <explanation>Looking at the mailing route and nearby checks can reveal risk beyond one altered item. The second-check scene will acknowledge that containment started late.</explanation>
+              <warningSigns>
+                <sign>Several checks shared the same unsecured mailing route.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="contact-utility-only-delayed" destinationVideoId="second-check-attempt-compromised" classification="risky">
+            <title>Contact only the utility company</title>
+            <subtitle>Replace the missed bill but do not expand the bank review.</subtitle>
+            <feedback heading="One bill was addressed, but the account risk remained">
+              <consequence>The utility can correct the missed payment, but it cannot secure the bank account.</consequence>
+              <explanation>Both the intended payee and the bank have different roles in the response. The second-check scene will acknowledge that containment started late.</explanation>
+              <warningSigns>
+                <sign>Other check numbers and the account information may still be exposed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="mail-replacements-same-box-delayed" destinationVideoId="second-check-attempt-compromised" classification="dangerous">
+            <title>Mail replacement checks from the same box</title>
+            <subtitle>Use the same outgoing-mail route immediately.</subtitle>
+            <feedback heading="The same exposure continued">
+              <consequence>Replacement checks may travel through the same unsafe path.</consequence>
+              <explanation>Secure the mailing method and coordinate with the bank before sending more checks tied to the exposed account. The second-check scene will acknowledge that containment started late.</explanation>
+              <warningSigns>
+                <sign>The first check may have been stolen from that location.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="second-check-attempt-compromised" stageName="Second check attempt" stageIndex="5">
+        <artifact type="fake-website">
+          <heading>A second altered check has now affected the account</heading>
+          <message>Check 215 for $2,180 is no longer only a warning. It has posted or moved far enough that the real bank must review an additional loss or attempted loss.</message>
+          <transcript>Because reporting or containment was delayed, a second altered check reached the account. The learner can still contact the real bank, stop remaining checks, review the account number, and preserve evidence, but the earlier consequence remains part of the outcome.</transcript>
+        </artifact>
+        <question>What should the learner do after the second check appears?</question>
+        <description>Late recovery is still worthwhile, but the response must include both altered checks and any credential exposure.</description>
+        <warningSigns>
+          <sign>A second nearby check was altered.</sign>
+          <sign>The account remained exposed during the delay.</sign>
+          <sign>The full check sequence now matters to recovery.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-bank-about-broader-protection-compromised" destinationVideoId="account-security-decision-compromised" classification="safe">
+            <title>Ask the bank about broader protection</title>
+            <subtitle>Discuss stop payments, monitoring, and possible account-number replacement.</subtitle>
+            <feedback heading="The response expanded to the compromised account">
+              <consequence>The bank can explain available steps while the second check is still pending.</consequence>
+              <explanation>Two altered checks suggest that protecting only one transaction is not enough. The account has already suffered or narrowly avoided additional harm, so later recovery cannot become an early-safe outcome.</explanation>
+              <warningSigns>
+                <sign>The same account details may support additional attempts.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-for-second-check-to-post-compromised" destinationVideoId="account-security-decision-compromised" classification="risky">
+            <title>Wait for the second check to post</title>
+            <subtitle>Take action only if the payment completes.</subtitle>
+            <feedback heading="The pending period was not used">
+              <consequence>The bank may have fewer options after the check is paid.</consequence>
+              <explanation>A pending unfamiliar item is a reason to contact the bank, not a reason to wait. The account has already suffered or narrowly avoided additional harm, so later recovery cannot become an early-safe outcome.</explanation>
+              <warningSigns>
+                <sign>The second altered check is already in process.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="contact-unfamiliar-payee-compromised" destinationVideoId="account-security-decision-compromised" classification="dangerous">
+            <title>Contact the unfamiliar payee</title>
+            <subtitle>Use information shown with the processed check.</subtitle>
+            <feedback heading="The unfamiliar payee was not a trusted recovery channel">
+              <consequence>The contact may be false or connected to the fraud while the bank remains uninformed.</consequence>
+              <explanation>Work through the bank and the intended legitimate payee, not the name inserted into an altered check. The account has already suffered or narrowly avoided additional harm, so later recovery cannot become an early-safe outcome.</explanation>
+              <warningSigns>
+                <sign>The payee appeared only after the check was altered.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="account-security-decision-compromised" stageName="Secure the account" stageIndex="6">
+        <artifact type="phone-call">
+          <heading>The bank reviews a broader check and account compromise</heading>
+          <message>The real bank explains that more than one check and possibly an untrusted alert route were involved. Account-number replacement, stop payments, monitoring, and careful payment migration may be discussed.</message>
+          <transcript>The learner now speaks with the real bank after a second altered check or prolonged exposure. The bank reviews the full sequence, any possible credential disclosure, remaining checks, and legitimate deposits and bills. The bank does not promise reimbursement.</transcript>
+        </artifact>
+        <question>Which recovery response is most complete now?</question>
+        <description>The bank can reduce further risk, but the earlier altered checks remain part of the case.</description>
+        <warningSigns>
+          <sign>Multiple checks may be affected.</sign>
+          <sign>Account information printed on checks may be exposed.</sign>
+          <sign>Legitimate deposits and payments need a careful transition.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="follow-bank-transition-plan-compromised" destinationVideoId="future-payment-safety-compromised" classification="safe">
+            <title>Follow the bank's transition plan</title>
+            <subtitle>Move legitimate deposits and payments carefully if replacement is recommended.</subtitle>
+            <feedback heading="You coordinated account protection">
+              <consequence>The altered-check review and legitimate-payment transition can be handled together.</consequence>
+              <explanation>The bank can explain its procedures and help reduce unnecessary disruption. The recovery plan must address the additional check activity already seen.</explanation>
+              <warningSigns>
+                <sign>Both fraudulent and legitimate activity must be reviewed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="shred-checks-only-compromised" destinationVideoId="future-payment-safety-compromised" classification="risky">
+            <title>Shred the remaining checks only</title>
+            <subtitle>Keep the same account unchanged.</subtitle>
+            <feedback heading="Future paper checks were reduced, but prior exposure remained">
+              <consequence>No more unused checks are available at home, but stolen checks or copied account details may still be used.</consequence>
+              <explanation>Shredding is helpful for unused documents, but it does not replace the bank's account review. The recovery plan must address the additional check activity already seen.</explanation>
+              <warningSigns>
+                <sign>At least two checks from the account were already exposed.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="close-account-without-plan-compromised" destinationVideoId="future-payment-safety-compromised" classification="dangerous">
+            <title>Close the account without a transition plan</title>
+            <subtitle>Move nothing and notify no legitimate payer or biller first.</subtitle>
+            <feedback heading="A rushed closure created new problems">
+              <consequence>Legitimate deposits or bills may fail while the fraud documentation remains incomplete.</consequence>
+              <explanation>Account replacement may be appropriate, but it should follow the bank's guidance and a careful payment inventory. The recovery plan must address the additional check activity already seen.</explanation>
+              <warningSigns>
+                <sign>Important deposits and recurring payments still depend on the account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="future-payment-safety-compromised" stageName="Protect future payments" stageIndex="7">
+        <artifact type="narration">
+          <heading>Prevention begins after additional check exposure</heading>
+          <message>The learner considers secure mail, account monitoring, and safer payment methods while the bank handles the broader incident.</message>
+          <transcript>The immediate bank response is underway after more than one check was affected. Future habits can reduce new exposure, but they do not erase the existing loss, delayed report, or possible credential risk.</transcript>
+        </artifact>
+        <question>Which habits should follow the broader incident?</question>
+        <description>Prevention and recovery now need to happen together.</description>
+        <warningSigns>
+          <sign>The mailbox route was exposed.</sign>
+          <sign>More than one check may be involved.</sign>
+          <sign>Publicly sharing check images would create another disclosure.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="secure-mail-and-monitor-compromised" destinationVideoId="outcome-evidence-compromised" classification="safe">
+            <title>Use secure mail and monitor the account</title>
+            <subtitle>Review transactions often and use safer payment options when appropriate.</subtitle>
+            <feedback heading="You reduced several future risks">
+              <consequence>The mailing route and account activity receive ongoing attention.</consequence>
+              <explanation>Prevention works best when secure handling and regular review are combined. Future prevention helps, but the final outcome will still acknowledge the earlier consequences.</explanation>
+              <warningSigns>
+                <sign>The prior loss involved both mail and account information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="keep-mailing-monitor-weekly-compromised" destinationVideoId="outcome-evidence-compromised" classification="risky">
+            <title>Keep using the home mailbox and check weekly</title>
+            <subtitle>Rely on monitoring without changing the mailing route.</subtitle>
+            <feedback heading="Monitoring improved, but the mailing risk continued">
+              <consequence>Unexpected transactions may be noticed, but another check could follow the same exposed route.</consequence>
+              <explanation>Reviewing the account helps, but it does not prevent mail theft. Future prevention helps, but the final outcome will still acknowledge the earlier consequences.</explanation>
+              <warningSigns>
+                <sign>The original check may have been taken from that mailbox.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="post-check-image-publicly-compromised" destinationVideoId="outcome-evidence-compromised" classification="dangerous">
+            <title>Post the altered check image publicly</title>
+            <subtitle>Warn neighbors by sharing the full processed image.</subtitle>
+            <feedback heading="The warning exposed more private information">
+              <consequence>The image may reveal account, routing, signature, and payment details.</consequence>
+              <explanation>Share general warnings without publishing financial evidence. Preserve the image privately for the bank and legitimate reports. Future prevention helps, but the final outcome will still acknowledge the earlier consequences.</explanation>
+              <warningSigns>
+                <sign>A check image contains information that can support more misuse.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="outcome-evidence-compromised" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>Preserve the complete record of the delayed incident</heading>
+          <message>The private evidence now includes both check images, the register, mail timing, alerts, bank case details, and any untrusted page that was used.</message>
+          <transcript>The final review acknowledges that delayed reporting allowed a second altered check or additional exposure. Preserving a complete private record helps the real bank and legitimate reports. Recovery or reimbursement is not guaranteed.</transcript>
+        </artifact>
+        <question>What should be preserved after the additional exposure?</question>
+        <description>A strong final choice improves recovery without rewriting what already happened.</description>
+        <warningSigns>
+          <sign>The first and second checks belong to one timeline.</sign>
+          <sign>Any untrusted login route may matter to account security.</sign>
+          <sign>Deleting records would make the delayed incident harder to reconstruct.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="preserve-private-evidence-compromised" destinationVideoId="check-late-recovery-safe" classification="safe">
+            <title>Preserve the full record privately</title>
+            <subtitle>Keep the images, transaction details, notes, and bank case information.</subtitle>
+            <feedback heading="You created a useful recovery record">
+              <consequence>The bank and legitimate reporting channels can review the available evidence.</consequence>
+              <explanation>Private, organized records support follow-up while protecting account information. The terminal outcome will acknowledge the additional exposure even when recovery is now handled well.</explanation>
+              <warningSigns>
+                <sign>The altered check and related attempts form one connected event.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="keep-register-only-compromised" destinationVideoId="check-late-recovery-risky" classification="risky">
+            <title>Keep only the paper register</title>
+            <subtitle>Discard the processed images and alerts.</subtitle>
+            <feedback heading="Some evidence remained, but important records were missing">
+              <consequence>The original payment intent is documented, but the processed images and notification history are unavailable.</consequence>
+              <explanation>The register is useful, but the bank's records and alerts also show how the checks were used. The terminal outcome will acknowledge the additional exposure even when recovery is now handled well.</explanation>
+              <warningSigns>
+                <sign>A single record does not show the whole incident.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="delete-incident-records-compromised" destinationVideoId="check-late-recovery-dangerous" classification="dangerous">
+            <title>Delete every record</title>
+            <subtitle>Remove the images, alerts, and notes because the event feels embarrassing.</subtitle>
+            <feedback heading="Useful recovery evidence was lost">
+              <consequence>The learner has less documentation for the bank and legitimate reports.</consequence>
+              <explanation>Scammers and thieves create these situations. Preserving evidence is a practical step, not a reason for shame. The terminal outcome will acknowledge the additional exposure even when recovery is now handled well.</explanation>
+              <warningSigns>
+                <sign>The altered checks may be connected to other account activity.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="check-late-recovery-safe" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>Late recovery covers the full check sequence</heading>
+          <message>Additional check exposure occurred, but the learner now gives the bank a complete report and preserves the evidence privately.</message>
+          <transcript>A second altered check or delayed report remains part of the case. The learner now works with the real bank on stop payments, monitoring, account security, legitimate payment transitions, and private evidence preservation. Recovery is not guaranteed, but further harm may be reduced.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Additional exposure; strong recovery</label>
+          <heading>You responded fully after the delay</heading>
+          <explanation>The late safe action improves containment, while the outcome still acknowledges that more check activity occurred.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>A later safe choice cannot erase the second check or earlier exposure.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="check-late-recovery-risky" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>The additional check incident is only partly documented</heading>
+          <message>Some records or protections are in place, but the broader sequence and account exposure remain incompletely addressed.</message>
+          <transcript>The learner delayed reporting and then preserved only part of the evidence or recovery plan. The real bank may still need the complete check sequence, mail history, and access details. Additional loss has already occurred or remains under review.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Additional exposure; recovery incomplete</label>
+          <heading>Important parts of the incident remain unresolved</heading>
+          <explanation>Partial action is useful, but the second check and delayed containment require a broader bank-guided response.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>The earlier delay and incomplete recovery leave account risk open.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="check-late-recovery-dangerous" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>Additional loss and missing evidence remain unresolved</heading>
+          <message>The delayed report allowed more check exposure, and deleting records or avoiding the bank makes recovery harder.</message>
+          <transcript>More than one check may have been altered, and the learner has not preserved the full record or completed a bank-guided security review. The learner can still contact the real bank, explain the complete timeline, and seek trusted support without blame.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Additional loss; risk ongoing</label>
+          <heading>The earlier consequences remain active</heading>
+          <explanation>It is still possible to stop, preserve what remains, and move recovery to the real bank.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>The first mismatch was followed by additional exposure and incomplete recovery.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="check-recovery-safe" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>The bank has a complete report</heading>
+          <message>You documented the altered checks, reviewed the broader exposure, and preserved evidence privately.</message>
+          <transcript>The learner reports the mismatch, reviews related checks and mail exposure, follows the fictional bank's security guidance, and preserves a private evidence record. The bank will determine available options; the scenario does not promise reimbursement.</transcript>
+        </artifact>
+        <outcome classification="safe">
+          <label>Complete bank-centered response</label>
+          <heading>You responded to the full pattern</heading>
+          <explanation>Prompt reporting, broader account review, secure payment habits, and private evidence give the bank the clearest information without guaranteeing a particular recovery result.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="check-recovery-risky" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>The recovery record is incomplete</heading>
+          <message>The paper register helps, but processed images, alerts, or related-check details are missing.</message>
+          <transcript>The learner keeps part of the incident record but not the complete evidence. The bank may still help, and the learner can ask what records remain available in the account history. Future review should include the full check sequence and account exposure.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Partial recovery record</label>
+          <heading>Some useful information was preserved</heading>
+          <explanation>The response reduced part of the risk, but missing evidence or incomplete review can make follow-up harder.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="check-recovery-dangerous" stageName="Outcome and evidence" stageIndex="8">
+        <artifact type="review">
+          <heading>Evidence and account risks remain</heading>
+          <message>Deleting the records does not erase the altered checks or protect the exposed account.</message>
+          <transcript>The learner deletes useful records while altered checks and possible account exposure remain. This is not a personal failure. Contact the real bank through a trusted channel, explain the event fully, ask what records the bank retains, and follow its security guidance.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Recovery delayed</label>
+          <heading>The bank still needs the full story</heading>
+          <explanation>Acting now can still help document the fraud and secure the account, but recovery is not guaranteed.</explanation>
+        </outcome>
+      </scene>
+    </scenes>
+  </presentation>
+  <commands>
+    <command type="prompt" videoId="unfamiliar-check-alert" displayText="A simulated bank alert shows check 214 paid for $4,860 to an unfamiliar person.">
+      <options>
+        <option id="check-image-comparison" choiceId="inspect-through-known-app" text="Open the known bank app" />
+        <option id="check-image-comparison-delayed" choiceId="ask-family-before-review" text="Ask a family member first" />
+        <option id="check-image-comparison-delayed" choiceId="use-alert-email-button" text="Use the button in the alert email" />
+      </options>
+    </command>
+    <command type="prompt" videoId="check-image-comparison" displayText="Your register says $86 to a utility, but the processed image shows $4,860 to an unfamiliar payee.">
+      <options>
+        <option id="reporting-altered-check" choiceId="report-altered-check-now" text="Report an altered check now" />
+        <option id="reporting-altered-check-delayed" choiceId="wait-for-utility-confirmation" text="Wait for the utility company to confirm" />
+        <option id="reporting-altered-check-delayed" choiceId="change-register-to-match-image" text="Change the register to match the image" />
+      </options>
+    </command>
+    <command type="prompt" videoId="reporting-altered-check" displayText="The bank asks about the original check and every other outstanding check.">
+      <options>
+        <option id="missing-mail-sequence" choiceId="review-all-outstanding-checks" text="Review every outstanding check" />
+        <option id="missing-mail-sequence-delayed" choiceId="report-single-check-only" text="Report only check 214" />
+        <option id="missing-mail-sequence-delayed" choiceId="wait-for-money-to-return" text="Wait for the money to return automatically" />
+      </options>
+    </command>
+    <command type="prompt" videoId="missing-mail-sequence" displayText="The utility payment never arrived, and nearby check numbers are still outstanding.">
+      <options>
+        <option id="second-check-attempt" choiceId="review-mail-history-and-sequence" text="Review mail and nearby checks with the bank" />
+        <option id="second-check-attempt-compromised" choiceId="contact-utility-only" text="Contact only the utility company" />
+        <option id="second-check-attempt-compromised" choiceId="mail-replacements-same-box" text="Mail replacement checks from the same box" />
+      </options>
+    </command>
+    <command type="prompt" videoId="second-check-attempt" displayText="Check 215 appears as a pending $2,180 payment to another unfamiliar payee.">
+      <options>
+        <option id="account-security-decision" choiceId="ask-bank-about-broader-protection" text="Ask the bank about broader protection" />
+        <option id="account-security-decision-compromised" choiceId="wait-for-second-check-to-post" text="Wait for the second check to post" />
+        <option id="account-security-decision-compromised" choiceId="contact-unfamiliar-payee" text="Contact the unfamiliar payee" />
+      </options>
+    </command>
+    <command type="prompt" videoId="account-security-decision" displayText="The bank explains that the routing and account number printed on the checks may be exposed.">
+      <options>
+        <option id="future-payment-safety" choiceId="follow-bank-transition-plan" text="Follow the bank's transition plan" />
+        <option id="future-payment-safety-compromised" choiceId="shred-checks-only" text="Shred the remaining checks only" />
+        <option id="future-payment-safety-compromised" choiceId="close-account-without-plan" text="Close the account without a transition plan" />
+      </options>
+    </command>
+    <command type="prompt" videoId="future-payment-safety" displayText="The learner chooses how to reduce future mail and check exposure.">
+      <options>
+        <option id="outcome-evidence" choiceId="secure-mail-and-monitor" text="Use secure mail and monitor the account" />
+        <option id="outcome-evidence-compromised" choiceId="keep-mailing-monitor-weekly" text="Keep using the home mailbox and check weekly" />
+        <option id="outcome-evidence-compromised" choiceId="post-check-image-publicly" text="Post the altered check image publicly" />
+      </options>
+    </command>
+    <command type="prompt" videoId="outcome-evidence" displayText="The final review asks which evidence should be preserved privately.">
+      <options>
+        <option id="check-recovery-safe" choiceId="preserve-private-evidence" text="Preserve the full record privately" />
+        <option id="check-recovery-risky" choiceId="keep-register-only" text="Keep only the paper register" />
+        <option id="check-recovery-dangerous" choiceId="delete-incident-records" text="Delete every record" />
+      </options>
+    </command>
+    <command type="prompt" videoId="check-image-comparison-delayed" displayText="The check-image mismatch is confirmed after a delay.">
+      <options>
+        <option id="reporting-altered-check-delayed" choiceId="report-altered-check-now-delayed" text="Report an altered check now" />
+        <option id="reporting-altered-check-delayed" choiceId="wait-for-utility-confirmation-delayed" text="Wait for the utility company to confirm" />
+        <option id="reporting-altered-check-delayed" choiceId="change-register-to-match-image-delayed" text="Change the register to match the image" />
+      </options>
+    </command>
+    <command type="prompt" videoId="reporting-altered-check-delayed" displayText="The utility confirms the mailed check was altered, and the bank report is delayed.">
+      <options>
+        <option id="missing-mail-sequence-delayed" choiceId="review-all-outstanding-checks-delayed" text="Review every outstanding check" />
+        <option id="missing-mail-sequence-delayed" choiceId="report-single-check-only-delayed" text="Report only check 214" />
+        <option id="missing-mail-sequence-delayed" choiceId="wait-for-money-to-return-delayed" text="Wait for the money to return automatically" />
+      </options>
+    </command>
+    <command type="prompt" videoId="missing-mail-sequence-delayed" displayText="Nearby mailed checks are reviewed after delayed or incomplete reporting.">
+      <options>
+        <option id="second-check-attempt-compromised" choiceId="review-mail-history-and-sequence-delayed" text="Review mail and nearby checks with the bank" />
+        <option id="second-check-attempt-compromised" choiceId="contact-utility-only-delayed" text="Contact only the utility company" />
+        <option id="second-check-attempt-compromised" choiceId="mail-replacements-same-box-delayed" text="Mail replacement checks from the same box" />
+      </options>
+    </command>
+    <command type="prompt" videoId="second-check-attempt-compromised" displayText="A second altered check has reached the account after delayed containment.">
+      <options>
+        <option id="account-security-decision-compromised" choiceId="ask-bank-about-broader-protection-compromised" text="Ask the bank about broader protection" />
+        <option id="account-security-decision-compromised" choiceId="wait-for-second-check-to-post-compromised" text="Wait for the second check to post" />
+        <option id="account-security-decision-compromised" choiceId="contact-unfamiliar-payee-compromised" text="Contact the unfamiliar payee" />
+      </options>
+    </command>
+    <command type="prompt" videoId="account-security-decision-compromised" displayText="The real bank reviews the account after broader check exposure.">
+      <options>
+        <option id="future-payment-safety-compromised" choiceId="follow-bank-transition-plan-compromised" text="Follow the bank's transition plan" />
+        <option id="future-payment-safety-compromised" choiceId="shred-checks-only-compromised" text="Shred the remaining checks only" />
+        <option id="future-payment-safety-compromised" choiceId="close-account-without-plan-compromised" text="Close the account without a transition plan" />
+      </options>
+    </command>
+    <command type="prompt" videoId="future-payment-safety-compromised" displayText="The learner chooses future safeguards after additional check exposure.">
+      <options>
+        <option id="outcome-evidence-compromised" choiceId="secure-mail-and-monitor-compromised" text="Use secure mail and monitor the account" />
+        <option id="outcome-evidence-compromised" choiceId="keep-mailing-monitor-weekly-compromised" text="Keep using the home mailbox and check weekly" />
+        <option id="outcome-evidence-compromised" choiceId="post-check-image-publicly-compromised" text="Post the altered check image publicly" />
+      </options>
+    </command>
+    <command type="prompt" videoId="outcome-evidence-compromised" displayText="The final evidence review includes additional check exposure and delayed reporting.">
+      <options>
+        <option id="check-late-recovery-safe" choiceId="preserve-private-evidence-compromised" text="Preserve the full record privately" />
+        <option id="check-late-recovery-risky" choiceId="keep-register-only-compromised" text="Keep only the paper register" />
+        <option id="check-late-recovery-dangerous" choiceId="delete-incident-records-compromised" text="Delete every record" />
+      </options>
+    </command>
+    <command type="stop" videoId="check-late-recovery-safe" displayText="Additional check exposure occurred; a complete late recovery is underway." />
+    <command type="stop" videoId="check-late-recovery-risky" displayText="Additional check exposure occurred, and recovery remains incomplete." />
+    <command type="stop" videoId="check-late-recovery-dangerous" displayText="Additional check loss and unresolved account risk remain." />
+    <command type="stop" videoId="check-recovery-safe" displayText="The bank has a complete report and the evidence remains private." />
+    <command type="stop" videoId="check-recovery-risky" displayText="Part of the recovery record was preserved, but important evidence is missing." />
+    <command type="stop" videoId="check-recovery-dangerous" displayText="Evidence was deleted while account risks remain unresolved." />
+  </commands>
+</playlist>

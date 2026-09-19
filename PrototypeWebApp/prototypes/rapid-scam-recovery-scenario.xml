@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Book 2 / S20: Rapid Recovery After a Transfer or Account Takeover
+  This scenario teaches a prioritized response without promising reimbursement.
+  All institutions, callers, case details, and services are fictional.
+-->
+<playlist>
+	<presentation approximateStages="8">
+		<title>Rapid Recovery After a Scam</title>
+		<summary>Practice the first banking, account-security, evidence, and support steps after a suspicious transfer or account takeover.</summary>
+		<practiceGoal>Contact the real bank quickly, tell the full sequence, secure every connected access path, preserve evidence privately, and reject recovery-fee scams.</practiceGoal>
+		<stages>
+			<stage>Realization</stage>
+			<stage>Tell the bank</stage>
+			<stage>Transaction response</stage>
+			<stage>Account access</stage>
+			<stage>Connected channels</stage>
+			<stage>Preserve evidence</stage>
+			<stage>Recovery scam</stage>
+			<stage>Supportive plan</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>Delay gives a scammer more time to move money or change account access.</sign>
+				<sign>Incomplete disclosure can hide code sharing, remote access, profile changes, or new payees from the bank.</sign>
+				<sign>Changing only a password may leave unknown devices, sessions, payees, or contact details in place.</sign>
+				<sign>Email, phone, and computer access may let an attacker regain the bank account.</sign>
+				<sign>Deleting evidence or posting account screenshots publicly can make recovery harder or expose more information.</sign>
+				<sign>A guaranteed-recovery offer with an upfront fee is a common secondary scam.</sign>
+			</warningSigns>
+			<safestAction>Stop communicating with the scammer and call the real bank immediately using a trusted number. Explain the full sequence and follow the bank's guidance.</safestAction>
+			<realWorldActions>
+				<action>Ask the bank to review the transaction status and take every appropriate available action.</action>
+				<action>Record the bank's case number, while understanding that a recall or reimbursement cannot be guaranteed.</action>
+				<action>Terminate unknown sessions, remove devices and payees, correct profile details, and follow bank guidance on credentials or account replacement.</action>
+				<action>Secure email and phone accounts and remove remote-access tools from a trusted device.</action>
+				<action>Preserve texts, emails, call notes, receipts, and transaction details privately.</action>
+				<action>Use legitimate reporting channels and seek support from someone you trust.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="realization" stageName="Realization" stageIndex="1">
+				<artifact type="text-message">
+					<sender>Riverbend Bank</sender>
+					<senderStatus>Fictional transaction confirmation</senderStatus>
+					<heading>Your transfer was submitted</heading>
+					<message>You recognize that the recipient may be a scammer. You may also have shared a security code or allowed remote access.</message>
+					<transcript>A fictional Riverbend Bank confirmation shows that a transfer was submitted. The learner realizes the recipient may be a scammer and remembers possibly sharing a one-time code or allowing remote computer access. The first decision is who to contact.</transcript>
+				</artifact>
+				<question>Who should you contact first?</question>
+				<description>Fast bank contact and an end to scammer communication can limit additional harm.</description>
+				<warningSigns><sign>A suspicious transfer has already been submitted.</sign><sign>Account access may also be exposed.</sign><sign>The original scammer may continue calling.</sign></warningSigns>
+				<choices>
+					<choice choiceId="call-bank-immediately" destinationVideoId="bank-disclosure-strong" classification="safe">
+						<title>Call the bank immediately</title><subtitle>Use a trusted number and stop communicating with the scammer.</subtitle>
+						<feedback heading="The financial response starts promptly"><consequence>The bank can review the transaction and account access without the scammer influencing the conversation.</consequence><explanation>Fast contact may preserve more options, although it cannot guarantee recovery.</explanation><warningSigns><sign>The transfer and access risk both need review.</sign><sign>The scammer should not remain part of the response.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-family-before-bank" destinationVideoId="bank-disclosure-partial" classification="risky">
+						<title>Call a family member first</title><subtitle>Seek support and contact the bank later.</subtitle>
+						<feedback heading="Support helps, but bank action is delayed"><consequence>A trusted person can help, but the financial institution has not started reviewing the transfer.</consequence><explanation>Personal support is valuable. The bank should be contacted at the same time or immediately afterward.</explanation><warningSigns><sign>The transaction may be time-sensitive.</sign><sign>Account access may remain active.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-scammer-demand-return" destinationVideoId="bank-disclosure-partial" classification="dangerous">
+						<title>Call the scammer and demand the money back</title><subtitle>Try to resolve it directly.</subtitle>
+						<feedback heading="The scammer gains another opportunity"><consequence>The scammer may request a refund payment, gather more information, or pose as a recovery service.</consequence><explanation>The person who created the loss cannot be trusted to direct recovery.</explanation><warningSigns><sign>The original scammer controls the new conversation.</sign><sign>Another payment may be requested.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="bank-disclosure-strong" stageName="Tell the bank" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>Riverbend Bank fraud representative</caller>
+					<callerStatus>Reached through a trusted number</callerStatus>
+					<callStatus>Immediate bank contact</callStatus>
+					<heading>Please describe the complete sequence</heading>
+					<message>The representative asks how contact began, what was shared, how money moved, the amount, and the recipient.</message>
+					<transcript>The learner reaches the fictional bank immediately through a trusted number. The real fraud representative asks how the scam began, what information or codes were shared, whether remote access occurred, how the money moved, and who received it. The conversation is calm and nonjudgmental.</transcript>
+				</artifact>
+				<question>How much should you tell the bank?</question>
+				<description>Details that feel confusing or embarrassing may be essential to the response.</description>
+				<warningSigns><sign>A code or remote-access session can create separate risks.</sign><sign>A vague report may not identify every payment or access path.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-tell-full-sequence" destinationVideoId="transaction-response-strong" classification="safe"><title>Explain the full sequence</title><subtitle>Include every payment, code, link, and remote-access action.</subtitle><feedback heading="The bank receives complete information"><consequence>The representative can review transaction and access risks together.</consequence><explanation>Honest disclosure supports the fastest and most complete available response.</explanation><warningSigns><sign>Different actions require different protective steps.</sign><sign>Nothing needs to be hidden out of shame.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-describe-transfer-only" destinationVideoId="transaction-response-partial" classification="risky"><title>Describe only the transfer</title><subtitle>Leave out codes or remote access.</subtitle><feedback heading="The report misses account-access exposure"><consequence>The bank may review the payment but not the attacker's devices or profile changes.</consequence><explanation>Payment and access risks should be addressed together.</explanation><warningSigns><sign>The incident involved more than money movement.</sign><sign>Omitted details can leave a route back into the account.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-hide-event-vague-dispute" destinationVideoId="transaction-response-partial" classification="dangerous"><title>Submit only a vague dispute</title><subtitle>Avoid discussing how the transfer happened.</subtitle><feedback heading="The bank cannot see the whole risk"><consequence>Transaction and access responses may be delayed or incomplete.</consequence><explanation>The deception was the scammer's responsibility. Full facts help the bank respond.</explanation><warningSigns><sign>Important timing and access details are missing.</sign><sign>Shame is slowing a protective action.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="bank-disclosure-partial" stageName="Tell the bank" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>Riverbend Bank fraud representative</caller>
+					<callerStatus>Reached through a trusted number after a delay</callerStatus>
+					<callStatus>Bank contact now established</callStatus>
+					<heading>The bank still needs the complete sequence</heading>
+					<message>Even after a delay or renewed scammer contact, explain what was shared, how money moved, and what access was allowed.</message>
+					<transcript>After first calling someone else or returning to the scammer, the learner now reaches the fictional bank through a trusted number. The representative responds without judgment and asks for the complete sequence. Acting now still matters, even though time has passed.</transcript>
+				</artifact>
+				<question>What should you disclose now?</question>
+				<description>A delayed response can still become more complete with honest information.</description>
+				<warningSigns><sign>The original scammer had more time or contact.</sign><sign>Access and transaction details may both matter.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-tell-full-sequence" destinationVideoId="transaction-response-partial" classification="safe"><title>Explain the full sequence now</title><subtitle>Include the delay and every action taken.</subtitle><feedback heading="The bank can now address the full incident"><consequence>The delay cannot be undone, but the response becomes better informed.</consequence><explanation>Correcting course promptly is worthwhile. Complete facts still help.</explanation><warningSigns><sign>Additional scammer contact may have created new risks.</sign><sign>The whole timeline should be documented.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-describe-transfer-only" destinationVideoId="transaction-response-partial" classification="risky"><title>Describe only the transfer</title><subtitle>Do not mention codes or computer access.</subtitle><feedback heading="Access risks remain hidden"><consequence>The bank may miss devices, payees, or profile changes.</consequence><explanation>A transfer review alone does not secure an account takeover.</explanation><warningSigns><sign>The incident may include more than the transfer.</sign><sign>Connected systems remain unreviewed.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-hide-event-vague-dispute" destinationVideoId="transaction-response-partial" classification="dangerous"><title>Keep the explanation vague</title><subtitle>Avoid saying the scammer was contacted again.</subtitle><feedback heading="The response remains incomplete"><consequence>The bank cannot assess what happened during the added contact.</consequence><explanation>Scammers depend on embarrassment and confusion. Accurate information is protective.</explanation><warningSigns><sign>The renewed contact may have added another payment or disclosure.</sign><sign>Important facts are omitted.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="transaction-response-strong" stageName="Transaction response" stageIndex="3">
+				<artifact type="narration">
+					<heading>The bank reviews available transaction actions</heading>
+					<message>The bank may review status, attempt a recall or contact another institution, and document the fraud. It cannot promise recovery.</message>
+					<transcript>With prompt contact and complete information, the bank explains the available response. It may review whether the payment is pending, attempt a recall, contact another institution, and document the fraud. The bank records what it tries but does not promise that money will be recovered.</transcript>
+				</artifact>
+				<question>What should you request?</question>
+				<description>Ask for appropriate available action and keep realistic expectations.</description>
+				<warningSigns><sign>A scammer may falsely guarantee a refund.</sign><sign>Waiting gives the recipient more time.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-request-all-actions-case-number" destinationVideoId="account-access-strong" classification="safe"><title>Request every appropriate action and a case number</title><subtitle>Document the bank's response.</subtitle><feedback heading="The available financial response is documented"><consequence>The bank acts while keeping expectations realistic.</consequence><explanation>A case number helps organize follow-up; it is not a guarantee of reimbursement.</explanation><warningSigns><sign>Recovery may depend on timing and transaction status.</sign><sign>No legitimate party can promise the outcome.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-wait-for-voluntary-return" destinationVideoId="account-access-partial" classification="risky"><title>Wait for the recipient to return the money</title><subtitle>Give the situation more time.</subtitle><feedback heading="Time is lost"><consequence>The bank does not take every available action promptly.</consequence><explanation>An unknown recipient or scammer should not control the response timeline.</explanation><warningSigns><sign>The recipient has no verified reason to return funds.</sign><sign>Transaction options may narrow with delay.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-send-refund-request-payment" destinationVideoId="account-access-partial" classification="dangerous"><title>Send another payment labeled “refund request”</title><subtitle>Try to reverse the transfer yourself.</subtitle><feedback heading="A second authorized payment is created"><consequence>More money moves to a party connected to the scam.</consequence><explanation>A payment label does not force a refund or reverse a prior transaction.</explanation><warningSigns><sign>New money is sent to recover old money.</sign><sign>The bank did not direct this action.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="transaction-response-partial" stageName="Transaction response" stageIndex="3">
+				<artifact type="narration">
+					<heading>Available actions may be narrower, but acting now still matters</heading>
+					<message>The bank can document the event and review transaction status. It may attempt appropriate action, but cannot guarantee recovery.</message>
+					<transcript>Because contact was delayed or information was incomplete, some options may be narrower. The fictional bank can still document the event, review transaction status, and take appropriate available action. The learner should not abandon the response or expect a guarantee.</transcript>
+				</artifact>
+				<question>What should you do next?</question>
+				<description>A late action can still prevent further loss and improve documentation.</description>
+				<warningSigns><sign>Additional delay may reduce options.</sign><sign>Another payment would add loss rather than create a refund.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-request-all-actions-case-number" destinationVideoId="account-access-partial" classification="safe"><title>Ask for every appropriate action and a case number</title><subtitle>Continue the response now.</subtitle><feedback heading="You corrected course"><consequence>The bank documents and reviews the transaction with the information available.</consequence><explanation>Prompt action is still worthwhile even when an earlier step was delayed.</explanation><warningSigns><sign>The outcome remains uncertain.</sign><sign>Account access also needs review.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-wait-for-voluntary-return" destinationVideoId="account-access-partial" classification="risky"><title>Wait for the recipient to return the money</title><subtitle>Delay bank action again.</subtitle><feedback heading="The response is delayed further"><consequence>The recipient remains in control of the timing.</consequence><explanation>Documenting and acting through the bank is safer than waiting for an unverified recipient.</explanation><warningSigns><sign>No verified refund process exists.</sign><sign>Time-sensitive options may narrow.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-send-refund-request-payment" destinationVideoId="account-access-partial" classification="dangerous"><title>Send another “refund request” payment</title><subtitle>Try to make the recipient respond.</subtitle><feedback heading="The loss increases"><consequence>A new payment leaves the account without reversing the first.</consequence><explanation>Sending more money cannot compel an unknown recipient to return earlier funds.</explanation><warningSigns><sign>The new payment uses the same unsafe path.</sign><sign>The bank did not recommend it.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="account-access-strong" stageName="Account access" stageIndex="4">
+				<artifact type="fake-website">
+					<domain>riverbend-bank.example/security-review</domain>
+					<heading>Review access and money-movement settings</heading>
+					<message>An unfamiliar device, changed contact detail, or new payee appears in this nonfunctional training review.</message>
+					<transcript>The fictional bank's nonfunctional security review shows an unfamiliar device, a changed contact detail, or a newly added payee. The bank recommends terminating unknown sessions, removing unknown devices and payees, correcting the profile, and following its guidance on credentials or account replacement.</transcript>
+				</artifact>
+				<question>What should be secured?</question>
+				<description>Server-side account changes remain even if an app is deleted.</description>
+				<warningSigns><sign>An unfamiliar device can preserve access.</sign><sign>A changed phone or email can redirect future security messages.</sign><sign>A new payee creates another money path.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-secure-sessions-devices-payees-profile" destinationVideoId="connected-channels-strong" classification="safe"><title>Secure sessions, devices, payees, and profile details</title><subtitle>Follow the bank's full access review.</subtitle><feedback heading="The account is secured comprehensively"><consequence>Known access paths and unauthorized settings are addressed together.</consequence><explanation>A full review reduces the chance that the attacker can return through a saved setting.</explanation><warningSigns><sign>Several settings may have changed.</sign><sign>Password-only recovery may miss them.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-change-password-only" destinationVideoId="connected-channels-partial" classification="risky"><title>Change only the password</title><subtitle>Leave devices, payees, and profile details unchanged.</subtitle><feedback heading="One important step leaves gaps"><consequence>Unknown sessions or money-movement settings may remain.</consequence><explanation>Account takeover recovery should cover every exposed setting, not only the password.</explanation><warningSigns><sign>Devices and payees exist separately from the password.</sign><sign>Contact details may support future resets.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-delete-banking-app" destinationVideoId="connected-channels-partial" classification="dangerous"><title>Delete the banking app</title><subtitle>Assume removing the app ends the attacker's access.</subtitle><feedback heading="Server-side access remains"><consequence>The unfamiliar device, payee, and profile changes are not removed.</consequence><explanation>Deleting a local app does not change the account settings stored by the bank.</explanation><warningSigns><sign>The attacker may be using a different device.</sign><sign>The account itself remains unchanged.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="account-access-partial" stageName="Account access" stageIndex="4">
+				<artifact type="fake-website">
+					<domain>riverbend-bank.example/security-review</domain>
+					<heading>Review every access path now</heading>
+					<message>Earlier delay or incomplete reporting makes a full device, payee, and profile review especially important.</message>
+					<transcript>The nonfunctional training review shows an unfamiliar device, changed contact details, or a new payee. Even though the response is already partial, the learner can still terminate sessions, remove unauthorized settings, and follow the bank's guidance.</transcript>
+				</artifact>
+				<question>How complete should the account review be?</question>
+				<description>Correcting course now can still stop future access.</description>
+				<warningSigns><sign>Unknown settings may outlast a password change.</sign><sign>Earlier scammer contact may have added more access.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-secure-sessions-devices-payees-profile" destinationVideoId="connected-channels-partial" classification="safe"><title>Secure every listed setting</title><subtitle>Terminate sessions and remove unknown devices and payees.</subtitle><feedback heading="Further account access is limited"><consequence>The bank-side settings are corrected, although earlier delay or loss remains.</consequence><explanation>A complete access review is worthwhile at any point.</explanation><warningSigns><sign>The incident may have changed several settings.</sign><sign>Connected email and phone still need review.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-change-password-only" destinationVideoId="connected-channels-partial" classification="risky"><title>Change only the password</title><subtitle>Skip the device, payee, and profile checks.</subtitle><feedback heading="Some access routes may remain"><consequence>The attacker may still have a session or changed recovery detail.</consequence><explanation>Password changes are important but not always sufficient after account takeover.</explanation><warningSigns><sign>Unknown devices can remain authorized.</sign><sign>New payees can remain available.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-delete-banking-app" destinationVideoId="connected-channels-partial" classification="dangerous"><title>Delete the banking app</title><subtitle>Take no bank-side security action.</subtitle><feedback heading="The account remains exposed"><consequence>Deleting the app changes only the learner's device.</consequence><explanation>The bank must help address sessions, settings, and money-movement changes.</explanation><warningSigns><sign>The attacker may be using another device.</sign><sign>The bank account still exists online.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="connected-channels-strong" stageName="Connected channels" stageIndex="5">
+				<artifact type="narration">
+					<heading>Secure the systems that can reset the bank account</heading>
+					<message>Review email sessions, the mobile-carrier PIN, phone service, and remote-access software from a trusted device.</message>
+					<transcript>The bank account review is complete, but email, phone, or computer access may let an attacker regain control. The learner should use a trusted device to secure email sessions and recovery details, contact the mobile carrier about account security, and remove unauthorized remote-access tools.</transcript>
+				</artifact>
+				<question>Which connected systems should be reviewed?</question>
+				<description>Protect the channels used for password resets and security messages.</description>
+				<warningSigns><sign>Email can reset financial accounts.</sign><sign>A compromised phone number can receive codes.</sign><sign>A remotely controlled computer can expose new credentials.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-secure-email-phone-computer" destinationVideoId="evidence-strong" classification="safe"><title>Secure email, phone, and computer from a trusted device</title><subtitle>Review every connected channel.</subtitle><feedback heading="The recovery paths are protected too"><consequence>The attacker loses common routes for regaining bank access.</consequence><explanation>Bank security is stronger when the connected email, phone, and computer are also trusted.</explanation><warningSigns><sign>Reset channels are part of account security.</sign><sign>The original device may not be safe for recovery.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-secure-bank-only" destinationVideoId="evidence-partial" classification="risky"><title>Secure only the bank account</title><subtitle>Leave email and phone unchanged.</subtitle><feedback heading="A route back into the account may remain"><consequence>An attacker could use a compromised email or phone for another reset.</consequence><explanation>Connected accounts are part of the bank's security boundary.</explanation><warningSigns><sign>Security codes may go to the phone or email.</sign><sign>Recovery details may already be exposed.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-use-controlled-computer-for-passwords" destinationVideoId="evidence-partial" classification="dangerous"><title>Change passwords on the remotely controlled computer</title><subtitle>Use the same device for recovery.</subtitle><feedback heading="New credentials may be observed"><consequence>Unauthorized remote-access software could capture or alter recovery actions.</consequence><explanation>A trusted device should be used until the computer is inspected and remote tools are removed.</explanation><warningSigns><sign>The computer may still be controlled remotely.</sign><sign>New passwords could be exposed immediately.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="connected-channels-partial" stageName="Connected channels" stageIndex="5">
+				<artifact type="narration">
+					<heading>Connected systems may still reopen the account</heading>
+					<message>Review email, phone service, and remote-access software, even if some bank settings remain unresolved.</message>
+					<transcript>The recovery is already incomplete because of delay, missing information, or bank settings that remain. Email, phone, and computer security still matter. The learner can use a trusted device to protect those connected systems and then return to the bank checklist.</transcript>
+				</artifact>
+				<question>What should be secured next?</question>
+				<description>Each completed layer can prevent another takeover.</description>
+				<warningSigns><sign>The attacker may control a reset channel.</sign><sign>An unsafe device can undermine new credentials.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-secure-email-phone-computer" destinationVideoId="evidence-partial" classification="safe"><title>Secure email, phone, and computer from a trusted device</title><subtitle>Complete the connected-channel review now.</subtitle><feedback heading="Another major exposure is addressed"><consequence>Reset channels and remote access receive attention.</consequence><explanation>Correcting this layer can still prevent additional account takeover.</explanation><warningSigns><sign>The bank checklist may still need completion.</sign><sign>Use only a trusted device.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-secure-bank-only" destinationVideoId="evidence-partial" classification="risky"><title>Focus only on the bank</title><subtitle>Do not review email or phone access.</subtitle><feedback heading="Connected reset channels remain exposed"><consequence>The attacker may be able to regain access later.</consequence><explanation>Recovery needs to include the systems that receive codes and password resets.</explanation><warningSigns><sign>Email and phone remain unreviewed.</sign><sign>The earlier account changes suggest broader access.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-use-controlled-computer-for-passwords" destinationVideoId="evidence-partial" classification="dangerous"><title>Use the possibly controlled computer</title><subtitle>Change every password on that device.</subtitle><feedback heading="The recovery work may be exposed"><consequence>New credentials could be seen or changed by remote software.</consequence><explanation>Move recovery to a trusted device and arrange a trusted inspection of the computer.</explanation><warningSigns><sign>Remote access may still be installed.</sign><sign>The device cannot yet be trusted.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="evidence-strong" stageName="Preserve evidence" stageIndex="6">
+				<artifact type="narration">
+					<heading>Preserve the timeline privately</heading>
+					<message>Save texts, emails, call notes, receipts, and transaction details for the bank and legitimate reporting channels.</message>
+					<transcript>The learner has texts, emails, call notes, receipts, and transaction details. The best approach is to save private copies, write a simple timeline, and provide the records to the bank or legitimate reporting channels without posting account information publicly.</transcript>
+				</artifact>
+				<question>What should happen to the evidence?</question>
+				<description>Preserve useful records while protecting financial and personal information.</description>
+				<warningSigns><sign>Deleting records can erase useful timing and recipient details.</sign><sign>Public screenshots can reveal sensitive information.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-save-private-timeline" destinationVideoId="recovery-scam-strong" classification="safe"><title>Save private copies and a timeline</title><subtitle>Share them only with the bank or legitimate channels.</subtitle><feedback heading="Useful evidence is preserved safely"><consequence>The bank can follow the sequence without public exposure of account details.</consequence><explanation>A simple private timeline supports the response and later reporting.</explanation><warningSigns><sign>Evidence contains sensitive information.</sign><sign>The complete sequence matters.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-keep-receipt-only" destinationVideoId="recovery-scam-partial" classification="risky"><title>Keep only the transaction receipt</title><subtitle>Discard the messages and call notes.</subtitle><feedback heading="Some evidence remains, but the story is incomplete"><consequence>The transfer is documented, while persuasion and access details are harder to reconstruct.</consequence><explanation>Messages and notes can help connect the payment to the broader scam.</explanation><warningSigns><sign>The incident involved more than the final transaction.</sign><sign>Access details may be lost.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-delete-or-post-evidence" destinationVideoId="recovery-scam-partial" classification="dangerous"><title>Delete everything or post screenshots publicly</title><subtitle>Remove embarrassment or warn others immediately.</subtitle><feedback heading="Evidence or privacy is harmed"><consequence>Useful records may disappear, or sensitive details may become public.</consequence><explanation>Save evidence privately. Public account screenshots can create new exposure.</explanation><warningSigns><sign>Financial identifiers may appear in images.</sign><sign>Deleted records cannot assist the bank.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="evidence-partial" stageName="Preserve evidence" stageIndex="6">
+				<artifact type="narration">
+					<heading>Evidence can still strengthen an incomplete response</heading>
+					<message>Save the messages, receipts, call notes, and transaction details privately, even if earlier recovery steps were delayed.</message>
+					<transcript>Some recovery steps remain incomplete, but evidence preservation is still useful. The learner can save private copies of texts, emails, call notes, receipts, and transaction details and create a timeline for the bank and legitimate reporting channels.</transcript>
+				</artifact>
+				<question>How should you handle the records now?</question>
+				<description>It is not too late to preserve and organize the available information.</description>
+				<warningSigns><sign>Delay can make memory less precise.</sign><sign>Public sharing may expose account details.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-save-private-timeline" destinationVideoId="recovery-scam-partial" classification="safe"><title>Save private copies and make a timeline</title><subtitle>Provide them to the bank or legitimate channels.</subtitle><feedback heading="The response becomes better documented"><consequence>The remaining evidence is preserved without exposing it publicly.</consequence><explanation>Correcting course now can still help the bank understand the event.</explanation><warningSigns><sign>Complete records may not be available.</sign><sign>Keep sensitive details private.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-keep-receipt-only" destinationVideoId="recovery-scam-partial" classification="risky"><title>Keep only the receipt</title><subtitle>Do not preserve messages or notes.</subtitle><feedback heading="The context remains incomplete"><consequence>The payment is visible, but the account-access and persuasion sequence may be unclear.</consequence><explanation>Preserve whatever remains before more information is lost.</explanation><warningSigns><sign>The incident involved several channels.</sign><sign>Earlier omissions continue to limit the response.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-delete-or-post-evidence" destinationVideoId="recovery-scam-partial" classification="dangerous"><title>Delete the records or post them publicly</title><subtitle>Remove the reminders or warn others.</subtitle><feedback heading="The recovery loses evidence or privacy"><consequence>The bank has fewer records, or sensitive information is exposed.</consequence><explanation>Keep private copies and share them only with appropriate recipients.</explanation><warningSigns><sign>Account details may appear in screenshots.</sign><sign>Deleted evidence cannot be restored easily.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="recovery-scam-strong" stageName="Recovery scam" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>Asset Recovery Network</caller>
+					<callerStatus>Fictional service; unsolicited and unverified</callerStatus>
+					<callStatus>Unexpected follow-up</callStatus>
+					<heading>Guaranteed recovery for an upfront fee</heading>
+					<message>We have inside contacts and can recover every dollar. Pay a processing fee today to begin.</message>
+					<transcript>After the learner completes the main recovery steps, an unsolicited caller from the fictional Asset Recovery Network promises to recover every dollar through inside contacts. The caller demands an upfront processing fee. Guaranteed recovery and advance fees are warning signs of a secondary scam.</transcript>
+				</artifact>
+				<question>How would you respond to the recovery offer?</question>
+				<description>A strong response should not be undone by a guaranteed-recovery promise.</description>
+				<warningSigns><sign>The contact is unsolicited.</sign><sign>Recovery is guaranteed.</sign><sign>An upfront fee is required.</sign></warningSigns>
+				<choices>
+					<choice choiceId="strong-refuse-recovery-fee" destinationVideoId="strong-recovery" classification="safe"><title>Refuse and notify the bank</title><subtitle>Use only legitimate reporting or legal channels.</subtitle><feedback heading="You avoided the secondary scam"><consequence>No fee is paid, and the bank is told about the new contact.</consequence><explanation>No outsider can guarantee recovery. The prioritized plan remains intact.</explanation><warningSigns><sign>The caller promised certainty that the bank did not.</sign><sign>Money was required before any service.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-request-written-proof" destinationVideoId="partial-recovery" classification="risky"><title>Ask for written proof while staying in contact</title><subtitle>Do not pay yet.</subtitle><feedback heading="The scammer sends polished but unverified material"><consequence>No immediate fee is paid, but contact and pressure continue.</consequence><explanation>Documents supplied by the recovery seller are not independent proof.</explanation><warningSigns><sign>The guaranteed claim remains.</sign><sign>The caller still controls all evidence.</sign></warningSigns></feedback></choice>
+					<choice choiceId="strong-pay-recovery-fee" destinationVideoId="secondary-recovery-loss" classification="dangerous"><title>Pay the upfront recovery fee</title><subtitle>Trust the inside-contact promise.</subtitle><feedback heading="A second loss occurs"><consequence>The fee is sent, and the service invents another charge or disappears.</consequence><explanation>Advance-fee recovery promises often target people immediately after a scam.</explanation><warningSigns><sign>The service guaranteed an uncertain outcome.</sign><sign>Payment came before any verified work.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="recovery-scam-partial" stageName="Recovery scam" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>Asset Recovery Network</caller>
+					<callerStatus>Fictional service targeting an incomplete recovery</callerStatus>
+					<callStatus>Unexpected follow-up</callStatus>
+					<heading>A guaranteed shortcut</heading>
+					<message>The caller promises complete recovery for an upfront fee and says the bank is moving too slowly.</message>
+					<transcript>While some recovery steps remain incomplete, the fictional Asset Recovery Network calls unexpectedly. It promises a guaranteed shortcut and asks for an upfront fee. The offer exploits uncertainty and frustration. It is not part of the bank's response.</transcript>
+				</artifact>
+				<question>What should you do with this offer?</question>
+				<description>Return to the real bank and finish the remaining checklist instead of paying for a guarantee.</description>
+				<warningSigns><sign>The caller uses frustration with the recovery process.</sign><sign>The service guarantees a result.</sign><sign>An upfront payment is required.</sign></warningSigns>
+				<choices>
+					<choice choiceId="partial-refuse-recovery-fee" destinationVideoId="partial-recovery" classification="safe"><title>Refuse and return to the bank checklist</title><subtitle>Tell the bank about the new contact.</subtitle><feedback heading="You prevented a second loss"><consequence>No fee is paid, and the incomplete recovery can still be strengthened.</consequence><explanation>Avoiding the secondary scam is important even when earlier steps were delayed.</explanation><warningSigns><sign>The guarantee was unrealistic.</sign><sign>Remaining account-security work still needs attention.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-request-written-proof" destinationVideoId="partial-recovery" classification="risky"><title>Ask for proof and keep talking</title><subtitle>Do not pay yet.</subtitle><feedback heading="Pressure continues"><consequence>The caller supplies self-created credentials and another deadline.</consequence><explanation>Verification must come from a source the seller does not control.</explanation><warningSigns><sign>The caller provides their own proof.</sign><sign>The upfront fee remains.</sign></warningSigns></feedback></choice>
+					<choice choiceId="partial-pay-recovery-fee" destinationVideoId="secondary-recovery-loss" classification="dangerous"><title>Pay the upfront recovery fee</title><subtitle>Use the promised shortcut.</subtitle><feedback heading="The recovery scam creates another loss"><consequence>The service demands more or stops responding.</consequence><explanation>No legitimate helper can guarantee that stolen money will be returned.</explanation><warningSigns><sign>The fee was required before verified work.</sign><sign>The promise contradicted the real bank's uncertainty.</sign></warningSigns></feedback></choice>
+				</choices>
+			</scene>
+
+			<scene videoId="strong-recovery" stageName="Supportive plan" stageIndex="8">
+				<artifact type="review">
+					<heading>A complete rapid-recovery plan is underway</heading>
+					<message>The bank was contacted promptly, the full truth was shared, transaction and access risks were reviewed, connected channels were secured, evidence was preserved, and the recovery scam was refused.</message>
+					<transcript>The learner followed a prioritized recovery plan: immediate trusted bank contact, complete disclosure, appropriate transaction review with a case number, removal of unknown devices and payees, correction of profile details, protection of email and phone accounts, removal of remote access from a trusted device, private evidence preservation, legitimate reporting, and trusted support. The bank cannot promise reimbursement, but further harm is limited. Being manipulated is not a personal failure.</transcript>
+					<media video="media/rapid-scam-recovery/reassurance.mp4" available="false" />
+				</artifact>
+				<outcome classification="safe"><label>Strong recovery response</label><heading>You acted quickly and protected every connected path</heading><explanation>The response is complete and realistic. It improves the available options without making a promise about recovering the transferred money.</explanation></outcome>
+				<warningSigns><sign>Recovery needed both financial and access actions.</sign><sign>A guaranteed-recovery offer could have caused another loss.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="partial-recovery" stageName="Supportive plan" stageIndex="8">
+				<artifact type="review">
+					<heading>Further harm paused, but the recovery checklist is incomplete</heading>
+					<message>You avoided a recovery fee. Return to the real bank and complete the unresolved transaction, access, connected-channel, or evidence steps.</message>
+					<transcript>The learner refuses or delays the secondary recovery offer, but one or more earlier steps remain incomplete. The next plan is to contact the real bank again, disclose any omitted details, request appropriate transaction review, finish device, payee, and profile checks, secure email and phone accounts from a trusted device, and preserve remaining evidence. It is still worthwhile to act now.</transcript>
+				</artifact>
+				<outcome classification="risky"><label>Recovery partly complete</label><heading>You prevented another loss and can still close the gaps</heading><explanation>Delay or an incomplete step does not make recovery pointless. Use the prioritized checklist and trusted support to finish the response.</explanation></outcome>
+				<warningSigns><sign>An earlier delay or omission left some risk unresolved.</sign><sign>The recovery seller remained in contact or supplied its own proof.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="secondary-recovery-loss" stageName="Supportive plan" stageIndex="8">
+				<artifact type="review">
+					<heading>The guaranteed-recovery offer causes a second loss</heading>
+					<message>The upfront fee does not recover the original transfer. The service demands more money or stops responding.</message>
+					<transcript>The learner pays the fictional recovery service. The original money is not returned, and the service either demands another fee or disappears. This secondary loss is another deliberate manipulation, not the learner's fault. Stop contact, tell the real bank, preserve the new evidence, secure any information shared with the service, and seek trusted support.</transcript>
+				</artifact>
+				<outcome classification="dangerous"><label>Secondary scam loss</label><heading>A false guarantee extended the harm</heading><explanation>No one can guarantee recovery of scam losses. Returning to the bank and completing the security checklist can still protect remaining accounts and information.</explanation></outcome>
+				<warningSigns><sign>The service guaranteed an uncertain result.</sign><sign>An upfront fee led to another demand.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="realization" displayText="A transfer confirmation appears, and account access may also have been exposed."><options><option id="bank-disclosure-strong" choiceId="call-bank-immediately" text="Call the bank immediately" /><option id="bank-disclosure-partial" choiceId="call-family-before-bank" text="Call a family member first" /><option id="bank-disclosure-partial" choiceId="call-scammer-demand-return" text="Call the scammer and demand the money back" /></options></command>
+		<command type="prompt" videoId="bank-disclosure-strong" displayText="The real bank asks for the complete sequence immediately."><options><option id="transaction-response-strong" choiceId="strong-tell-full-sequence" text="Explain the full sequence" /><option id="transaction-response-partial" choiceId="strong-describe-transfer-only" text="Describe only the transfer" /><option id="transaction-response-partial" choiceId="strong-hide-event-vague-dispute" text="Submit only a vague dispute" /></options></command>
+		<command type="prompt" videoId="bank-disclosure-partial" displayText="After a delay or renewed scammer contact, the real bank asks for the full sequence."><options><option id="transaction-response-partial" choiceId="partial-tell-full-sequence" text="Explain the full sequence now" /><option id="transaction-response-partial" choiceId="partial-describe-transfer-only" text="Describe only the transfer" /><option id="transaction-response-partial" choiceId="partial-hide-event-vague-dispute" text="Keep the explanation vague" /></options></command>
+		<command type="prompt" videoId="transaction-response-strong" displayText="The bank explains available transaction actions without promising recovery."><options><option id="account-access-strong" choiceId="strong-request-all-actions-case-number" text="Request every appropriate action and a case number" /><option id="account-access-partial" choiceId="strong-wait-for-voluntary-return" text="Wait for the recipient to return the money" /><option id="account-access-partial" choiceId="strong-send-refund-request-payment" text="Send another payment labeled refund request" /></options></command>
+		<command type="prompt" videoId="transaction-response-partial" displayText="Some options may be narrower, but the bank can still document and review the transfer."><options><option id="account-access-partial" choiceId="partial-request-all-actions-case-number" text="Ask for every appropriate action and a case number" /><option id="account-access-partial" choiceId="partial-wait-for-voluntary-return" text="Wait for the recipient to return the money" /><option id="account-access-partial" choiceId="partial-send-refund-request-payment" text="Send another refund request payment" /></options></command>
+		<command type="prompt" videoId="account-access-strong" displayText="The bank finds an unfamiliar device, changed contact details, or a new payee."><options><option id="connected-channels-strong" choiceId="strong-secure-sessions-devices-payees-profile" text="Secure sessions, devices, payees, and profile details" /><option id="connected-channels-partial" choiceId="strong-change-password-only" text="Change only the password" /><option id="connected-channels-partial" choiceId="strong-delete-banking-app" text="Delete the banking app" /></options></command>
+		<command type="prompt" videoId="account-access-partial" displayText="Unknown devices, payees, or profile changes still require review."><options><option id="connected-channels-partial" choiceId="partial-secure-sessions-devices-payees-profile" text="Secure every listed setting" /><option id="connected-channels-partial" choiceId="partial-change-password-only" text="Change only the password" /><option id="connected-channels-partial" choiceId="partial-delete-banking-app" text="Delete the banking app" /></options></command>
+		<command type="prompt" videoId="connected-channels-strong" displayText="Email, phone, and computer access may be used to regain the bank account."><options><option id="evidence-strong" choiceId="strong-secure-email-phone-computer" text="Secure email, phone, and computer from a trusted device" /><option id="evidence-partial" choiceId="strong-secure-bank-only" text="Secure only the bank account" /><option id="evidence-partial" choiceId="strong-use-controlled-computer-for-passwords" text="Change passwords on the remotely controlled computer" /></options></command>
+		<command type="prompt" videoId="connected-channels-partial" displayText="Connected reset channels may still reopen the account."><options><option id="evidence-partial" choiceId="partial-secure-email-phone-computer" text="Secure email, phone, and computer from a trusted device" /><option id="evidence-partial" choiceId="partial-secure-bank-only" text="Focus only on the bank" /><option id="evidence-partial" choiceId="partial-use-controlled-computer-for-passwords" text="Use the possibly controlled computer" /></options></command>
+		<command type="prompt" videoId="evidence-strong" displayText="Texts, emails, call notes, receipts, and transaction details can support the response."><options><option id="recovery-scam-strong" choiceId="strong-save-private-timeline" text="Save private copies and a timeline" /><option id="recovery-scam-partial" choiceId="strong-keep-receipt-only" text="Keep only the transaction receipt" /><option id="recovery-scam-partial" choiceId="strong-delete-or-post-evidence" text="Delete everything or post screenshots publicly" /></options></command>
+		<command type="prompt" videoId="evidence-partial" displayText="Evidence can still strengthen an incomplete response."><options><option id="recovery-scam-partial" choiceId="partial-save-private-timeline" text="Save private copies and make a timeline" /><option id="recovery-scam-partial" choiceId="partial-keep-receipt-only" text="Keep only the receipt" /><option id="recovery-scam-partial" choiceId="partial-delete-or-post-evidence" text="Delete the records or post them publicly" /></options></command>
+		<command type="prompt" videoId="recovery-scam-strong" displayText="An unsolicited recovery service guarantees a refund for an upfront fee."><options><option id="strong-recovery" choiceId="strong-refuse-recovery-fee" text="Refuse and notify the bank" /><option id="partial-recovery" choiceId="strong-request-written-proof" text="Ask for written proof while staying in contact" /><option id="secondary-recovery-loss" choiceId="strong-pay-recovery-fee" text="Pay the upfront recovery fee" /></options></command>
+		<command type="prompt" videoId="recovery-scam-partial" displayText="A recovery service offers a guaranteed shortcut while earlier steps remain incomplete."><options><option id="partial-recovery" choiceId="partial-refuse-recovery-fee" text="Refuse and return to the bank checklist" /><option id="partial-recovery" choiceId="partial-request-written-proof" text="Ask for proof and keep talking" /><option id="secondary-recovery-loss" choiceId="partial-pay-recovery-fee" text="Pay the upfront recovery fee" /></options></command>
+		<command type="stop" videoId="strong-recovery" displayText="A complete rapid-recovery plan is underway without any guarantee of reimbursement." />
+		<command type="stop" videoId="partial-recovery" displayText="A second loss was avoided, but one or more recovery steps remain incomplete." />
+		<command type="stop" videoId="secondary-recovery-loss" displayText="A guaranteed-recovery offer caused a second financial loss." />
+	</commands>
+</playlist>

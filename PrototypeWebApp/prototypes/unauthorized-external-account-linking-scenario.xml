@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist>
+  <presentation approximateStages="8">
+    <title>Unauthorized External Account Linking</title>
+    <summary>Practice responding to unfamiliar microdeposits, a linked external account, a verification call, and a pending bank-to-bank transfer.</summary>
+    <practiceGoal>Recognize that tiny deposits can be part of account-link verification, refuse to confirm them for an unexpected caller, and review every access and money-movement setting with the real bank.</practiceGoal>
+    <stages>
+      <stage>Tiny deposits</stage>
+      <stage>Verification call</stage>
+      <stage>Linked account</stage>
+      <stage>Pending ACH transfer</stage>
+      <stage>Fake cancellation page</stage>
+      <stage>Full security review</stage>
+      <stage>Account transition</stage>
+      <stage>Final outcome</stage>
+    </stages>
+    <finalReview>
+      <warningSigns>
+        <sign>Two tiny deposits appear from an institution you do not recognize.</sign>
+        <sign>An external bank account is linked without your permission.</sign>
+        <sign>An unexpected caller asks for the exact microdeposit amounts.</sign>
+        <sign>A pending ACH transfer goes to the unfamiliar external account.</sign>
+        <sign>A cancellation link requests online-banking credentials or another security code.</sign>
+      </warningSigns>
+      <safestAction>Open the bank app or website you already trust, inspect linked accounts, and contact the bank immediately about any link or transfer you did not authorize.</safestAction>
+      <realWorldActions>
+        <action>Do not tell an unexpected caller the exact microdeposit amounts and do not send a test payment to an unfamiliar account.</action>
+        <action>Ask the real bank to lock or remove unauthorized links and review pending transfers while they are still pending.</action>
+        <action>Review linked accounts, active devices, sessions, contact details, payees, and recent transactions together.</action>
+        <action>Ignore caller-supplied cancellation forms. Continue only through the trusted bank channel.</action>
+        <action>If the bank recommends account replacement, use its transition plan for Social Security deposits, pensions, bills, and other legitimate activity. Recovery outcomes vary.</action>
+      </realWorldActions>
+    </finalReview>
+    <scenes>
+      <scene videoId="tiny-deposits" stageName="Tiny deposits" stageIndex="1">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>External-account activity</heading>
+          <message>The known bank app shows deposits of $0.07 and $0.13 from an unfamiliar institution. A notice says an external account was added.</message>
+          <requestedInformation>
+            <item>Deposit: $0.07</item>
+            <item>Deposit: $0.13</item>
+            <item>External account: Unrecognized</item>
+          </requestedInformation>
+          <transcript>The simulated known bank app shows two small deposits, one for seven cents and one for thirteen cents, from an unfamiliar institution. A notice says an external account was added. A microdeposit is a tiny amount sometimes used to confirm access to an account. An external account is an account at another financial institution linked for bank-to-bank transfers.</transcript>
+        </artifact>
+        <question>Are the amounts too small to matter?</question>
+        <description>Tiny amounts can be the setup step for a much larger unauthorized transfer.</description>
+        <warningSigns>
+          <sign>The learner does not recognize the depositing institution.</sign>
+          <sign>The learner did not add an external account.</sign>
+          <sign>Two small deposits may be part of a verification process.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="inspect-linked-accounts-now" destinationVideoId="verification-call" classification="safe">
+            <title>Inspect linked accounts in the known app</title>
+            <subtitle>Treat the small entries as possible setup activity.</subtitle>
+            <feedback heading="You looked beyond the small dollar amounts">
+              <consequence>The unfamiliar link can be reviewed before a larger transfer is completed.</consequence>
+              <explanation>The size of a microdeposit does not measure the size of the risk it may be verifying.</explanation>
+              <warningSigns>
+                <sign>The external-account notice was not expected.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="note-and-wait-for-statement" destinationVideoId="verification-call-compromised" classification="risky">
+            <title>Make a note and wait for the statement</title>
+            <subtitle>Review the entries at the end of the month.</subtitle>
+            <feedback heading="You noticed the entries but delayed the account review">
+              <consequence>The external link may become active while the learner waits.</consequence>
+              <explanation>Unknown account-link activity deserves prompt attention even when the amounts are only a few cents.</explanation>
+              <warningSigns>
+                <sign>The notice says a new external account exists now.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ignore-positive-deposits" destinationVideoId="verification-call-compromised" classification="dangerous">
+            <title>Ignore the deposits because they added money</title>
+            <subtitle>Assume a positive amount cannot be harmful.</subtitle>
+            <feedback heading="The verification activity continued unnoticed">
+              <consequence>The attacker may complete the external-account link and prepare a withdrawal.</consequence>
+              <explanation>Microdeposits can be verification steps, not gifts or harmless interest.</explanation>
+              <warningSigns>
+                <sign>The source and linked account are unfamiliar.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="verification-call" stageName="Verification call" stageIndex="2">
+        <artifact type="phone-call">
+          <caller>Riverbend Bank Account Verification</caller>
+          <callerStatus>Incoming caller; identity not verified; fictional bank name</callerStatus>
+          <callStatus>Unexpected call after the microdeposits</callStatus>
+          <heading>The caller asks for the exact deposit amounts</heading>
+          <message>The two small deposits are part of a security check. Please read both amounts to me so I can protect your account.</message>
+          <transcript>An incoming caller claims to represent the fictional Riverbend Bank and says, "The two small deposits are part of a security check. Please read both amounts to me so I can protect your account." The caller knows that the deposits appeared but has not been independently verified.</transcript>
+        </artifact>
+        <question>Would you provide the two amounts?</question>
+        <description>Exact microdeposit amounts may be used to verify control of a linked account.</description>
+        <warningSigns>
+          <sign>The call was unexpected.</sign>
+          <sign>The caller asks for exact verification amounts.</sign>
+          <sign>The caller uses account protection as the reason to complete a verification step.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="refuse-and-call-trusted-bank-number" destinationVideoId="linked-account-list" classification="safe">
+            <title>Refuse and call the bank yourself</title>
+            <subtitle>Use a trusted number from the card, statement, or known app.</subtitle>
+            <feedback heading="You protected the verification values">
+              <consequence>The incoming caller cannot use the learner to confirm the unfamiliar link.</consequence>
+              <explanation>Independent bank contact is safer than completing a verification step for someone who called unexpectedly.</explanation>
+              <warningSigns>
+                <sign>The caller needed information only the account holder could see.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-for-callback-or-employee-id" destinationVideoId="linked-account-list-compromised" classification="risky">
+            <title>Ask for a callback number or employee ID</title>
+            <subtitle>Keep the caller engaged while requesting proof.</subtitle>
+            <feedback heading="The caller supplied convincing but unverified details">
+              <consequence>A polished callback number and employee ID keep the story moving.</consequence>
+              <explanation>Information supplied by the caller is not independent verification. End the call and locate the bank yourself.</explanation>
+              <warningSigns>
+                <sign>The person being checked controls the supposed proof.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="read-microdeposit-amounts" destinationVideoId="linked-account-list-compromised" classification="dangerous">
+            <title>Read both amounts to the caller</title>
+            <subtitle>Provide $0.07 and $0.13 to complete the security check.</subtitle>
+            <feedback heading="The values may have verified the attacker's account">
+              <consequence>The unfamiliar external link may now be active for money movement.</consequence>
+              <explanation>The exact amounts can serve as proof that someone can view the bank account. Do not provide them to an unexpected caller.</explanation>
+              <warningSigns>
+                <sign>The caller requested the values immediately after the deposits appeared.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="linked-account-list" stageName="Linked account" stageIndex="3">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Unrecognized external account</heading>
+          <message>The linked-account list shows an unfamiliar external institution and simulated account ending 7341.</message>
+          <requestedInformation>
+            <item>External institution: Unrecognized</item>
+            <item>Simulated account: ���� 7341</item>
+            <item>Status: Verification active</item>
+          </requestedInformation>
+          <transcript>Inside the simulated known bank app, the linked-account list shows an unfamiliar external institution and a fictional masked account ending 7341. The learner did not add it. Depending on the earlier decision, its verification may be incomplete or active, but either state requires immediate bank review.</transcript>
+        </artifact>
+        <question>What would you do with the unfamiliar link?</question>
+        <description>Do not test an unauthorized payment path with real money.</description>
+        <warningSigns>
+          <sign>The institution and masked account are unfamiliar.</sign>
+          <sign>The link appeared with unexplained microdeposits.</sign>
+          <sign>The learner did not authorize the connection.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="lock-link-and-contact-bank" destinationVideoId="pending-ach-transfer" classification="safe">
+            <title>Lock or remove the link and contact the bank</title>
+            <subtitle>Use available bank controls and request an investigation.</subtitle>
+            <feedback heading="You interrupted the unauthorized payment path">
+              <consequence>The bank can review how the link was added and whether other access changed.</consequence>
+              <explanation>An unknown linked account should be treated as unauthorized until the bank verifies otherwise.</explanation>
+              <warningSigns>
+                <sign>The learner did not create the link.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="screenshot-and-wait" destinationVideoId="pending-ach-transfer-compromised" classification="risky">
+            <title>Take a screenshot and wait</title>
+            <subtitle>Preserve the evidence but leave the link active.</subtitle>
+            <feedback heading="You saved evidence but delayed protection">
+              <consequence>The screenshot may help later, while the external account may still receive a transfer.</consequence>
+              <explanation>Preserve the screen and contact the real bank immediately rather than choosing one or the other.</explanation>
+              <warningSigns>
+                <sign>The link can remain usable during the delay.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="send-test-transfer" destinationVideoId="pending-ach-transfer-compromised" classification="dangerous">
+            <title>Send a small test transfer</title>
+            <subtitle>Move real money to see where the linked account goes.</subtitle>
+            <feedback heading="The test moved money to an unauthorized destination">
+              <consequence>The learner confirms the payment path and may suffer an initial loss.</consequence>
+              <explanation>Never test an unfamiliar linked account with real money. The bank can investigate it without a customer-initiated payment.</explanation>
+              <warningSigns>
+                <sign>The external recipient is not known or trusted.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="pending-ach-transfer" stageName="Pending ACH transfer" stageIndex="4">
+        <artifact type="fake-website">
+          <domain>online.riverbend-bank.example</domain>
+          <heading>Pending bank-to-bank transfer</heading>
+          <message>An $8,500 ACH transfer is pending to the unfamiliar external account. ACH is a common system for electronic bank-to-bank transfers.</message>
+          <requestedInformation>
+            <item>Amount: $8,500</item>
+            <item>Status: Pending</item>
+            <item>Destination: Unrecognized external account</item>
+          </requestedInformation>
+          <transcript>The simulated bank screen shows a pending $8,500 ACH transfer to the unrecognized external account. ACH is a common system for electronic bank-to-bank transfers. Pending means the bank must check the current status and what options remain; it does not guarantee that the transfer can be stopped.</transcript>
+        </artifact>
+        <question>How would you respond to the pending transfer?</question>
+        <description>Prompt bank contact matters while the transfer is still marked pending.</description>
+        <warningSigns>
+          <sign>The learner did not initiate the transfer.</sign>
+          <sign>The destination is the unfamiliar linked account.</sign>
+          <sign>The amount is far larger than the microdeposits.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-real-bank-to-stop-ach" destinationVideoId="full-security-review" classification="safe">
+            <title>Call the real bank immediately</title>
+            <subtitle>Ask it to review or stop the transfer and secure the account.</subtitle>
+            <feedback heading="You acted while the transfer was pending">
+              <consequence>The bank checks the transfer status and available options promptly.</consequence>
+              <explanation>Only the bank can determine whether the transfer can be stopped or recalled.</explanation>
+              <warningSigns>
+                <sign>The transfer is unauthorized and may complete soon.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-until-ach-posts" destinationVideoId="fake-cancellation-page" classification="risky">
+            <title>Wait until it posts</title>
+            <subtitle>Dispute the transfer only after it completes.</subtitle>
+            <feedback heading="The pending period passed without a bank request">
+              <consequence>The delay may reduce the options available to the bank.</consequence>
+              <explanation>An unauthorized pending transfer should be reported immediately.</explanation>
+              <warningSigns>
+                <sign>The destination is already known to be unfamiliar.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="approve-fake-caller-verification" destinationVideoId="fake-cancellation-page" classification="dangerous">
+            <title>Approve the fake caller's verification request</title>
+            <subtitle>Follow the caller's instructions to supposedly cancel the transfer.</subtitle>
+            <feedback heading="The approval may finalize the attacker's action">
+              <consequence>The attacker can use another code or approval to strengthen access or complete money movement.</consequence>
+              <explanation>Continue only with the bank contact you reached independently.</explanation>
+              <warningSigns>
+                <sign>The caller already requested account-verification information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="fake-cancellation-page" stageName="Fake cancellation page" stageIndex="5">
+        <artifact type="fake-website">
+          <domain>secure-transfer-cancel.example</domain>
+          <heading>Transfer cancellation form</heading>
+          <message>The original caller sends a simulated, nonfunctional page that asks for an online-banking username, password, and security code.</message>
+          <requestedInformation>
+            <item>Online-banking username</item>
+            <item>Online-banking password</item>
+            <item>Security code</item>
+          </requestedInformation>
+          <transcript>The unverified caller sends a link to secure-transfer-cancel.example, a fictional and nonfunctional domain. The page says "Transfer cancellation form" and requests an online-banking username, password, and security code. A real bank representative reached through a trusted number does not need the learner to use this caller-supplied form.</transcript>
+        </artifact>
+        <question>Would you use the cancellation form?</question>
+        <description>The form creates a second credential-theft attempt during the transfer emergency.</description>
+        <warningSigns>
+          <sign>The page came from the original unverified caller.</sign>
+          <sign>It requests a password and security code.</sign>
+          <sign>The fictional domain is not the known bank channel.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ignore-form-use-real-bank" destinationVideoId="full-security-review-compromised" classification="safe">
+            <title>Ignore the form and stay with the real bank</title>
+            <subtitle>Continue only through the trusted phone number or known app.</subtitle>
+            <feedback heading="You avoided the second credential-theft attempt">
+              <consequence>The caller-supplied page receives no username, password, or code.</consequence>
+              <explanation>The real bank can review the transfer without a separate unverified form.</explanation>
+              <warningSigns>
+                <sign>The page asks for multiple account secrets.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-form-without-entering" destinationVideoId="full-security-review-compromised" classification="risky">
+            <title>Open the form without entering information</title>
+            <subtitle>Look at the page but leave every field blank.</subtitle>
+            <feedback heading="No credentials were entered, but the page kept applying pressure">
+              <consequence>The learner sees the fake form and remains exposed to its instructions.</consequence>
+              <explanation>There is no need to investigate a caller-supplied page. Close it and use the trusted bank channel.</explanation>
+              <warningSigns>
+                <sign>The page's only purpose is to collect sensitive information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="enter-credentials-and-code" destinationVideoId="full-security-review-compromised" classification="dangerous">
+            <title>Enter the credentials and security code</title>
+            <subtitle>Use the form to cancel the transfer.</subtitle>
+            <feedback heading="The attacker gained stronger account access">
+              <consequence>The simulation treats the username, password, and code as exposed.</consequence>
+              <explanation>A caller-supplied form cannot safely cancel fraud. Report the disclosure to the real bank immediately.</explanation>
+              <warningSigns>
+                <sign>The page combines a password request with urgent transfer pressure.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="full-security-review" stageName="Full security review" stageIndex="6">
+        <artifact type="phone-call">
+          <caller>Riverbend Bank fraud representative</caller>
+          <callerStatus>Reached through a trusted number; fictional bank</callerStatus>
+          <callStatus>Account and payment-setting review</callStatus>
+          <heading>The bank reviews every access and transfer path</heading>
+          <message>We need to review linked accounts, active devices, sessions, profile changes, payees, and recent transactions together.</message>
+          <transcript>The learner speaks with the fictional Riverbend Bank through a trusted number. The representative explains that removing the external link is only one step. The complete review includes linked accounts, active devices and sessions, profile contact information, payees, and recent transactions.</transcript>
+        </artifact>
+        <question>Which security review is sufficient?</question>
+        <description>An attacker who added a link may also have changed access or created another money-movement route.</description>
+        <warningSigns>
+          <sign>The external link may be a result of broader account access.</sign>
+          <sign>Another device, session, payee, or profile change may remain.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-every-access-and-payment-setting" destinationVideoId="account-transition" classification="safe">
+            <title>Review every access and payment setting</title>
+            <subtitle>Work through the complete list with the bank.</subtitle>
+            <feedback heading="You secured more than the visible link">
+              <consequence>The bank can identify related access and money-movement changes.</consequence>
+              <explanation>A comprehensive review reduces the chance that another route remains hidden.</explanation>
+              <warningSigns>
+                <sign>The transfer and link may share the same unauthorized access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="delete-external-link-only" destinationVideoId="account-transition-compromised" classification="risky">
+            <title>Delete only the external link</title>
+            <subtitle>Leave devices, sessions, profile details, and payees unchanged.</subtitle>
+            <feedback heading="One transfer path closed, but account access may remain">
+              <consequence>The attacker may use another payee, session, or reset method.</consequence>
+              <explanation>Removing the visible link does not explain how it was added.</explanation>
+              <warningSigns>
+                <sign>Unauthorized access can create several changes at once.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="close-browser-assume-ach-disappears" destinationVideoId="account-transition-compromised" classification="dangerous">
+            <title>Close the browser and assume the transfer disappears</title>
+            <subtitle>Take no action with the bank.</subtitle>
+            <feedback heading="Closing the screen did not change the bank records">
+              <consequence>The pending transfer and unauthorized access continue on the bank's systems.</consequence>
+              <explanation>Closing an app or browser does not cancel a transfer or terminate account sessions.</explanation>
+              <warningSigns>
+                <sign>The transfer exists on the account, not only on the screen.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="account-transition" stageName="Account transition" stageIndex="7">
+        <artifact type="narration">
+          <heading>Protect legitimate deposits and payments</heading>
+          <message>Depending on the exposure, the bank may recommend new credentials, stronger authentication, or a replacement account number.</message>
+          <requestedInformation>
+            <item>Social Security or pension deposits</item>
+            <item>Recurring bills and automatic payments</item>
+            <item>Legitimate linked accounts and payees</item>
+          </requestedInformation>
+          <transcript>The fictional bank may recommend new credentials, stronger authentication, or a replacement account number depending on the exposure. The learner must also protect legitimate Social Security or pension deposits, recurring bills, automatic payments, and approved payees. The bank should guide the transition.</transcript>
+        </artifact>
+        <question>How should legitimate activity be handled?</question>
+        <description>A careful inventory prevents the recovery process from disrupting important income and bills.</description>
+        <warningSigns>
+          <sign>Rushed changes can interrupt legitimate deposits or payments.</sign>
+          <sign>An unrelated new account does not automatically secure the compromised one.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="follow-bank-transition-inventory" destinationVideoId="final-outcome" classification="safe">
+            <title>Follow the bank's transition plan</title>
+            <subtitle>Update legitimate deposits and payments carefully from a checklist.</subtitle>
+            <feedback heading="You protected continuity while securing the account">
+              <consequence>Important deposits and bills can move in an organized way if replacement is needed.</consequence>
+              <explanation>The bank can tailor the transition to the actual exposure and account status.</explanation>
+              <warningSigns>
+                <sign>Several legitimate services may depend on the current account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="move-everything-without-checklist" destinationVideoId="final-outcome-compromised" classification="risky">
+            <title>Move everything immediately without a checklist</title>
+            <subtitle>Change deposits and bills from memory.</subtitle>
+            <feedback heading="The account changed, but important items may be missed">
+              <consequence>A pension deposit, bill, or approved payment could be disrupted.</consequence>
+              <explanation>Urgency should not replace an organized, bank-directed transition.</explanation>
+              <warningSigns>
+                <sign>Recurring activity is easy to overlook.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-unrelated-account-ignore-original" destinationVideoId="final-outcome-compromised" classification="dangerous">
+            <title>Open an unrelated account and ignore the original</title>
+            <subtitle>Leave the compromised account, transfer, and access settings unresolved.</subtitle>
+            <feedback heading="The original exposure remained active">
+              <consequence>The unauthorized link or sessions may continue while legitimate activity is split across accounts.</consequence>
+              <explanation>A new account does not close or secure the compromised account. Follow the bank's guidance for both.</explanation>
+              <warningSigns>
+                <sign>The pending transfer and access changes still belong to the original account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="final-outcome" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>See the setup before the large transfer</heading>
+          <message>The timeline begins with two tiny deposits, then moves through a verification call, an unknown linked account, and a pending $8,500 transfer.</message>
+          <requestedInformation>
+            <item>Microdeposits appeared</item>
+            <item>Caller requested exact amounts</item>
+            <item>External account became active</item>
+            <item>ACH transfer was created</item>
+          </requestedInformation>
+          <transcript>The final review connects the seven-cent and thirteen-cent deposits to the unexpected verification call, the unrecognized external account, and the pending $8,500 ACH transfer. The small entries were early warning signs of account-linking activity, not evidence that the account was safe.</transcript>
+        </artifact>
+        <question>What is the central lesson?</question>
+        <description>Recognizing the setup stage can create an earlier opportunity to contact the real bank.</description>
+        <warningSigns>
+          <sign>Focusing only on the large transfer misses the earlier account-linking activity.</sign>
+          <sign>Tiny positive deposits are not always harmless.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="treat-microdeposits-as-warning" destinationVideoId="comprehensive-link-response-safe" classification="safe">
+            <title>Treat unknown microdeposits and links as urgent warnings</title>
+            <subtitle>Contact the bank through a trusted channel before larger money movement.</subtitle>
+            <feedback heading="You recognized the full account-linking sequence">
+              <consequence>The real bank receives the earliest warning signs as well as the transfer details.</consequence>
+              <explanation>Small verification entries can reveal the setup stage of a much larger theft.</explanation>
+              <warningSigns>
+                <sign>The deposits and external link appeared together.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="focus-only-on-large-transfer" destinationVideoId="partial-link-response-risky" classification="risky">
+            <title>Focus only on the large transfer</title>
+            <subtitle>Ignore how the external account was linked.</subtitle>
+            <feedback heading="The immediate payment received attention, but the access path remained unclear">
+              <consequence>The bank may review the transfer while related links, sessions, or profile changes receive less attention.</consequence>
+              <explanation>Understanding the setup helps prevent the same path from being used again.</explanation>
+              <warningSigns>
+                <sign>The microdeposits and verification call came first.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="assume-tiny-deposits-harmless" destinationVideoId="link-risk-unresolved-dangerous" classification="dangerous">
+            <title>Assume tiny deposits are always harmless</title>
+            <subtitle>Ignore future small entries unless money leaves immediately.</subtitle>
+            <feedback heading="The earliest warning signs would be missed again">
+              <consequence>An attacker may finish verifying another link before a large transfer becomes visible.</consequence>
+              <explanation>Unknown microdeposits deserve bank review because their purpose matters more than their size.</explanation>
+              <warningSigns>
+                <sign>The amounts can confirm account access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="verification-call-compromised" stageName="Verification call" stageIndex="2">
+        <artifact type="phone-call">
+          <heading>The fake verification call arrives after the link has more time to progress</heading>
+          <message>The caller asks for the exact $0.07 and $0.13 amounts and claims they are needed for a security check.</message>
+          <transcript>After the microdeposits were ignored or left until the statement, an incoming caller asks for both exact amounts. The caller may be trying to finish verification of an external account. No independently verified bank employee needs the learner to read those amounts to an unexpected caller.</transcript>
+        </artifact>
+        <question>What should the learner do with the delayed verification request?</question>
+        <description>The link may be farther along, so even a safe response now should include immediate real-bank review.</description>
+        <warningSigns>
+          <sign>The microdeposits were not expected.</sign>
+          <sign>The caller wants the exact validation amounts.</sign>
+          <sign>Delay gave the external link more time to become active.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="refuse-and-call-trusted-bank-number-compromised" destinationVideoId="linked-account-list-compromised" classification="safe">
+            <title>Refuse and call the bank yourself</title>
+            <subtitle>Use a trusted number from the card, statement, or known app.</subtitle>
+            <feedback heading="You protected the verification values">
+              <consequence>The incoming caller cannot use the learner to confirm the unfamiliar link.</consequence>
+              <explanation>Independent bank contact is safer than completing a verification step for someone who called unexpectedly. The later bank review must account for the time the unfamiliar link remained active.</explanation>
+              <warningSigns>
+                <sign>The caller needed information only the account holder could see.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="ask-for-callback-or-employee-id-compromised" destinationVideoId="linked-account-list-compromised" classification="risky">
+            <title>Ask for a callback number or employee ID</title>
+            <subtitle>Keep the caller engaged while requesting proof.</subtitle>
+            <feedback heading="The caller supplied convincing but unverified details">
+              <consequence>A polished callback number and employee ID keep the story moving.</consequence>
+              <explanation>Information supplied by the caller is not independent verification. End the call and locate the bank yourself. The later bank review must account for the time the unfamiliar link remained active.</explanation>
+              <warningSigns>
+                <sign>The person being checked controls the supposed proof.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="read-microdeposit-amounts-compromised" destinationVideoId="linked-account-list-compromised" classification="dangerous">
+            <title>Read both amounts to the caller</title>
+            <subtitle>Provide $0.07 and $0.13 to complete the security check.</subtitle>
+            <feedback heading="The values may have verified the attacker's account">
+              <consequence>The unfamiliar external link may now be active for money movement.</consequence>
+              <explanation>The exact amounts can serve as proof that someone can view the bank account. Do not provide them to an unexpected caller. The later bank review must account for the time the unfamiliar link remained active.</explanation>
+              <warningSigns>
+                <sign>The caller requested the values immediately after the deposits appeared.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="linked-account-list-compromised" stageName="Linked account" stageIndex="3">
+        <artifact type="fake-website">
+          <heading>The unfamiliar external account is active or farther through verification</heading>
+          <message>The known bank app shows the external institution and simulated account ending 7341. The link may have been verified after the amounts were shared or after the earlier delay.</message>
+          <transcript>The learner checks the real bank app after delaying action, asking the fake caller for more credentials, or reading the microdeposit amounts aloud. The external link is still present and may now be usable. The real bank has not yet completed a full review.</transcript>
+        </artifact>
+        <question>What should happen now that the link has progressed?</question>
+        <description>Stopping now can limit further harm, but the earlier verification progress remains part of the incident.</description>
+        <warningSigns>
+          <sign>The external institution is unfamiliar.</sign>
+          <sign>The validation amounts may have been disclosed.</sign>
+          <sign>The link has remained available for money movement.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="lock-link-and-contact-bank-compromised" destinationVideoId="pending-ach-transfer-compromised" classification="safe">
+            <title>Lock or remove the link and contact the bank</title>
+            <subtitle>Use available bank controls and request an investigation.</subtitle>
+            <feedback heading="You interrupted the unauthorized payment path">
+              <consequence>The bank can review how the link was added and whether other access changed.</consequence>
+              <explanation>An unknown linked account should be treated as unauthorized until the bank verifies otherwise. The pending-transfer scene will retain the more advanced link state.</explanation>
+              <warningSigns>
+                <sign>The learner did not create the link.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="screenshot-and-wait-compromised" destinationVideoId="pending-ach-transfer-compromised" classification="risky">
+            <title>Take a screenshot and wait</title>
+            <subtitle>Preserve the evidence but leave the link active.</subtitle>
+            <feedback heading="You saved evidence but delayed protection">
+              <consequence>The screenshot may help later, while the external account may still receive a transfer.</consequence>
+              <explanation>Preserve the screen and contact the real bank immediately rather than choosing one or the other. The pending-transfer scene will retain the more advanced link state.</explanation>
+              <warningSigns>
+                <sign>The link can remain usable during the delay.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="send-test-transfer-compromised" destinationVideoId="pending-ach-transfer-compromised" classification="dangerous">
+            <title>Send a small test transfer</title>
+            <subtitle>Move real money to see where the linked account goes.</subtitle>
+            <feedback heading="The test moved money to an unauthorized destination">
+              <consequence>The learner confirms the payment path and may suffer an initial loss.</consequence>
+              <explanation>Never test an unfamiliar linked account with real money. The bank can investigate it without a customer-initiated payment. The pending-transfer scene will retain the more advanced link state.</explanation>
+              <warningSigns>
+                <sign>The external recipient is not known or trusted.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="pending-ach-transfer-compromised" stageName="Pending ACH transfer" stageIndex="4">
+        <artifact type="fake-website">
+          <heading>The verified external link is being used for money movement</heading>
+          <message>An $8,500 ACH transfer is pending to the unfamiliar linked account. A small test transfer or disclosed verification amounts may also be part of the timeline.</message>
+          <transcript>Because the link remained active or the validation amounts were disclosed, the attacker progressed to a pending bank-to-bank transfer. The learner can still call the real bank immediately, but earlier setup activity and any test payment must be disclosed.</transcript>
+        </artifact>
+        <question>How should the learner respond to this advanced transfer?</question>
+        <description>Late bank contact can still help, but the transfer path has already been established.</description>
+        <warningSigns>
+          <sign>The destination is an unfamiliar external account.</sign>
+          <sign>The link may have been verified with disclosed amounts.</sign>
+          <sign>Waiting or approving another request could let the transfer complete.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ask-real-bank-to-stop-ach-compromised" destinationVideoId="full-security-review-compromised" classification="safe">
+            <title>Call the real bank immediately</title>
+            <subtitle>Ask it to review or stop the transfer and secure the account.</subtitle>
+            <feedback heading="You acted while the transfer was pending">
+              <consequence>The bank checks the transfer status and available options promptly.</consequence>
+              <explanation>Only the bank can determine whether the transfer can be stopped or recalled. The account-linking progress will remain visible even if the real bank is contacted now.</explanation>
+              <warningSigns>
+                <sign>The transfer is unauthorized and may complete soon.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="wait-until-ach-posts-compromised" destinationVideoId="fake-cancellation-page-compromised" classification="risky">
+            <title>Wait until it posts</title>
+            <subtitle>Dispute the transfer only after it completes.</subtitle>
+            <feedback heading="The pending period passed without a bank request">
+              <consequence>The delay may reduce the options available to the bank.</consequence>
+              <explanation>An unauthorized pending transfer should be reported immediately. The account-linking progress will remain visible even if the real bank is contacted now.</explanation>
+              <warningSigns>
+                <sign>The destination is already known to be unfamiliar.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="approve-fake-caller-verification-compromised" destinationVideoId="fake-cancellation-page-compromised" classification="dangerous">
+            <title>Approve the fake caller's verification request</title>
+            <subtitle>Follow the caller's instructions to supposedly cancel the transfer.</subtitle>
+            <feedback heading="The approval may finalize the attacker's action">
+              <consequence>The attacker can use another code or approval to strengthen access or complete money movement.</consequence>
+              <explanation>Continue only with the bank contact you reached independently. The account-linking progress will remain visible even if the real bank is contacted now.</explanation>
+              <warningSigns>
+                <sign>The caller already requested account-verification information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="fake-cancellation-page-compromised" stageName="Fake cancellation page" stageIndex="5">
+        <artifact type="fake-website">
+          <heading>The fake caller offers a second way to take account access</heading>
+          <message>After the external link progressed, the caller sends a nonfunctional cancellation page requesting banking credentials and another code.</message>
+          <transcript>The caller-controlled page appears after validation amounts were disclosed, a link stayed active, or a transfer advanced. Entering information would add credential theft to the external-account compromise. The page is simulated and cannot accept information.</transcript>
+        </artifact>
+        <question>Would you use the caller's cancellation page now?</question>
+        <description>The safest recovery is still the real bank, and the earlier linked-account consequences must be reported.</description>
+        <warningSigns>
+          <sign>The cancellation route came from the fake caller.</sign>
+          <sign>The page asks for credentials and a genuine code.</sign>
+          <sign>The external link and transfer already require independent bank review.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="ignore-form-use-real-bank-compromised" destinationVideoId="full-security-review-compromised" classification="safe">
+            <title>Ignore the form and stay with the real bank</title>
+            <subtitle>Continue only through the trusted phone number or known app.</subtitle>
+            <feedback heading="You avoided the second credential-theft attempt">
+              <consequence>The caller-supplied page receives no username, password, or code.</consequence>
+              <explanation>The real bank can review the transfer without a separate unverified form. The real-bank review must include both the link and any page interaction.</explanation>
+              <warningSigns>
+                <sign>The page asks for multiple account secrets.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-form-without-entering-compromised" destinationVideoId="full-security-review-compromised" classification="risky">
+            <title>Open the form without entering information</title>
+            <subtitle>Look at the page but leave every field blank.</subtitle>
+            <feedback heading="No credentials were entered, but the page kept applying pressure">
+              <consequence>The learner sees the fake form and remains exposed to its instructions.</consequence>
+              <explanation>There is no need to investigate a caller-supplied page. Close it and use the trusted bank channel. The real-bank review must include both the link and any page interaction.</explanation>
+              <warningSigns>
+                <sign>The page's only purpose is to collect sensitive information.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="enter-credentials-and-code-compromised" destinationVideoId="full-security-review-compromised" classification="dangerous">
+            <title>Enter the credentials and security code</title>
+            <subtitle>Use the form to cancel the transfer.</subtitle>
+            <feedback heading="The attacker gained stronger account access">
+              <consequence>The simulation treats the username, password, and code as exposed.</consequence>
+              <explanation>A caller-supplied form cannot safely cancel fraud. Report the disclosure to the real bank immediately. The real-bank review must include both the link and any page interaction.</explanation>
+              <warningSigns>
+                <sign>The page combines a password request with urgent transfer pressure.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="full-security-review-compromised" stageName="Full security review" stageIndex="6">
+        <artifact type="phone-call">
+          <heading>The real bank reviews an external link that already progressed</heading>
+          <message>The bank reviews the linked account, transfer status, validation activity, devices, sessions, profile details, payees, and any credential exposure together.</message>
+          <transcript>The learner reaches the real bank after the external account was verified, a transfer advanced, a test payment was sent, or the fake page was used. The bank may be able to stop or document some activity, but it cannot promise recovery. Every access and money-movement setting needs review.</transcript>
+        </artifact>
+        <question>Which review is complete enough for the progressed incident?</question>
+        <description>A full late review can contain the problem without pretending that the earlier link activity did not occur.</description>
+        <warningSigns>
+          <sign>The external link progressed beyond the first microdeposits.</sign>
+          <sign>Transfer status must be checked promptly.</sign>
+          <sign>Credentials or devices may also be exposed.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="review-every-access-and-payment-setting-compromised" destinationVideoId="account-transition-compromised" classification="safe">
+            <title>Review every access and payment setting</title>
+            <subtitle>Work through the complete list with the bank.</subtitle>
+            <feedback heading="You secured more than the visible link">
+              <consequence>The bank can identify related access and money-movement changes.</consequence>
+              <explanation>A comprehensive review reduces the chance that another route remains hidden. The account transition must retain the consequences of earlier verification or transfer activity.</explanation>
+              <warningSigns>
+                <sign>The transfer and link may share the same unauthorized access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="delete-external-link-only-compromised" destinationVideoId="account-transition-compromised" classification="risky">
+            <title>Delete only the external link</title>
+            <subtitle>Leave devices, sessions, profile details, and payees unchanged.</subtitle>
+            <feedback heading="One transfer path closed, but account access may remain">
+              <consequence>The attacker may use another payee, session, or reset method.</consequence>
+              <explanation>Removing the visible link does not explain how it was added. The account transition must retain the consequences of earlier verification or transfer activity.</explanation>
+              <warningSigns>
+                <sign>Unauthorized access can create several changes at once.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="close-browser-assume-ach-disappears-compromised" destinationVideoId="account-transition-compromised" classification="dangerous">
+            <title>Close the browser and assume the transfer disappears</title>
+            <subtitle>Take no action with the bank.</subtitle>
+            <feedback heading="Closing the screen did not change the bank records">
+              <consequence>The pending transfer and unauthorized access continue on the bank's systems.</consequence>
+              <explanation>Closing an app or browser does not cancel a transfer or terminate account sessions. The account transition must retain the consequences of earlier verification or transfer activity.</explanation>
+              <warningSigns>
+                <sign>The transfer exists on the account, not only on the screen.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="account-transition-compromised" stageName="Account transition" stageIndex="7">
+        <artifact type="narration">
+          <heading>Transition planning follows a progressed ACH-link incident</heading>
+          <message>The bank may recommend credentials, stronger authentication, link removal, monitoring, or account replacement while legitimate deposits and bills are moved carefully.</message>
+          <transcript>The learner is planning recovery after an unfamiliar link and transfer progressed. The bank guides any account replacement and legitimate-payment changes. Moving everything without a checklist or abandoning the original account could create additional problems.</transcript>
+        </artifact>
+        <question>How should the learner manage the transition after the compromise?</question>
+        <description>Recovery must protect legitimate activity while the bank continues reviewing the linked account and transfer.</description>
+        <warningSigns>
+          <sign>Direct deposits and bills still need continuity.</sign>
+          <sign>The original account cannot simply be ignored.</sign>
+          <sign>The bank should guide account and credential changes.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="follow-bank-transition-inventory-compromised" destinationVideoId="final-outcome-compromised" classification="safe">
+            <title>Follow the bank's transition plan</title>
+            <subtitle>Update legitimate deposits and payments carefully from a checklist.</subtitle>
+            <feedback heading="You protected continuity while securing the account">
+              <consequence>Important deposits and bills can move in an organized way if replacement is needed.</consequence>
+              <explanation>The bank can tailor the transition to the actual exposure and account status. The final outcome will acknowledge the advanced compromise even if the transition is now handled well.</explanation>
+              <warningSigns>
+                <sign>Several legitimate services may depend on the current account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="move-everything-without-checklist-compromised" destinationVideoId="final-outcome-compromised" classification="risky">
+            <title>Move everything immediately without a checklist</title>
+            <subtitle>Change deposits and bills from memory.</subtitle>
+            <feedback heading="The account changed, but important items may be missed">
+              <consequence>A pension deposit, bill, or approved payment could be disrupted.</consequence>
+              <explanation>Urgency should not replace an organized, bank-directed transition. The final outcome will acknowledge the advanced compromise even if the transition is now handled well.</explanation>
+              <warningSigns>
+                <sign>Recurring activity is easy to overlook.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="open-unrelated-account-ignore-original-compromised" destinationVideoId="final-outcome-compromised" classification="dangerous">
+            <title>Open an unrelated account and ignore the original</title>
+            <subtitle>Leave the compromised account, transfer, and access settings unresolved.</subtitle>
+            <feedback heading="The original exposure remained active">
+              <consequence>The unauthorized link or sessions may continue while legitimate activity is split across accounts.</consequence>
+              <explanation>A new account does not close or secure the compromised account. Follow the bank's guidance for both. The final outcome will acknowledge the advanced compromise even if the transition is now handled well.</explanation>
+              <warningSigns>
+                <sign>The pending transfer and access changes still belong to the original account.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="final-outcome-compromised" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The microdeposits led to a progressed account-linking incident</heading>
+          <message>The timeline includes delayed recognition or disclosed amounts, an active external link, a pending transfer, and possibly credential exposure before real-bank recovery began.</message>
+          <transcript>The final review connects the tiny deposits to the external-account verification and ACH transfer. Later safe actions can contain the incident, but they do not erase a test payment, active link, delayed report, or exposed credentials.</transcript>
+        </artifact>
+        <question>What should the learner carry forward from this progressed incident?</question>
+        <description>The strongest lesson includes both the early microdeposit warning and the need for complete late recovery.</description>
+        <warningSigns>
+          <sign>Tiny deposits were setup activity, not harmless income.</sign>
+          <sign>The fake verification caller advanced the link.</sign>
+          <sign>Real-bank recovery must include access and money-movement settings.</sign>
+        </warningSigns>
+        <choices>
+          <choice choiceId="treat-microdeposits-as-warning-compromised" destinationVideoId="link-recovery-after-compromise" classification="safe">
+            <title>Treat unknown microdeposits and links as urgent warnings</title>
+            <subtitle>Contact the bank through a trusted channel before larger money movement.</subtitle>
+            <feedback heading="You recognized the full account-linking sequence">
+              <consequence>The real bank receives the earliest warning signs as well as the transfer details.</consequence>
+              <explanation>Small verification entries can reveal the setup stage of a much larger theft. The ending will retain the earlier consequences instead of converting them into an early-safe result.</explanation>
+              <warningSigns>
+                <sign>The deposits and external link appeared together.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="focus-only-on-large-transfer-compromised" destinationVideoId="partial-link-response-risky" classification="risky">
+            <title>Focus only on the large transfer</title>
+            <subtitle>Ignore how the external account was linked.</subtitle>
+            <feedback heading="The immediate payment received attention, but the access path remained unclear">
+              <consequence>The bank may review the transfer while related links, sessions, or profile changes receive less attention.</consequence>
+              <explanation>Understanding the setup helps prevent the same path from being used again. The ending will retain the earlier consequences instead of converting them into an early-safe result.</explanation>
+              <warningSigns>
+                <sign>The microdeposits and verification call came first.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+          <choice choiceId="assume-tiny-deposits-harmless-compromised" destinationVideoId="link-risk-unresolved-dangerous" classification="dangerous">
+            <title>Assume tiny deposits are always harmless</title>
+            <subtitle>Ignore future small entries unless money leaves immediately.</subtitle>
+            <feedback heading="The earliest warning signs would be missed again">
+              <consequence>An attacker may finish verifying another link before a large transfer becomes visible.</consequence>
+              <explanation>Unknown microdeposits deserve bank review because their purpose matters more than their size. The ending will retain the earlier consequences instead of converting them into an early-safe result.</explanation>
+              <warningSigns>
+                <sign>The amounts can confirm account access.</sign>
+              </warningSigns>
+            </feedback>
+          </choice>
+        </choices>
+      </scene>
+      <scene videoId="link-recovery-after-compromise" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>Complete recovery begins after the link progressed</heading>
+          <message>The learner tells the real bank about the amounts, link, transfer, page interaction, and account-access changes and follows a bank-guided transition.</message>
+          <transcript>The external account and transfer progressed before recovery began. The learner now completes the real bank's review of linked accounts, devices, sessions, profile details, payees, credentials, and transaction status. Recovery is not guaranteed, but further harm may be reduced.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Link progressed; complete recovery started</label>
+          <heading>You gave the bank the full account-linking timeline</heading>
+          <explanation>The late safe response improves containment while still acknowledging that verification or money movement already advanced.</explanation>
+        </outcome>
+        <warningSigns>
+          <sign>A later safe choice does not erase the active link or pending transfer.</sign>
+        </warningSigns>
+      </scene>
+      <scene videoId="comprehensive-link-response-safe" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The real bank has the complete timeline</heading>
+          <message>You connected the microdeposits, verification call, external link, and transfer, then reviewed access and payment settings together.</message>
+          <transcript>The learner uses a trusted bank channel, refuses to verify the unfamiliar external account, reports the pending transfer, avoids the fake cancellation form, and completes a broader security review. The bank will determine whether the transfer can be stopped or recovered; no outcome is guaranteed.</transcript>
+        </artifact>
+        <outcome classification="safe">
+          <label>Comprehensive response</label>
+          <heading>You recognized the setup before more money moved</heading>
+          <explanation>Prompt reporting and a full access-and-payment review give the bank the strongest available opportunity to help.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="partial-link-response-risky" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The transfer was noticed, but the link needs more review</heading>
+          <message>Addressing the large payment helps, but unknown links, devices, sessions, or profile changes may still remain.</message>
+          <transcript>The learner focuses on the large transfer without fully investigating the account-linking sequence. Contact the real bank through a trusted channel and ask it to review the external account, devices, sessions, profile details, payees, and recent transactions together.</transcript>
+        </artifact>
+        <outcome classification="risky">
+          <label>Partial account review</label>
+          <heading>The immediate warning received attention</heading>
+          <explanation>The response can be strengthened by reviewing how the account was linked and whether other access changed.</explanation>
+        </outcome>
+      </scene>
+      <scene videoId="link-risk-unresolved-dangerous" stageName="Final outcome" stageIndex="8">
+        <artifact type="review">
+          <heading>The unauthorized payment path remains a risk</heading>
+          <message>Ignoring microdeposits and linked-account notices can allow a larger transfer to develop unnoticed.</message>
+          <transcript>The learner treats tiny deposits as harmless while an unfamiliar external link and transfer risk remain. This can happen to anyone. Contact the real bank through a trusted channel immediately, explain the complete sequence, preserve the records, and follow its recovery guidance. Recovery is not guaranteed.</transcript>
+        </artifact>
+        <outcome classification="dangerous">
+          <label>Link risk unresolved</label>
+          <heading>The early warning signs still matter</heading>
+          <explanation>Acting now can still help secure access and document unauthorized money movement, even if a transfer has already completed.</explanation>
+        </outcome>
+      </scene>
+    </scenes>
+  </presentation>
+  <commands>
+    <command type="prompt" videoId="tiny-deposits" displayText="The known bank app shows deposits of $0.07 and $0.13 and an unfamiliar external-account notice.">
+      <options>
+        <option id="verification-call" choiceId="inspect-linked-accounts-now" text="Inspect linked accounts in the known app" />
+        <option id="verification-call-compromised" choiceId="note-and-wait-for-statement" text="Make a note and wait for the statement" />
+        <option id="verification-call-compromised" choiceId="ignore-positive-deposits" text="Ignore the deposits because they added money" />
+      </options>
+    </command>
+    <command type="prompt" videoId="verification-call" displayText="An incoming caller asks for the exact microdeposit amounts.">
+      <options>
+        <option id="linked-account-list" choiceId="refuse-and-call-trusted-bank-number" text="Refuse and call the bank yourself" />
+        <option id="linked-account-list-compromised" choiceId="ask-for-callback-or-employee-id" text="Ask for a callback number or employee ID" />
+        <option id="linked-account-list-compromised" choiceId="read-microdeposit-amounts" text="Read both amounts to the caller" />
+      </options>
+    </command>
+    <command type="prompt" videoId="linked-account-list" displayText="The linked-account list shows an unfamiliar institution and simulated account ending 7341.">
+      <options>
+        <option id="pending-ach-transfer" choiceId="lock-link-and-contact-bank" text="Lock or remove the link and contact the bank" />
+        <option id="pending-ach-transfer-compromised" choiceId="screenshot-and-wait" text="Take a screenshot and wait" />
+        <option id="pending-ach-transfer-compromised" choiceId="send-test-transfer" text="Send a small test transfer" />
+      </options>
+    </command>
+    <command type="prompt" videoId="pending-ach-transfer" displayText="An $8,500 ACH transfer is pending to the unfamiliar external account.">
+      <options>
+        <option id="full-security-review" choiceId="ask-real-bank-to-stop-ach" text="Call the real bank immediately" />
+        <option id="fake-cancellation-page" choiceId="wait-until-ach-posts" text="Wait until it posts" />
+        <option id="fake-cancellation-page" choiceId="approve-fake-caller-verification" text="Approve the fake caller's verification request" />
+      </options>
+    </command>
+    <command type="prompt" videoId="fake-cancellation-page" displayText="The original caller sends a fake cancellation form requesting credentials and another security code.">
+      <options>
+        <option id="full-security-review-compromised" choiceId="ignore-form-use-real-bank" text="Ignore the form and stay with the real bank" />
+        <option id="full-security-review-compromised" choiceId="open-form-without-entering" text="Open the form without entering information" />
+        <option id="full-security-review-compromised" choiceId="enter-credentials-and-code" text="Enter the credentials and security code" />
+      </options>
+    </command>
+    <command type="prompt" videoId="full-security-review" displayText="The real bank reviews links, devices, sessions, profile changes, payees, and recent transactions.">
+      <options>
+        <option id="account-transition" choiceId="review-every-access-and-payment-setting" text="Review every access and payment setting" />
+        <option id="account-transition-compromised" choiceId="delete-external-link-only" text="Delete only the external link" />
+        <option id="account-transition-compromised" choiceId="close-browser-assume-ach-disappears" text="Close the browser and assume the transfer disappears" />
+      </options>
+    </command>
+    <command type="prompt" videoId="account-transition" displayText="The bank may recommend new credentials, stronger authentication, or account replacement.">
+      <options>
+        <option id="final-outcome" choiceId="follow-bank-transition-inventory" text="Follow the bank's transition plan" />
+        <option id="final-outcome-compromised" choiceId="move-everything-without-checklist" text="Move everything immediately without a checklist" />
+        <option id="final-outcome-compromised" choiceId="open-unrelated-account-ignore-original" text="Open an unrelated account and ignore the original" />
+      </options>
+    </command>
+    <command type="prompt" videoId="final-outcome" displayText="The final timeline connects the microdeposits, verification call, linked account, and transfer.">
+      <options>
+        <option id="comprehensive-link-response-safe" choiceId="treat-microdeposits-as-warning" text="Treat unknown microdeposits and links as urgent warnings" />
+        <option id="partial-link-response-risky" choiceId="focus-only-on-large-transfer" text="Focus only on the large transfer" />
+        <option id="link-risk-unresolved-dangerous" choiceId="assume-tiny-deposits-harmless" text="Assume tiny deposits are always harmless" />
+      </options>
+    </command>
+    <command type="prompt" videoId="verification-call-compromised" displayText="A fake verification caller requests exact microdeposit amounts after a delay.">
+      <options>
+        <option id="linked-account-list-compromised" choiceId="refuse-and-call-trusted-bank-number-compromised" text="Refuse and call the bank yourself" />
+        <option id="linked-account-list-compromised" choiceId="ask-for-callback-or-employee-id-compromised" text="Ask for a callback number or employee ID" />
+        <option id="linked-account-list-compromised" choiceId="read-microdeposit-amounts-compromised" text="Read both amounts to the caller" />
+      </options>
+    </command>
+    <command type="prompt" videoId="linked-account-list-compromised" displayText="The unfamiliar linked account has progressed after delay or amount disclosure.">
+      <options>
+        <option id="pending-ach-transfer-compromised" choiceId="lock-link-and-contact-bank-compromised" text="Lock or remove the link and contact the bank" />
+        <option id="pending-ach-transfer-compromised" choiceId="screenshot-and-wait-compromised" text="Take a screenshot and wait" />
+        <option id="pending-ach-transfer-compromised" choiceId="send-test-transfer-compromised" text="Send a small test transfer" />
+      </options>
+    </command>
+    <command type="prompt" videoId="pending-ach-transfer-compromised" displayText="The unfamiliar external link is now being used for a pending ACH transfer.">
+      <options>
+        <option id="full-security-review-compromised" choiceId="ask-real-bank-to-stop-ach-compromised" text="Call the real bank immediately" />
+        <option id="fake-cancellation-page-compromised" choiceId="wait-until-ach-posts-compromised" text="Wait until it posts" />
+        <option id="fake-cancellation-page-compromised" choiceId="approve-fake-caller-verification-compromised" text="Approve the fake caller's verification request" />
+      </options>
+    </command>
+    <command type="prompt" videoId="fake-cancellation-page-compromised" displayText="A fake cancellation page follows the progressed external-account compromise.">
+      <options>
+        <option id="full-security-review-compromised" choiceId="ignore-form-use-real-bank-compromised" text="Ignore the form and stay with the real bank" />
+        <option id="full-security-review-compromised" choiceId="open-form-without-entering-compromised" text="Open the form without entering information" />
+        <option id="full-security-review-compromised" choiceId="enter-credentials-and-code-compromised" text="Enter the credentials and security code" />
+      </options>
+    </command>
+    <command type="prompt" videoId="full-security-review-compromised" displayText="The real bank reviews the progressed linked-account and transfer incident.">
+      <options>
+        <option id="account-transition-compromised" choiceId="review-every-access-and-payment-setting-compromised" text="Review every access and payment setting" />
+        <option id="account-transition-compromised" choiceId="delete-external-link-only-compromised" text="Delete only the external link" />
+        <option id="account-transition-compromised" choiceId="close-browser-assume-ach-disappears-compromised" text="Close the browser and assume the transfer disappears" />
+      </options>
+    </command>
+    <command type="prompt" videoId="account-transition-compromised" displayText="The account transition is planned after the external link and transfer progressed.">
+      <options>
+        <option id="final-outcome-compromised" choiceId="follow-bank-transition-inventory-compromised" text="Follow the bank's transition plan" />
+        <option id="final-outcome-compromised" choiceId="move-everything-without-checklist-compromised" text="Move everything immediately without a checklist" />
+        <option id="final-outcome-compromised" choiceId="open-unrelated-account-ignore-original-compromised" text="Open an unrelated account and ignore the original" />
+      </options>
+    </command>
+    <command type="prompt" videoId="final-outcome-compromised" displayText="The final timeline records a linked account and transfer that progressed before recovery.">
+      <options>
+        <option id="link-recovery-after-compromise" choiceId="treat-microdeposits-as-warning-compromised" text="Treat unknown microdeposits and links as urgent warnings" />
+        <option id="partial-link-response-risky" choiceId="focus-only-on-large-transfer-compromised" text="Focus only on the large transfer" />
+        <option id="link-risk-unresolved-dangerous" choiceId="assume-tiny-deposits-harmless-compromised" text="Assume tiny deposits are always harmless" />
+      </options>
+    </command>
+    <command type="stop" videoId="link-recovery-after-compromise" displayText="The external link progressed, and a complete bank-guided recovery is underway." />
+    <command type="stop" videoId="comprehensive-link-response-safe" displayText="The real bank has the complete account-linking and transfer timeline." />
+    <command type="stop" videoId="partial-link-response-risky" displayText="The transfer was noticed, but the account-linking path needs more review." />
+    <command type="stop" videoId="link-risk-unresolved-dangerous" displayText="The unfamiliar link and money-movement risk remain unresolved." />
+  </commands>
+</playlist>

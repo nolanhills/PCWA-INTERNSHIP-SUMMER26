@@ -64,4 +64,54 @@
 		<description>Practice responding to unsolicited contractors, today-only discounts, large cash deposits, and fear-based pressure about home repairs.</description>
 		<file>prototypes/home-repair-scenario.xml</file>
 	</scenario>
+  <scenario id="phantom-hacker-safe-account" approximateStages="8" enabled="false">
+    <title>Phantom Hacker Safe Account Scam</title>
+    <description>Practice responding to a frightening computer warning, layered impersonators, remote-access pressure, and instructions to move savings to a supposed safe account.</description>
+    <file>prototypes/phantom-hacker-safe-account-scenario.xml</file>
+  </scenario>
+  <scenario id="otp-account-takeover" approximateStages="8" enabled="false">
+    <title>One-Time Passcode Account Takeover</title>
+    <description>Practice protecting one-time codes, denying unfamiliar device approvals, and responding to unauthorized account changes and transfers.</description>
+    <file>prototypes/otp-account-takeover-scenario.xml</file>
+  </scenario>
+  <scenario id="teller-intervention-cash-withdrawal" approximateStages="8" enabled="false">
+    <title>Teller Intervention During a Cash Withdrawal</title>
+    <description>Practice telling bank staff the full truth when a caller demands secrecy, a cover story, a large cash withdrawal, or a courier handoff.</description>
+    <file>prototypes/teller-intervention-cash-withdrawal-scenario.xml</file>
+  </scenario>
+  <scenario id="check-washing-altered-payee" approximateStages="8" enabled="false">
+    <title>Check Washing and Altered Payee</title>
+    <description>Practice inspecting a processed check, identifying an altered payee and amount, reviewing related checks, and reporting the problem promptly.</description>
+    <file>prototypes/check-washing-altered-payee-scenario.xml</file>
+  </scenario>
+  <scenario id="sim-swap-account-takeover" approximateStages="8" enabled="false">
+    <title>SIM Swap Account Takeover</title>
+    <description>Practice treating sudden phone-service loss and financial alerts as a connected security event involving the carrier, bank, email, and devices.</description>
+    <file>prototypes/sim-swap-account-takeover-scenario.xml</file>
+  </scenario>
+  <scenario id="unauthorized-external-account-linking" approximateStages="8" enabled="false">
+    <title>Unauthorized External Account Linking</title>
+    <description>Practice recognizing unfamiliar microdeposits, linked accounts, and pending ACH transfers before larger losses occur.</description>
+    <file>prototypes/unauthorized-external-account-linking-scenario.xml</file>
+  </scenario>
+  <scenario id="fake-bank-payment-reversal" approximateStages="8" enabled="false">
+    <title>Fake Bank Payment Reversal</title>
+    <description>Practice rejecting instructions to send a new payment, split transfers, share a code, or share a screen to supposedly reverse fraud.</description>
+    <file>prototypes/fake-bank-payment-reversal-scenario.xml</file>
+  </scenario>
+  <scenario id="crypto-atm-account-protection" approximateStages="8" enabled="false">
+    <title>Cryptocurrency ATM Account Protection Scam</title>
+    <description>Practice responding to caller-directed cash withdrawals, cover stories, QR codes, and cryptocurrency-kiosk payment demands.</description>
+    <file>prototypes/crypto-atm-account-protection-scenario.xml</file>
+  </scenario>
+  <scenario id="fake-investment-app" approximateStages="8" enabled="false">
+    <title>Fake Investment App</title>
+    <description>Practice evaluating social proof, manufactured profits, urgent transfers, blocked withdrawals, and fees demanded to release money.</description>
+    <file>prototypes/fake-investment-app-scenario.xml</file>
+  </scenario>
+  <scenario id="rapid-scam-recovery" approximateStages="8" enabled="false">
+    <title>Rapid Scam Recovery</title>
+    <description>Practice contacting the real bank quickly, explaining the full event, securing connected accounts, preserving evidence, and avoiding recovery scams.</description>
+    <file>prototypes/rapid-scam-recovery-scenario.xml</file>
+  </scenario>
 </scenarios>

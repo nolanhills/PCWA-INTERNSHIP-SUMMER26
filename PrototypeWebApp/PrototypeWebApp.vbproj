@@ -212,6 +212,16 @@
     <Content Include="prototypes\scenarios.xml" />
     <Content Include="prototypes\sweepstakes-prize-advance-fee-scenario.xml" />
     <Content Include="prototypes\tech-support-popup-scenario.xml" />
+    <Content Include="prototypes\phantom-hacker-safe-account-scenario.xml" />
+    <Content Include="prototypes\otp-account-takeover-scenario.xml" />
+    <Content Include="prototypes\teller-intervention-cash-withdrawal-scenario.xml" />
+    <Content Include="prototypes\check-washing-altered-payee-scenario.xml" />
+    <Content Include="prototypes\sim-swap-account-takeover-scenario.xml" />
+    <Content Include="prototypes\unauthorized-external-account-linking-scenario.xml" />
+    <Content Include="prototypes\fake-bank-payment-reversal-scenario.xml" />
+    <Content Include="prototypes\crypto-atm-account-protection-scenario.xml" />
+    <Content Include="prototypes\fake-investment-app-scenario.xml" />
+    <Content Include="prototypes\rapid-scam-recovery-scenario.xml" />
     <Content Include="Scripts\accessibility-simulator.js" />
     <Content Include="Scripts\scenario-engine.js" />
     <Content Include="Web.config" />

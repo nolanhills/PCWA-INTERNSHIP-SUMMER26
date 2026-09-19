@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Book 2 / S17: Fake Bank Fraud Department and Payment-App "Reversal"
+  Commands are authoritative for routing. All people, institutions, recipients,
+  and services are fictional. Future media is optional and unavailable.
+-->
+<playlist>
+	<presentation approximateStages="8">
+		<title>Fake Bank Payment “Reversal”</title>
+		<summary>Practice responding when a fake bank fraud representative claims that sending a new payment will cancel an unauthorized one.</summary>
+		<practiceGoal>Check fraud claims through a trusted bank channel, stop at new-recipient warnings, and never send money or share a security code to reverse fraud.</practiceGoal>
+		<stages>
+			<stage>Fraud alert</stage>
+			<stage>False reversal</stage>
+			<stage>Recipient warning</stage>
+			<stage>Split payments</stage>
+			<stage>Access pressure</stage>
+			<stage>Real bank review</stage>
+			<stage>Immediate recovery</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>An incoming text and caller ID use a bank name, but neither independently verifies the sender.</sign>
+				<sign>The caller says a new payment is needed to cancel or reverse another payment.</sign>
+				<sign>The recipient is new, and the caller asks the learner to ignore the payment app's warning.</sign>
+				<sign>The caller suggests a test payment or several smaller payments.</sign>
+				<sign>The caller asks for a one-time code or screen-sharing access.</sign>
+			</warningSigns>
+			<safestAction>Do not reply, click, pay, or share a code. Open the bank or payment app independently and call the bank using a number you already trust.</safestAction>
+			<realWorldActions>
+				<action>Cancel any new-recipient payment before sending it.</action>
+				<action>Tell the real bank about every payment, code, link, and screen-sharing action.</action>
+				<action>Ask the bank to review payment status, devices, payees, and profile changes.</action>
+				<action>Save the text, caller information, and payment details privately.</action>
+				<action>Do not pay anyone who later promises a guaranteed recovery.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="fraud-alert" stageName="Fraud alert" stageIndex="1">
+				<artifact type="text-message">
+					<sender>Riverbend Bank Alerts</sender>
+					<senderStatus>Bank name displayed; sender not verified</senderStatus>
+					<heading>Did you authorize a $950 payment?</heading>
+					<message>Reply now. A fraud specialist will call to stop the transfer.</message>
+					<requestedInformation><item>Reply to the message</item><item>Wait for the incoming call</item></requestedInformation>
+					<transcript>A text displaying the fictional name Riverbend Bank Alerts asks whether the learner authorized a $950 payment. It says to reply immediately and promises that a fraud specialist will call. An incoming call then displays Riverbend Bank. A displayed name can be spoofed, and the text and call have not been independently verified.</transcript>
+					<media video="media/fake-bank-payment-reversal/fraud-alert-call.mp4" available="false" />
+				</artifact>
+				<question>How would you check whether the $950 payment is real?</question>
+				<description>Use a channel you already trust instead of relying on the incoming message or call.</description>
+				<warningSigns><sign>The alert was unexpected.</sign><sign>The message creates urgency and controls the next contact.</sign><sign>The bank name on caller ID is not proof of identity.</sign></warningSigns>
+				<choices>
+					<choice choiceId="open-known-app-call-bank" destinationVideoId="verified-no-transfer" classification="safe">
+						<title>Check the known app and call the bank yourself</title><subtitle>Use the app or a number from your card or statement.</subtitle>
+						<feedback heading="You changed to a trusted channel"><consequence>The real account shows no matching $950 transfer.</consequence><explanation>Independent verification prevents the incoming caller from defining the problem or the solution.</explanation><warningSigns><sign>The original text supplied its own response route.</sign><sign>Caller ID could be spoofed.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="answer-without-sharing" destinationVideoId="false-reversal" classification="risky">
+						<title>Answer, but do not share private information</title><subtitle>Hear what the supposed fraud specialist says.</subtitle>
+						<feedback heading="The caller still controls the explanation"><consequence>No information is shared yet, but the learner remains exposed to a convincing story.</consequence><explanation>Listening can feel cautious, but it gives an unverified caller time to create urgency and confusion.</explanation><warningSigns><sign>The call follows the unexpected text.</sign><sign>The caller was not reached through a trusted number.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="reply-or-use-alert-link" destinationVideoId="false-reversal" classification="dangerous">
+						<title>Reply to the text or use its link</title><subtitle>Follow the alert's instructions to challenge the payment.</subtitle>
+						<feedback heading="The suspicious message keeps control"><consequence>The sender confirms engagement and moves the learner toward a new payment.</consequence><explanation>A bank-looking message can be false. Its reply address and links are not independent bank channels.</explanation><warningSigns><sign>The incoming message supplies the route for resolving its own claim.</sign><sign>The urgency discourages checking the real account first.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="false-reversal" stageName="False reversal" stageIndex="2">
+				<artifact type="phone-call">
+					<caller>“Maya,” Riverbend Bank Fraud Department</caller>
+					<callerStatus>Fictional identity; not independently verified</callerStatus>
+					<callStatus>Incoming call continues</callStatus>
+					<heading>Send $950 to cancel the transfer</heading>
+					<message>Create a new recipient named Fraud Recovery and send $950. The matching payment will reverse the unauthorized transfer.</message>
+					<transcript>The caller identifies herself as Maya from the fictional Riverbend Bank Fraud Department. She says the only way to cancel the supposed unauthorized payment is to create a new recipient named Fraud Recovery and send that recipient $950. Sending a new payment does not reverse a previous one. A real bank handles disputes through its own systems.</transcript>
+				</artifact>
+				<question>Would sending a new payment cancel fraud?</question>
+				<description>The caller is asking the learner to authorize the loss personally.</description>
+				<warningSigns><sign>The solution requires sending money.</sign><sign>The recipient is new and controlled by the caller's instructions.</sign><sign>The caller claims an ordinary bank dispute requires customer payment.</sign></warningSigns>
+				<choices>
+					<choice choiceId="refuse-false-reversal" destinationVideoId="verified-no-transfer" classification="safe">
+						<title>Refuse and call the real bank</title><subtitle>Let the bank handle any dispute internally.</subtitle>
+						<feedback heading="You recognized the contradiction"><consequence>No new payment is created.</consequence><explanation>A bank does not fix fraud by directing a customer to send money to a special recipient.</explanation><warningSigns><sign>The caller's solution moves money out of the account.</sign><sign>The recipient name is only a label, not proof.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-for-supervisor" destinationVideoId="recipient-warning" classification="risky">
+						<title>Ask for a supervisor</title><subtitle>Stay on the call and request another explanation.</subtitle>
+						<feedback heading="A second voice repeats the same false process"><consequence>A supposed supervisor sounds confident and urges immediate payment.</consequence><explanation>Another person within the same unverified call is not independent verification.</explanation><warningSigns><sign>The caller controls the transfer to the supervisor.</sign><sign>The payment demand does not change.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="begin-reversal-payment" destinationVideoId="recipient-warning" classification="dangerous">
+						<title>Begin creating the $950 payment</title><subtitle>Follow the caller's reversal instructions.</subtitle>
+						<feedback heading="A new authorized transfer is being created"><consequence>The learner reaches the final new-recipient warning.</consequence><explanation>The bank has not reversed anything. The learner is preparing a separate payment to a stranger.</explanation><warningSigns><sign>The recipient was supplied by the caller.</sign><sign>The payment is being described as a cancellation.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="recipient-warning" stageName="Recipient warning" stageIndex="3">
+				<artifact type="fake-website">
+					<domain>riverbend-pay.example</domain>
+					<heading>New recipient: Fraud Recovery</heading>
+					<message>Payments to new recipients may be immediate and difficult to cancel. Confirm that you know and trust this recipient.</message>
+					<requestedInformation><item>Cancel payment</item><item>Send $1 test payment</item><item>Continue with $950</item></requestedInformation>
+					<transcript>A nonfunctional training payment screen for the fictional Riverbend Pay service shows a new recipient labeled Fraud Recovery. A warning says payments to new recipients may be immediate and difficult to cancel. The screen offers simulated choices to cancel, send a $1 test, or continue with $950. No real payment service or endpoint is used.</transcript>
+				</artifact>
+				<question>How would you respond to the new-recipient warning?</question>
+				<description>The warning is a final opportunity to stop before money leaves.</description>
+				<warningSigns><sign>The recipient is unfamiliar.</sign><sign>The payment may be immediate and difficult to cancel.</sign><sign>The caller wants the learner to treat the warning as routine.</sign></warningSigns>
+				<choices>
+					<choice choiceId="cancel-at-recipient-warning" destinationVideoId="warning-stopped-payment" classification="safe">
+						<title>Cancel and contact the bank</title><subtitle>Do not send any amount to the new recipient.</subtitle>
+						<feedback heading="The warning stopped the payment"><consequence>No money is sent to Fraud Recovery.</consequence><explanation>A warning about a new, hard-to-cancel payment deserves a pause and independent verification.</explanation><warningSigns><sign>The caller supplied the recipient.</sign><sign>The app warns that cancellation may be difficult.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="send-one-dollar-test" destinationVideoId="split-payment-pressure" classification="risky">
+						<title>Send $1 as a test</title><subtitle>Try a small amount before the full payment.</subtitle>
+						<feedback heading="A small payment is still a real payment"><consequence>One dollar is sent, and the caller uses it to keep the process moving.</consequence><explanation>A test payment does not verify the recipient or the caller's story.</explanation><warningSigns><sign>The destination remains unfamiliar.</sign><sign>The caller benefits from any successful payment.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="send-full-reversal-payment" destinationVideoId="split-payment-pressure" classification="dangerous">
+						<title>Continue with the full $950</title><subtitle>Trust the caller's reversal explanation.</subtitle>
+						<feedback heading="The learner authorizes a new payment"><consequence>The $950 is sent to the scammer-controlled recipient.</consequence><explanation>The transfer was not a reversal. It was a separate payment authorized under false pressure.</explanation><warningSigns><sign>The new recipient was not independently verified.</sign><sign>The caller told the learner to override an explicit warning.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="split-payment-pressure" stageName="Split payments" stageIndex="4">
+				<artifact type="phone-call">
+					<caller>“Maya,” supposed fraud specialist</caller>
+					<callerStatus>Unverified caller increasing payment pressure</callerStatus>
+					<callStatus>Call remains active</callStatus>
+					<heading>The payment did not register correctly</heading>
+					<message>Send two or three smaller payments instead. Smaller amounts will clear the reversal faster.</message>
+					<transcript>The caller says the first payment did not register correctly. She instructs the learner to divide the amount into two or three smaller payments. Splitting a payment does not change the recipient or make the transfer safer. It can increase the total loss.</transcript>
+				</artifact>
+				<question>Do smaller payments make the process safer?</question>
+				<description>The recipient and purpose remain unchanged even when the amount is divided.</description>
+				<warningSigns><sign>The caller asks for repeated payments.</sign><sign>The explanation changes after the first payment.</sign><sign>Smaller amounts are used to reduce hesitation.</sign></warningSigns>
+				<choices>
+					<choice choiceId="stop-split-payments" destinationVideoId="real-bank-verification" classification="safe">
+						<title>Stop and call the real bank</title><subtitle>Make no more payments.</subtitle>
+						<feedback heading="You stopped the escalating payment demand"><consequence>No additional transfer is sent.</consequence><explanation>Stopping quickly gives the real bank the earliest opportunity to review what happened.</explanation><warningSigns><sign>The caller changed the payment instructions.</sign><sign>The total requested amount can grow across several transfers.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="delay-and-check-account" destinationVideoId="access-pressure" classification="risky">
+						<title>Pause and review the real account</title><subtitle>Keep the call active while checking.</subtitle>
+						<feedback heading="The pause helps, but the caller remains present"><consequence>The learner does not send another payment yet.</consequence><explanation>Reviewing the account is useful, but ending the unverified call would better protect the decision.</explanation><warningSigns><sign>The caller is still able to explain away what the learner sees.</sign><sign>Payment pressure continues during the review.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="send-smaller-payments" destinationVideoId="access-pressure" classification="dangerous">
+						<title>Send several smaller payments</title><subtitle>Follow the caller's revised instructions.</subtitle>
+						<feedback heading="The cumulative loss increases"><consequence>Several payments go to the same unverified recipient.</consequence><explanation>Dividing the transfer does not create protection. It repeats the same unsafe action.</explanation><warningSigns><sign>The caller requests multiple transfers.</sign><sign>The process keeps changing after money is sent.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="access-pressure" stageName="Access pressure" stageIndex="5">
+				<artifact type="text-message">
+					<sender>Riverbend Security Code</sender>
+					<senderStatus>Real-looking code; caller still unverified</senderStatus>
+					<heading>Your security code is 418206</heading>
+					<message>Do not share this code. Riverbend Bank will never call to ask for it.</message>
+					<transcript>A message displays the fictional security code 418206 and says not to share it. The caller asks the learner to read the code aloud or start screen sharing so she can complete the supposed reversal. A real security message can be triggered by a scammer trying to enter an account; it does not make the caller legitimate.</transcript>
+					<media video="media/fake-bank-payment-reversal/code-pressure.mp4" available="false" />
+				</artifact>
+				<question>How would you respond to the code or screen-sharing request?</question>
+				<description>The code message itself says the bank will not call to request it.</description>
+				<warningSigns><sign>The caller asks for a code marked private.</sign><sign>Screen sharing would expose banking activity.</sign><sign>The caller links account access to a payment reversal.</sign></warningSigns>
+				<choices>
+					<choice choiceId="refuse-code-end-call" destinationVideoId="real-bank-verification" classification="safe">
+						<title>Refuse, end the call, and contact the bank</title><subtitle>Use a trusted number for the next conversation.</subtitle>
+						<feedback heading="You protected account access"><consequence>The caller does not receive the code or view the screen.</consequence><explanation>One-time codes and screen access can let another person take over the account.</explanation><warningSigns><sign>The message says not to share the code.</sign><sign>The caller is asking to see protected activity.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="keep-talking-withhold-code" destinationVideoId="real-bank-verification" classification="risky">
+						<title>Keep talking but withhold the code</title><subtitle>Do not share it yet.</subtitle>
+						<feedback heading="The code remains private, but pressure continues"><consequence>Immediate account takeover is interrupted, although the caller still controls the conversation.</consequence><explanation>Withholding the code helps. Ending the call and changing channels is safer.</explanation><warningSigns><sign>The unverified caller remains on the line.</sign><sign>The request directly contradicts the security message.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="share-code-or-screen" destinationVideoId="real-bank-verification" classification="dangerous">
+						<title>Share the code or screen</title><subtitle>Help the caller complete the supposed reversal.</subtitle>
+						<feedback heading="Account access may now be compromised"><consequence>The scammer may enroll a device, change settings, or move more money.</consequence><explanation>A genuine code can be generated by a scammer's login attempt. Sharing it authorizes that attempt.</explanation><warningSigns><sign>The code was marked private.</sign><sign>The caller requested direct access to the account.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="real-bank-verification" stageName="Real bank review" stageIndex="6">
+				<artifact type="phone-call">
+					<caller>Riverbend Bank fraud representative</caller>
+					<callerStatus>Reached through a trusted number</callerStatus>
+					<callStatus>Independent call</callStatus>
+					<heading>The bank asks for the complete sequence</heading>
+					<message>Please tell us about every text, payment, link, security code, and screen-sharing action. We will review the account and available response options.</message>
+					<transcript>The learner ends the incoming call and reaches the fictional Riverbend Bank through a trusted number. The real representative explains that the bank never asks customers to send a new payment to reverse fraud. The representative asks for the full sequence, including payments, links, codes, and any screen sharing.</transcript>
+				</artifact>
+				<question>How much should you tell the real bank?</question>
+				<description>Complete details help the bank assess both payment and account-access risks.</description>
+				<warningSigns><sign>The fake caller may have caused authorized payments.</sign><sign>A code or shared screen can create a separate access risk.</sign></warningSigns>
+				<choices>
+					<choice choiceId="tell-complete-sequence" destinationVideoId="immediate-recovery" classification="safe">
+						<title>Explain every action</title><subtitle>Include payments, links, codes, and screen sharing.</subtitle>
+						<feedback heading="The bank receives the information it needs"><consequence>Payment review and account-security review can proceed together.</consequence><explanation>Honest details help the bank choose appropriate actions. Being manipulated is not a personal failure.</explanation><warningSigns><sign>Different actions create different recovery needs.</sign><sign>Omitted access details could leave the account exposed.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="mention-only-original-text" destinationVideoId="immediate-recovery" classification="risky">
+						<title>Mention only the original alert</title><subtitle>Leave out payments or access details.</subtitle>
+						<feedback heading="The review may be incomplete"><consequence>The bank may not know to inspect payment recipients, devices, or profile changes.</consequence><explanation>Details that feel embarrassing can be time-sensitive security information.</explanation><warningSigns><sign>The incident extended beyond the first text.</sign><sign>Account access may need separate attention.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="hide-payments-from-bank" destinationVideoId="immediate-recovery" classification="dangerous">
+						<title>Hide the payments</title><subtitle>Describe the contact without saying money was sent.</subtitle>
+						<feedback heading="Time-sensitive payment review is delayed"><consequence>The bank cannot respond fully to information it does not have.</consequence><explanation>The scammer created the deception. Sharing the facts promptly is a protective action, not an admission of fault.</explanation><warningSigns><sign>The sent payments may have limited response windows.</sign><sign>Shame is being allowed to prolong the harm.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="immediate-recovery" stageName="Immediate recovery" stageIndex="7">
+				<artifact type="narration">
+					<heading>Review payments and secure every access path</heading>
+					<message>The bank can review payment status, recipients, devices, payees, contact details, and recent account changes. It cannot promise that sent money will be recovered.</message>
+					<transcript>The real bank begins reviewing the status and recipients of the payments. It also checks active devices, new payees, profile changes, and other recent activity. The bank may take appropriate available action, but it cannot guarantee recovery. The learner should preserve evidence and stop contact with the scammer.</transcript>
+				</artifact>
+				<question>Which response is most complete?</question>
+				<description>Payment review and account security should happen together.</description>
+				<warningSigns><sign>Changing one password may not remove devices or payees.</sign><sign>The scammer may return as a refund or recovery service.</sign></warningSigns>
+				<choices>
+					<choice choiceId="complete-payment-and-access-review" destinationVideoId="payment-recovery-started" classification="safe">
+						<title>Review payments, access, profile, and evidence</title><subtitle>Take every available protective action with the bank.</subtitle>
+						<feedback heading="A complete recovery response begins"><consequence>The bank reviews both the money movement and the ways the account could be accessed.</consequence><explanation>This cannot guarantee reimbursement, but it limits further harm and preserves useful information.</explanation><warningSigns><sign>The incident may involve both payment fraud and account takeover.</sign><sign>Secondary scammers may promise impossible guarantees.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="change-payment-password-only" destinationVideoId="partial-recovery" classification="risky">
+						<title>Change only the payment-app password</title><subtitle>Skip the broader account review.</subtitle>
+						<feedback heading="One protective step leaves gaps"><consequence>Unknown devices, payees, or changed contact details may remain.</consequence><explanation>Recovery should cover every access and money-movement setting exposed during the scam.</explanation><warningSigns><sign>The caller may have obtained more than one credential.</sign><sign>Server-side settings remain after an app password changes.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-fake-agent-for-refund" destinationVideoId="secondary-loss" classification="dangerous">
+						<title>Call the fake representative for a refund</title><subtitle>Ask the original caller to return the money.</subtitle>
+						<feedback heading="The scammer creates another demand"><consequence>The caller requests a refund fee or another verification payment.</consequence><explanation>Returning to the scammer gives the same person another chance to cause loss or gather information.</explanation><warningSigns><sign>A fee is requested to recover money.</sign><sign>The promised refund remains controlled by the original caller.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="verified-no-transfer" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The real account shows no $950 transfer</heading><message>You checked through a trusted channel and did not send money or share a code.</message><transcript>The learner independently opens the known bank or payment app and calls the bank using trusted information. No matching $950 transfer exists. The incoming text and call were an attempt to create a new authorized payment. No money or account access is lost.</transcript></artifact>
+				<outcome classification="safe"><label>Claim checked independently</label><heading>You stopped the false reversal before it began</heading><explanation>A bank does not resolve fraud by asking a customer to send a matching payment. Independent verification kept control with you.</explanation></outcome>
+				<warningSigns><sign>The incoming contact supplied both the emergency and the solution.</sign><sign>The supposed solution required sending money.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="warning-stopped-payment" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The new-recipient warning stops the payment</heading><message>You cancel before sending money and contact the bank independently.</message><transcript>The learner recognizes that Fraud Recovery is a new recipient supplied by an unverified caller. The payment is canceled before it is sent. The learner ends the call and contacts the real bank through a trusted number.</transcript></artifact>
+				<outcome classification="safe"><label>Payment canceled</label><heading>You used the app warning as a reason to stop</heading><explanation>The warning identified a new, hard-to-cancel payment. Stopping protected the money and ended the caller's false reversal process.</explanation></outcome>
+				<warningSigns><sign>The recipient was unfamiliar.</sign><sign>The caller wanted the warning ignored.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="payment-recovery-started" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>A payment was sent, and recovery starts promptly</heading><message>The bank reviews the payment and secures the account. Recovery is not guaranteed, but immediate action can limit further harm.</message><transcript>One or more payments may have been sent before the scam was recognized. The learner gives the real bank complete information, asks it to review every available payment response, secures devices, payees, and profile details, preserves evidence, and ends contact with the scammer. The bank does not promise reimbursement.</transcript></artifact>
+				<outcome classification="risky"><label>Loss reported promptly</label><heading>You corrected course and began a complete response</heading><explanation>Sending money created real risk, but prompt, honest bank contact and full account review are the strongest available next steps.</explanation></outcome>
+				<warningSigns><sign>A new payment was falsely described as a reversal.</sign><sign>Small or split payments still went to the same recipient.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="partial-recovery" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>Some account risks remain</heading><message>Changing one password helps, but it may not remove unknown devices, payees, or profile changes.</message><transcript>The learner changes the payment-app password but does not complete the broader review. A sent payment may still require urgent bank attention, and other account access paths may remain. The learner can still contact the bank again and complete the checklist.</transcript></artifact>
+				<outcome classification="risky"><label>Recovery incomplete</label><heading>One protective action did not cover the whole incident</heading><explanation>Review payment status, devices, payees, profile information, and evidence with the bank. It is still worthwhile to finish these steps now.</explanation></outcome>
+				<warningSigns><sign>The scam included both payment and access pressure.</sign><sign>Changing an app password does not reverse a transfer.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="secondary-loss" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The scammer asks for another payment</heading><message>The promised refund becomes a new fee or verification transfer.</message><transcript>The learner returns to the fake representative and asks for a refund. The scammer requests another payment and may claim it is a fee, deposit, or verification step. This is a continuation of the original scam. The learner should stop contact, call the real bank, preserve evidence, and secure the account.</transcript></artifact>
+				<outcome classification="dangerous"><label>Secondary payment demand</label><heading>The false reversal became a second scam attempt</heading><explanation>The scammer cannot be trusted to return the money. Stop contact and use the real bank and legitimate reporting channels. Being deceived is not the learner's fault.</explanation></outcome>
+				<warningSigns><sign>A payment is required to obtain a refund.</sign><sign>The original scammer still controls the process.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="fraud-alert" displayText="A bank-looking text and caller claim a $950 payment is pending."><options><option id="verified-no-transfer" choiceId="open-known-app-call-bank" text="Check the known app and call the bank yourself" /><option id="false-reversal" choiceId="answer-without-sharing" text="Answer without sharing private information" /><option id="false-reversal" choiceId="reply-or-use-alert-link" text="Reply to the text or use its link" /></options></command>
+		<command type="prompt" videoId="false-reversal" displayText="The caller says a new $950 payment to Fraud Recovery will cancel the supposed fraud."><options><option id="verified-no-transfer" choiceId="refuse-false-reversal" text="Refuse and call the real bank" /><option id="recipient-warning" choiceId="ask-for-supervisor" text="Ask for a supervisor" /><option id="recipient-warning" choiceId="begin-reversal-payment" text="Begin creating the $950 payment" /></options></command>
+		<command type="prompt" videoId="recipient-warning" displayText="The fictional payment app warns that Fraud Recovery is a new recipient."><options><option id="warning-stopped-payment" choiceId="cancel-at-recipient-warning" text="Cancel and contact the bank" /><option id="split-payment-pressure" choiceId="send-one-dollar-test" text="Send $1 as a test" /><option id="split-payment-pressure" choiceId="send-full-reversal-payment" text="Continue with the full $950" /></options></command>
+		<command type="prompt" videoId="split-payment-pressure" displayText="The caller says to divide the amount into several smaller payments."><options><option id="real-bank-verification" choiceId="stop-split-payments" text="Stop and call the real bank" /><option id="access-pressure" choiceId="delay-and-check-account" text="Pause and review the real account" /><option id="access-pressure" choiceId="send-smaller-payments" text="Send several smaller payments" /></options></command>
+		<command type="prompt" videoId="access-pressure" displayText="The caller asks for a one-time code or screen-sharing access."><options><option id="real-bank-verification" choiceId="refuse-code-end-call" text="Refuse, end the call, and contact the bank" /><option id="real-bank-verification" choiceId="keep-talking-withhold-code" text="Keep talking but withhold the code" /><option id="real-bank-verification" choiceId="share-code-or-screen" text="Share the code or screen" /></options></command>
+		<command type="prompt" videoId="real-bank-verification" displayText="The real bank asks for every detail about the contact, payments, links, and codes."><options><option id="immediate-recovery" choiceId="tell-complete-sequence" text="Explain every action" /><option id="immediate-recovery" choiceId="mention-only-original-text" text="Mention only the original alert" /><option id="immediate-recovery" choiceId="hide-payments-from-bank" text="Hide the payments" /></options></command>
+		<command type="prompt" videoId="immediate-recovery" displayText="The bank can review payments and secure devices, payees, and profile details."><options><option id="payment-recovery-started" choiceId="complete-payment-and-access-review" text="Review payments, access, profile, and evidence" /><option id="partial-recovery" choiceId="change-payment-password-only" text="Change only the payment-app password" /><option id="secondary-loss" choiceId="call-fake-agent-for-refund" text="Call the fake representative for a refund" /></options></command>
+		<command type="stop" videoId="verified-no-transfer" displayText="Independent verification showed no matching $950 transfer." />
+		<command type="stop" videoId="warning-stopped-payment" displayText="The new-recipient warning stopped the payment before money was sent." />
+		<command type="stop" videoId="payment-recovery-started" displayText="A payment was sent, and a complete bank and account-security review has begun." />
+		<command type="stop" videoId="partial-recovery" displayText="One protective step was taken, but the broader recovery review remains incomplete." />
+		<command type="stop" videoId="secondary-loss" displayText="Returning to the fake representative created another payment demand." />
+	</commands>
+</playlist>

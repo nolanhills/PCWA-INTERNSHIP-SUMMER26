@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Book 2 / S18: Cryptocurrency ATM "Account Protection" Payment
+  The kiosk, caller, institutions, and reference tile are fictional and
+  nonfunctional. No wallet address or scannable QR code is included.
+-->
+<playlist>
+	<presentation approximateStages="8">
+		<title>Cryptocurrency ATM “Account Protection”</title>
+		<summary>Practice responding when a fake investigator directs a cash withdrawal and cryptocurrency-kiosk deposit to a supposed protected wallet.</summary>
+		<practiceGoal>Reject caller-directed cash-to-cryptocurrency payments, tell bank staff the real purpose of a withdrawal, and stop at kiosk warnings.</practiceGoal>
+		<stages>
+			<stage>Protected wallet claim</stage>
+			<stage>Cash withdrawal</stage>
+			<stage>Teller isolation</stage>
+			<stage>Kiosk setup</stage>
+			<stage>Kiosk warning</stage>
+			<stage>Cash deposit</stage>
+			<stage>More money demanded</stage>
+			<stage>Takeaways</stage>
+		</stages>
+		<finalReview>
+			<warningSigns>
+				<sign>A caller claims a bank or government office uses a protected cryptocurrency wallet.</sign>
+				<sign>The caller supplies a code-like image and controls the destination.</sign>
+				<sign>The learner is told to withdraw cash, stay on the phone, and conceal the real purpose.</sign>
+				<sign>The caller attacks the teller's credibility to isolate the learner.</sign>
+				<sign>The caller dismisses a kiosk warning that cryptocurrency transfers may be irreversible.</sign>
+			</warningSigns>
+			<safestAction>End the call and contact the real bank independently. Never deposit cash at a cryptocurrency kiosk because an unexpected caller says it will protect an account.</safestAction>
+			<realWorldActions>
+				<action>Tell the teller or store employee the complete reason for the transaction.</action>
+				<action>Do not scan or use a destination supplied by an unexpected caller.</action>
+				<action>Cancel when a kiosk warns about government, bank, or account-protection requests.</action>
+				<action>If cash was deposited, contact the bank promptly and preserve the kiosk receipt and caller messages.</action>
+				<action>Use legitimate reporting channels and reject services that guarantee cryptocurrency recovery for a fee.</action>
+			</realWorldActions>
+		</finalReview>
+		<scenes>
+			<scene videoId="protected-wallet-claim" stageName="Protected wallet claim" stageIndex="1">
+				<artifact type="phone-call">
+					<caller>“Agent Cole,” National Account Protection Office</caller>
+					<callerStatus>Fictional office; identity not verified</callerStatus>
+					<callStatus>Unexpected incoming call</callStatus>
+					<heading>Your savings must be moved to a secure wallet</heading>
+					<message>Criminals are targeting your account. Keep this investigation confidential and use the secure-wallet reference tile I sent you.</message>
+					<transcript>An unexpected caller identifies himself as Agent Cole from the fictional National Account Protection Office. He claims criminals are targeting the learner's bank account and says the money must be converted to cryptocurrency in a protected government wallet. He sends a training-only reference tile. It is not a QR code and contains no wallet address.</transcript>
+					<media video="media/crypto-atm-account-protection/protected-wallet-call.mp4" available="false" />
+				</artifact>
+				<question>Would you trust a caller-supplied destination for protecting money?</question>
+				<description>Banks and government agencies do not protect accounts by directing cash into cryptocurrency wallets.</description>
+				<warningSigns><sign>The authority call was unexpected.</sign><sign>The caller demands secrecy.</sign><sign>The destination comes entirely from the caller.</sign></warningSigns>
+				<choices>
+					<choice choiceId="end-call-contact-bank" destinationVideoId="independent-verification-safe" classification="safe">
+						<title>End the call and contact the bank</title><subtitle>Use a known number and describe the protected-wallet claim.</subtitle>
+						<feedback heading="You verified outside the caller's control"><consequence>The real bank confirms that it does not use protected cryptocurrency wallets.</consequence><explanation>Independent contact stops the scam before cash is withdrawn.</explanation><warningSigns><sign>The caller supplied the destination and the emergency.</sign><sign>The procedure could not be verified independently.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="ask-trusted-person-about-tile" destinationVideoId="trusted-interruption-safe" classification="risky">
+						<title>Ask someone you trust about the request</title><subtitle>Pause before withdrawing or depositing anything.</subtitle>
+						<feedback heading="Outside support interrupts the pressure"><consequence>A trusted person recognizes that the caller is directing an irreversible payment.</consequence><explanation>Involving someone trusted is protective, but continuing to handle or evaluate the caller-supplied reference tile is less safe than ending contact and verifying independently. The pause creates time to move to a known bank channel before money moves.</explanation><warningSigns><sign>The caller wanted the instructions kept secret.</sign><sign>The reference tile came only from the caller.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="follow-secure-wallet-instructions" destinationVideoId="cash-withdrawal" classification="dangerous">
+						<title>Follow the caller's instructions</title><subtitle>Continue to the bank for the cash withdrawal.</subtitle>
+						<feedback heading="The caller controls the payment destination"><consequence>The learner prepares to convert bank funds into cash outside normal bank safeguards.</consequence><explanation>A government-sounding title and code-like image do not make a cryptocurrency destination safe.</explanation><warningSigns><sign>The caller controls every step.</sign><sign>The money is being moved away from the bank.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="cash-withdrawal" stageName="Cash withdrawal" stageIndex="2">
+				<artifact type="narration">
+					<heading>The caller directs an $8,000 withdrawal</heading>
+					<message>Agent Cole says to remain on the phone and tell the teller that the cash is for personal purchases.</message>
+					<transcript>At the fictional bank branch, the caller instructs the learner to withdraw $8,000 in cash. He says the investigation is confidential and directs the learner to tell the teller that the money is for personal purchases. The cover story is designed to bypass the bank's fraud safeguards.</transcript>
+				</artifact>
+				<question>What should you tell the teller?</question>
+				<description>The teller can help only if the real reason for the withdrawal is known.</description>
+				<warningSigns><sign>The caller supplies a cover story.</sign><sign>The learner is told to stay on the phone.</sign><sign>A large cash withdrawal is being used for cryptocurrency.</sign></warningSigns>
+				<choices>
+					<choice choiceId="tell-teller-about-crypto-call" destinationVideoId="teller-stop-safe" classification="safe">
+						<title>Tell the teller about the call and cryptocurrency</title><subtitle>Explain the full reason for the withdrawal.</subtitle>
+						<feedback heading="The teller can respond supportively"><consequence>The withdrawal pauses while the bank explains the scam pattern.</consequence><explanation>Telling the truth gives trained bank staff the information needed to help.</explanation><warningSigns><sign>The caller wanted the transaction hidden.</sign><sign>The requested payment is outside ordinary banking procedures.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="withdraw-smaller-amount" destinationVideoId="teller-isolation" classification="risky">
+						<title>Withdraw a smaller amount while deciding</title><subtitle>Reduce the cash but keep following the process.</subtitle>
+						<feedback heading="A smaller amount remains at risk"><consequence>The learner leaves with cash that the caller still intends to redirect.</consequence><explanation>Reducing the amount does not verify the caller or the destination.</explanation><warningSigns><sign>The cover story remains in use.</sign><sign>Any deposited cash may be difficult to recover.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="use-cover-story-withdraw-full" destinationVideoId="teller-isolation" classification="dangerous">
+						<title>Use the cover story and withdraw $8,000</title><subtitle>Say the cash is for personal purchases.</subtitle>
+						<feedback heading="The bank's strongest intervention point is bypassed"><consequence>The learner leaves with the full amount while the caller remains on the line.</consequence><explanation>Instructions to lie are a strong sign that the caller fears independent scrutiny.</explanation><warningSigns><sign>The purpose is concealed from bank staff.</sign><sign>The caller maintains live control.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="teller-isolation" stageName="Teller isolation" stageIndex="3">
+				<artifact type="phone-call">
+					<caller>“Agent Cole”</caller>
+					<callerStatus>Unverified caller attacking trusted help</callerStatus>
+					<callStatus>Call continues from the branch</callStatus>
+					<heading>Do not trust the teller</heading>
+					<message>Bank employees may be involved. If anyone asks questions, leave immediately and go to the kiosk.</message>
+					<transcript>When the teller asks why the learner needs cash, Agent Cole says bank employees may be involved in the supposed crime. He orders the learner to avoid questions, leave the branch, and remain on the phone while traveling to a cryptocurrency kiosk. This is an isolation tactic.</transcript>
+				</artifact>
+				<question>What does the attack on the teller reveal?</question>
+				<description>A caller who discredits anyone able to help is trying to preserve control.</description>
+				<warningSigns><sign>The caller portrays the teller as an enemy without evidence.</sign><sign>The learner is ordered to leave a place of help.</sign><sign>The call must remain active.</sign></warningSigns>
+				<choices>
+					<choice choiceId="return-and-tell-teller" destinationVideoId="teller-stop-safe" classification="safe">
+						<title>Return to the teller and explain everything</title><subtitle>End the call and ask the bank for help.</subtitle>
+						<feedback heading="You rejected the isolation tactic"><consequence>The bank pauses the transaction and helps contact a legitimate fraud representative.</consequence><explanation>Independent support is a safeguard, not an obstacle.</explanation><warningSigns><sign>The caller tried to separate the learner from bank staff.</sign><sign>The bank had not confirmed any investigation.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="stay-in-branch-avoid-details" destinationVideoId="kiosk-setup" classification="risky">
+						<title>Stay nearby but avoid explaining the call</title><subtitle>Keep the cash and decide alone.</subtitle>
+						<feedback heading="Help is close, but the caller still has control"><consequence>The learner remains physically near the bank but does not give staff enough information to intervene.</consequence><explanation>Withholding the cryptocurrency instructions prevents the teller from addressing the real risk.</explanation><warningSigns><sign>The cover story continues.</sign><sign>The caller still discourages honest discussion.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="leave-for-kiosk-on-call" destinationVideoId="kiosk-setup" classification="dangerous">
+						<title>Leave for the kiosk and stay on the phone</title><subtitle>Follow the caller away from bank safeguards.</subtitle>
+						<feedback heading="The learner carries cash outside the bank"><consequence>The caller can now direct the kiosk transaction without teller intervention.</consequence><explanation>Remaining on the phone keeps the learner isolated and under continuous instruction.</explanation><warningSigns><sign>The caller prevents a private conversation with the bank.</sign><sign>Cash is moving toward an irreversible channel.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="kiosk-setup" stageName="Kiosk setup" stageIndex="4">
+				<artifact type="fake-website">
+					<domain>training-kiosk.example</domain>
+					<heading>Training cryptocurrency kiosk</heading>
+					<message>The caller says to choose Buy, use the training reference tile, and select a false transaction reason. This simulation cannot scan, accept cash, or send cryptocurrency.</message>
+					<requestedInformation><item>Ask store staff for help</item><item>View safety information</item><item>Load training destination</item></requestedInformation>
+					<transcript>A nonfunctional training kiosk appears. Instead of a QR code, it shows a plain tile labeled TRAINING REFERENCE ONLY — NOT SCANNABLE. There is no wallet address. Agent Cole directs the learner to choose Buy, use the tile, and enter a false reason. The simulation cannot accept cash or transmit cryptocurrency.</transcript>
+				</artifact>
+				<question>Should you follow caller-directed kiosk steps?</question>
+				<description>Stop before loading any destination or inserting cash.</description>
+				<warningSigns><sign>The destination came from the caller.</sign><sign>The caller requests a false transaction reason.</sign><sign>The kiosk is being used for account protection rather than a chosen purchase.</sign></warningSigns>
+				<choices>
+					<choice choiceId="ask-employee-or-bank" destinationVideoId="kiosk-help-safe" classification="safe">
+						<title>Stop and ask store staff or the bank</title><subtitle>Bring in a trusted third party before using the kiosk.</subtitle>
+						<feedback heading="Independent help interrupts the deposit"><consequence>No destination is loaded and no cash is inserted.</consequence><explanation>A private conversation with store staff or the bank breaks the caller's control.</explanation><warningSigns><sign>The caller wanted continuous phone contact.</sign><sign>The transaction reason was supposed to be false.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="explore-kiosk-no-cash" destinationVideoId="kiosk-warning" classification="risky">
+						<title>View the kiosk screens without inserting cash</title><subtitle>Look for warnings while keeping the money.</subtitle>
+						<feedback heading="No money moves yet"><consequence>The learner reaches the kiosk's scam warning.</consequence><explanation>Exploring without payment avoids immediate loss, but the caller remains able to dismiss the warning.</explanation><warningSigns><sign>The caller still directs the steps.</sign><sign>The destination remains unverified.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="load-caller-destination" destinationVideoId="kiosk-warning" classification="dangerous">
+						<title>Load the caller's training destination</title><subtitle>Prepare to deposit cash as instructed.</subtitle>
+						<feedback heading="The caller's destination is selected"><consequence>The learner reaches the final warning before the simulated deposit.</consequence><explanation>A caller-supplied destination routes value to someone the learner has not verified.</explanation><warningSigns><sign>The learner did not choose the destination independently.</sign><sign>The payment is described as government or bank protection.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="kiosk-warning" stageName="Kiosk warning" stageIndex="5">
+				<artifact type="fake-website">
+					<domain>training-kiosk.example/safety</domain>
+					<heading>Scam warning</heading>
+					<message>Government agencies and banks do not request cryptocurrency payments. Transactions may be irreversible. Cancel if anyone instructed you to use this kiosk.</message>
+					<transcript>The simulated kiosk displays a large warning: Government agencies and banks do not request cryptocurrency payments. Transactions may be irreversible. Cancel if anyone instructed you to use this kiosk. The essential warning is shown in text and does not depend on video or sound.</transcript>
+					<media video="media/crypto-atm-account-protection/kiosk-warning.mp4" available="false" />
+				</artifact>
+				<question>How would you respond to the kiosk warning?</question>
+				<description>The warning directly describes the caller's instructions.</description>
+				<warningSigns><sign>The bank or government claim matches the warning.</sign><sign>The transfer may be irreversible.</sign><sign>The caller is likely to explain away the safety message.</sign></warningSigns>
+				<choices>
+					<choice choiceId="cancel-at-kiosk-warning" destinationVideoId="kiosk-cancel-safe" classification="safe">
+						<title>Cancel and leave with the cash</title><subtitle>End the call and contact the bank.</subtitle>
+						<feedback heading="The kiosk warning prevents the loss"><consequence>No cash is deposited.</consequence><explanation>The warning is not a routine obstacle. It names the exact scam pattern.</explanation><warningSigns><sign>A caller directed the kiosk use.</sign><sign>The request claimed to come from an authority.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="call-scammer-about-warning" destinationVideoId="cash-deposit" classification="risky">
+						<title>Ask the caller whether the warning applies</title><subtitle>Let Agent Cole explain it.</subtitle>
+						<feedback heading="The caller dismisses the safeguard"><consequence>He says the warning is for other people and increases the urgency.</consequence><explanation>The person directing the risky payment cannot independently judge whether the warning applies.</explanation><warningSigns><sign>The caller has a ready explanation for a precise scam warning.</sign><sign>The learner remains isolated.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="dismiss-kiosk-warning" destinationVideoId="cash-deposit" classification="dangerous">
+						<title>Dismiss the warning and continue</title><subtitle>Trust the caller over the kiosk safety message.</subtitle>
+						<feedback heading="The final clear warning is passed"><consequence>The learner reaches the simulated cash-deposit step.</consequence><explanation>The caller's instructions match the warning: authority claim, cryptocurrency, and irreversible payment.</explanation><warningSigns><sign>The warning directly contradicts the caller.</sign><sign>The payment cannot be reversed like an ordinary bank transfer.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="cash-deposit" stageName="Cash deposit" stageIndex="6">
+				<artifact type="fake-website">
+					<domain>training-kiosk.example/deposit</domain>
+					<heading>Training deposit — no funds accepted</heading>
+					<message>The fictional destination cannot be reversed. This simulator does not accept cash or transmit value.</message>
+					<requestedInformation><item>Cancel with $0 deposited</item><item>Simulate a small test deposit</item><item>Simulate the full deposit</item></requestedInformation>
+					<transcript>The nonfunctional training kiosk states that the destination cannot be reversed. It offers scenario choices representing no deposit, a small test deposit, or the full cash amount. No payment field, wallet address, scanning feature, or real transaction is present.</transcript>
+				</artifact>
+				<question>Is a small test deposit safe?</question>
+				<description>Any cash sent to the caller's destination may be lost.</description>
+				<warningSigns><sign>The destination is irreversible.</sign><sign>The caller controls where the value would go.</sign><sign>A test amount can be used to demand the rest.</sign></warningSigns>
+				<choices>
+					<choice choiceId="deposit-nothing-cancel" destinationVideoId="kiosk-cancel-safe" classification="safe">
+						<title>Deposit nothing and cancel</title><subtitle>Keep all the cash and end the call.</subtitle>
+						<feedback heading="All cash remains protected"><consequence>The transaction is canceled with no deposit.</consequence><explanation>Stopping before any cash is inserted preserves the money and ends the caller's process.</explanation><warningSigns><sign>The transfer was described as irreversible.</sign><sign>The caller supplied the destination.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-small-test-deposit" destinationVideoId="more-money-demanded" classification="risky">
+						<title>Make a small test deposit</title><subtitle>Risk only part of the cash first.</subtitle>
+						<feedback heading="The test amount may be lost"><consequence>The caller treats the first deposit as proof that the learner should send the rest.</consequence><explanation>A smaller irreversible transfer is still a loss and does not verify the story.</explanation><warningSigns><sign>The payment destination remains unknown.</sign><sign>The caller immediately asks for more.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="simulate-full-cash-deposit" destinationVideoId="more-money-demanded" classification="dangerous">
+						<title>Deposit the full amount</title><subtitle>Complete the caller's account-protection instructions.</subtitle>
+						<feedback heading="The cash is converted and sent"><consequence>The $8,000 is represented as transferred to the scammer-controlled destination.</consequence><explanation>Cryptocurrency sent to an unknown destination may be difficult or impossible to recover.</explanation><warningSigns><sign>The deposit followed an authority impersonation call.</sign><sign>The kiosk warned that the transaction may be irreversible.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="more-money-demanded" stageName="More money demanded" stageIndex="7">
+				<artifact type="phone-call">
+					<caller>“Agent Cole”</caller>
+					<callerStatus>Scammer escalating after a deposit</callerStatus>
+					<callStatus>Caller demands another transaction</callStatus>
+					<heading>The account is not fully secured</heading>
+					<message>Make another withdrawal or take a loan. The first deposit was not enough to protect the account.</message>
+					<transcript>After the simulated partial or full deposit, Agent Cole says the account is still not secure. He asks for another withdrawal or a loan. Repeated demands are not evidence that the process is working; they show that the scammer is trying to expand the loss.</transcript>
+				</artifact>
+				<question>What should happen now?</question>
+				<description>Stop the escalation and use legitimate recovery channels.</description>
+				<warningSigns><sign>The caller changes the required amount after payment.</sign><sign>Borrowing is proposed to continue the same process.</sign><sign>No amount ever completes the supposed protection.</sign></warningSigns>
+				<choices>
+					<choice choiceId="end-contact-call-bank" destinationVideoId="crypto-loss-recovery" classification="safe">
+						<title>End contact and call the real bank</title><subtitle>Report the transaction and preserve the receipt and messages.</subtitle>
+						<feedback heading="You stopped further loss"><consequence>No additional withdrawal or loan is made.</consequence><explanation>Prompt reporting and evidence preservation are appropriate, although recovery cannot be guaranteed.</explanation><warningSigns><sign>The caller demanded more after the first deposit.</sign><sign>The payment route was difficult to reverse.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="refuse-more-stay-on-call" destinationVideoId="crypto-loss-delayed" classification="risky">
+						<title>Say no more money is available but remain on the call</title><subtitle>Do not pay again yet.</subtitle>
+						<feedback heading="The next loss pauses, but recovery is delayed"><consequence>The caller may switch to threats or a false recovery promise.</consequence><explanation>Ending contact and calling the bank would remove the scammer's influence and start the real response.</explanation><warningSigns><sign>The caller continues despite the learner's refusal.</sign><sign>The story changes to maintain contact.</sign></warningSigns></feedback>
+					</choice>
+					<choice choiceId="withdraw-or-borrow-more" destinationVideoId="expanded-crypto-loss" classification="dangerous">
+						<title>Withdraw or borrow more money</title><subtitle>Try to finish the supposed protection process.</subtitle>
+						<feedback heading="The financial harm expands"><consequence>Additional savings or borrowed funds are placed at risk.</consequence><explanation>No legitimate account-protection process requires repeated cryptocurrency deposits.</explanation><warningSigns><sign>The caller targets new sources of money.</sign><sign>Earlier payment did not end the demand.</sign></warningSigns></feedback>
+					</choice>
+				</choices>
+			</scene>
+
+			<scene videoId="independent-verification-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The protected-wallet claim is false</heading><message>The real bank confirms that it never directs customers to cryptocurrency kiosks.</message><transcript>The learner ends the unexpected call and contacts the bank independently. The bank confirms there is no account-protection investigation and no protected cryptocurrency wallet procedure. No cash is withdrawn or deposited.</transcript></artifact>
+				<outcome classification="safe"><label>Claim independently checked</label><heading>You stopped before cash left the bank</heading><explanation>Banks and government agencies do not protect funds through caller-directed cryptocurrency deposits.</explanation></outcome>
+				<warningSigns><sign>The caller supplied both the threat and destination.</sign><sign>The process required secrecy.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="trusted-interruption-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>A trusted person helps interrupt the call</heading><message>Outside support creates time to contact the bank before any withdrawal.</message><transcript>The learner pauses and shows the caller's message to someone trusted. Together they end the call and contact the real bank. The protected-wallet story cannot be verified, and no money moves.</transcript></artifact>
+				<outcome classification="safe"><label>Isolation broken</label><heading>You invited independent help before acting</heading><explanation>A trusted person can help slow an urgent decision and move verification to a safe channel.</explanation></outcome>
+				<warningSigns><sign>The caller demanded secrecy.</sign><sign>The reference tile had no independently verified destination.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="teller-stop-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The teller pauses the withdrawal</heading><message>You explain the call honestly. The bank identifies the account-protection story as a scam.</message><transcript>The learner tells the teller about the authority call, the cryptocurrency kiosk, and the instruction to conceal the purpose. The teller responds without judgment, pauses the withdrawal, and helps the learner contact a legitimate bank representative.</transcript></artifact>
+				<outcome classification="safe"><label>Teller intervention</label><heading>Honest information gave the bank a chance to help</heading><explanation>The caller's cover story was meant to bypass this safeguard. Telling the teller the truth stopped the cash from reaching the kiosk.</explanation></outcome>
+				<warningSigns><sign>The caller instructed the learner to lie.</sign><sign>The teller was falsely portrayed as part of the threat.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="kiosk-help-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>Store staff and the bank interrupt the deposit</heading><message>No destination is loaded and no cash is inserted.</message><transcript>The learner stops at the kiosk and explains the caller's instructions to store staff, then contacts the bank independently. The caller's protected-wallet claim is identified as a scam. The learner leaves with the cash and ends contact.</transcript></artifact>
+				<outcome classification="safe"><label>Kiosk use stopped</label><heading>You brought in help before depositing cash</heading><explanation>Asking for independent help restored time and prevented an irreversible transfer.</explanation></outcome>
+				<warningSigns><sign>The caller supplied the destination.</sign><sign>The learner was asked to enter a false reason.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="kiosk-cancel-safe" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The kiosk transaction is canceled</heading><message>You leave with the cash and contact the bank through a trusted channel.</message><transcript>The learner accepts the kiosk warning and cancels before depositing cash. The training destination receives nothing. The learner ends the call, returns the cash safely, and reports the attempt to the bank.</transcript></artifact>
+				<outcome classification="safe"><label>Deposit canceled</label><heading>You stopped at the final intervention point</heading><explanation>The kiosk warning directly matched the scam. Canceling protected the cash.</explanation></outcome>
+				<warningSigns><sign>The transaction was caller-directed.</sign><sign>The kiosk warned that it may be irreversible.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="crypto-loss-recovery" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>A cryptocurrency deposit occurred, and recovery begins</heading><message>Stop contact, call the bank, preserve the kiosk receipt and caller messages, and report through legitimate channels.</message><transcript>Some or all of the cash was represented as deposited before the scam was recognized. The learner ends contact, calls the bank, keeps the receipt and messages, and uses legitimate reporting channels. These steps may help the response, but they do not guarantee that cryptocurrency can be recovered.</transcript></artifact>
+				<outcome classification="risky"><label>Loss reported promptly</label><heading>You stopped the escalation and began a realistic response</heading><explanation>The deposit created serious risk. Prompt reporting and evidence preservation are the strongest available next steps, without any promise of recovery.</explanation></outcome>
+				<warningSigns><sign>The first deposit led immediately to another demand.</sign><sign>The destination was controlled by the caller.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="crypto-loss-delayed" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The next payment pauses, but the caller remains involved</heading><message>No more cash is sent yet. The bank has not been contacted, and the caller may change tactics.</message><transcript>The learner refuses another withdrawal but remains on the call. The scammer may use threats, sympathy, or a false recovery promise. The learner can still end contact immediately, call the real bank, preserve the receipt and messages, and report the incident.</transcript></artifact>
+				<outcome classification="risky"><label>Further loss paused</label><heading>Ending the call and contacting the bank are still urgent</heading><explanation>Refusing more money helps, but the unverified caller should not remain part of the recovery process.</explanation></outcome>
+				<warningSigns><sign>The caller continues after the learner refuses.</sign><sign>The first payment did not satisfy the supposed requirement.</sign></warningSigns>
+			</scene>
+
+			<scene videoId="expanded-crypto-loss" stageName="Takeaways" stageIndex="8">
+				<artifact type="review"><heading>The caller expands the loss</heading><message>Additional savings or borrowed money is directed toward the same irreversible destination.</message><transcript>The learner follows the request for another withdrawal or loan. The caller continues escalating because no amount was ever needed for protection. The learner should stop contact now, call the bank, preserve all evidence, and seek trusted support. Responsibility belongs to the scammer.</transcript></artifact>
+				<outcome classification="dangerous"><label>Loss expanded</label><heading>The protected-wallet story caused repeated financial harm</heading><explanation>No bank or government agency requires cryptocurrency deposits for protection. Further action can still secure remaining accounts and stop additional demands.</explanation></outcome>
+				<warningSigns><sign>The caller demanded borrowing after receiving money.</sign><sign>The supposed protection never reached completion.</sign></warningSigns>
+			</scene>
+		</scenes>
+	</presentation>
+	<commands>
+		<command type="prompt" videoId="protected-wallet-claim" displayText="A fake investigator sends a training reference tile for a supposed protected cryptocurrency wallet."><options><option id="independent-verification-safe" choiceId="end-call-contact-bank" text="End the call and contact the bank" /><option id="trusted-interruption-safe" choiceId="ask-trusted-person-about-tile" text="Ask someone you trust about the request" /><option id="cash-withdrawal" choiceId="follow-secure-wallet-instructions" text="Follow the caller's instructions" /></options></command>
+		<command type="prompt" videoId="cash-withdrawal" displayText="The caller directs an $8,000 withdrawal and supplies a cover story."><options><option id="teller-stop-safe" choiceId="tell-teller-about-crypto-call" text="Tell the teller about the call and cryptocurrency" /><option id="teller-isolation" choiceId="withdraw-smaller-amount" text="Withdraw a smaller amount while deciding" /><option id="teller-isolation" choiceId="use-cover-story-withdraw-full" text="Use the cover story and withdraw $8,000" /></options></command>
+		<command type="prompt" videoId="teller-isolation" displayText="The caller says bank employees may be involved and orders you to leave."><options><option id="teller-stop-safe" choiceId="return-and-tell-teller" text="Return to the teller and explain everything" /><option id="kiosk-setup" choiceId="stay-in-branch-avoid-details" text="Stay nearby but avoid explaining the call" /><option id="kiosk-setup" choiceId="leave-for-kiosk-on-call" text="Leave for the kiosk and stay on the phone" /></options></command>
+		<command type="prompt" videoId="kiosk-setup" displayText="At a nonfunctional training kiosk, the caller directs the Buy steps and a false transaction reason."><options><option id="kiosk-help-safe" choiceId="ask-employee-or-bank" text="Stop and ask store staff or the bank" /><option id="kiosk-warning" choiceId="explore-kiosk-no-cash" text="View the kiosk screens without inserting cash" /><option id="kiosk-warning" choiceId="load-caller-destination" text="Load the caller's training destination" /></options></command>
+		<command type="prompt" videoId="kiosk-warning" displayText="The kiosk warns that banks and government agencies do not request cryptocurrency payments."><options><option id="kiosk-cancel-safe" choiceId="cancel-at-kiosk-warning" text="Cancel and leave with the cash" /><option id="cash-deposit" choiceId="call-scammer-about-warning" text="Ask the caller whether the warning applies" /><option id="cash-deposit" choiceId="dismiss-kiosk-warning" text="Dismiss the warning and continue" /></options></command>
+		<command type="prompt" videoId="cash-deposit" displayText="The nonfunctional kiosk reaches the simulated cash-deposit decision."><options><option id="kiosk-cancel-safe" choiceId="deposit-nothing-cancel" text="Deposit nothing and cancel" /><option id="more-money-demanded" choiceId="simulate-small-test-deposit" text="Make a small test deposit" /><option id="more-money-demanded" choiceId="simulate-full-cash-deposit" text="Deposit the full amount" /></options></command>
+		<command type="prompt" videoId="more-money-demanded" displayText="The caller says the first deposit was not enough and requests another withdrawal or loan."><options><option id="crypto-loss-recovery" choiceId="end-contact-call-bank" text="End contact and call the real bank" /><option id="crypto-loss-delayed" choiceId="refuse-more-stay-on-call" text="Say no more money is available but remain on the call" /><option id="expanded-crypto-loss" choiceId="withdraw-or-borrow-more" text="Withdraw or borrow more money" /></options></command>
+		<command type="stop" videoId="independent-verification-safe" displayText="The real bank confirmed that the protected-wallet claim was false." />
+		<command type="stop" videoId="trusted-interruption-safe" displayText="A trusted person helped interrupt the call before money moved." />
+		<command type="stop" videoId="teller-stop-safe" displayText="The teller paused the withdrawal after hearing the complete story." />
+		<command type="stop" videoId="kiosk-help-safe" displayText="Independent help stopped the kiosk transaction before cash was deposited." />
+		<command type="stop" videoId="kiosk-cancel-safe" displayText="The kiosk warning led to cancellation with no cash deposited." />
+		<command type="stop" videoId="crypto-loss-recovery" displayText="A cryptocurrency deposit occurred, and prompt recovery steps have begun." />
+		<command type="stop" videoId="crypto-loss-delayed" displayText="Further payment paused, but contact with the scammer continues." />
+		<command type="stop" videoId="expanded-crypto-loss" displayText="The caller expanded the loss by demanding more savings or borrowed money." />
+	</commands>
+</playlist>
